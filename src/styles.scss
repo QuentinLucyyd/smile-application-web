@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Imports */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import 'styles/pages';
+@import 'styles/variables';
+
+body {
+	background: #ecf0f1;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.full-height {
+	height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, .featured-font {
+
+}
+
+/* Input */
+
+/* prevent outline on text boxes & text areas */
+input[type="text"], textarea {
+	outline: none;
+	box-shadow:none !important;
+}
