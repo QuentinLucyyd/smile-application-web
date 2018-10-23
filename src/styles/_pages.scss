@@ -1,0 +1,83 @@
+/* Page Related Styles */
+
+body,html{
+	height:100%;
+}
+
+p {
+	font-size: 2em;
+}
+
+a {
+	color:inherit;
+}
+
+a:hover {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 4em;
+}
+
+h3 {
+	font-size: 4em;
+}
+
+h6 {
+	font-size: 2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+h1 {
+	font-size:4em;
+}
+
+span.thin {
+	font-weight:100;
+}
+
+p.small {
+	font-size:2em;
+}
+
+.white-text {
+	color: #fff;
+}
+
+.medium-text {
+	color: #019cd1;
+	font-size: 2em;
+	text-decoration: none;
+	text-underline: none;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.full-width {
+	width:100%;
+}
+
+.no-margin {
+	margin-left:0 !important;
+	margin-right:0 !important;
+}
+
+.no-padding {
+	padding: 0 !important;
+}
+
+.start-hidden {
+	display:none;
+}
+
+.highlight {
+	border: 2px solid red !important;
+}
