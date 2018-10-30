@@ -1,0 +1,76 @@
+/* View Related Styles */
+@import './variables';
+
+.button {
+	transition: all 0.3s ease-in-out;
+	box-sizing: border-box;
+	cursor: pointer;
+	border: none;
+	display:inline-block;
+	padding: 11px 45px;
+	margin:5px;
+	font-size:1.2em;
+	font-weight: 600;
+	border-radius: 50px;
+}
+
+.light-button {
+	color: $primary-color;
+	transition: all 0.3s ease-in-out;
+	//border: 2px solid #fff;
+	background: $white;
+}
+
+.dark-button {
+	color: $white;
+	transition: all 0.3s ease-in-out;
+	//border: 2px solid #fff;
+	background: $primary-color;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+	border-color: rgba(126, 239, 104, 0.8);
+	box-shadow: none;
+	outline: 0 none;
+}
+
+.lds-dual-ring {
+	padding-top: 15px;
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+  }
+  .lds-dual-ring:after {
+	content: " ";
+	display: block;
+	width: 46px;
+	height: 46px;
+	margin: 1px;
+	border-radius: 50%;
+	border: 5px solid #fff;
+	border-color: $primary-color transparent $primary-color transparent;
+	animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+  }

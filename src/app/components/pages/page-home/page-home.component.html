@@ -1,3 +1,16 @@
-<p>
-  page-home works!
-</p>
+<app-modal-sign-in></app-modal-sign-in>
+<section id="home" class="d-flex align-items-center flex-column justify-content-center h-100 bg-dark text-white">
+	<div id="header-bg-top"></div>
+	<div class="container">
+	<div class="col-12 col-lg-12 white-text">
+		<div class="header-content">
+			<div class="header-logo-container">
+				<img class="header-logo" [src]="logo"/>
+			</div>
+			<div class="header-button-container">
+				<button class="button light-button sign-in-button" data-toggle="modal" data-target="#exampleModal">Sign in</button>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
