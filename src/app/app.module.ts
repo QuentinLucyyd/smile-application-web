@@ -15,6 +15,8 @@ import { ModalSignInComponent } from './components/elements/modals/modal-sign-in
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 const ROUTES = [
 	{ path: '', component: PageHomeComponent},
@@ -34,7 +36,8 @@ const ROUTES = [
 		HttpModule,
 		HttpClientModule,
 		FormsModule,
-		RouterModule.forRoot(ROUTES)
+		RouterModule.forRoot(ROUTES),
+		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 	],
 	providers: [
 		ApiServiceService,
