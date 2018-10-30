@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 /* Pages Import */
 import { PageHomeComponent } from '../../components/pages/page-home/page-home.component'
 
+/*Elements Import */
+import { ModalSignInComponent } from '../../components/elements/modals/modal-sign-in/modal-sign-in.component'
+
 const appRoutes = [
 	{path: '', component: PageHomeComponent}
 ];
@@ -15,7 +18,8 @@ const appRoutes = [
 		RouterModule.forChild(appRoutes)
 	],
 	declarations: [
-		PageHomeComponent
+		PageHomeComponent,
+		ModalSignInComponent
 	]
 })
 
