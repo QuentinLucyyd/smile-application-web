@@ -1,0 +1,44 @@
+/* Imports */
+@import '../../../../styles/pages';
+@import '../../../../styles/variables';
+@import '../../../../styles/view';
+
+.dashboard-container {
+	width: 100vw;
+	min-height: 100vh;
+	background: #ECEFF1;
+  
+	.dashboard-loading-container {
+	  text-align: center;
+	  width: 100%;
+	  height: 100%;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  background: #F4F7F9;
+	  z-index: 9999;
+  
+	  .dashboard-status {
+		width: 100%;
+		padding: 30px;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 100;
+		font-size: 2em;
+		color: #90A4AE;
+	  }
+	}
+}
+
+.dashboard {
+	overflow: hidden;
+	width: 100vw;
+	min-height: calc(100vh - 100px);
+	display: table;
+}
+
+.dashboard-sub-pages-container {
+	vertical-align: top;
+	padding: 30px 15px;
+	position: relative;
+	width: calc(100vw);
+}

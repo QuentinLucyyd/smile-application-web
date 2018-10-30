@@ -3,13 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 /* Pages Import */
-import { PageHomeComponent } from '../../components/pages/page-home/page-home.component'
+import { PageDashboardComponent } from '../../components/pages/page-dashboard/page-dashboard.component';
+import { SubPageDashboardComponent } from '../../components/pages/sub-pages/sub-page-dashboard/sub-page-dashboard.component';
 
-/*Elements Import */
-import { ModalSignInComponent } from '../../components/elements/modals/modal-sign-in/modal-sign-in.component'
+/* Elememnts Import */
+import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
+
+/* Import Services */
 
 const appRoutes = [
-	{path: '', component: PageHomeComponent}
+	{ path:'', component: PageDashboardComponent, children: [
+		{ path:'', component: SubPageDashboardComponent },
+	]}
 ];
 
 @NgModule({
@@ -18,8 +23,9 @@ const appRoutes = [
 		RouterModule.forChild(appRoutes)
 	],
 	declarations: [
-		PageHomeComponent,
-		ModalSignInComponent
+		PageDashboardComponent,
+		ElementNavDashboardComponent,
+		SubPageDashboardComponent,
 	]
 })
 
