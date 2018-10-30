@@ -1,5 +1,7 @@
 /* Page Related Styles */
 
+@import './variables';
+
 body,html{
 	height:100%;
 }
@@ -80,4 +82,13 @@ p.small {
 
 .highlight {
 	border: 2px solid red !important;
+}
+
+.sub-page-title {
+	color: #a5b1c2
+}
+
+.sub-page-title-icon {
+	padding: 10px;
+	color: $primary-color;
 }

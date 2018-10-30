@@ -1,6 +1,6 @@
 {
-  "name": "smile-application-web",
-  "short_name": "smile-application-web",
+  "name": "Smile",
+  "short_name": "Smile",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

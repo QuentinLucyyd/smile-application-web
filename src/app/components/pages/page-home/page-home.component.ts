@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-page-home',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHomeComponent implements OnInit {
 	logo: String = 'assets/images/logo-white.png';
-	constructor() { }
+	constructor(
+		private titleService: Title
+	) { }
 
 	ngOnInit() {
+		this.titleService.setTitle('Smile | Home');
 	}
 
 }

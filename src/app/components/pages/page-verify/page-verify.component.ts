@@ -3,12 +3,14 @@ import { SubPage } from '../../../classes/abstract/page.class';
 
 import { VerifyService } from '../../../services/verify.service';
 import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
 	selector: 'app-page-verify',
 	templateUrl: './page-verify.component.html',
 	styleUrls: ['./page-verify.component.scss']
 })
+
 export class PageVerifyComponent extends SubPage implements OnInit {
 	Logo:String = 'assets/images/logo-white.png';
 	verify_token: String = '';
@@ -22,7 +24,8 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 
 	constructor(
 		private _verifyService: VerifyService,
-		private activatedRoute: ActivatedRoute
+		private activatedRoute: ActivatedRoute,
+		private titleService: Title
 	) {
 		super();
 		this.activatedRoute.queryParams.subscribe(params => {
@@ -31,6 +34,7 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 	}
 
 	ngOnInit() {
+		this.titleService.setTitle('Smile | Account Verification');
 		this.loading = true;
 		if (this.verify_token) {
 			this._verifyService.verifyInviteToken(this.verify_token).subscribe(result => {
