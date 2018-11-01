@@ -8,6 +8,7 @@ import { SubPageDashboardComponent } from '../../components/pages/sub-pages/sub-
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
+import { ElementSidebarComponent } from '../../components/elements/element-sidebar/element-sidebar.component';
 
 /* Import Services */
 
@@ -20,12 +21,13 @@ const appRoutes = [
 @NgModule({
 	imports: [
 		CommonModule,
-		RouterModule.forChild(appRoutes)
+		RouterModule.forChild(appRoutes),
 	],
 	declarations: [
 		PageDashboardComponent,
 		ElementNavDashboardComponent,
 		SubPageDashboardComponent,
+		ElementSidebarComponent
 	]
 })
 
