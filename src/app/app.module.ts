@@ -17,11 +17,14 @@ import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { TestComponent } from './components/pages/test/test.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 const ROUTES = [
 	{ path: '', component: PageHomeComponent},
 	{ path: 'verify', component: PageVerifyComponent},
-	{ path:'dashboard', loadChildren: './modules/home/home.module#HomeModule'}
+	{ path:'dashboard', loadChildren: './modules/home/home.module#HomeModule'},
+	{path: 'test', component: TestComponent}
 ];
 
 @NgModule({
@@ -29,7 +32,9 @@ const ROUTES = [
 		AppComponent,
 		PageHomeComponent,
 		PageVerifyComponent,
-		ModalSignInComponent
+		ModalSignInComponent,
+		TestComponent,
+		
 	],
 	imports: [
 		BrowserModule,
@@ -37,6 +42,7 @@ const ROUTES = [
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forRoot(ROUTES),
+		Ng5SliderModule,
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 	],
 	providers: [
