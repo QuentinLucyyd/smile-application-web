@@ -29,7 +29,7 @@ const ROUTES = [
 		AppComponent,
 		PageHomeComponent,
 		PageVerifyComponent,
-		ModalSignInComponent
+		ModalSignInComponent,
 	],
 	imports: [
 		BrowserModule,

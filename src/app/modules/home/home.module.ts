@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 /* Pages Import */
 import { PageDashboardComponent } from '../../components/pages/page-dashboard/page-dashboard.component';
 import { SubPageDashboardComponent } from '../../components/pages/sub-pages/sub-page-dashboard/sub-page-dashboard.component';
+import { GoalsComponent } from '../../components/pages/goals/goals.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -14,6 +15,7 @@ import { ElementNavDashboardComponent } from '../../components/elements/element-
 const appRoutes = [
 	{ path:'', component: PageDashboardComponent, children: [
 		{ path:'', component: SubPageDashboardComponent },
+		{ path: 'goals', component: GoalsComponent }
 	]}
 ];
 
@@ -26,6 +28,7 @@ const appRoutes = [
 		PageDashboardComponent,
 		ElementNavDashboardComponent,
 		SubPageDashboardComponent,
+		GoalsComponent
 	]
 })
 
