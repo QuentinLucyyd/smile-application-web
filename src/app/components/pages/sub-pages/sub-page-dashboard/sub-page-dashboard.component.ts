@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 export class SubPageDashboardComponent implements OnInit {
 
 	constructor(
-		private titleService: Title
+		private titleService: Title,
 	) { }
 
 	ngOnInit() {

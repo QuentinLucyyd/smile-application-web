@@ -5,12 +5,18 @@
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
+p {
+	font-size: 1.0em;
+	color: $grey;
+}
+
 .header-button-container {
-	padding-top: 30px;
+	padding-top: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .sign-in-button {
 	transition-duration: 0.4s;
 	&:hover {
@@ -18,4 +24,23 @@
 		color: $white;
 		transition-duration: 0.4s;
 	}
+}
+
+.modal-sign-in-container {
+	background-color: white;
+	//padding: 20px 45px;
+	border-radius: 4px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.welcome-container {
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+.forgot-password-text {
+	padding-top: 20px;
+	text-decoration: underline;
+	cursor: pointer;
 }

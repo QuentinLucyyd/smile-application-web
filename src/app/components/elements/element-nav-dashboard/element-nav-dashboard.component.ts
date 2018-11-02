@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../../../services/authentication.service';
+import { UsersService } from '../../../services/users.service';
 
 @Component({
 	selector: 'app-element-nav-dashboard',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElementNavDashboardComponent implements OnInit {
 	logo: String = 'assets/images/logo-white.png';
-	constructor() { }
+	constructor(
+		private authenticationService: AuthenticationService,
+		private usersService: UsersService
+	) { }
 
 	ngOnInit() {
 	}

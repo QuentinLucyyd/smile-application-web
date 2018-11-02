@@ -13,7 +13,8 @@ import { ElementSidebarComponent } from '../../components/elements/element-sideb
 /* Import Services */
 
 const appRoutes = [
-	{ path:'', component: PageDashboardComponent, children: [
+	{ path:'', component: PageDashboardComponent, children:
+	[
 		{ path:'', component: SubPageDashboardComponent },
 	]}
 ];

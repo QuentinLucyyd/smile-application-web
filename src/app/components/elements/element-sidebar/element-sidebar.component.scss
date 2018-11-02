@@ -63,20 +63,6 @@
 	position: absolute;
 }
 
-.secondary-loading-container {
-	margin: 0 auto;
-	width: 60px;
-	height: 60px;
-
-	.secondary-loading {
-		width: 100%;
-		height: 100%;
-		border: 0.35rem solid rgba(25,151,253, 0.45);
-		border-top: 0.3rem solid rgba(25,151,253, 1);
-		border-radius: 50%;
-		animation: spin 1s infinite linear;
-	}
-}
 
 .quick-links-button-container {
 	width: 100px;
