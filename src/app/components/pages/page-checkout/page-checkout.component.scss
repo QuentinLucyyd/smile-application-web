@@ -1,0 +1,26 @@
+.buttons{
+    margin-right: 15px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+.bottombutton{
+    margin-bottom: 2%;
+    width: 100%;
+  }
+
+  .rowtop{
+    margin-top: 2%;
+  }
+
+  @media only screen and (max-width: 797px) {
+    .buttons{
+      
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+  
+    .bottombutton{
+      margin-bottom: 3%;
+    }
+}

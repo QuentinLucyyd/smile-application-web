@@ -17,14 +17,17 @@ import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { TestComponent } from './components/pages/test/test.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { PageCheckoutComponent } from './components/pages/page-checkout/page-checkout.component';
+import { PageCheckinComponent } from './components/pages/page-checkin/page-checkin.component';
 
 const ROUTES = [
 	{ path: '', component: PageHomeComponent},
 	{ path: 'verify', component: PageVerifyComponent},
-	{ path:'dashboard', loadChildren: './modules/home/home.module#HomeModule'},
-	{path: 'test', component: TestComponent}
+	{ path: 'dashboard', loadChildren: './modules/home/home.module#HomeModule'},
+	{ path: 'checkout', component: PageCheckoutComponent},
+	{ path: 'checkin', component: PageCheckinComponent}
+
 ];
 
 @NgModule({
@@ -33,7 +36,8 @@ const ROUTES = [
 		PageHomeComponent,
 		PageVerifyComponent,
 		ModalSignInComponent,
-		TestComponent,
+		PageCheckoutComponent,
+		PageCheckinComponent,
 		
 	],
 	imports: [
