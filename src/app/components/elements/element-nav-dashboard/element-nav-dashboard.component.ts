@@ -10,8 +10,8 @@ import { UsersService } from '../../../services/users.service';
 export class ElementNavDashboardComponent implements OnInit {
 	logo: String = 'assets/images/logo-white.png';
 	constructor(
-		private authenticationService: AuthenticationService,
-		private usersService: UsersService
+		public authenticationService: AuthenticationService,
+		public usersService: UsersService
 	) { }
 
 	ngOnInit() {
