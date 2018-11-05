@@ -17,7 +17,7 @@ export class PageCheckinComponent implements OnInit {
     ceil: 100,
     showSelectionBar: true,
     selectionBarGradient: {
-      from: '#6BBF59',
+      from: '#8fd164',
       to: '#28a745'
     }
   };
@@ -26,6 +26,7 @@ export class PageCheckinComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
  
