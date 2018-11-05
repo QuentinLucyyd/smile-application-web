@@ -6,31 +6,31 @@
 <div class="row d-flex justify-content-center rowtop ">
   <div class="col-lg-8 col-10 custom-slider shadow-sm ">
     <label class="sliderheader">Physical Energy</label>
-    <ng5-slider [(value)]="value" [options]="options"></ng5-slider>
+    <ng5-slider [(value)]="p_energy" [options]="options"></ng5-slider>
   </div>
 </div>
 <div class="row d-flex justify-content-center rowtop">
   <div class="col-lg-8 col-10 custom-slider shadow-sm">
     <label class="sliderheader">Heart Connection</label>
-    <ng5-slider [(value)]="value1" [options]="options"></ng5-slider>
+    <ng5-slider [(value)]="h_connection" [options]="options"></ng5-slider>
   </div>
 </div>
 <div class="row d-flex justify-content-center rowtop">
   <div class="col-lg-8 col-10 custom-slider shadow-sm">
     <label class="sliderheader">Mental Focus</label>
-    <ng5-slider [(value)]="value2" [options]="options"></ng5-slider>
+    <ng5-slider [(value)]="m_focus" [options]="options"></ng5-slider>
   </div>
 </div>
 <div class="row d-flex justify-content-center rowtop">
     <div class="col-lg-8 col-10 custom-slider shadow-sm">
       <label class="sliderheader">Feeling connected to the greater whole</label>
-      <ng5-slider [(value)]="value3" [options]="options"></ng5-slider>
+      <ng5-slider [(value)]="f_connected" [options]="options"></ng5-slider>
     </div>
   </div>
 <div class="row d-flex justify-content-center rowtop">
     <div class="col-lg-8 col-10 custom-slider shadow-sm">
       <label class="sliderheader">Happy to be me</label>
-      <ng5-slider [(value)]="value4" [options]="options"></ng5-slider>
+      <ng5-slider [(value)]="happy" [options]="options"></ng5-slider>
     </div>
   </div>
   <div class="row d-flex justify-content-center rowtop">
@@ -48,7 +48,7 @@
   <div class="row d-flex justify-content-center rowtop">
       <div class="col-lg-8 col-10 d-flex justify-content-center">
          
-          <button type="button" class="btn btn-success bottombutton submitbutton">Submit</button>
+          <button type="button" (click)="submitCheckIn()" class="btn btn-success bottombutton submitbutton">Submit</button>
       </div>
   </div>
   <div class="row d-flex justify-content-center ">
