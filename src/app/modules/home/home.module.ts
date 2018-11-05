@@ -9,6 +9,8 @@ import { GoalsComponent } from '../../components/pages/goals/goals.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
+import { ModalAddGoalComponent } from '../../components/elements/modals/modal-add-goal/modal-add-goal.component';
+
 
 /* Import Services */
 
@@ -28,7 +30,8 @@ const appRoutes = [
 		PageDashboardComponent,
 		ElementNavDashboardComponent,
 		SubPageDashboardComponent,
-		GoalsComponent
+		GoalsComponent,
+		ModalAddGoalComponent,
 	]
 })
 

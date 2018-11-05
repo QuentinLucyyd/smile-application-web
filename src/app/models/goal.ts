@@ -7,11 +7,16 @@ export class goal {
     state: Boolean = false; //[false=ongoing, true=completed] (not sure of this)
     subgoals: Boolean = false;
     priority: Number; //1=low, 2=medium, 3=high
+
 	constructor(name: String, description: String, dueDate: Date) {
         this.name = name;
         this.description = description;
         this.dueDate = dueDate;
-	}
+    }
+    
+	// constructor(goal) {
+    //     this.updateGoal(goal);
+	// }
 
 	updateGoal(goal) {
 		if ( goal.name ) { this.name = goal.name; }

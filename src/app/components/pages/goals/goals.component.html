@@ -1,18 +1,31 @@
+<app-modal-add-goal></app-modal-add-goal>
 <div class="sub-page-dashboard-container">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-12 col-md-12">
+			<div class="col-6 col-md-6">
 				<div class="sub-page-title">
 					<i class="sub-page-title-icon fas fa-check"></i>Dashboard / Goals
 				</div>
       </div>
-      <div *ngFor="let goal of goals" class="card-container col-md-4"> 
-        <div class="card">
+      <div class="col-6 col-md-6 d-flex justify-content-end">
+				<div class="sub-page-title" style="margin-right: 10px">
+          <button class="btn" style="background-color:#1997FD; color:white;" data-toggle="modal" data-target="#myModal">
+            <i class="sub-page-title-icon fas fa-plus" style="color:white"></i>Add Goal
+          </button>
+				</div>
+      </div>
+
+
+
+      </div>
+      <div class="row">
+      <div *ngFor="let goal of goals" class="card-container goal-card col-md-4" > 
+        <div class="card" style="margin: 10px">
           <div class="card-header">
             {{goal.name}}
           </div>
           <div class="card-body">
-            <div class="col-md-10">
+            <div class="col-lg-10 col-10">
               <h5 class="card-text">
                 {{goal.description}}
               </h5>
@@ -21,9 +34,7 @@
                 </h5>
             </div>
             <div class="col-md-1">
-              
-            </div>
-            
+            </div>   
    <!--         <a href="/dashboard" class="btn btn-primary" text-color>Dashboard Home</a> -->
           </div>
         </div>
