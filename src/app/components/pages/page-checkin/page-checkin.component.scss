@@ -1,0 +1,68 @@
+@import '../../../../styles/pages';
+@import '../../../../styles/variables';
+@import '../../../../styles/view';
+
+//-------slider---------------------------------
+
+::ng-deep {
+    .custom-slider .ng5-slider .ng5-slider-bar {
+      background: #fdfdfd;
+      height: 1.8rem;
+    }
+ 
+  
+    .custom-slider .ng5-slider .ng5-slider-pointer {
+      width: 8px;
+      height: 1.8rem;
+      top: auto; /* to remove the default positioning */
+      bottom: 100;
+      background-color: rgb(94, 94, 94);
+      outline: none
+    }
+  
+    .custom-slider .ng5-slider .ng5-slider-pointer:after {
+      display: none;
+    }
+  
+    .custom-slider .ng5-slider .ng5-slider-bubble {
+      bottom: 14px;
+    }
+  
+    .custom-slider .ng5-slider .ng5-slider-limit {
+      font-weight: bold;
+      
+    }
+  
+    .custom-slider .ng5-slider .ng5-slider-tick {
+      width: 1px;
+      height: 10px;
+      margin-left: 4px;
+      border-radius: 0;
+      background: #ffe4d1;
+      top: -1px;
+      
+    }
+
+    .custom-slider{
+    background-color: #ffffff62;
+      height: 8rem;
+    }
+    
+  }
+//-------slider end------------------------------
+
+
+  .rowtop{
+    margin-top: 2%;
+  }
+
+  .questions{
+    color: rgb(51, 51, 51);
+  }
+
+  .sliderheader{
+    font-weight: bold; 
+    margin-top: .8rem;
+  }
+  
+

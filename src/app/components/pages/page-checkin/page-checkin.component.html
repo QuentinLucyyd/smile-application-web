@@ -1,0 +1,67 @@
+<div class="row d-flex justify-content-center rowtop" style="margin-top: 2%">
+  <div class="col-6 d-flex justify-content-center">
+    Check In
+  </div>
+</div>
+<div class="row d-flex justify-content-center rowtop ">
+  <div class="col-lg-8 col-10 custom-slider shadow-sm ">
+    <label class="sliderheader">Physical Energy</label>
+    <ng5-slider [(value)]="p_energy" [options]="options"></ng5-slider>
+  </div>
+</div>
+<div class="row d-flex justify-content-center rowtop">
+  <div class="col-lg-8 col-10 custom-slider shadow-sm">
+    <label class="sliderheader">Heart Connection</label>
+    <ng5-slider [(value)]="h_connection" [options]="options"></ng5-slider>
+  </div>
+</div>
+<div class="row d-flex justify-content-center rowtop">
+  <div class="col-lg-8 col-10 custom-slider shadow-sm">
+    <label class="sliderheader">Mental Focus</label>
+    <ng5-slider [(value)]="m_focus" [options]="options"></ng5-slider>
+  </div>
+</div>
+<div class="row d-flex justify-content-center rowtop">
+    <div class="col-lg-8 col-10 custom-slider shadow-sm">
+      <label class="sliderheader">Feeling connected to the greater whole</label>
+      <ng5-slider [(value)]="f_connected" [options]="options"></ng5-slider>
+    </div>
+  </div>
+<div class="row d-flex justify-content-center rowtop">
+    <div class="col-lg-8 col-10 custom-slider shadow-sm ">
+      <label class="sliderheader">Happy to be me</label>
+      <ng5-slider [(value)]="happy" [options]="options"></ng5-slider>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center rowtop">
+    <div class="col-lg-8 col-10 shadow-sm" style="background-color: #ffffff62;">
+      <label class="sliderheader">Getting Clear</label><br>
+   
+        <ul class="list-group list-group-flush" style="margin-bottom: 10px;">
+            <li class="list-group-item">• I am grateful for...</li>
+            <li class="list-group-item">• What would make today great?</li>
+            <li class="list-group-item">• Daily affirmations. I am..</li>
+          </ul>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..."></textarea>
+      <div class="row d-flex justify-content-end">
+        <button type="button" class="btn btn-info buttons">Record</button>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  <div class="row d-flex justify-content-center rowtop">
+      <div class="col-lg-8 col-10 d-flex justify-content-center">
+         
+          <button type="button" (click)="submitCheckIn()" class="btn btn-success bottombutton submitbutton">Submit</button>
+      </div>
+  </div>
+  <div class="row d-flex justify-content-center ">
+      <div class="col-lg-8 col-10 d-flex justify-content-center">
+          <button type="button" class="btn btn-light bottombutton" >Skip</button>
+         
+      </div>
+  </div>
+   
+

@@ -180,4 +180,35 @@ p.small {
 	.card-button-mobile {
 		display: none;
 	}
+//check in and check out page
+.buttons{
+    margin-right: 15px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+
+.bottombutton{
+    margin-bottom: 2%;
+    width: 100%;
+  }
+
+  .sliderheader{
+    font-weight: bold; 
+    margin-top: .8rem;
+  }
+  
+  .list-group-item{
+    background: transparent ;
+    border-top: transparent;
+  }
+  @media only screen and (max-width: 797px) {
+    .buttons{
+      
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+  
+    .bottombutton{
+      margin-bottom: 3%;
+    }
 }
