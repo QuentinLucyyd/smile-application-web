@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageCheckoutComponent } from './page-checkout.component';
+import { SubPageGoalsComponent } from './sub-page-goals.component';
 
-describe('PageCheckoutComponent', () => {
-  let component: PageCheckoutComponent;
-  let fixture: ComponentFixture<PageCheckoutComponent>;
+describe('SubPageGoalsComponent', () => {
+  let component: SubPageGoalsComponent;
+  let fixture: ComponentFixture<SubPageGoalsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageCheckoutComponent ]
+      declarations: [ SubPageGoalsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageCheckoutComponent);
+    fixture = TestBed.createComponent(SubPageGoalsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

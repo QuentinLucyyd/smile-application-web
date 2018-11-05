@@ -1,0 +1,40 @@
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/view';
+
+.rowtop {
+	margin-top: 2%;
+}
+
+.journal-container {
+	color: $grey;
+	font-family: $primary-font;
+	padding-top: 20px;
+
+	textarea {
+		background-color: transparent;
+	}
+
+	p {
+		font-size: .8em;
+	}
+
+	.sliderheader {
+		font-size: 2em;
+	}
+}
+
+.skip-text {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.record-button {
+	font-size: 2em;
+	transition: 0.4s;
+
+	&:hover {
+		color: $error-color;
+		transition: 0.4s;
+	}
+}

@@ -33,7 +33,6 @@ const ROUTES = [
 		PageHomeComponent,
 		PageVerifyComponent,
 		ModalSignInComponent,
-		
 	],
 	imports: [
 		BrowserModule,

@@ -1,8 +1,52 @@
 @import '../../../../../styles/pages';
 @import '../../../../../styles/variables';
 @import '../../../../../styles/view';
+@import '../../../../../styles/config';
 
 //-------slider---------------------------------
+
+.slider-outter-container {
+	padding-bottom: 20px;
+	color: $grey;
+	font-family: $primary-font;
+
+	.custom-slider {
+		padding-bottom: 10px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.sliderheader {}
+}
+
+.journal-container {
+	color: $grey;
+	font-family: $primary-font;
+	padding-top: 20px;
+
+	textarea {
+		background-color: transparent;
+	}
+
+	p {
+		font-size: .8em;
+	}
+}
+
+.skip-text {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.record-button {
+	font-size: 2em;
+	transition: 0.4s;
+
+	&:hover {
+		color: $error-color;
+		transition: 0.4s;
+	}
+}
 
 ::ng-deep {
 	.custom-slider .ng5-slider .ng5-slider-bar {
