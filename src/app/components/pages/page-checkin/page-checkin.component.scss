@@ -1,3 +1,9 @@
+@import '../../../../styles/pages';
+@import '../../../../styles/variables';
+@import '../../../../styles/view';
+
+//-------slider---------------------------------
+
 ::ng-deep {
     .custom-slider .ng5-slider .ng5-slider-bar {
       background: #f3f3f3;
@@ -35,41 +41,24 @@
       background: #ffe4d1;
       top: -1px;
     }
+
+    .custom-slider{
+    
+      height: 8rem;
+    }
     
   }
+//-------slider end------------------------------
+
 
   .rowtop{
     margin-top: 2%;
   }
 
-  .custom-slider{
-    
-    height: 8rem;
-  }
+  
 
   .sliderheader{
     font-weight: bold;
   }
 
-  .buttons{
-    margin-right: 15px;
-    margin-top: 1%;
-    margin-bottom: 1%;
-  }
 
-  .bottombutton{
-    margin-bottom: 2%;
-    width: 100%;
-  }
-
-  @media only screen and (max-width: 797px) {
-    .buttons{
-      
-      margin-top: 2%;
-      margin-bottom: 2%;
-    }
-  
-    .bottombutton{
-      margin-bottom: 3%;
-    }
-}
