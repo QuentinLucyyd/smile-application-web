@@ -17,7 +17,7 @@
       top: auto; /* to remove the default positioning */
       bottom: 100;
       background-color: rgb(94, 94, 94);
-
+      outline: none
     }
   
     .custom-slider .ng5-slider .ng5-slider-pointer:after {
@@ -40,6 +40,7 @@
       border-radius: 0;
       background: #ffe4d1;
       top: -1px;
+      
     }
 
     .custom-slider{
