@@ -15,6 +15,8 @@ import { ModalSignInComponent } from './components/elements/modals/modal-sign-in
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
+import { AuthenticationService} from './services/authentication.service';
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -29,7 +31,7 @@ const ROUTES = [
 		AppComponent,
 		PageHomeComponent,
 		PageVerifyComponent,
-		ModalSignInComponent
+		ModalSignInComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -41,7 +43,8 @@ const ROUTES = [
 	],
 	providers: [
 		ApiServiceService,
-		VerifyService],
+		VerifyService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }

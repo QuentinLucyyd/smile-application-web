@@ -18,9 +18,15 @@ export class AuthenticationService {
 		private navService: NavService
 	) { }
 
-	invalidateUser() {
-		localStorage.removeItem('token');
+	public invalidateUser() {
+		localStorage.clear();
 		this.navService.redirectUser('', 0, {'invalidate': 'true'});
+	}
+
+	public AuthenticateUser() {
+		this.APIService.UserAuth().subscribe(data => {
+			this.usersService.ActiveUser = new User(data.data);
+		});
 	}
 
 	userSignin() {

@@ -11,21 +11,37 @@ import { User } from '../models/user';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'https://smile-application-api.herokuapp.com';
+	host = 'http://localhost:3001';
 	
 	constructor(
 		private _http: Http,
 		private _Newhttp: HttpClient
 	) { }
+	
+	fetchToken() {
+		this.token = localStorage.getItem('token');
+		if (this.token)
+			return true;
+		return false;
+	}
 
 	//User Related Requests
 
 	//Verify Realated Request
 	public verifyInviteToken(token) {
-		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.post(this.host + '/users/verify?verify_token=' + token, options)
 			.pipe(map(response => response.json()));
+	}
+
+	public UserAuth() {
+		if( this.fetchToken() ) {
+			const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+			const options = new RequestOptions({ headers: headers });
+			return this._http.get(this.host + '/users/auth', options)
+			.pipe(map(response => response.json()));
+		}
 	}
 
 	public createUserAccount(token, user: User) {

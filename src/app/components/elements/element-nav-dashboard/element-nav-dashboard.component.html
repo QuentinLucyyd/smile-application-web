@@ -1,9 +1,21 @@
-<header class="dashboard-nav navbar">
-	<!-- <a class="navbar-brand" href="#">
-				<img class="navbar-brand-full" [src]="logo" width="89" height="25" alt="Smile Logo">
-				<img class="navbar-brand-minimized" [src]="logo" width="30" height="30" alt="Smile Logo">
-		</a> -->
-	<button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-		<span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-	</button>
-</header>
+
+<div class="dashboard-nav-container bottom-shadow">
+	<!-- <div class="dashboard-nav-logo">
+		<svg>
+			<use xlink:href="#wethinkcode-logo"></use>
+		</svg>
+	</div> -->
+	<div class="dashboard-nav-actions d-flex align-items-center">
+		<button class="hamburger hamburger--elastic"
+		 type="button">
+			<span class="hamburger-box">
+				<span class="hamburger-inner"></span>
+			</span>
+		</button>
+		<div class="sign-out-btn" (click)="authenticationService.invalidateUser()">
+			<svg>
+				<use xlink:href="#signout-icon"></use>
+			</svg>
+		</div>
+	</div>
+</div>

@@ -9,6 +9,7 @@ import { SubPageDashboardComponent } from '../../components/pages/sub-pages/sub-
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
 import { ElementSidebarComponent } from '../../components/elements/element-sidebar/element-sidebar.component';
+import { ElementProfileHeaderComponent } from '../../components/elements/element-profile-header/element-profile-header.component';
 
 /* Import Services */
 
@@ -28,7 +29,8 @@ const appRoutes = [
 		PageDashboardComponent,
 		ElementNavDashboardComponent,
 		SubPageDashboardComponent,
-		ElementSidebarComponent
+		ElementSidebarComponent,
+		ElementProfileHeaderComponent
 	]
 })
 
