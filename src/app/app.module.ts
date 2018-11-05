@@ -19,16 +19,11 @@ import { AuthenticationService} from './services/authentication.service';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { Ng5SliderModule } from 'ng5-slider';
-import { PageCheckoutComponent } from './components/pages/page-checkout/page-checkout.component';
-import { PageCheckinComponent } from './components/pages/page-checkin/page-checkin.component';
 
 const ROUTES = [
 	{ path: '', component: PageHomeComponent},
 	{ path: 'verify', component: PageVerifyComponent},
 	{ path: 'dashboard', loadChildren: './modules/home/home.module#HomeModule'},
-	{ path: 'checkout', component: PageCheckoutComponent},
-	{ path: 'checkin', component: PageCheckinComponent}
 
 ];
 
@@ -38,8 +33,6 @@ const ROUTES = [
 		PageHomeComponent,
 		PageVerifyComponent,
 		ModalSignInComponent,
-		PageCheckoutComponent,
-		PageCheckinComponent,
 		
 	],
 	imports: [
@@ -48,7 +41,6 @@ const ROUTES = [
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forRoot(ROUTES),
-		Ng5SliderModule,
 		ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
 	],
 	providers: [
