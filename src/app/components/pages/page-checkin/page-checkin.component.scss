@@ -6,7 +6,7 @@
 
 ::ng-deep {
     .custom-slider .ng5-slider .ng5-slider-bar {
-      background: #f3f3f3;
+      background: #fdfdfd;
       height: 1.8rem;
     }
  
@@ -44,7 +44,7 @@
     }
 
     .custom-slider{
-    
+    background-color: #ffffff62;
       height: 8rem;
     }
     
@@ -56,10 +56,13 @@
     margin-top: 2%;
   }
 
-  
-
-  .sliderheader{
-    font-weight: bold;
+  .questions{
+    color: rgb(51, 51, 51);
   }
 
+  .sliderheader{
+    font-weight: bold; 
+    margin-top: .8rem;
+  }
+  
 
