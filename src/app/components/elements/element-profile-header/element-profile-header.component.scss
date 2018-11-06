@@ -15,7 +15,13 @@
 }
 
 .profile-header-picture {
-	border: 7px solid $grey;
+	border: 7px solid transparent;
+
+	-moz-border-image: -moz-linear-gradient(top, #39B0BA 0%, #52BA11 100%);
+	-webkit-border-image: -webkit-linear-gradient(top, #39B0BA 0%, #52BA11 100%);
+	border-image: linear-gradient(to bottom, #39B0BA 0%, #52BA11 100%);
+	border-image-slice: 1;
+
 	border-radius: 3px;
 	width: 150px;
 	height: 150px;
@@ -54,6 +60,7 @@
 	.profile-header-info-container {
 		padding-left: 0px;
 		padding-top: 30px;
+
 		h5 {
 			font-size: 1.5em;
 		}

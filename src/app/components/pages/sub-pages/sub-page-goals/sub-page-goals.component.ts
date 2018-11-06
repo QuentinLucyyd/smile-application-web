@@ -1,23 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { goal } from '../../../../models/goal'
+import { Goal } from '../../../../models/goal'
+import { GoalsService } from '../../../../services/goals.service';
+import { SubPage } from '../../../../classes/abstract/page.class';
+import { UsersService } from '../../../../services/users.service';
+import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({
 	selector: 'app-sub-page-goals',
 	templateUrl: './sub-page-goals.component.html',
 	styleUrls: ['./sub-page-goals.component.scss']
 })
-export class SubPageGoalsComponent implements OnInit {
-	goal1: goal = new goal('goal1', 'goal1 description', new Date());
-	goal2: goal = new goal('goal1', 'goal1 description', new Date());
-	goal3: goal = new goal('goal1', 'goal1 description', new Date());
+export class SubPageGoalsComponent extends SubPage implements OnInit {
+	Goals: Goal[] = [];
 
-	goals = [this.goal1, this.goal2, this.goal3];
-
-
-	constructor(private titleService: Title) {}
+	constructor(
+		private titleService: Title,
+		private goalsService: GoalsService,
+		private usersService: UsersService,
+		private authService: AuthenticationService
+	) {super();}
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Goals');
+		this.loading = true;
+		this.authService.AuthenticateUser().then(data => {
+			this.loading = false;
+			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(result => {
+				for (let goal of result.data) {
+					this.Goals.push(new Goal(goal));
+				}
+			});
+		})
 	}
 }

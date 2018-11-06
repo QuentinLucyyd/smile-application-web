@@ -19,11 +19,12 @@ import { AuthenticationService} from './services/authentication.service';
 
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AuthGuard } from './guards/auth.guard';
 
 const ROUTES = [
 	{ path: '', component: PageHomeComponent},
 	{ path: 'verify', component: PageVerifyComponent},
-	{ path: 'dashboard', loadChildren: './modules/home/home.module#HomeModule'},
+	{ path: 'dashboard', loadChildren: './modules/home/home.module#HomeModule', canActivate:[AuthGuard]},
 
 ];
 
@@ -44,7 +45,8 @@ const ROUTES = [
 	],
 	providers: [
 		ApiServiceService,
-		VerifyService
+		VerifyService,
+		AuthGuard
 	],
 	bootstrap: [AppComponent]
 })

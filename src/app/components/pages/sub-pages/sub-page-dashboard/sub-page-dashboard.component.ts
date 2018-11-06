@@ -11,14 +11,10 @@ export class SubPageDashboardComponent implements OnInit {
 
 	constructor(
 		private titleService: Title,
-		private authenticationService: AuthenticationService
 	) { }
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Dashboard');
-		if (localStorage.getItem('token')) {
-			this.authenticationService.AuthenticateUser();
-		}
 	}
 
 }

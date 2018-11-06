@@ -24,9 +24,14 @@ export class AuthenticationService {
 	}
 
 	public AuthenticateUser() {
-		this.APIService.UserAuth().subscribe(data => {
-			this.usersService.ActiveUser = new User(data.data);
-		});
+		return new Promise((resolve, reject) => {
+			this.APIService.UserAuth().subscribe(data => {
+				this.usersService.ActiveUser = new User(data.data);
+				resolve(data);
+			}, err => {
+				reject(err);
+			});
+		})
 	}
 
 	userSignin() {
