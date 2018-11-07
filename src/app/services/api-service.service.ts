@@ -11,7 +11,7 @@ import { User } from '../models/user';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'http://localhost:3001';
+	host = 'https://smile-application-api.herokuapp.com/';
 	
 	constructor(
 		private _http: Http,
@@ -72,6 +72,16 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/users/'+user_id+'/goals', options)
+		.pipe(map(response => response.json()));
+	}
+	
+	// Chekin Related Requests
+
+	public getCheckins() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checkins', options)
 		.pipe(map(response => response.json()));
 	}
 }
