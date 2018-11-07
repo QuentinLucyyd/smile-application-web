@@ -8,7 +8,8 @@ import { UsersService } from '../../../services/users.service';
 	styleUrls: ['./element-nav-dashboard.component.scss']
 })
 export class ElementNavDashboardComponent implements OnInit {
-	logo: String = 'assets/images/logo-white.png';
+	logo: String = 'assets/images/logo-wide-gradient.png';
+
 	constructor(
 		public authenticationService: AuthenticationService,
 		public usersService: UsersService

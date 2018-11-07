@@ -36,12 +36,11 @@ export class ApiServiceService {
 	}
 
 	public UserAuth() {
-		if( this.fetchToken() ) {
-			const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
-			const options = new RequestOptions({ headers: headers });
-			return this._http.get(this.host + '/users/auth', options)
-			.pipe(map(response => response.json()));
-		}
+		this.fetchToken()
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/auth', options)
+		.pipe(map(response => response.json()));
 	}
 
 	public createUserAccount(token, user: User) {
@@ -55,6 +54,34 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json' });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.post(this.host + '/users/auth', user, options)
+		.pipe(map(response => response.json()));
+	}
+
+	// Goal Related Requests
+
+	public getGoals() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/goals', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserGoals(user_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/'+user_id+'/goals', options)
+		.pipe(map(response => response.json()));
+	}
+	
+	// Chekin Related Requests
+
+	public getCheckins() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checkins', options)
 		.pipe(map(response => response.json()));
 	}
 }

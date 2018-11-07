@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user';
 import { ApiServiceService } from './api-service.service';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class UsersService {
-	id: Number;
-	ActiveUser: User = new User({});
+export class GoalsService {
+
 	constructor(
 		private _APIService: ApiServiceService
 	) { }
 
-	createAccount(token, user: User) {
-		return this._APIService.createUserAccount(token, user);
+	public getGoals() {
+		return this._APIService.getGoals();
 	}
 
+	public getUserGoals(user_id) {
+		console.log('GetuserGolas');
+		return this._APIService.getUserGoals(user_id);
+	}
 }

@@ -52,7 +52,7 @@
 
 	h4 {
 		font-size: 2em;
-		font-family: 'Roboto', sans-serif;
+		font-family: $primary-font;
 		font-weight: 100;
 		margin-top: 15px;
 	}
@@ -173,7 +173,7 @@
 
 	&:hover {
 		border-bottom: 1px solid #016c90;
-		background: $primary-color;
+		background: $secondary-color;
 		color: #fff;
 
 		svg {
@@ -193,7 +193,7 @@
 	h5 {
 		color: #B0BEC5;
 		font-weight: 100;
-		font-family: 'Roboto', sans-serif;
+		font-family: $primary-font;
 		font-size: 1.2em;
 		margin: 20px 0 10px 0;
 	}

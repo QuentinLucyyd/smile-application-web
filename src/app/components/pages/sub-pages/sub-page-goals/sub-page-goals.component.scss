@@ -7,7 +7,25 @@
 	font-size: 12px;
 }
 
-.goal-card {
-	color: rgb(88, 88, 88);
+.goal-frequency-key {
+	color: $grey;
+	i {
+		color: $secondary-color;
+	}
+}
+.goal-card-container {
+	color: $grey;
+	font-family: $primary-font;
+	cursor: pointer;
 
+	.goal-header-icon {
+		float: right;
+		color: $secondary-color;
+	}
+	.goal-name {
+		font-weight: 900;
+	}
+	.goal-frequency {
+		text-transform: capitalize;
+	}
 }

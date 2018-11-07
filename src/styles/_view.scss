@@ -191,6 +191,15 @@ input[type="color"]:focus,
 
 /** Loading Spinner **/
 
+.sub-page-loading-container {
+	z-index: 3;
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 60px);
+	min-height: calc(100vh - 160px);
+}
+
+
 .secondary-loading-container {
 	margin: 0 auto;
 	width: 60px;
