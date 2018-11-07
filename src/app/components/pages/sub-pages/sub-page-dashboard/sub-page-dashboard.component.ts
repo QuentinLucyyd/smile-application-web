@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { AuthenticationService } from '../../../../services/authentication.service';
+import { ActivatedRoute } from '@angular/router';
+import { NotificationsService } from '../../../../services/notifications.service';
 
 @Component({
 	selector: 'app-sub-page-dashboard',
@@ -11,10 +12,19 @@ export class SubPageDashboardComponent implements OnInit {
 
 	constructor(
 		private titleService: Title,
+		private activatedRoute: ActivatedRoute,
+		private notificationService: NotificationsService
 	) { }
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Dashboard');
+
+		this.activatedRoute.queryParams.subscribe(params => {
+			const reauth = params['reauth'];
+			if (reauth == 'true') {
+				this.notificationService.newNotify('info', 'You are already Signed in');
+			}
+		});
 	}
 
 }

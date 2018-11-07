@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Imports */
-@import "~bootstrap/dist/css/bootstrap.css";
 @import 'styles/pages';
 @import 'styles/variables';
 
@@ -32,4 +31,14 @@ h1, h2, h3, h4, h5, h6, .featured-font {
 input[type="text"], textarea {
 	outline: none;
 	box-shadow:none !important;
+}
+
+/** Angular Notifier Style Overides */
+
+.notifier__notification--info {
+	background-color: $secondary-color;
+}
+
+.notifier__notification-message {
+	font-family: $primary-font;
 }

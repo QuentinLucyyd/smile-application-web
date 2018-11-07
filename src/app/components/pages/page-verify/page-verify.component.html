@@ -10,13 +10,13 @@
 						<h5>Acount Creation</h5>
 						<p>Fill in the form below to get access to the Smile Platform</p>
 						<p class="error-text" *ngIf="failure">{{resultMessage}} <span (click)="resetForm()" class="error-retry" href="#">Try again</span></p>
-						<p class="success-text" *ngIf="success">{{resultMessage}} <span (click)="resetForm()" class="success-retry" href="#">Sign In</span></p>
+						<p class="success-text" *ngIf="success">{{resultMessage}} </p>
 					</div>
 				</div>
 				<div class="secondary-loading-container" *ngIf="loading">
 					<div class="secondary-loading"></div>
 				</div>
-				<div class="col s12" id="reg-form" *ngIf="!loading && !failure">
+				<div class="col s12" id="reg-form" *ngIf="!loading && !failure && !success">
 					<div class="row">
 						<div class="form-group float-label-control col s6">
 							<input [(ngModel)]="firstName" name="first_name" id="first_name" type="text" class="validate" required>
@@ -34,22 +34,25 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="form-group float-label-control col s12">
-							<input [(ngModel)]="email" name="email" id="email" type="email" class="validate" required>
+						<div class="form-group float-label-control col s12 email-input">
+							<input readonly [(ngModel)]="email" name="email" id="email" type="email" class="validate" required>
 							<label for="email">Email</label>
+							<p class="input-hint">Email can only be changed once account has been verified.</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group float-label-control col s12">
-							<input [(ngModel)]="password" name="password" id="password" type="password" class="validate" minlength="6" required>
+							<input (keyup)="onKeyPasswordVerification($event)" [(ngModel)]="password" name="password" id="password" type="password" class="validate" minlength="6" required>
 							<label for="password">Password</label>
+							<p *ngIf="password_verif" class="error-text input-hint">{{password_verif}}</p>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group float-label-control col s12">
-							<input [(ngModel)]="verify_password" name="verify_password" id="verify_password" type="password" class="validate" minlength="6"
+							<input (keyup)="onKeyPassword($event)" [(ngModel)]="verify_password" name="verify_password" id="verify_password" type="password" class="validate" minlength="6"
 							 required>
 							<label for="password">Verify Password</label>
+							<p *ngIf="!match" class="error-text input-hint">Passwords do not match</p>
 						</div>
 					</div>
 					<div class="row d-flex justify-content-center">
