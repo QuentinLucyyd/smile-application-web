@@ -17,7 +17,8 @@ import { UsersService } from '../../../services/users.service';
 export class PageVerifyComponent extends SubPage implements OnInit {
 	Logo:String = 'assets/images/logo-white.png';
 	verify_token: String = '';
-	form_loading:Boolean = false;
+	match:Boolean = true;
+	password_verif:String = '';
 
 	firstName:String = '';
 	lastName:String = '';
@@ -48,12 +49,36 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 				if (result.status === 'failure') {
 					this.failure = true;
 					this._router.navigate(['/']);
+				} else {
+					this.email = result.data.email;
 				}
-			})
+			}, err => {
+				this._router.navigate(['/']);
+			});
 		} else
 			this._router.navigate(['/']);
 	}
+	
+	hasNumbers(t){
+		return /\d/.test(t);
+	}
 
+	onKeyPassword(event: any) {
+		if (this.verify_password != this.password) {
+			this.match = false;
+		} else {
+			this.match = true;
+		}
+	}
+	
+	onKeyPasswordVerification(event: any) {
+		if (this.password.length < 8) {
+			this.password_verif = 'Password should be at least 8 charecters';
+		} else {
+			this.password_verif = '';
+		}
+	}
+	
 	verifyForm() {
 		this.loading = true;
 		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -63,33 +88,34 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 			this.loading = false;
 			this.failure = true;
 			this.resultMessage = 'Please ensure that the entire form is filled in and valid';
-		} else if (!re.test(this.email.toLowerCase())) {
-			this.loading = false;
-			this.failure = true;
-			this.email = '';
-			this.resultMessage = 'Invalid Email, please try again';
-		} else if (this.password !== this.verify_password) {
-			this.loading = false;
-			this.failure = true;
-			this.password = '';
-			this.verify_password = '';
-			this.resultMessage = 'Passwords do not match, please try again';
 		} else {
 			var body = {
 				username: this.username,
-				firstName: this.firstName,
-				lastName: this.lastName,
+				first_name: this.firstName,
+				last_name: this.lastName,
 				email: this.email,
 				password: this.password
 			};
 			const _User:User = new User(body);
 			this._usersService.createAccount(this.verify_token, _User)
 			.subscribe(result => {
-				console.log(result);
+				this.loading = false;
+				console.log(result.status);
 				if (result.status === 'success') {
 					this.success = true;
-					this.resultMessage = result.message;
+					this.resultMessage = 'Account has been verified succesfully created ';
+					setTimeout(() => {
+						this._router.navigate(['/'], {
+							queryParams: {
+								ref: this._router.url
+							}
+						});
+					}, 2000);
 				}
+			}, err => {
+				this.loading = false
+				this.failure = true
+				this.resultMessage = 'An error has occurred';
 			})
 		}
 	}

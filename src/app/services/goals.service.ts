@@ -15,7 +15,6 @@ export class GoalsService {
 	}
 
 	public getUserGoals(user_id) {
-		console.log('GetuserGolas');
 		return this._APIService.getUserGoals(user_id);
 	}
 }

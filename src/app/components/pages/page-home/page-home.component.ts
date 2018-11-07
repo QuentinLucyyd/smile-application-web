@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { NavService } from '../../../services/nav.service';
 import { Router } from '@angular/router';
+import { NotificationsService } from '../../../services/notifications.service';
 
 @Component({
 	selector: 'app-page-home',
@@ -13,13 +14,13 @@ export class PageHomeComponent implements OnInit {
 	constructor(
 		private titleService: Title,
 		private navService: NavService,
-		private _router: Router
+		private _router: Router,
 	) { }
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Home');
 		if (localStorage.getItem('token')) {
-			this.navService.redirectUser('dashboard', 0, {reauth: 'true' ,ref: this._router.url});
+			this._router.navigate(['/dashboard'], {queryParams: {reauth: 'true', ref: 'home'}});
 		}
 	}
 

@@ -26,6 +26,7 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
 			this.loading = false;
+			console.log(this.usersService.ActiveUser);
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(result => {
 				for (let goal of result.data) {
 					this.Goals.push(new Goal(goal));
