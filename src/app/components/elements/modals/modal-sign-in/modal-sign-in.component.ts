@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { UsersService } from '../../../../services/users.service';
 import { AuthenticationService } from '../../../../services/authentication.service';

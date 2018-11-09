@@ -14,4 +14,5 @@ export class NotificationsService {
 		console.log('HERE');
 		this._notiferService.notify(type, message);
 	}
+	
 }

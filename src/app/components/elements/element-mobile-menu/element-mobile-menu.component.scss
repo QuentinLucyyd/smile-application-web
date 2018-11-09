@@ -5,6 +5,43 @@
 @import '../../../../styles/modal';
 @import '../../../../styles/view';
 
+#mobile-menu-container {
+	background: $white;
+	height: 150vh;
+
+	.sub-page-loading-container {
+		position: relative !important;
+	}
+}
+
+.mobile-menu-item-icon {
+	svg {
+		width: 50px;
+	}
+}
+
+.mobile-menu-icon {
+	color: $grey;
+	font-size: 2em;
+}
+
+.menu-items-container {
+}
+
+.mobile-menu-item {
+	color: $grey;
+	font-family: $primary-font;
+
+	.mobile-menu-item-header {
+		font-size: 1em;
+	}
+}
+
+.mobile-menu-spacer {
+	width: 100px;
+	height: 2px;
+}
+
 .dashboard-nav-container {
 	width: 100%;
 	background: #fff;
@@ -53,6 +90,7 @@
 	float: right;
 	vertical-align: top;
 	display: table-cell;
+	height: 100px;
 	margin: 0;
 	padding: 20px 10px;
 }
@@ -65,7 +103,7 @@
 }
 
 .dashboard-nav-actions {
-	width: 100px;
+	width: 150px;
 
 	.sign-out-btn {
 		display: inline-block;
@@ -87,10 +125,6 @@
 			transition: 0.4s;
 		}
 	}
-}
-
-.hamburger {
-	display: none;
 }
 
 .dashboard-nav-actions .hamburger-box {
@@ -151,14 +185,13 @@
 	.sign-out-btn {
 		display: none !important;
 	}
+
 	.dashboard-nav-actions {
 		float: left;
+		width: 0px;
 	}
-	.hamburger {
-		display: inline-block;
-	}
+
 	.dashboard-nav-logo {
 		float: right;
-		padding-right: 33px;
 	}
 }

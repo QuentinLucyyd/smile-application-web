@@ -1,0 +1,17 @@
+<div class="card-container">
+	<div class="card shadow">
+		<div class="card-header"><i class="card-icon far fa-smile"></i>Feelings Overview</div>
+		<div class="card-body">
+			<div class="secondary-loading-container" *ngIf="loading">
+				<div class="secondary-loading"></div>
+			</div>
+		</div>
+		<div class="container-fluid chart-container">
+			<div class="row">
+				<div class="col-12 col-md-12">
+					<div [chart]="chart" *ngIf="!loading"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

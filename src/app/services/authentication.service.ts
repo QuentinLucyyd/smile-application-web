@@ -11,6 +11,7 @@ export class AuthenticationService {
 	identifier: String = '';
 	password: String = '';
 	role: any;
+	userLoggedin: Boolean = false;
 
 	constructor(
 		private usersService: UsersService,

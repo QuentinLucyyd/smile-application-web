@@ -7,7 +7,7 @@ import { UsersService } from '../../../services/users.service';
 	styleUrls: ['./element-profile-header.component.scss']
 })
 export class ElementProfileHeaderComponent implements OnInit {
-	//Default: String = 'assets/images/default-profile-image.jpg';
+	default: String = 'assets/images/default-profile-image.jpg';
 
 	constructor(
 		public usersService: UsersService
