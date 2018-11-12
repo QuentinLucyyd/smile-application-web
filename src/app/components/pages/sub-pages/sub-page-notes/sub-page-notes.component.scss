@@ -1,0 +1,37 @@
+/* Imports */
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/view';
+
+.card-text {
+	font-size: 12px;
+	padding-top: 1rem;
+}
+.card-body{
+    padding-top: 0rem !important;
+}
+.card{
+	height: 100%;
+}
+.goal-frequency-key {
+	color: $grey;
+	i {
+		color: $secondary-color;
+	}
+}
+.goal-card-container {
+	color: $grey;
+	font-family: $primary-font;
+	cursor: pointer;
+
+	.goal-header-icon {
+		float: right;
+		color: $secondary-color;
+	}
+	.goal-name {
+		font-weight: 900;
+	}
+	.goal-frequency {
+		text-transform: capitalize;
+	}
+}

@@ -10,6 +10,7 @@ import { SubPageDashboardComponent } from '../../components/pages/sub-pages/sub-
 import { SubPageCheckinComponent } from '../../components/pages/sub-pages/sub-page-checkin//sub-page-checkin.component';
 import { SubPageCheckoutComponent } from '../../components/pages/sub-pages/sub-page-checkout/sub-page-checkout.component';
 import { SubPageGoalsComponent } from '../../components/pages/sub-pages/sub-page-goals/sub-page-goals.component';
+import { SubPageNotesComponent } from '../../components/pages/sub-pages/sub-page-notes/sub-page-notes.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -28,7 +29,8 @@ const appRoutes = [
 		{ path:'', component: SubPageDashboardComponent },
 		{ path:'checkin', component: SubPageCheckinComponent },
 		{ path:'checkout', component: SubPageCheckoutComponent },
-		{ path: 'goals', component: SubPageGoalsComponent }
+		{ path: 'goals', component: SubPageGoalsComponent },
+		{ path: 'notes', component: SubPageNotesComponent }
 	]}
 ];
 
@@ -51,7 +53,8 @@ const appRoutes = [
 		ModalAddGoalComponent,
 		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
-		ElementCheckinsOverviewComponent
+		ElementCheckinsOverviewComponent,
+		SubPageNotesComponent
 	], providers: [
 	]
 })
