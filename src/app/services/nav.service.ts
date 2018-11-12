@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 	providedIn: 'root'
 })
 export class NavService {
+	MobileMenu: Boolean = false;
 
 	constructor(
 		private _router: Router

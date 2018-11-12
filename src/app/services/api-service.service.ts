@@ -84,4 +84,30 @@ export class ApiServiceService {
 		return this._http.get(this.host + '/checkins', options)
 		.pipe(map(response => response.json()));
 	}
+
+	public getUserCheckins(user_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/checkins', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserDateCheckins(user_id, date) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/checkins?search=true&date=' + date, options)
+		.pipe(map(response => response.json()));
+	}
+
+	// Tools Related Requests
+
+	public getTools() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/tools', options)
+		.pipe(map(response => response.json()));
+	}
 }
