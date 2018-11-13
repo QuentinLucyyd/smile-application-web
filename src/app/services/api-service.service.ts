@@ -110,4 +110,23 @@ export class ApiServiceService {
 		return this._http.get(this.host + '/tools', options)
 		.pipe(map(response => response.json()));
 	}
+
+
+// Note Related Requests
+
+	public getNotes() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/notes', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserNotes(user_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/'+user_id+'/notes', options)
+		.pipe(map(response => response.json()));
+	}
 }

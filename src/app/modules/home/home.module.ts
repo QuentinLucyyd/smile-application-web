@@ -30,7 +30,7 @@ const appRoutes = [
 		{ path:'checkin', component: SubPageCheckinComponent },
 		{ path:'checkout', component: SubPageCheckoutComponent },
 		{ path: 'goals', component: SubPageGoalsComponent },
-		{ path: 'notes', component: SubPageNotesComponent}
+		{ path: 'notes', component: SubPageNotesComponent }
 	]}
 ];
 

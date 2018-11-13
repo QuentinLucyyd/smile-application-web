@@ -12,37 +12,38 @@
 					<i class="sub-page-title-icon fas fa-check"></i>Dashboard / Notes
 				</div>
 			</div>
-      <div class="col-6 col-md-6 d-flex justify-content-end">
+			<div class="col-6 col-md-6 d-flex justify-content-end">
 				<div class="card-button">
 					<div class="button">Add Note <i class="card-button-icon far fa-edit"></i></div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-
-			<div class="goal-card-container card-container col-md-4">
+			<div *ngFor="let note of Notes" class="goal-card-container card-container col-md-4">
 				<div class="card" style="margin: 10px">
 					<div class="card-header goal-name">
-						 Sesssion Wednesday
+            {{note.title}}
+            <h5 class="goal-frequency card-text card-note-type">Note Type</h5>
 					</div>
-					<div class="card-body" style="padding-top: 0rem !important">
+					<div class="card-body">
 						<div class="col-lg-10 col-10">
-							<div class="goal-description card-text"> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, </div>
-              <h5 class="goal-frequency card-text">31-11-2018</h5>
-            </div>
+							<div class="goal-description card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</div>
+							<h5 class="goal-frequency card-text">Note date</h5>
+						</div>
 					</div>
 				</div>
       </div>
       
-      <div class="goal-card-container card-container col-md-4">
+      <div  class="goal-card-container card-container col-md-4">
 				<div class="card" style="margin: 10px">
 					<div class="card-header goal-name">
-						My day today
+            Note Name
+            <h5 class="goal-frequency card-text card-note-type">Note Type</h5>
 					</div>
-					<div class="card-body" style="padding-top: 0rem !important">
+					<div class="card-body">
 						<div class="col-lg-10 col-10">
-              <div class="goal-description card-text"> <i class="fas fa-microphone"></i>  Recording  </div>
-              <h5 class="goal-frequency card-text">31-11-2018</h5>
+							<div class="goal-description card-text"><i class="fas fa-microphone"></i> Recording</div>
+							<h5 class="goal-frequency card-text">Note date</h5>
 						</div>
 					</div>
 				</div>

@@ -4,14 +4,18 @@
 @import '../../../../../styles/view';
 
 .card-text {
-    font-size: 12px;
-    margin-top: 10px;
+	font-size: 12px;
+	padding-top: 1rem;
 }
-
+.card-body{
+    padding-top: 0rem !important;
+}
 .card{
-    height: 100%;
+	height: 100%;
 }
-
+.card-note-type{
+	padding-top: 0.2rem !important;
+}
 .goal-frequency-key {
 	color: $grey;
 	i {
@@ -21,8 +25,7 @@
 .goal-card-container {
 	color: $grey;
 	font-family: $primary-font;
-    cursor: pointer;
-
+	cursor: pointer;
 
 	.goal-header-icon {
 		float: right;
