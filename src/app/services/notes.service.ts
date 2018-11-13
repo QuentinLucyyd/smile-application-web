@@ -7,7 +7,8 @@ import { ApiServiceService } from './api-service.service';
 export class NotesService {
 
   constructor(
-    private _APIService: ApiServiceService) { }
+    private _APIService: ApiServiceService
+  ) { }
 
     public getNotes() {
       return this._APIService.getNotes();

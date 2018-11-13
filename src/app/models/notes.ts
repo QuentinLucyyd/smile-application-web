@@ -5,14 +5,13 @@ export class Note {
     date: Date;
     type: String = '';
 	voice: Boolean = false;
-	voice_id: Number = -1;
+	voice_id: Number;
 	
 	constructor(note) {
 		this.updateNote(note);
 	}
 
 	updateNote(note) {
-		if ( note.id ) { this.id = note.id; }
         if ( note.title ) { this.title = note.title; }
         if ( note.note ) { this.note = note.note; }
         if ( note.type ) { this.type = note.type; }

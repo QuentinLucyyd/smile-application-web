@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Goal } from '../../../../models/goal'
+import { Goal } from '../../../../models/goal';
 import { GoalsService } from '../../../../services/goals.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { UsersService } from '../../../../services/users.service';

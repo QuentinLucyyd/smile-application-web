@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Note } from '../../../../models/notes'
+import { Note } from '../../../../models/notes';
 import { NotesService } from '../../../../services/notes.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { UsersService } from '../../../../services/users.service';
@@ -28,8 +28,8 @@ export class SubPageNotesComponent extends SubPage implements OnInit {
 			this.loading = false;
 			console.log(this.usersService.ActiveUser);
 			this.notesService.getUserNotes(this.usersService.ActiveUser.id).subscribe(result => {
-				for (let goal of result.data) {
-					this.Notes.push(new Note(Note));
+				for (let note of result.data) {
+					this.Notes.push(new Note(note));
 				}
 			});
 		})
