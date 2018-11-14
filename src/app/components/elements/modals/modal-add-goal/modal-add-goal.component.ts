@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { createDate } from 'ngx-bootstrap/chronos/create/date-from-array';
 
 @Component({
   selector: 'app-modal-add-goal',
@@ -7,15 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalAddGoalComponent implements OnInit {
 
-    loading: Boolean = false;
+  id: Number = 0;
+	name: String = 'hello';
+	description: String = '';
+	frequency: String = ''
+	dueDate: Date;
+	state: String = 'ongoing';
+	subgoals: Boolean = true;
+	priority: String = 'medium';
+	user_id: Number = 0;
   
     constructor() {
     }
   
     ngOnInit() {
     }
-  
-    signIn() {
-      this.loading = true;
+
+    createGoal(){
+      console.log(this.name);
     }
 }

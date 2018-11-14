@@ -4,9 +4,10 @@ export class Goal {
 	description: String = '';
 	frequency: String = ''
 	dueDate: Date;
-	state: Boolean = false;
-	subgoals: Boolean = false;
-	priority: Number;
+	state: String = 'ongoing';
+	subgoals: Boolean = true;
+	priority: String = 'medium';
+	user_id: Number = 0;
 
 	
 	constructor(goal) {
@@ -21,5 +22,6 @@ export class Goal {
 		if ( goal.state ) { this.state = goal.state; }
 		if ( goal.subgoals ) { this.subgoals = goal.subgoals; }
 		if ( goal.priority ) { this.priority = goal.priority; }
+		if ( goal.user_id ) { this.user_id = goal.user_id; }
 	}
 }
