@@ -16,6 +16,7 @@ export class Note {
         if ( note.note ) { this.note = note.note; }
         if ( note.type ) { this.type = note.type; }
         if ( note.voice ) { this.voice = note.voice; }
-        if ( note.voice_id ) { this.voice_id = note.voice_id; }
+		if ( note.voice_id ) { this.voice_id = note.voice_id; }
+		if ( note.date ) { this.date = note.date}
 	}
 }
