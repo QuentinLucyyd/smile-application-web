@@ -34,4 +34,8 @@ export class SubPageNotesComponent extends SubPage implements OnInit {
 			});
 		})
 	}
+
+	setActiveNote(note) {
+		this.notesService.ActiveNote = note;
+	}
 }

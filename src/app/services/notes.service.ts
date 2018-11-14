@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from './api-service.service';
+import { Note } from '../models/notes';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotesService {
+  ActiveNote: Note = new Note({});
 
   constructor(
     private _APIService: ApiServiceService
