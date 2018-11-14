@@ -8,6 +8,10 @@ body {
 	background: #ecf0f1;
 }
 
+.modal-open {
+	overflow: auto !important;
+}
+
 .full-width {
 	width: 100%;
 }
@@ -20,7 +24,13 @@ p {
 	font-size: 0.5em;
 }
 
-h1, h2, h3, h4, h5, h6, .featured-font {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.featured-font {
 	font-family: $primary-font;
 	color: $grey;
 }
@@ -28,15 +38,29 @@ h1, h2, h3, h4, h5, h6, .featured-font {
 /* Input */
 
 /* prevent outline on text boxes & text areas */
-input[type="text"], textarea {
+input[type="text"],
+textarea {
 	outline: none;
-	box-shadow:none !important;
+	box-shadow: none !important;
 }
 
 /** Angular Notifier Style Overides */
 
 .notifier__notification--info {
 	background-color: $secondary-color;
+}
+
+.notifier__notification--warning {
+	color: $white;
+	background-color: #FF8800;
+}
+
+.notifier__notification--warning {
+	cursor: pointer;
+}
+
+.notifier__notification-button-icon {
+	fill: $white !important;
 }
 
 .notifier__notification-message {

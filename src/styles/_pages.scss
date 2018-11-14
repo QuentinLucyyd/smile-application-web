@@ -157,13 +157,14 @@ p.small {
 	}
 
 	.button {
-		border: 1px solid transparent;
 
 		-moz-border-image: -moz-linear-gradient(top, #39B0BA 0%, #52BA11 100%);
 		-webkit-border-image: -webkit-linear-gradient(top, #39B0BA 0%, #52BA11 100%);
 		border-image: linear-gradient(to bottom, #39B0BA 0%, #52BA11 100%);
 		border-image-slice: 1;
 
+		border-width: 1px;
+		border-style: solid;
 		border-radius: 2px;
 		padding: 10px;
 		transition-duration: 0.4s;
@@ -217,7 +218,6 @@ p.small {
 
 @media only screen and (max-width: 797px) {
 	.buttons {
-
 		margin-top: 2%;
 		margin-bottom: 2%;
 	}

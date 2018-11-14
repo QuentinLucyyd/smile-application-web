@@ -21,7 +21,6 @@ export class AuthGuard implements CanActivate {
 		next: ActivatedRouteSnapshot,
 		state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 		if (localStorage.getItem('token')) {
-			console.log('GUARD !!!');
 			this.APIService.UserAuth().subscribe(res => {
 				if (res.status !== 'success') {
 					this.authenticationSerivce.invalidateUser();

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Ng5SliderModule } from 'ng5-slider';
-import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { ChartModule } from 'angular-highcharts';
 
 /* Pages Import */
 import { PageDashboardComponent } from '../../components/pages/page-dashboard/page-dashboard.component';
@@ -16,10 +16,11 @@ import { ElementNavDashboardComponent } from '../../components/elements/element-
 import { ElementSidebarComponent } from '../../components/elements/element-sidebar/element-sidebar.component';
 import { ElementProfileHeaderComponent } from '../../components/elements/element-profile-header/element-profile-header.component';
 import { ModalAddGoalComponent } from '../../components/elements/modals/modal-add-goal/modal-add-goal.component';
-
+import { ElementMobileMenuComponent } from '../../components/elements/element-mobile-menu/element-mobile-menu.component';
+import { ElementCheckinsOverviewComponent } from '../../components/elements/element-checkins-overview/element-checkins-overview.component';
+import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
 
 /* Import Services */
-import { NotificationsService } from '../../services/notifications.service';
 
 const appRoutes = [
 	{ path:'', component: PageDashboardComponent, children:
@@ -31,55 +32,11 @@ const appRoutes = [
 	]}
 ];
 
-/**
- * Custom angular notifier options
- */
-const customNotifierOptions: NotifierOptions = {
-	position: {
-		  horizontal: {
-			  position: 'left',
-			  distance: 12
-		  },
-		  vertical: {
-			  position: 'bottom',
-			  distance: 12,
-			  gap: 10
-		  }
-	  },
-	theme: 'material',
-	behaviour: {
-	  autoHide: 5000,
-	  onClick: 'hide',
-	  onMouseover: 'pauseAutoHide',
-	  showDismissButton: true,
-	  stacking: 4
-	},
-	animations: {
-	  enabled: true,
-	  show: {
-		preset: 'slide',
-		speed: 300,
-		easing: 'ease'
-	  },
-	  hide: {
-		preset: 'fade',
-		speed: 300,
-		easing: 'ease',
-		offset: 50
-	  },
-	  shift: {
-		speed: 300,
-		easing: 'ease'
-	  },
-	  overlap: 150
-	}
-};
-
 @NgModule({
 	imports: [
 		CommonModule,
+		ChartModule,
 		RouterModule.forChild(appRoutes),
-		NotifierModule.withConfig(customNotifierOptions),
 		Ng5SliderModule
 	],
 	declarations: [
@@ -92,8 +49,10 @@ const customNotifierOptions: NotifierOptions = {
 		SubPageCheckoutComponent,
 		SubPageGoalsComponent,
 		ModalAddGoalComponent,
+		ElementMobileMenuComponent,
+		ElementNotesOverviewComponent,
+		ElementCheckinsOverviewComponent
 	], providers: [
-		NotificationsService
 	]
 })
 

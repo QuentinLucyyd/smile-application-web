@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { UsersService } from '../../../services/users.service';
+import { NavService } from '../../../services/nav.service';
 
 @Component({
 	selector: 'app-element-nav-dashboard',
@@ -12,7 +13,8 @@ export class ElementNavDashboardComponent implements OnInit {
 
 	constructor(
 		public authenticationService: AuthenticationService,
-		public usersService: UsersService
+		public usersService: UsersService,
+		public navService: NavService
 	) { }
 
 	ngOnInit() {
