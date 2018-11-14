@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from './api-service.service';
+import { Checkin } from '../models/checkin';
 
 @Injectable({
 	providedIn: 'root'
@@ -21,5 +22,9 @@ export class CheckinsService {
 
 	public getUserDateCheckins(user_id, date) {
 		return this.ApiService.getUserDateCheckins(user_id, date);
+	}
+
+	public createCheckin(checkin: Checkin) {
+		return this.ApiService.createCheckin(checkin);
 	}
 }

@@ -1,3 +1,5 @@
+import { Voice } from "./voice";
+
 export class Checkin {
 	id: Number = 0;
 	date: any;
@@ -8,6 +10,7 @@ export class Checkin {
 	happiness:0;
 	completed: Boolean = false;
 	user_id: 0;
+	voice: Voice = null;
 
 	constructor(checkin) {
 		this.updateGoal(checkin)

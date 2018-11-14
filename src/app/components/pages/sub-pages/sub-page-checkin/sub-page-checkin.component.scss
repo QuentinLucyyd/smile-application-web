@@ -38,6 +38,15 @@
 	cursor: pointer;
 }
 
+.recording {
+	color: $error-color;
+}
+
+.audio-playback-header {
+	padding: 10px;
+	text-align: center;
+}
+
 .record-button {
 	font-size: 2em;
 	transition: 0.4s;

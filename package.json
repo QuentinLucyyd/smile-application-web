@@ -36,6 +36,7 @@
 		"ng5-slider": "^1.1.4",
 		"node-sass": "^4.9.3",
 		"path": "^0.12.7",
+		"recordrtc": "^5.4.8",
 		"rxjs": "~6.2.0",
 		"typescript": "~2.9.2",
 		"zone.js": "~0.8.26"

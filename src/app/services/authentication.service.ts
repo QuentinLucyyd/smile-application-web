@@ -30,6 +30,7 @@ export class AuthenticationService {
 				this.usersService.ActiveUser = new User(data.data);
 				resolve(data);
 			}, err => {
+				this.invalidateUser();
 				reject(err);
 			});
 		})

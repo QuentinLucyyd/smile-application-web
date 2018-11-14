@@ -1,17 +1,18 @@
 import { Injectable, isDevMode } from '@angular/core';
 import { RequestOptions, Headers, Http } from '@angular/http';
 import { environment } from '../../environments/environment';
-import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
+import { Checkin } from '../models/checkin';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'https://smile-application-api.herokuapp.com';
+	host = 'http://localhost:3001';
 	
 	constructor(
 		private _http: Http,
@@ -71,7 +72,7 @@ export class ApiServiceService {
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
-		return this._http.get(this.host + '/users/'+user_id+'/goals', options)
+		return this._http.get('${this.host}/users/${user_id}/goals', options)
 		.pipe(map(response => response.json()));
 	}
 	
@@ -81,7 +82,15 @@ export class ApiServiceService {
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
-		return this._http.get(this.host + '/checkins', options)
+		return this._http.get('${this.host}/checkins', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public createCheckin(checkin: Checkin) {
+		this.fetchToken()
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/checkins', checkin, options)
 		.pipe(map(response => response.json()));
 	}
 
@@ -109,5 +118,14 @@ export class ApiServiceService {
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/tools', options)
 		.pipe(map(response => response.json()));
+	}
+
+	// Voices Related Requests
+	public createVoice(formData: FormData) {
+		this.fetchToken();
+		const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.token });
+		const Options =  {headers: headers}
+		return this._Newhttp.post(this.host + '/voices', formData, Options)
+		.pipe();
 	}
 }
