@@ -21,6 +21,7 @@ import { ElementMobileMenuComponent } from '../../components/elements/element-mo
 import { ElementCheckinsOverviewComponent } from '../../components/elements/element-checkins-overview/element-checkins-overview.component';
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
 import { ModalDisplayNoteComponent } from '../../components/elements/modals/modal-display-note/modal-display-note.component';
+import { ModalAddNoteComponent } from '../../components/elements/modals/modal-add-note/modal-add-note.component';
 
 /* Import Services */
 
@@ -56,7 +57,8 @@ const appRoutes = [
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent,
 		SubPageNotesComponent,
-		ModalDisplayNoteComponent
+		ModalDisplayNoteComponent,
+		ModalAddNoteComponent
 	], providers: [
 	]
 })
