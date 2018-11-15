@@ -1,12 +1,11 @@
 export class Note {
-	id: Number = 0;
 	title: String = '';
 	note: String = '';
-    date: Date;
     type: String = '';
 	voice: Boolean = false;
-	voice_id: Number;
-	
+	date: Date;
+	user_id: number;
+
 	constructor(note) {
 		this.updateNote(note);
 	}
@@ -15,8 +14,8 @@ export class Note {
         if ( note.title ) { this.title = note.title; }
         if ( note.note ) { this.note = note.note; }
         if ( note.type ) { this.type = note.type; }
-        if ( note.voice ) { this.voice = note.voice; }
-		if ( note.voice_id ) { this.voice_id = note.voice_id; }
+		if ( note.voice ) { this.voice = note.voice; }
 		if ( note.date ) { this.date = note.date}
+		if ( note.user_id) {this.user_id = note.user_id}
 	}
 }

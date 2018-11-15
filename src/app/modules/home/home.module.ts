@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ChartModule } from 'angular-highcharts';
+import { FormsModule} from '@angular/forms'
 
 /* Pages Import */
 import { PageDashboardComponent } from '../../components/pages/page-dashboard/page-dashboard.component';
@@ -41,7 +42,8 @@ const appRoutes = [
 		CommonModule,
 		ChartModule,
 		RouterModule.forChild(appRoutes),
-		Ng5SliderModule
+		Ng5SliderModule,
+		FormsModule
 	],
 	declarations: [
 		PageDashboardComponent,

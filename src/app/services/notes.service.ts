@@ -19,4 +19,8 @@ export class NotesService {
     public getUserNotes(user_id) {
       return this._APIService.getUserNotes(user_id);
     }
+
+    public createUserNote(note: Note){
+      return this._APIService.createUserNote(note)
+    }
 }

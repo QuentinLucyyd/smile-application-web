@@ -12,20 +12,20 @@
                 <form>
                     <div class="form-group float-label-control">
                       <label for="noteName">Note Name</label>
-                      <input type="text" class="form-control" id="noteName" placeholder="Note Name">
+                      <input [(ngModel)]="title" name="title" type="text" class="form-control" id="noteName" placeholder="Note Name">
                     </div>
                     <div class="form-group float-label-control">
                       <label for="noteType">Note Type</label>
-                      <input type="text" class="form-control" id="noteType" placeholder="Note Type">
+                      <input [(ngModel)]="type" name="type" type="text" class="form-control" id="noteType" placeholder="Note Type">
                       <!-- <label for="noteContent">Note Content</label> -->
-                        <textarea class="form-control noteContentArea" rows="5" id="note" placeholder="Note Content"></textarea>
+                        <textarea [(ngModel)]="note" name="note" class="form-control noteContentArea" rows="5" id="note" placeholder="Note Content"></textarea>
                     </div>
                 </form>
                 <div class="row d-flex justify-content-center">
                     <div class="record-button"><i class="fas fa-microphone"></i></div>
                   </div>
                 <div class="header-button-container">
-                    <button class="button dark-button sign-in-button">Add Note</button>
+                    <button data-dismiss="modal" (click)="addNote()" class="button dark-button sign-in-button">Add Note</button>
                 </div>
               </div>
           </div>
