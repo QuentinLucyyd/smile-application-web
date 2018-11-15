@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Checkin } from '../models/checkin';
+import { Goal } from '../models/goal';
 
 @Injectable({
 	providedIn: 'root'
@@ -76,6 +77,12 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 	
+	public createGoal(goal: Goal){
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/goals', goal, options)
+		.pipe(map(response => response.json()));
+	}
 	// Chekin Related Requests
 
 	public getCheckins() {
