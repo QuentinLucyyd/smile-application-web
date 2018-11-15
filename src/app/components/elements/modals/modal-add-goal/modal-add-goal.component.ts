@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { createDate } from 'ngx-bootstrap/chronos/create/date-from-array';
-import { Title } from '@angular/platform-browser';
 import { GoalsService } from '../../../../services/goals.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { DatePipe } from '@angular/common';
 import { Goal } from '../../../../models/goal';
 import { UsersService } from '../../../../services/users.service';
-import { DATE } from 'ngx-bootstrap/chronos/units/constants';
-
 
 @Component({
   selector: 'app-modal-add-goal',
@@ -25,12 +21,9 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 	subgoals: Boolean = true;
 	priority: String = 'medium';
   user_id: Number;
-  
-  
-  
+
     constructor(
       private _goalsService: GoalsService,
-      private _titleService: Title,
       public datepipe: DatePipe,
       private usersService: UsersService
       )

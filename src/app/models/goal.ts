@@ -1,5 +1,4 @@
 export class Goal {
-	id: Number = 0;
 	name: String = '';
 	description: String = '';
 	frequency: String = ''
