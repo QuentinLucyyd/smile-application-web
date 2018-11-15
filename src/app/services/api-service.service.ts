@@ -72,7 +72,7 @@ export class ApiServiceService {
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
-		return this._http.get('${this.host}/users/${user_id}/goals', options)
+		return this._http.get(this.host + '/users/' + user_id + '/goals', options)
 		.pipe(map(response => response.json()));
 	}
 	
@@ -123,9 +123,9 @@ export class ApiServiceService {
 	// Voices Related Requests
 	public createVoice(formData: FormData) {
 		this.fetchToken();
-		const headers = new HttpHeaders({ 'Authorization': 'Bearer ' + this.token });
-		const Options =  {headers: headers}
-		return this._Newhttp.post(this.host + '/voices', formData, Options)
-		.pipe();
+		const headers = new Headers({'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/voices', formData, options)
+		.pipe(map(response => response.json()));
 	}
 }

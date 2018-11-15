@@ -97,6 +97,10 @@ p.small {
 	padding-bottom: 20px;
 }
 
+.camelcase-text {
+	text-transform: capitalize;
+}
+
 .sub-page-title {
 	color: #a5b1c2
 }
@@ -139,11 +143,19 @@ p.small {
 	}
 
 	&:hover {
-		.card-icon {
+		.notfound-icon {
+			color: #2ecc71;
+			transition-duration: 0.4s;
+		}
+		.card-icon .notfound-icon {
 			color: #2ecc71;
 			transition-duration: 0.4s;
 		}
 	}
+}
+
+.green {
+	color: $secondary-color;
 }
 
 .card-button {

@@ -29,8 +29,10 @@ export class ElementCheckinsOverviewComponent extends SubPage implements OnInit 
 				this.checkinsService.getUserCheckins(this.usersSerivce.ActiveUser.id)
 				.subscribe(result => {
 					this.loading = false;
-					for (const checkin of result.data)
-						this.Checkins.push(new Checkin(checkin));
+					for (const checkin of result.data) {
+						const _val = new Checkin(checkin);
+						this.Checkins.push(_val);
+					}
 					this.populateChart();
 				}, err => {
 					this.loading = false;
@@ -52,7 +54,7 @@ export class ElementCheckinsOverviewComponent extends SubPage implements OnInit 
 			mental_focus.push(checkin.mental_focus);
 			greater_whole.push(checkin.greater_whole);
 			happiness.push(checkin.happiness);
-			dates.push(new Date(checkin.date).getFullYear() + '-' + new Date(checkin.date).getMonth() + '-' + new Date(checkin.date).getDay());
+			dates.push(new Date(checkin.date).getFullYear() + '-' + (new Date(checkin.date).getMonth() + 1) + '-' + new Date(checkin.date).getUTCDate());
 		}
 		this.chart  = new Chart({
 			chart: { type: 'line' },

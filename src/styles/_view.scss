@@ -212,6 +212,21 @@ input[type="color"]:focus,
 	}
 }
 
+.error-result-container {
+	margin: 0 auto;
+	width: 60px;
+	height: 60px;
+	color: $grey;
+	text-align: center;
+
+	.error-result-icon {
+
+		i {
+			font-size: 4em;
+		}
+	}
+}
+
 .error-text {
 	color: $error-color;
 
@@ -230,4 +245,14 @@ input[type="color"]:focus,
 		cursor: pointer;
 		color: $primary-color;
 	}
+}
+
+.notfound-container {
+	color: $grey;
+	padding: 10px;
+}
+
+.notfound-icon {
+	font-size: 3em;
+	padding: 10px;
 }

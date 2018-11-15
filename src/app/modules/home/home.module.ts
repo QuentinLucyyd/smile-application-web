@@ -19,6 +19,8 @@ import { ModalAddGoalComponent } from '../../components/elements/modals/modal-ad
 import { ElementMobileMenuComponent } from '../../components/elements/element-mobile-menu/element-mobile-menu.component';
 import { ElementCheckinsOverviewComponent } from '../../components/elements/element-checkins-overview/element-checkins-overview.component';
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
+import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
+import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
 
 /* Import Services */
 
@@ -51,7 +53,9 @@ const appRoutes = [
 		ModalAddGoalComponent,
 		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
-		ElementCheckinsOverviewComponent
+		ElementCheckinsOverviewComponent,
+		ElementUpcomingGoalsComponent,
+		ElementCompletedGoalsComponent
 	], providers: [
 	]
 })

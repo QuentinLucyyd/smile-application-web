@@ -1,0 +1,26 @@
+/* Imports */
+
+@import '../../../../styles/pages';
+@import '../../../../styles/variables';
+@import '../../../../styles/modal';
+@import '../../../../styles/view';
+@import '../../../../styles/config';
+
+
+.table {
+	color: $grey;
+
+	thead {
+		font-size: .8em;
+	}
+
+	.single-goal {
+		transition-duration: 0.4s;
+
+		&:hover {
+			cursor: pointer;
+			background-color: rgba(144,164,174,0.2);
+			transition-duration: 0.4s;
+		}
+	}
+}
