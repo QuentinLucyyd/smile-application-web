@@ -25,13 +25,13 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		this.titleService.setTitle('Smile | Goals');
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
-			this.loading = false;
-			console.log(this.usersService.ActiveUser);
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(result => {
+				this.loading = false;
+				this.success = true;
 				for (let goal of result.data) {
-					this.Goals.push(new Goal(goal));
-				}
-			});
+				this.Goals.push(new Goal(goal));
+			}
+			})
 		})
 	}
 }

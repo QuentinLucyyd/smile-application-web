@@ -17,7 +17,7 @@
 	<div class="container menu-items-container" *ngIf="!loading">
 		<div class="row" *ngFor="let tool of toolsService.tools">
 			<div class="col-12 col-md-12 d-flex justify-content-center">
-				<div class="mobile-menu-item">
+				<div class="mobile-menu-item" [routerLink]="[tool.route]">
 					<div class="mobile-menu-item-icon d-flex justify-content-center">
 						<svg>
 							<use [attr.xlink:href]=tool.icon></use>

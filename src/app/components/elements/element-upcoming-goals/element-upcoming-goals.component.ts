@@ -28,8 +28,9 @@ export class ElementUpcomingGoalsComponent extends SubPage implements OnInit {
 				this.loading = false;
 				var i = 0;
 				for (const goal of result.data) {
-					if (i < 4 && goal.state !== 'completed') {
+					if (i < 2 && goal.state !== 'completed') {
 						this._RecentGoals.push(new Goal(goal));
+						i++;
 					}
 				}
 			})

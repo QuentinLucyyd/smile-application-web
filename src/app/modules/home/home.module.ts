@@ -46,10 +46,7 @@ const appRoutes = [
 		ChartModule,
 		RouterModule.forChild(appRoutes),
 		Ng5SliderModule,
-<<<<<<< HEAD
 		BsDatepickerModule.forRoot(),
-=======
->>>>>>> origin/eduard
 		FormsModule
 	],
 	declarations: [
@@ -65,14 +62,11 @@ const appRoutes = [
 		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent,
-<<<<<<< HEAD
 		ElementUpcomingGoalsComponent,
-		ElementCompletedGoalsComponent
-=======
+		ElementCompletedGoalsComponent,
 		SubPageNotesComponent,
 		ModalDisplayNoteComponent,
 		ModalAddNoteComponent
->>>>>>> origin/eduard
 	], providers: [
 		ElementCheckinsOverviewComponent,
 		DatePipe

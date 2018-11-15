@@ -32,7 +32,7 @@
 					</div>
 				</div>
 			</div>
-			<div *ngFor="let goal of Goals" class="goal-card-container card-container col-md-4">
+			<div *ngFor="let goal of goalsService.Goals" class="goal-card-container card-container col-md-4">
 				<div class="card" style="margin: 10px">
 					<div class="card-header goal-name">
 						{{goal.name}}
