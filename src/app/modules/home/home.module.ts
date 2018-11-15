@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ChartModule } from 'angular-highcharts';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { FormsModule } from '@angular/forms';
 
 /* Pages Import */
 import { PageDashboardComponent } from '../../components/pages/page-dashboard/page-dashboard.component';
@@ -40,7 +41,7 @@ const appRoutes = [
 		RouterModule.forChild(appRoutes),
 		Ng5SliderModule,
 		BsDatepickerModule.forRoot(),
-
+		FormsModule
 	],
 	declarations: [
 		PageDashboardComponent,
@@ -55,7 +56,7 @@ const appRoutes = [
 		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent
-	], providers: [
+	], providers: [DatePipe
 	]
 })
 
