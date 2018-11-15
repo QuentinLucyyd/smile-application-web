@@ -1,0 +1,40 @@
+<app-modal-display-note></app-modal-display-note>
+<app-modal-add-note></app-modal-add-note>
+<div class="sub-page-loading-container text-align-center d-flex align-items-center" *ngIf="loading">
+	<div class="secondary-loading-container">
+		<div class="secondary-loading"></div>
+	</div>
+</div>
+<div class="sub-page-dashboard-container" *ngIf="!loading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-6 col-md-6">
+				<div class="sub-page-title">
+					<i class="sub-page-title-icon fas fa-check"></i>Dashboard / Notes
+				</div>
+			</div>
+			<div class="col-6 col-md-6 d-flex justify-content-end">
+				<div class="card-button">
+					<div data-toggle="modal" data-target="#addNoteModal" class="button">Add Note <i class="card-button-icon far fa-edit"></i></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div *ngFor="let note of Notes" class="goal-card-container card-container col-md-4">
+				<div  (click)="setActiveNote(note)" data-toggle="modal" data-target="#displayNoteModal"class="card" style="margin: 10px">
+					<div class="card-header goal-name">
+            		{{note.title}}
+            		<h5 class="goal-frequency card-text card-note-type">{{note.type}}</h5>
+					</div>
+					<div class="card-body">
+						<div class="col-lg-10 col-10">
+						<div *ngIf="note.voice == false" class="goal-description card-text">{{ note.note | slice:0:120}}{{note.note.length > 120 ? '...' : ''}}</div>
+						<div *ngIf="note.voice == true" class="goal-description card-text"><i class="fas fa-microphone"></i> {{note.note}}</div>
+						<h5 class="goal-frequency card-text">{{note.date | date:"dd/MM/yyyy"}}</h5>
+					</div>
+				</div>
+			</div>
+      	</div> 
+		</div>
+	</div>
+</div>

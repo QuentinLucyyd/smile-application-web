@@ -1,37 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Goal } from '../../../../models/goal';
-import { GoalsService } from '../../../../services/goals.service';
+import { Note } from '../../../../models/notes';
+import { NotesService } from '../../../../services/notes.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { UsersService } from '../../../../services/users.service';
 import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({
-	selector: 'app-sub-page-goals',
-	templateUrl: './sub-page-goals.component.html',
-	styleUrls: ['./sub-page-goals.component.scss']
+  selector: 'app-sub-page-notes',
+  templateUrl: './sub-page-notes.component.html',
+  styleUrls: ['./sub-page-notes.component.scss']
 })
-export class SubPageGoalsComponent extends SubPage implements OnInit {
-	Goals: Goal[] = [];
+export class SubPageNotesComponent extends SubPage implements OnInit {
+	Notes: Note[] = [];
 
 	constructor(
 		private titleService: Title,
-		private goalsService: GoalsService,
+		private notesService: NotesService,
 		private usersService: UsersService,
 		private authService: AuthenticationService
 	) {super();}
 
 	ngOnInit() {
-		this.titleService.setTitle('Smile | Goals');
+		this.titleService.setTitle('Smile | Notes');
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
 			this.loading = false;
 			console.log(this.usersService.ActiveUser);
-			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(result => {
-				for (let goal of result.data) {
-					this.Goals.push(new Goal(goal));
+			this.notesService.getUserNotes(this.usersService.ActiveUser.id).subscribe(result => {
+				for (let note of result.data) {
+					this.Notes.push(new Note(note));
 				}
 			});
 		})
+	}
+
+	setActiveNote(note) {
+		this.notesService.ActiveNote = note;
 	}
 }

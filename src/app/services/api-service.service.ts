@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Checkin } from '../models/checkin';
 import { Goal } from '../models/goal';
+import { Note } from '../models/notes';
 
 @Injectable({
 	providedIn: 'root'
@@ -133,6 +134,32 @@ export class ApiServiceService {
 		const headers = new Headers({'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.post(this.host + '/voices', formData, options)
+		.pipe(map(response => response.json()));
+	}
+
+	// Note Related Requests
+
+	public getNotes() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/notes', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserNotes(user_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/'+user_id+'/notes', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public createUserNote(note : Note){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/notes', note, options)
 		.pipe(map(response => response.json()));
 	}
 }

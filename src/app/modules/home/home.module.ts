@@ -12,6 +12,7 @@ import { SubPageDashboardComponent } from '../../components/pages/sub-pages/sub-
 import { SubPageCheckinComponent } from '../../components/pages/sub-pages/sub-page-checkin//sub-page-checkin.component';
 import { SubPageCheckoutComponent } from '../../components/pages/sub-pages/sub-page-checkout/sub-page-checkout.component';
 import { SubPageGoalsComponent } from '../../components/pages/sub-pages/sub-page-goals/sub-page-goals.component';
+import { SubPageNotesComponent } from '../../components/pages/sub-pages/sub-page-notes/sub-page-notes.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -23,6 +24,8 @@ import { ElementCheckinsOverviewComponent } from '../../components/elements/elem
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
 import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
+import { ModalDisplayNoteComponent } from '../../components/elements/modals/modal-display-note/modal-display-note.component';
+import { ModalAddNoteComponent } from '../../components/elements/modals/modal-add-note/modal-add-note.component';
 
 /* Import Services */
 
@@ -32,7 +35,8 @@ const appRoutes = [
 		{ path:'', component: SubPageDashboardComponent },
 		{ path:'checkin', component: SubPageCheckinComponent },
 		{ path:'checkout', component: SubPageCheckoutComponent },
-		{ path: 'goals', component: SubPageGoalsComponent }
+		{ path: 'goals', component: SubPageGoalsComponent },
+		{ path: 'notes', component: SubPageNotesComponent }
 	]}
 ];
 
@@ -42,7 +46,10 @@ const appRoutes = [
 		ChartModule,
 		RouterModule.forChild(appRoutes),
 		Ng5SliderModule,
+<<<<<<< HEAD
 		BsDatepickerModule.forRoot(),
+=======
+>>>>>>> origin/eduard
 		FormsModule
 	],
 	declarations: [
@@ -58,8 +65,14 @@ const appRoutes = [
 		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent,
+<<<<<<< HEAD
 		ElementUpcomingGoalsComponent,
 		ElementCompletedGoalsComponent
+=======
+		SubPageNotesComponent,
+		ModalDisplayNoteComponent,
+		ModalAddNoteComponent
+>>>>>>> origin/eduard
 	], providers: [
 		ElementCheckinsOverviewComponent,
 		DatePipe

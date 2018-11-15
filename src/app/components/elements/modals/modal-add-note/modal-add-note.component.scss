@@ -1,0 +1,24 @@
+
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/modal';
+@import '../../../../../styles/view';
+
+.header-button-container {
+	padding-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.sign-in-button {
+	transition-duration: 0.4s;
+	&:hover {
+		background: $primary-color;
+		color: $white;
+		transition-duration: 0.4s;
+	}
+}
+
+.noteContentArea{
+    margin-top: 1.2rem !important;
+}
