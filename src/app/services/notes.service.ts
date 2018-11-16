@@ -23,4 +23,8 @@ export class NotesService {
     public createUserNote(note: Note){
       return this._APIService.createUserNote(note)
     }
+
+    public updateUserNote(note: Note){
+      return this._APIService.updateUserNote(note)
+    }
 }

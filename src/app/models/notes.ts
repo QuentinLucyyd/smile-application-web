@@ -5,6 +5,7 @@ export class Note {
 	voice: Boolean = false;
 	date: Date;
 	user_id: number;
+	note_id: number;
 
 	constructor(note) {
 		this.updateNote(note);
@@ -17,5 +18,6 @@ export class Note {
 		if ( note.voice ) { this.voice = note.voice; }
 		if ( note.date ) { this.date = note.date}
 		if ( note.user_id) {this.user_id = note.user_id}
+		if ( note.note_id) {this.user_id = note.note_id}
 	}
 }
