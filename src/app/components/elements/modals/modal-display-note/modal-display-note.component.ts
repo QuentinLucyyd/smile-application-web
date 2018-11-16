@@ -8,6 +8,8 @@ import { NotesService } from '../../../../services/notes.service';
 })
 export class ModalDisplayNoteComponent implements OnInit {
 
+  disabled: Boolean = true;
+
   constructor(
     public notesService: NotesService
   ) { }
@@ -15,4 +17,11 @@ export class ModalDisplayNoteComponent implements OnInit {
   ngOnInit() {
   }
 
+  editNote(){
+    this.disabled = null;
+  }
+  
+  saveNote(){
+    this.disabled = true;
+  }
 }
