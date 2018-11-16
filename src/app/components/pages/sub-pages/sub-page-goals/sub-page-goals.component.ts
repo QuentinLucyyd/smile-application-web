@@ -34,4 +34,9 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 			})
 		})
 	}
+
+	setActiveGoal(goal){
+		this.goalsService.Goals = goal;
+		console.log(this.goalsService.Goals)
+	}
 }

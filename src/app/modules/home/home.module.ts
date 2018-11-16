@@ -26,6 +26,7 @@ import { ElementUpcomingGoalsComponent } from '../../components/elements/element
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
 import { ModalDisplayNoteComponent } from '../../components/elements/modals/modal-display-note/modal-display-note.component';
 import { ModalAddNoteComponent } from '../../components/elements/modals/modal-add-note/modal-add-note.component';
+import { ModalDisplayGoalComponent } from '../../components/elements/modals/modal-display-goal/modal-display-goal.component';
 
 /* Import Services */
 
@@ -66,7 +67,8 @@ const appRoutes = [
 		ElementCompletedGoalsComponent,
 		SubPageNotesComponent,
 		ModalDisplayNoteComponent,
-		ModalAddNoteComponent
+		ModalAddNoteComponent,
+		ModalDisplayGoalComponent
 	], providers: [
 		ElementCheckinsOverviewComponent,
 		DatePipe

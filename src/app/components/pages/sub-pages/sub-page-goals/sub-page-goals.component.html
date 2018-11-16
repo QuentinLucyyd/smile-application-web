@@ -1,4 +1,5 @@
 <app-modal-add-goal></app-modal-add-goal>
+<app-modal-display-goal></app-modal-display-goal>
 <div class="sub-page-loading-container text-align-center d-flex align-items-center" *ngIf="loading">
 	<div class="secondary-loading-container">
 		<div class="secondary-loading"></div>
@@ -32,8 +33,8 @@
 					</div>
 				</div>
 			</div>
-			<div *ngFor="let goal of goalsService.Goals" class="goal-card-container card-container col-md-4">
-				<div class="card" style="margin: 10px">
+			<div *ngFor="let goal of Goals" class="goal-card-container card-container col-md-4">
+				<div (click)="setActiveGoal(goal)" data-toggle="modal" data-target="#displayGoalModal" class="card" style="margin: 10px">
 					<div class="card-header goal-name">
 						{{goal.name}}
 						<div class="goal-header-icon"><i class="fas fa-redo"></i></div>
