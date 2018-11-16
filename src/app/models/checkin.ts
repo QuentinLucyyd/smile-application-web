@@ -1,4 +1,5 @@
 import { Voice } from "./voice";
+import { Note } from "./notes";
 
 export class Checkin {
 	id: Number = 0;
@@ -8,9 +9,10 @@ export class Checkin {
 	mental_focus: 0;
 	greater_whole: 0;
 	happiness:0;
-	completed: Boolean = false;
+	completed: Boolean = true;
 	user_id: 0;
 	voice: Voice = null;
+	note: Note = null;
 
 	constructor(checkin) {
 		this.updateGoal(checkin)

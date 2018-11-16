@@ -1,38 +1,44 @@
 <app-modal-add-goal></app-modal-add-goal>
-<div class="sub-page-loading-container text-align-center d-flex align-items-center" *ngIf="loading">
-	<div class="secondary-loading-container">
+<div class="sub-page-loading-container text-align-center d-flex align-items-center justify-content-center">
+	<div class="secondary-loading-container" *ngIf="loading">
 		<div class="secondary-loading"></div>
+	</div>
+</div>
+<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!loading && !Goals.length">
+	<div class="subpage-message">
+		<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
+		<h4 class="subpage-message">{{subPageMessage}}</h4>
+		<p [routerLink]="[subPageLinkRoute]" class="subpage-sub-message no-outline">{{subPageLinkText}}</p>
 	</div>
 </div>
 <div class="sub-page-dashboard-container" *ngIf="!loading">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-6 col-md-6">
+			<div class="col-12 col-md-12">
 				<div class="sub-page-title">
 					<i class="sub-page-title-icon fas fa-check"></i>Dashboard / Goals
-				</div>
-			</div>
-			<div class="col-6 col-md-6 d-flex justify-content-end">
-				<div class="card-button">
-					<div class="button" data-toggle="modal" data-target="#addGoalModal">Add Goal <i class="card-button-icon far fa-edit"></i></div>
+					<div class="sub-page-button card-button">
+						<div class="button" data-toggle="modal" data-target="#addGoalModal">Add Goal <i class="card-button-icon far fa-edit"></i></div>
+					</div>
+					<div class="card-button-mobile" data-toggle="modal" data-target="#addGoalModal"><i class="card-button-icon fas fa-plus"></i></div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 col-md-12">
+			<div class="col-12 col-md-12 goal-frequency-key-container">
 				<div class="row">
-					<div class="col-1 col-md-1 goal-frequency-key">
+					<div class="col-3 col-md-2 goal-frequency-key">
 						<div class="goal-key"><i class="fas fa-redo"></i> Daily</div>
 					</div>
-					<div class="col-1 col-md-1 goal-frequency-key">
+					<div class="col-3 col-md-2 goal-frequency-key">
 						<div class="goal-key"><i class="far fa-calendar-check"></i> Weekly</div>
 					</div>
-					<div class="col-1 col-md-1 goal-frequency-key">
+					<div class="col-3 col-md-2 goal-frequency-key">
 						<div class="goal-key"><i class="fas fa-calendar-plus"></i> Monthly</div>
 					</div>
 				</div>
 			</div>
-			<div *ngFor="let goal of goalsService.Goals" class="goal-card-container card-container col-md-4">
+			<div *ngFor="let goal of Goals" class="goal-card-container card-container col-sm-12 col-md-4">
 				<div class="card" style="margin: 10px">
 					<div class="card-header goal-name">
 						{{goal.name}}

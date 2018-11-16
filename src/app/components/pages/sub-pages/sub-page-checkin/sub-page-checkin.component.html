@@ -1,3 +1,15 @@
+<div class="sub-page-loading-container text-align-center d-flex align-items-center justify-content-center">
+	<div class="secondary-loading-container" *ngIf="checkinloading">
+		<div class="secondary-loading"></div>
+	</div>
+</div>
+<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="_checkinService.checkinDone && !checkinloading">
+	<div class="subpage-meeasge">
+		<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
+		<h4 class="subpage-message">{{subPageMessage}}</h4>
+		<p [routerLink]="[subPageLinkRoute]" class="subpage-sub-message no-outline">{{subPageLinkText}}</p>
+	</div>
+</div>
 <div class="sub-page-dashboard-container">
 	<div class="container-fluid">
 		<div class="sub-page-header">
@@ -9,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row checkin-page-container" *ngIf="!_checkinService.checkinDone && !checkinloading">
 			<div class="col-12 col-md-6 slider-outter-container">
 				<div class="custom-slider ">
 					<i class="slider-icon fas fa-bolt"></i>
@@ -18,7 +30,7 @@
 				</div>
 			</div>
 			<div class="col-12 col-md-6 slider-outter-container">
-				<div class="custom-slider ">
+				<div class="custom-slider">
 					<i class="slider-icon fas fa-heartbeat"></i>
 					<label class="sliderheader">Heart Connection</label>
 					<ng5-slider [(value)]="h_connection" [options]="options"></ng5-slider>
@@ -54,7 +66,7 @@
 							<li class="list-group-item">• What would make today great?</li>
 							<li class="list-group-item">• Daily affirmations. I am..</li>
 						</ul> -->
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type journal entry here or record..."></textarea>
+					<textarea [(ngModel)]="entry" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type journal entry here or record..."></textarea>
 					<div class="row d-flex justify-content-center" [ngClass]="{'recording': recording}" (click)="toggleRecording()">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>
 					</div>

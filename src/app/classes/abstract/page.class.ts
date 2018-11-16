@@ -3,4 +3,7 @@ export class SubPage {
 	failure: Boolean = false;
 	success: Boolean = false;
 	resultMessage: String = '';
+	subPageMessage: String = '';
+	subPageLinkText: String = '';
+	subPageLinkRoute: String = '';
 }

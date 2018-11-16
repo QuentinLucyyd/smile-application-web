@@ -7,12 +7,18 @@
 	font-size: 12px;
 }
 
+.goal-frequency-key-container {
+	padding-top: 20px;
+}
+
 .goal-frequency-key {
 	color: $grey;
+
 	i {
 		color: $secondary-color;
 	}
 }
+
 .goal-card-container {
 	color: $grey;
 	font-family: $primary-font;
@@ -22,10 +28,17 @@
 		float: right;
 		color: $secondary-color;
 	}
+
 	.goal-name {
 		font-weight: 900;
 	}
+
 	.goal-frequency {
 		text-transform: capitalize;
 	}
+}
+
+.card-button-mobile {
+	float: right;
+	padding-right: 10px;
 }

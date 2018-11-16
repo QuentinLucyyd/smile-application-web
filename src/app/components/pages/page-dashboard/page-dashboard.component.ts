@@ -26,7 +26,7 @@ export class PageDashboardComponent extends SubPage implements OnInit {
 		this.authenticationService.AuthenticateUser()
 		.then(data => {
 			const DateObject = new Date;
-			const date = DateObject.getFullYear() + '-' + DateObject.getMonth() + '-' + DateObject.getDay();
+			const date = DateObject.getFullYear() + '-' + (DateObject.getMonth() + 1) + '-' + DateObject.getUTCDate();
 			this.checkinService.getUserDateCheckins(this.usersService.ActiveUser.id, date)
 			.subscribe(results => {
 				if (!results.data.length) {

@@ -1,5 +1,5 @@
 <app-element-mobile-menu *ngIf="navService.MobileMenu"></app-element-mobile-menu>
-<div class="dashboard-container" *ngIf="!navService.MobileMenu">
+<div class="dashboard-container" [ngClass]="{'start-hidden': navService.MobileMenu}">
 	<app-element-nav-dashboard></app-element-nav-dashboard>
 	<div class="dashboard">
 		<div class="d-none dashboard-quick-links-container d-lg-table-cell">

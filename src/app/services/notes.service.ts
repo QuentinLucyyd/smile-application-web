@@ -3,24 +3,24 @@ import { ApiServiceService } from './api-service.service';
 import { Note } from '../models/notes';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class NotesService {
-  ActiveNote: Note = new Note({});
+	ActiveNote: Note = new Note({});
 
-  constructor(
-    private _APIService: ApiServiceService
-  ) { }
+	constructor(
+		private _APIService: ApiServiceService
+	) { }
 
-    public getNotes() {
-      return this._APIService.getNotes();
-    }
-  
-    public getUserNotes(user_id) {
-      return this._APIService.getUserNotes(user_id);
-    }
+		public getNotes() {
+			return this._APIService.getNotes();
+		}
+	
+		public getUserNotes(user_id) {
+			return this._APIService.getUserNotes(user_id);
+		}
 
-    public createUserNote(note: Note){
-      return this._APIService.createUserNote(note)
-    }
+		public createUserNote(note: Note){
+			return this._APIService.createUserNote(note)
+		}
 }

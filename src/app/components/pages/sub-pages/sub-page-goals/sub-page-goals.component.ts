@@ -30,7 +30,10 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.success = true;
 				for (let goal of result.data) {
 				this.Goals.push(new Goal(goal));
-			}
+				}
+				if (!this.Goals.length) {
+					this.subPageMessage = 'You currently have no goals';
+				}
 			})
 		})
 	}

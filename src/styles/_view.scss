@@ -25,6 +25,18 @@
 	outline: none;
 }
 
+.mobile-button {
+	padding-top: 5px;
+	transition: all 0.3s ease-in-out;
+	box-sizing: border-box;
+	cursor: pointer;
+	border: none;
+	display: inline-block;
+	font-size: 1.2em;
+	font-weight: 600;
+	outline: none;
+}
+
 .light-button {
 	color: $primary-color;
 	transition: all 0.3s ease-in-out;
@@ -189,6 +201,14 @@ input[type="color"]:focus,
 /** Loading Spinner **/
 
 .sub-page-loading-container {
+	z-index: 3;
+	position: absolute;
+	width: 100%;
+	height: calc(100% - 60px);
+	min-height: calc(100vh - 160px);
+}
+
+.subpage-message-container {
 	z-index: 3;
 	position: absolute;
 	width: 100%;

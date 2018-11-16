@@ -67,13 +67,14 @@
 
 .dashboard-sub-pages-container {
 	vertical-align: top;
-	padding: 10px 15px;
+	padding: 10px 0px;
 	position: relative;
 	width: calc(100vw);
 }
 
 @media (min-width: 992px) {
 	.dashboard-sub-pages-container {
+		padding: 10px 15px;
 		width: calc(100vw - 100px);
 	}
 }

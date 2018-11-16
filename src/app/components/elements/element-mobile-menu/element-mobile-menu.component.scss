@@ -8,6 +8,9 @@
 #mobile-menu-container {
 	background: $white;
 	height: 150vh;
+	position: absolute;
+	top: 0;
+	z-index: 999;
 
 	.sub-page-loading-container {
 		position: relative !important;

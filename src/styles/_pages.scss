@@ -5,10 +5,11 @@
 body,
 html {
 	height: 100%;
+	font-family: $primary-font;
 }
 
 p {
-	font-size: 2em;
+	font-size: .9em;
 }
 
 a {
@@ -49,12 +50,16 @@ h1 {
 	display: none;
 }
 
+.no-outline {
+	outline: none;
+}
+
 span.thin {
 	font-weight: 100;
 }
 
 p.small {
-	font-size: 2em;
+	font-size: 1em;
 }
 
 .white-text {
@@ -101,6 +106,10 @@ p.small {
 	text-transform: capitalize;
 }
 
+.sub-page-button {
+	float: right;
+}
+
 .sub-page-title {
 	color: #a5b1c2
 }
@@ -112,6 +121,26 @@ p.small {
 
 .content-container {
 	//padding: 20px;
+}
+
+.subpage-message-icon {
+	color: $grey;
+	font-size: 4em;
+	padding: 20px;
+	transition-duration: .5s;
+
+	&:hover {
+		-webkit-transform: rotateZ(-180deg);
+		-ms-transform: rotateZ(-180deg);
+		transform: rotateZ(-180deg);
+		transition-duration: .5s;
+	}
+}
+.subpage-sub-message{
+	color: $grey;
+	text-align: center;
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 .card-container {
@@ -147,6 +176,7 @@ p.small {
 			color: #2ecc71;
 			transition-duration: 0.4s;
 		}
+
 		.card-icon .notfound-icon {
 			color: #2ecc71;
 			transition-duration: 0.4s;
@@ -165,6 +195,7 @@ p.small {
 	font-size: 0.8em;
 
 	.card-button-icon {
+		padding-top: 5px;
 		padding-left: 5px;
 	}
 

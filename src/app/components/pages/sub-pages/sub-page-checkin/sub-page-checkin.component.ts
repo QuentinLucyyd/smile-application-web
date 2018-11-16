@@ -11,6 +11,10 @@ import { AuthenticationService } from '../../../../services/authentication.servi
 import { Checkin } from '../../../../models/checkin';
 import { VoiceService } from '../../../../services/voice.service';
 import { Voice } from '../../../../models/voice';
+import { Note } from '../../../../models/notes';
+import { NotesService } from '../../../../services/notes.service';
+import { Router } from '@angular/router';
+import { NotificationsService } from '../../../../services/notifications.service';
 
 @Component({
   selector: 'app-sub-page-checkin',
@@ -21,6 +25,7 @@ import { Voice } from '../../../../models/voice';
 export class SubPageCheckinComponent extends SubPage implements OnInit {
 	typing: Boolean = false;
 	recording: Boolean = false;
+	checkinloading: Boolean = false;
 	record: any;
 	url: any;
 	formData:FormData = new FormData();
@@ -47,13 +52,36 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 		private _checkinService: CheckinsService,
 		private domSanitizer: DomSanitizer,
 		private voicesService: VoiceService,
+		private notesService: NotesService,
 		private usersService: UsersService,
+		private _router: Router,
+		private notificationService: NotificationsService,
 		private authenticationSerivce: AuthenticationService
 	) { super(); }
 
 	ngOnInit() {
 		this._titleService.setTitle('Smile | Check In');
-		this.authenticationSerivce.AuthenticateUser();
+		this.subPageMessage = 'You have completed your checkin for today';
+		this.subPageLinkText = 'Click here to do your Checkout.'
+		this.subPageLinkRoute = '/checkout';
+
+		this.checkinloading = true;
+		this.authenticationSerivce.AuthenticateUser().then(data => {
+			const DateObject = new Date;
+			const date = DateObject.getFullYear() + '-' + (DateObject.getMonth() + 1) + '-' + DateObject.getUTCDate();
+			this._checkinService.getUserDateCheckins(this.usersService.ActiveUser.id, date)
+			.subscribe(results => {
+				if (results.data.length) {
+					this.checkinloading = false;
+					this._checkinService.checkinDone = true;
+					this.notificationService.newNotify('info', 'You have done your Check in for today');
+				}
+			})
+		})
+		.catch(err => {
+			this.failure = true;
+			this.resultMessage = 'An error has occured';
+		});
 	}
 
 	sanitize(url:string){
@@ -92,9 +120,6 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 		this.formData.append('file', blob, 'temp.wav');
 		this.url = URL.createObjectURL(blob);
 		this.sanitize(this.url);
-		// this._checkinService.createCheckin(blob).then(data => {
-		// 	console.log(data);
-		// });
 	}
 
 	toggleRecording() {
@@ -119,15 +144,14 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 			user_id: this.usersService.ActiveUser.id
 		}
 		const _Checkin: Checkin = new Checkin(checkin);
-		console.log(_Checkin);
 		if (this.url) {
 			this.voicesService.createVoice(this.formData).subscribe(data => {
 				const voice = {id: data.data[0].id};
 				_Checkin.voice = new Voice(voice);
-				console.log(_Checkin);
 				this._checkinService.createCheckin(_Checkin).subscribe(data => {
 					this.loading = false;
-					this.success = true;
+					this.notificationService.newNotify('info', 'Checkin Completed');
+					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: checkin}});
 				}, err => {
 					this.loading = false;
 					this.failure = false;
@@ -137,12 +161,28 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 				this.failure = true;
 			})
 		} else {
-			this._checkinService.createCheckin(_Checkin).subscribe(data => {
-				this.loading = false;
-				this.success = true;
+			const note = {
+				title: 'Chekin ' + this.usersService.ActiveUser.first_name + this.usersService.ActiveUser.last_name,
+				note: this.entry,
+				type: 'checkin',
+				date: _Checkin.date,
+				user_id: this.usersService.ActiveUser.id
+			}
+			const _Note = new Note(note)
+			this.notesService.createUserNote(_Note).subscribe(data => {
+				_Note.id = data.data[0].id;
+				_Checkin.note = _Note;
+				this._checkinService.createCheckin(_Checkin).subscribe(data => {
+					this.loading = false;
+					this.notificationService.newNotify('info', 'Checkin Completed');
+					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: checkin}});
+				}, err => {
+					this.loading = false;
+					this.failure = false;
+				})
 			}, err => {
 				this.loading = false;
-				this.failure = false;
+				this.failure = true;
 			})
 		}
 	}
