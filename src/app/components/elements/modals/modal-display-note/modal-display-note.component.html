@@ -3,20 +3,20 @@
         <div class="modal-content">
           <div class="modal-header">
             <div class="modal-title" id="exampleModalLongTitle">{{notesService.ActiveNote.title}}</div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button"  (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" >
+              <div class="modal-subtitle" id="exampleModalLongTitle">{{notesService.ActiveNote.type}}</div>
             <div>
-              <textarea *ngIf="disabled" class="form-control displayNoteTextAreaD" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
-              <textarea *ngIf="!disabled" class="form-control displayNoteTextAreaE" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
+              <textarea  #newNote  class="form-control displayNoteTextAreaD"  [attr.disabled]="disabled" >{{notesService.ActiveNote.note}}</textarea>
             </div>
             <div class="header-button-container">
             <button (click)="editNote()" class="button dark-button sign-in-button" >Edit Note</button>
             </div>
             <div class="header-button-container">
-              <button (click)="saveNote()" class="button dark-button sign-in-button" >Save Note</button>
+              <button data-dismiss="modal" (click)="saveNote(newNote.value)" class="button dark-button sign-in-button" >Save Note</button>
               </div>
           </div>
           <div class="modal-footer"></div>
