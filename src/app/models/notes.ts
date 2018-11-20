@@ -6,6 +6,7 @@ export class Note {
 	date: Date;
 	user_id: number;
 	id: number;
+	is_active: number;
 
 	constructor(note) {
 		this.updateNote(note);
@@ -19,5 +20,6 @@ export class Note {
 		if ( note.date ) { this.date = note.date;}
 		if ( note.user_id) {this.user_id = note.user_id;}
 		if ( note.id) {this.id = note.id;}
+		if ( note.is_active) {this.is_active = note.is_active;}
 	}
 }

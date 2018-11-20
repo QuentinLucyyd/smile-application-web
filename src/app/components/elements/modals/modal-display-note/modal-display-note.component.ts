@@ -19,7 +19,8 @@ export class ModalDisplayNoteComponent implements OnInit {
 	date: Date;
 	type: String = '';
 	voice: Boolean = false;
-	id: number;
+  id: number;
+  isActive: number;
   
   constructor(
     public notesService: NotesService,
@@ -44,8 +45,27 @@ export class ModalDisplayNoteComponent implements OnInit {
       type: this.notesService.ActiveNote.type,
       voice: this.notesService.ActiveNote.voice,
       user_id: this.userServices.ActiveUser.id,
-      id: this.notesService.ActiveNote.id
+      id: this.notesService.ActiveNote.id,
+      is_active: this.notesService.ActiveNote.is_active
     }
+    const _note: Note =  new Note(note);
+    this.notesService.updateUserNote(_note).subscribe(data => {
+      console.log(data);
+	})
+  }
+
+  deleteNote(){
+    this.disabled = true;
+    const note =  {
+      title: this.notesService.ActiveNote.title,
+      note: this.notesService.ActiveNote.note,
+      type: this.notesService.ActiveNote.type,
+      voice: this.notesService.ActiveNote.voice,
+      user_id: this.userServices.ActiveUser.id,
+      id: this.notesService.ActiveNote.id,
+      is_active: 0
+    }
+    console.log(note);
     const _note: Note =  new Note(note);
     this.notesService.updateUserNote(_note).subscribe(data => {
       console.log(data);
@@ -55,4 +75,6 @@ export class ModalDisplayNoteComponent implements OnInit {
   closeModal(){
 	this.disabled = true;
   }
+
+  
 }

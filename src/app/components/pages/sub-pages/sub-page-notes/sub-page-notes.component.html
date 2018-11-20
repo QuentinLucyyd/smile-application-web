@@ -23,7 +23,7 @@
 			<div *ngFor="let note of Notes" class="goal-card-container card-container col-md-4">
 				<div  (click)="setActiveNote(note)" data-toggle="modal" data-target="#displayNoteModal"class="card" style="margin: 10px">
 					<div class="card-header goal-name">
-            		{{note.title}} {{note.id}}
+            		{{note.title}}
             		<h5 class="goal-frequency card-text card-note-type">{{note.type}}</h5>
 					</div>
 					<div class="card-body">
