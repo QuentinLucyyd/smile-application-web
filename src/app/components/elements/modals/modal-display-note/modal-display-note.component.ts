@@ -3,6 +3,7 @@ import { NotesService } from '../../../../services/notes.service';
 import { UsersService } from '../../../../services/users.service';
 import { Note } from '../../../../models/notes';
 import { LoadedRouterConfig } from '../../../../../../node_modules/@angular/router/src/config';
+import { elementStart } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-modal-display-note',
@@ -12,6 +13,7 @@ import { LoadedRouterConfig } from '../../../../../../node_modules/@angular/rout
 export class ModalDisplayNoteComponent implements OnInit {
 
   disabled: Boolean = true;
+  disabledSaveBtn: Boolean = true;
 
 	user_id: Number;
 	title: String = '';
@@ -34,15 +36,20 @@ export class ModalDisplayNoteComponent implements OnInit {
   }
 
   editNote(){
-    this.disabled = null;
+    if (this.disabled == true) {
+      this.disabled = null
+    }else
+      this.disabled = true;
+    this.disabledSaveBtn = !this.disabledSaveBtn;
   }
   
-  saveNote(newNote){
+  saveNote(newNote, newNoteType, newNoteTile){
     this.disabled = true;
+    this.disabledSaveBtn = true;
     const note =  {
-      title: this.notesService.ActiveNote.title,
+      title: newNoteTile,
       note: newNote,
-      type: this.notesService.ActiveNote.type,
+      type: newNoteType,
       voice: this.notesService.ActiveNote.voice,
       user_id: this.userServices.ActiveUser.id,
       id: this.notesService.ActiveNote.id,
@@ -65,7 +72,6 @@ export class ModalDisplayNoteComponent implements OnInit {
       id: this.notesService.ActiveNote.id,
       is_active: 0
     }
-    console.log(note);
     const _note: Note =  new Note(note);
     this.notesService.updateUserNote(_note).subscribe(data => {
       console.log(data);
@@ -73,7 +79,8 @@ export class ModalDisplayNoteComponent implements OnInit {
   }
 
   closeModal(){
-	this.disabled = true;
+  this.disabled = true;
+  this.disabledSaveBtn = true;
   }
 
   

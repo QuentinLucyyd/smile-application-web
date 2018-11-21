@@ -19,4 +19,39 @@
 	}
 }
 
-	
+.icons_notes{
+	padding-top: 10px;
+	padding-left: 10px;
+	cursor: pointer;
+}
+
+button:disabled,
+button[disabled]{
+	display: none ;
+}
+
+textarea:disabled,
+textarea[disabled]{
+	background-color: white;
+	border: none;
+	resize: none;
+}
+
+.displayNoteTextAreaD{
+	background-color: rgba(247, 247, 247, 0.589);
+	margin-top: 5px;
+}
+
+select:disabled,
+select[disabled]{
+	display: none ;
+}
+
+textarea:enabled.note-type,
+textarea[enabled].note-type{
+	display: none;
+}
+
+.modal-body{
+	padding-top: 0;
+}

@@ -21,14 +21,19 @@
 				</div>
 				<div class="row">
 					<div class="form-group float-label-control col s12">
-						<input [(ngModel)]="type" name="password" id="note_type" type="text" class="validate" minlength="6" required>
-						<label for="password">Note Type</label>
+            <select [(ngModel)]="type" class="form-control" id="note_type" name="note"  class="validate" required>
+                <option selected disabled hidden>Choose here</option>
+                <option id="1">Personal</option>
+                <option id="2">Session</option>
+                <option id="3">Goal</option>
+              </select>
+						<label for="type">Note Type</label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group float-label-control col s12">
 						<textarea [(ngModel)]="note" name="note" class="form-control noteContentArea" rows="5" id="note"></textarea>
-						<label for="password">Note</label>
+						<label for="note">Note</label>
 					</div>
 				</div>
 				<div class="row d-flex justify-content-center">
