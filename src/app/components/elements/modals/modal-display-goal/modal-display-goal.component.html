@@ -1,0 +1,19 @@
+<div class="modal fade" id="displayGoalModal" tabindex="-1" role="dialog" aria-labelledby="displayGoalModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title" id="exampleModalLongTitle">{{goalsService.Goals.name}}</div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="pre-scrollable"><p>
+            {{goalsService.Goals.description}}
+          </p></div>
+          <button class="button dark-button">Edit Goal</button>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+</div>

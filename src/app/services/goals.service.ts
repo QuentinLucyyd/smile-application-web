@@ -9,7 +9,7 @@ import { reject } from 'q';
 })
 export class GoalsService {
 	Goals: Goal[] = [];
-
+	
 	constructor(
 		private _APIService: ApiServiceService
 	) { }
