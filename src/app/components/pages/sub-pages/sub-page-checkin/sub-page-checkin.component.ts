@@ -49,7 +49,7 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 
 	constructor(
 		private _titleService: Title,
-		private _checkinService: CheckinsService,
+		public _checkinService: CheckinsService,
 		private domSanitizer: DomSanitizer,
 		private voicesService: VoiceService,
 		private notesService: NotesService,
