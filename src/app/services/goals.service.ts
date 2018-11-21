@@ -8,8 +8,8 @@ import { reject } from 'q';
 	providedIn: 'root'
 })
 export class GoalsService {
-	Goals: Goal[] = [];
-	activeGoal: Goal;
+	//Goals: Goal[] = [];
+	activeGoal: Goal = new Goal({});
 	
 	constructor(
 		private _APIService: ApiServiceService
