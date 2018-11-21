@@ -7,7 +7,7 @@ import { UsersService } from '../services/users.service';
 import { User } from '../models/user';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
 
 	constructor(
 		private authenticationSerivce: AuthenticationService,
@@ -24,11 +24,11 @@ export class AuthGuard implements CanActivate {
 			this.APIService.UserAuth().subscribe(res => {
 				if (res.status !== 'success') {
 					this.authenticationSerivce.invalidateUser();
-				if (res.data.role === 'admin') {
-					this.usersService.ActiveUser = new User(res.data);
 				} else {
-					this._router.navigate(['/'], { queryParams: { invalid: '1' }});
-					return false;
+					if ( res.data.role !== 'admin')
+						this._router.navigate(['/'], { queryParams: { invalid: '1' }});
+					else 
+						this.usersService.ActiveUser = new User(res.data);
 				}
 			});
 			return true;

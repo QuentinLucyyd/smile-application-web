@@ -7,21 +7,27 @@
 	font-size: 12px;
 	padding-top: 1rem;
 }
-.card-body{
-    padding-top: 0rem !important;
+
+.card-body {
+	padding-top: 0rem !important;
 }
-.card{
+
+.card {
 	height: 100%;
 }
-.card-note-type{
+
+.card-note-type {
 	padding-top: 0.2rem !important;
 }
+
 .goal-frequency-key {
 	color: $grey;
+
 	i {
 		color: $secondary-color;
 	}
 }
+
 .goal-card-container {
 	color: $grey;
 	font-family: $primary-font;
@@ -31,10 +37,17 @@
 		float: right;
 		color: $secondary-color;
 	}
+
 	.goal-name {
 		font-weight: 900;
 	}
+
 	.goal-frequency {
 		text-transform: capitalize;
 	}
+}
+
+.card-button-mobile {
+	float: right;
+	padding-right: 10px;
 }

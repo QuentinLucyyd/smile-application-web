@@ -7,11 +7,18 @@
 			</div>
 			<div class="error-result-container" *ngIf="failure">
 				<div class="error-result-icon d-flex justify-content-center align-items-center">
-						<i class="far fa-frown"></i>
+					<i class="far fa-frown"></i>
 				</div>
 				<div class="error-result-text">{{resultMessage}}</div>
 			</div>
-			<div class="recent-goal-container table-responsive" *ngIf="!loading">
+			<div class="notfound-container" *ngIf="!_RecentGoals.length && !loading">
+				<div class="notfound-icon d-flex justify-content-center">
+					<i class="far fa-clock"></i>
+				</div>
+				<div class="notfound-text d-flex justify-content-center">You have no upcoming goals</div>
+				<div class="notfound-link no-outline d-flex justify-content-center" [routerLink]="['/dashboard/goals']">Click here to add a goal</div>
+			</div>
+			<div class="recent-goal-container table-responsive" *ngIf="!loading && _RecentGoals.length">
 				<table class="table">
 					<thead>
 						<tr>

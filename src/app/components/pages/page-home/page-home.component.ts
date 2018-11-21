@@ -3,7 +3,8 @@ import { Title } from '@angular/platform-browser';
 import { NavService } from '../../../services/nav.service';
 import { Router } from '@angular/router';
 import { NotificationsService } from '../../../services/notifications.service';
-import { AuthenticationService } from '../../../services/authentication.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalSignInComponent } from '../../elements/modals/modal-sign-in/modal-sign-in.component';
 
 @Component({
 	selector: 'app-page-home',
@@ -17,6 +18,7 @@ export class PageHomeComponent implements OnInit {
 		private navService: NavService,
 		private notificationService: NotificationsService,
 		private _router: Router,
+		private modalService: NgbModal
 	) { }
 
 	ngOnInit() {
@@ -27,4 +29,7 @@ export class PageHomeComponent implements OnInit {
 		}
 	}
 
+	open() {
+		this.modalService.open(ModalSignInComponent, {windowClass: 'modal-custom-container',centered: true});
+	}
 }

@@ -25,6 +25,7 @@
 		"@angular/pwa": "^0.10.3",
 		"@angular/router": "^6.1.0",
 		"@angular/service-worker": "^6.1.0",
+		"@ng-bootstrap/ng-bootstrap": "^4.0.0",
 		"@ngx-progressbar/core": "^5.2.1",
 		"@ngx-progressbar/router": "^5.2.1",
 		"angular-highcharts": "^6.2.6",

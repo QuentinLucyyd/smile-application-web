@@ -11,6 +11,10 @@ export class UsersService {
 	constructor(
 		private _APIService: ApiServiceService
 	) { }
+	
+	getUsers() {
+		return this._APIService.getUsers();
+	}
 
 	createAccount(token, user: User) {
 		return this._APIService.createUserAccount(token, user);

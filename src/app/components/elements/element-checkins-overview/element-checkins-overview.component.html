@@ -6,10 +6,12 @@
 				<div class="secondary-loading"></div>
 			</div>
 		</div>
-		<div class="container-fluid chart-container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12 col-md-12">
-					<div [chart]="chart" *ngIf="!loading"></div>
+					<div class="chart-container" *ngIf="Checkins.length && !loading">
+						<div [chart]="chart"></div>
+					</div>
 				</div>
 			</div>
 		</div>

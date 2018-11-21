@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Pages Import */
 import { PageHomeComponent } from './components/pages/page-home/page-home.component'
@@ -15,6 +16,7 @@ import { PageVerifyComponent } from './components/pages/page-verify/page-verify.
 
 /*Elements Import */
 import { ModalSignInComponent } from './components/elements/modals/modal-sign-in/modal-sign-in.component'
+import { ModalAddNoteComponent } from './components/elements/modals/modal-add-note/modal-add-note.component';
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
@@ -81,10 +83,16 @@ const customNotifierOptions: NotifierOptions = {
 		PageHomeComponent,
 		PageVerifyComponent,
 		ModalSignInComponent,
+		ModalAddNoteComponent
+	],
+	entryComponents: [
+		ModalAddNoteComponent,
+		ModalSignInComponent
 	],
 	imports: [
 		BrowserModule,
 		HttpModule,
+		NgbModule.forRoot(),
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forRoot(ROUTES),

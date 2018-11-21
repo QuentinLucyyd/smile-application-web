@@ -1,35 +1,54 @@
-<div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog" aria-labelledby="addNoteModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-title" id="exampleModalLongTitle">Add new note</div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body bootstrap-iso">
-            <div class="modal-sign-up-container">
-                <form>
-                    <div class="form-group float-label-control">
-                      <label for="noteName">Note Name</label>
-                      <input [(ngModel)]="title" name="title" type="text" class="form-control" id="noteName" placeholder="Note Name">
-                    </div>
-                    <div class="form-group float-label-control">
-                      <label for="noteType">Note Type</label>
-                      <input [(ngModel)]="type" name="type" type="text" class="form-control" id="noteType" placeholder="Note Type">
-                      <!-- <label for="noteContent">Note Content</label> -->
-                        <textarea [(ngModel)]="note" name="note" class="form-control noteContentArea" rows="5" id="note" placeholder="Note Content"></textarea>
-                    </div>
-                </form>
-                <div class="row d-flex justify-content-center">
-                    <div class="record-button"><i class="fas fa-microphone"></i></div>
-                  </div>
-                <div class="header-button-container">
-                    <button data-dismiss="modal" (click)="addNote()" class="button dark-button sign-in-button">Add Note</button>
-                </div>
-              </div>
-          </div>
-          <div class="modal-footer"></div>
-        </div>
-      </div>
+<div class="modal-header">
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
 </div>
+<div class="modal-body">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h5>Add note</h5>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+		</div>
+	</div>
+	<div class="modal-add-note-container">
+		<div class="modal-sign-in-container">
+			<form class="col s12" id="reg-form">
+				<div class="row">
+					<div class="form-group float-label-control col s12">
+						<input [(ngModel)]="title" name="email" id="note_name" type="text" class="validate" required>
+						<label for="email">Note Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group float-label-control col s12">
+						<input [(ngModel)]="type" name="password" id="note_type" type="text" class="validate" minlength="6" required>
+						<label for="password">Note Type</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group float-label-control col s12">
+						<textarea [(ngModel)]="note" name="note" class="form-control noteContentArea" rows="5" id="note"></textarea>
+						<label for="password">Note</label>
+					</div>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div class="record-button"><i class="fas fa-microphone"></i></div>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div class="col-12">
+						<div class="header-button-container" *ngIf="!loading && !success">
+							<button type="submit" (click)="addNote()" class="button dark-button sign-in-button">Add Note</button>
+						</div>
+						<div class="header-button-container" *ngIf="success">
+							<button type="submit" class="button green-button sign-in-button"><i class="fas fa-check"></i></button>
+						</div>
+						<div class="secondary-loading-container" *ngIf="loading">
+							<div class="secondary-loading"></div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="modal-footer"></div>

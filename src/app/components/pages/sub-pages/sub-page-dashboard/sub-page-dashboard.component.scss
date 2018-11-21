@@ -1,5 +1,16 @@
+/* Imports */
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/view';
+
 .card {
 	-webkit-box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.1);
 	-moz-box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.1);
 	box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.1);
+}
+
+.integrity-score {
+	color: $secondary-color;
+	font-family: $primary-font;
+	font-size: 5.5em;
 }

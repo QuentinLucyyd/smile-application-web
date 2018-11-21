@@ -1,0 +1,63 @@
+/* Imports */
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/view';
+
+select {
+	background-color: transparent;
+
+	&:focus {
+		background-color: transparent;
+		outline: none;
+	}
+}
+
+option {
+	&:hover {
+		outline: none;
+	}
+}
+
+.user-card {
+	cursor: pointer;
+	transition-duration: .4s;
+
+	&:hover {
+		-webkit-box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.2);
+		-moz-box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.2);
+		box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.2);
+		transition-duration: .4s;
+	}
+}
+
+.user-delete {
+	float: right;
+	transition-duration: .3s;
+
+	&:hover {
+		color: $error-color;
+		transition-duration: .3s;
+	}
+}
+
+.invite-container {
+	padding-top: 20px;
+	color: $grey;
+	font-family: $primary-font;
+}
+
+.user-role {
+	text-transform: capitalize;
+}
+
+.user-email {
+
+}
+
+.user-name {
+	font-size: 1em;
+}
+
+.form-container {
+	padding-top: 30px;
+}

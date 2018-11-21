@@ -13,6 +13,7 @@ import { SubPageCheckinComponent } from '../../components/pages/sub-pages/sub-pa
 import { SubPageCheckoutComponent } from '../../components/pages/sub-pages/sub-page-checkout/sub-page-checkout.component';
 import { SubPageGoalsComponent } from '../../components/pages/sub-pages/sub-page-goals/sub-page-goals.component';
 import { SubPageNotesComponent } from '../../components/pages/sub-pages/sub-page-notes/sub-page-notes.component';
+import { SubPageInviteComponent } from '../../components/pages/sub-pages/sub-page-invite/sub-page-invite.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -25,9 +26,9 @@ import { ElementNotesOverviewComponent } from '../../components/elements/element
 import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
 import { ModalDisplayNoteComponent } from '../../components/elements/modals/modal-display-note/modal-display-note.component';
-import { ModalAddNoteComponent } from '../../components/elements/modals/modal-add-note/modal-add-note.component';
 
-/* Import Services */
+/* Import Guards */
+import { AdminGuard } from '../../guards/admin.guard';
 
 const appRoutes = [
 	{ path:'', component: PageDashboardComponent, children:
@@ -36,7 +37,8 @@ const appRoutes = [
 		{ path:'checkin', component: SubPageCheckinComponent },
 		{ path:'checkout', component: SubPageCheckoutComponent },
 		{ path: 'goals', component: SubPageGoalsComponent },
-		{ path: 'notes', component: SubPageNotesComponent }
+		{ path: 'notes', component: SubPageNotesComponent },
+		{ path: 'invite', component: SubPageInviteComponent, canActivate:[AdminGuard]}
 	]}
 ];
 
@@ -65,11 +67,13 @@ const appRoutes = [
 		ElementUpcomingGoalsComponent,
 		ElementCompletedGoalsComponent,
 		SubPageNotesComponent,
-		ModalDisplayNoteComponent,
-		ModalAddNoteComponent
-	], providers: [
+		SubPageInviteComponent,
+		ModalDisplayNoteComponent
+	],
+	providers: [
 		ElementCheckinsOverviewComponent,
-		DatePipe
+		DatePipe,
+		AdminGuard
 	]
 })
 

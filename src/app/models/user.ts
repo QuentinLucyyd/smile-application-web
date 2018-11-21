@@ -18,6 +18,7 @@ export class User {
 		if ( user.username ) { this.username = user.username; }
 		if ( user.first_name ) { this.first_name = user.first_name; }
 		if ( user.last_name ) { this.last_name = user.last_name; }
+		if ( user.role ) { this.role = user.role; }
 		if ( user.email ) { this.email = user.email; }
 		if ( user.password ) { this.password = user.password; }
 	}

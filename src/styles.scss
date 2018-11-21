@@ -3,13 +3,10 @@
 /* Imports */
 @import 'styles/pages';
 @import 'styles/variables';
+@import 'styles/config';
 
 body {
 	background: #ecf0f1;
-}
-
-.modal-open {
-	overflow: auto !important;
 }
 
 .full-width {
@@ -65,4 +62,10 @@ textarea {
 
 .notifier__notification-message {
 	font-family: $primary-font;
+}
+
+
+.modal-custom-container {
+	animation-name: scale;
+	animation-duration: 0.4s;
 }

@@ -1,0 +1,42 @@
+<div class="sub-page-loading-container text-align-center d-flex align-items-center justify-content-center" *ngIf="loading">
+	<div class="secondary-loading-container">
+		<div class="secondary-loading"></div>
+	</div>
+</div>
+<div class="sub-page-dashboard-container" *ngIf="!loading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-md-12">
+				<div class="sub-page-title">
+					<i class="sub-page-title-icon fas fa-user-plus"></i>Dashboard / Invite
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid invite-container">
+			<h5>Invte User</h5>
+			<p>Invite a new user by email and specify user role.</p>
+			<div class="form-container">
+				<form>
+					<div class="row">
+						<div class="col-12 col-md-4">
+							<div class="form-group float-label-control col s12">
+								<input (keyup)="validateEmail($event)" [(ngModel)]="email" name="email" id="email" type="email" class="validate" required>
+								<label for="email">Email</label>
+							</div>
+						</div>
+						<div class="col-12 col-md-4">
+							<div class="form-group float-label-control col s12">
+								<select class="form-control" name="role">
+									<option>Role</option>
+									<option>Client</option>
+									<option>Admin</option>
+								</select>
+								<label for="role">Email</label>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

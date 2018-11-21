@@ -9,6 +9,19 @@
 	box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.1);
 }
 
+.modal-sign-in-container {
+	background-color: white;
+	//padding: 20px 45px;
+	border-radius: 4px;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.welcome-container {
+	text-align: center;
+	padding-bottom: 50px;
+}
+
 /** Button **/
 
 .button {

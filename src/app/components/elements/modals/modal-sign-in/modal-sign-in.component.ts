@@ -5,6 +5,7 @@ import { AuthenticationService } from '../../../../services/authentication.servi
 import { User } from '../../../../models/user';
 import { Router } from "@angular/router";
 import { NavService } from '../../../../services/nav.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-modal-sign-in',
@@ -17,7 +18,8 @@ export class ModalSignInComponent extends SubPage implements OnInit {
 		public authenticationSerive: AuthenticationService,
 		public usersServices: UsersService,
 		public navService: NavService,
-		private router: Router
+		private router: Router,
+		public activeModal: NgbActiveModal
 	) {	super(); }
 
 	ngOnInit() {
@@ -38,6 +40,7 @@ export class ModalSignInComponent extends SubPage implements OnInit {
 					this.loading = false;
 					this.success = true;
 					setTimeout(() => {
+						this.activeModal.close('Modal Success');
 						this.router.navigate(['dashboard'], {queryParams: {'signin': 'success', 'refresh': 'true'}});
 					}, 1000);
 				}

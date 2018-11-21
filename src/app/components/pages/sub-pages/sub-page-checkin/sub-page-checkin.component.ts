@@ -75,6 +75,8 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 					this.checkinloading = false;
 					this._checkinService.checkinDone = true;
 					this.notificationService.newNotify('info', 'You have done your Check in for today');
+				} else {
+					this.checkinloading = false;
 				}
 			})
 		})

@@ -30,6 +30,13 @@ export class ApiServiceService {
 
 	//User Related Requests
 
+	public getUsers() {
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users', options)
+			.pipe(map(response => response.json()));
+	}
+
 	//Verify Realated Request
 	public verifyInviteToken(token) {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
