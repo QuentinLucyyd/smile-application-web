@@ -3,6 +3,7 @@ import { GoalsService } from '../../../../services/goals.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { DatePipe } from '@angular/common';
 import { Goal } from '../../../../models/goal';
+import { Frequency } from '../../../../models/frequency'
 import { UsersService } from '../../../../services/users.service';
 
 @Component({
@@ -12,10 +13,12 @@ import { UsersService } from '../../../../services/users.service';
 })
 export class ModalAddGoalComponent extends SubPage implements OnInit {
 
+	frequencies: Frequency[];
+
 	id: Number;
 	name: String = '';
 	description: String = '';
-	frequency: String = ''
+	selectedFrequency: Number;
 	dueDate: Date;
 	state: String = 'ongoing';
 	subgoals: Boolean = true;
@@ -30,7 +33,14 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 			{ super(); }
 	
 		ngOnInit() {
-			
+			this.frequencies = [
+				{id:1, name:"Once-Off"},
+				{id:2, name:"Daily"},
+				{id:3, name:"Weekly"},
+				{id:4, name:"Monthly"}
+			]
+			this.selectedFrequency = 4;
+
 		}
 
 		createGoal(){
@@ -38,7 +48,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				id: this.id,
 				name: this.name,
 				description: this.description,
-				frequency: this.frequency,
+				frequency: this.selectedFrequency,
 				dueDate: this.dueDate,
 				state: this.state,
 				subgoals: this.subgoals,
@@ -47,8 +57,9 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 			}
 			const _goal: Goal = new Goal(goal);
 
-			this._goalsService.createGoal(_goal).subscribe(data => {
-			})
+			console.log(this.selectedFrequency);
+			//this._goalsService.createGoal(_goal).subscribe(data => {
+			//})
 		}
 
 		clearFields(){

@@ -8,9 +8,27 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="pre-scrollable"><p>
-            {{goalsService.activeGoal.description}}
-          </p></div>
+          <form>
+            <div class="form-group float-label-control">
+              <label for="name">Goal Name</label>
+              <input disabled="true" [(ngModel)]="goalsService.activeGoal.name" type="text" class="form-control" id="name" placeholder="Goal Name" name="name">
+            </div>
+            <div class="form-group float-label-control">
+              <label for="description">Description</label>
+              <input disabled="true" [(ngModel)]="goalsService.activeGoal.description" type="text" class="form-control" id="description" placeholder="Description" name="description">
+            </div>
+            <div class="form-group">
+              <label for="frequency">Frequency</label>
+              <select [(ngModel)]="selectedFrequency" class="form-control" id="frequency" name="frequency">
+                <option *ngFor="let freq of frequencies" [value]="freq.id">{{freq.name}}</option>
+              </select>
+            </div>
+            <div class="form-group"> <!-- Date input -->
+              <label for="dueDate">Due Date</label>
+              <input [(ngModel)]="goalsService.activeGoal.dueDate" class="form-control" id="dueDate" name="dueDate" type="date" name="dueDate"/>
+            </div>
+          
+        </form>
           <button class="button dark-button">Edit Goal</button>
         </div>
         <div class="modal-footer"></div>
