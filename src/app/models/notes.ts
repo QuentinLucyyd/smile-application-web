@@ -1,12 +1,11 @@
 export class Note {
-	id: any = 0;
+	id: number = 0;
 	title: String = '';
 	note: String = '';
 	type: String = '';
 	voice: Boolean = false;
 	date: Date;
 	user_id: number;
-	id: number;
 	is_active: number;
 
 	constructor(note) {
