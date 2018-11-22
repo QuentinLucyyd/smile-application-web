@@ -16,7 +16,7 @@
 					<option id="3">Goal</option>
 				  </select></div>
             <div>
-              <textarea #newNote class="form-control displayNoteTextAreaD" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
+              <textarea #newNote class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
 			</div>
 			<div class="d-flex justify-content-end">
 					<i (click)="editNote()" class="far fa-edit icons_notes"></i>
