@@ -7,6 +7,7 @@ export class Goal {
 	subgoals: Boolean = true;
 	priority: String = 'medium';
 	user_id: Number = 0;
+	selectedFrequency: Number = 1;
 
 	
 	constructor(goal) {

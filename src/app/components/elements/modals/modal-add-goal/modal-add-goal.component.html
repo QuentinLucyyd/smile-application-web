@@ -27,11 +27,8 @@
 
 									<div class="form-group">
 										<label for="frequency">Frequency</label>
-										<select [(ngModel)]="frequency" class="form-control" id="frequency" name="frequency">
-											<option id="1" selected="selected">Once-off</option>
-											<option id="2">Daily</option>
-											<option id="3">Weekly</option>
-											<option id="4">Monthly</option>
+										<select [(ngModel)]="selectedFrequency" class="form-control" id="selectedFreq" name="selectedFreq">
+											<option *ngFor="let freq of frequencies" [value]="freq.id">{{freq.name}}</option>
 										</select>
 									</div>
 								

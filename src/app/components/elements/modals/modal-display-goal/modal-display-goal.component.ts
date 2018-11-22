@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalsService } from '../../../../services/goals.service';
+import { Frequency } from 'src/app/models/frequency';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-modal-display-goal',
@@ -8,11 +10,24 @@ import { GoalsService } from '../../../../services/goals.service';
 })
 export class ModalDisplayGoalComponent implements OnInit {
 
+  disabled: Boolean;
+
+
   constructor(
     public goalsService: GoalsService
   ) { }
 
   ngOnInit() {
+    this.disabled = true;
+
+  }
+
+  enable(){
+    this.disabled = false;
+  }
+
+  save(){
+    console.log("Saving now...");
   }
 
 }
