@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,6 +10,7 @@ import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 /* Pages Import */
 import { PageHomeComponent } from './components/pages/page-home/page-home.component'
@@ -17,6 +19,7 @@ import { PageVerifyComponent } from './components/pages/page-verify/page-verify.
 /*Elements Import */
 import { ModalSignInComponent } from './components/elements/modals/modal-sign-in/modal-sign-in.component'
 import { ModalAddNoteComponent } from './components/elements/modals/modal-add-note/modal-add-note.component';
+import { ModalAddGoalComponent } from './components/elements/modals/modal-add-goal/modal-add-goal.component';
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
@@ -83,16 +86,19 @@ const customNotifierOptions: NotifierOptions = {
 		PageHomeComponent,
 		PageVerifyComponent,
 		ModalSignInComponent,
-		ModalAddNoteComponent
+		ModalAddNoteComponent,
+		ModalAddGoalComponent
 	],
 	entryComponents: [
 		ModalAddNoteComponent,
+		ModalAddGoalComponent,
 		ModalSignInComponent
 	],
 	imports: [
 		BrowserModule,
 		HttpModule,
 		NgbModule.forRoot(),
+		BsDatepickerModule.forRoot(),
 		HttpClientModule,
 		FormsModule,
 		RouterModule.forRoot(ROUTES),
@@ -109,6 +115,7 @@ const customNotifierOptions: NotifierOptions = {
 		ApiServiceService,
 		VerifyService,
 		AuthGuard,
+		DatePipe,
 		NotificationsService
 	],
 	bootstrap: [AppComponent]

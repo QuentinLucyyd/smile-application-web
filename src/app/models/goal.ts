@@ -1,11 +1,11 @@
 export class Goal {
 	name: String = '';
 	description: String = '';
-	frequency: String = ''
-	dueDate: Date;
+	frequency: String = 'Once-off'
+	dueDate: Date = new Date;
 	state: String = 'ongoing';
-	subgoals: Boolean = true;
-	priority: String = 'medium';
+	subgoals: Boolean = false;
+	priority: String = 'High';
 	user_id: Number = 0;
 
 	

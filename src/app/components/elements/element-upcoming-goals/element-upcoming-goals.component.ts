@@ -24,15 +24,9 @@ export class ElementUpcomingGoalsComponent extends SubPage implements OnInit {
 	ngOnInit() {
 		this.loading = true;
 		this.authenticationService.AuthenticateUser().then(data => {
-			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(result => {
+			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(result => {
 				this.loading = false;
-				var i = 0;
-				for (const goal of result.data) {
-					if (i < 2 && goal.state !== 'completed') {
-						this._RecentGoals.push(new Goal(goal));
-						i++;
-					}
-				}
+				this._RecentGoals = this.goalsService.Goals.slice(0, 2);
 			})
 		}).catch(err => {
 			this.failure = true;

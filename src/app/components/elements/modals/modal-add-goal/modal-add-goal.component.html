@@ -1,45 +1,67 @@
 <!-- Modal -->
-<div class="modal fade" id="addGoalModal" tabindex="-1" role="dialog" aria-labelledby="addGoalModal" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div class="modal-title" id="exampleModalLongTitle">Add new goal</div>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+<div class="modal-header">
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h5>Add Goal</h5>
+			<p>Fill in the form below to add a new goal</p>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+		</div>
+	</div>
+	<div class="modal-add-note-container">
+		<form class="col-12 col-md-12">
+			<div class="row">
+				<div class="form-group float-label-control col s12">
+					<input [(ngModel)]="Goal.name" type="text" class="form-control" id="name" name="name" required>
+					<label for="name">Goal Name</label>
 				</div>
-				<div class="modal-body bootstrap-iso">
-					<div class="modal-sign-up-container">
-							<form>
-									<div class="form-group float-label-control">
-										<label for="name">Goal Name</label>
-										<input [(ngModel)]="name" type="text" class="form-control" id="name" placeholder="Goal Name" name="name">
-									</div>
-									<div class="form-group float-label-control">
-										<label for="description">Description</label>
-										<input [(ngModel)]="description" type="text" class="form-control" id="description" placeholder="Description" name="description">
-									</div>
-									<div class="form-group">
-										<label for="frequency">Frequency</label>
-										<select [(ngModel)]="frequency" class="form-control" id="frequency" name="frequency">
-											<option id="1" selected="selected">Once-off</option>
-											<option id="2">Daily</option>
-											<option id="3">Weekly</option>
-											<option id="4">Monthly</option>
-										</select>
-									</div>
-									<div class="form-group"> <!-- Date input -->
-										<label for="dueDate">Due Date</label>
-										<input [(ngModel)]="dueDate" class="form-control" id="dueDate" name="dueDate" bsDatepicker type="text" name="dueDate"/>
-									</div>
-								
-							</form>
-							<div class="header-button-container">
-									<button data-dismiss="modal" (click)="createGoal()" class="button dark-button sign-in-button">Add Goal</button>
-							</div>
-						</div>
+			</div>
+			<div class="row">
+				<div class="form-group float-label-control col s12">
+					<h5 class="form-textarea">Description</h5>
+					<textarea [(ngModel)]="Goal.description" type="text" class="form-control" id="description" name="description"
+					 required></textarea>
 				</div>
-				<div class="modal-footer"></div>
+			</div>
+			<div class="row">
+				<div class="form-group form-select col-6 col-md-6">
+					<label for="priority">Priority</label>
+					<select [(ngModel)]="Goal.priority" class="form-control" id="frequency" name="priority">
+						<option id="1" selected="once-off">High</option>
+						<option id="2">Medium</option>
+						<option id="3">Low</option>
+					</select>
+				</div>
+				<div class="form-group priority-select col-6 col-md-6">
+					<label for="frequency">Frequency</label>
+					<select [(ngModel)]="Goal.frequency" class="form-control" id="frequency" name="frequency" (ngModelChange)="onChange($event)">
+						<option value="Once-off">Once-off</option>
+						<option value="Daily">Daily</option>
+						<option value="Weekly">Weekly</option>
+						<option value="Monthly">Monthly</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" *ngIf="dateInput">
+				<label for="dueDate">Due Date</label>
+				<input [(ngModel)]="dueDate" class="form-control" id="dueDate" name="dueDate" bsDatepicker type="text" name="dueDate" />
+			</div>
+
+		</form>
+		<div class="header-button-container">
+			<button data-dismiss="modal" (click)="createGoal()" class="button dark-button sign-in-button" *ngIf="!loading && !success">Add
+				Goal</button>
+			<div class="header-button-container" *ngIf="success">
+				<button type="submit" class="button green-button sign-in-button"><i class="fas fa-check"></i></button>
+			</div>
+			<div class="secondary-loading-container" *ngIf="loading">
+				<div class="secondary-loading"></div>
 			</div>
 		</div>
 	</div>
+</div>
+<div class="modal-footer"></div>

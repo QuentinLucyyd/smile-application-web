@@ -6,6 +6,15 @@
 	font-size: 1.5em;
 }
 
+.close {
+	color: $grey;
+	transition-duration: .4s;
+	&:hover {
+		color: $error-color;
+		transition-duration: .4s;
+	}
+}
+
 .modal-footer {
 	border: none;
 }

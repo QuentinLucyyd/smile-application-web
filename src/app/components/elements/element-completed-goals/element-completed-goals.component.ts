@@ -22,15 +22,15 @@ export class ElementCompletedGoalsComponent extends SubPage implements OnInit {
 	ngOnInit() {
 		this.loading = true;
 		this.authService.AuthenticateUser().then(result => {
-			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(data => {
+			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(data => {
 				this.loading = false;
 				var i = 0;
-				for (const goal of data.data) {
+				for (const goal of this.goalsService.Goals) {
 					if (i < 4 && goal.state === 'completed') {
 						this._CompletedGoals.push(new Goal(goal));
 					}
 				}
-			}, err => {
+			}).catch(err => {
 				this.loading = false;
 				this.failure = true;
 				this.resultMessage = 'An error has occured';

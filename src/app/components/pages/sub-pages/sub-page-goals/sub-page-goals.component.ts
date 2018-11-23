@@ -5,6 +5,8 @@ import { GoalsService } from '../../../../services/goals.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { UsersService } from '../../../../services/users.service';
 import { AuthenticationService } from '../../../../services/authentication.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAddGoalComponent } from '../../../elements/modals/modal-add-goal/modal-add-goal.component';
 
 @Component({
 	selector: 'app-sub-page-goals',
@@ -12,34 +14,39 @@ import { AuthenticationService } from '../../../../services/authentication.servi
 	styleUrls: ['./sub-page-goals.component.scss']
 })
 export class SubPageGoalsComponent extends SubPage implements OnInit {
-	Goals: Goal[] = [];
 
 	constructor(
 		private titleService: Title,
-		private goalsService: GoalsService,
+		public goalsService: GoalsService,
 		private usersService: UsersService,
-		private authService: AuthenticationService
+		private authService: AuthenticationService,
+		public modalService: NgbModal
 	) {super();}
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Goals');
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
-			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).subscribe(result => {
+			this.goalsService.Goals = [];
+			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(result => {
 				this.loading = false;
-				this.success = true;
-				for (let goal of result.data) {
-				this.Goals.push(new Goal(goal));
-				}
-				if (!this.Goals.length) {
+				if (!this.goalsService.Goals.length) {
 					this.subPageMessage = 'You currently have no goals';
 				}
+			})
+			.catch(err => {
+				this.loading = false;
+				this.failure = true;
+				this.resultMessage = "An error has occured";
 			})
 		})
 	}
 
-	setActiveGoal(goal){
-		this.goalsService.Goals = goal;
-		console.log(this.goalsService.Goals)
+	open() {
+		this.modalService.open(ModalAddGoalComponent,{ windowClass: 'modal-custom-container',centered: true });
+	}
+
+	setActiveGoal(goal: Goal){
+		this.goalsService.ActiveGoal = goal;
 	}
 }

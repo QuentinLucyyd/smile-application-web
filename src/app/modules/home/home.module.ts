@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Ng5SliderModule } from 'ng5-slider';
 import { ChartModule } from 'angular-highcharts';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule } from '@angular/forms';
 
 /* Pages Import */
@@ -19,7 +18,6 @@ import { SubPageInviteComponent } from '../../components/pages/sub-pages/sub-pag
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
 import { ElementSidebarComponent } from '../../components/elements/element-sidebar/element-sidebar.component';
 import { ElementProfileHeaderComponent } from '../../components/elements/element-profile-header/element-profile-header.component';
-import { ModalAddGoalComponent } from '../../components/elements/modals/modal-add-goal/modal-add-goal.component';
 import { ElementMobileMenuComponent } from '../../components/elements/element-mobile-menu/element-mobile-menu.component';
 import { ElementCheckinsOverviewComponent } from '../../components/elements/element-checkins-overview/element-checkins-overview.component';
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
@@ -49,7 +47,6 @@ const appRoutes = [
 		ChartModule,
 		RouterModule.forChild(appRoutes),
 		Ng5SliderModule,
-		BsDatepickerModule.forRoot(),
 		FormsModule
 	],
 	declarations: [
@@ -61,7 +58,6 @@ const appRoutes = [
 		SubPageCheckinComponent,
 		SubPageCheckoutComponent,
 		SubPageGoalsComponent,
-		ModalAddGoalComponent,
 		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent,
@@ -73,7 +69,6 @@ const appRoutes = [
 		ModalDisplayGoalComponent
 	], providers: [
 		ElementCheckinsOverviewComponent,
-		DatePipe,
 		AdminGuard
 	]
 })

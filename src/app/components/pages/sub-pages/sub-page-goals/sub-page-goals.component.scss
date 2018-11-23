@@ -3,12 +3,17 @@
 @import '../../../../../styles/variables';
 @import '../../../../../styles/view';
 
+.card-container {
+	padding: 0px !important;
+}
+
 .card-text {
 	font-size: 12px;
 }
 
 .goal-frequency-key-container {
 	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .goal-frequency-key {
@@ -26,11 +31,22 @@
 
 	.goal-header-icon {
 		float: right;
-		color: $secondary-color;
+		color: $grey;
+		transition-duration: .4s;
+
+		&:hover {
+			color: $error-color;
+			opacity: .5;
+			transition-duration: .4s;
+		}
 	}
 
 	.goal-name {
 		font-weight: 900;
+	}
+	
+	.goal-description {
+		font-size: 1em;
 	}
 
 	.goal-frequency {
@@ -41,4 +57,8 @@
 .card-button-mobile {
 	float: right;
 	padding-right: 10px;
+}
+
+.ongoing-goals-container {
+	padding-top: 20px;
 }

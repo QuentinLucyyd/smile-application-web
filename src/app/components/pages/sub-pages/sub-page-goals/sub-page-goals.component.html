@@ -1,15 +1,7 @@
-<app-modal-add-goal></app-modal-add-goal>
 <app-modal-display-goal></app-modal-display-goal>
 <div class="sub-page-loading-container text-align-center d-flex align-items-center" *ngIf="loading">
 	<div class="secondary-loading-container">
 		<div class="secondary-loading"></div>
-	</div>
-</div>
-<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!loading && !Goals.length">
-	<div class="subpage-message">
-		<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
-		<h4 class="subpage-message">{{subPageMessage}}</h4>
-		<p [routerLink]="[subPageLinkRoute]" class="subpage-sub-message no-outline">{{subPageLinkText}}</p>
 	</div>
 </div>
 <div class="sub-page-dashboard-container" *ngIf="!loading">
@@ -19,9 +11,9 @@
 				<div class="sub-page-title">
 					<i class="sub-page-title-icon fas fa-check"></i>Dashboard / Goals
 					<div class="sub-page-button card-button">
-						<div class="button" data-toggle="modal" data-target="#addGoalModal">Add Goal <i class="card-button-icon far fa-edit"></i></div>
+						<div class="button" (click)="open()">Add Goal <i class="card-button-icon far fa-edit"></i></div>
 					</div>
-					<div class="card-button-mobile" data-toggle="modal" data-target="#addGoalModal"><i class="card-button-icon fas fa-plus"></i></div>
+					<div class="card-button-mobile" (click)="open()"><i class="card-button-icon fas fa-plus"></i></div>
 				</div>
 			</div>
 		</div>
@@ -39,19 +31,76 @@
 					</div>
 				</div>
 			</div>
-			<div *ngFor="let goal of Goals" class="goal-card-container card-container col-md-4">
-				<div (click)="setActiveGoal(goal)" data-toggle="modal" data-target="#displayGoalModal" class="card" style="margin: 10px">
-					<div class="card-header goal-name">
-						{{goal.name}}
-						<div class="goal-header-icon"><i class="fas fa-redo"></i></div>
-					</div>
-					<div class="card-body">
-						<div class="col-lg-10 col-10">
-							<div class="goal-description card-text">{{goal.description}}</div>
-							<h5 class="goal-frequency card-text">{{goal.frequency}}</h5>
+			<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!loading && !goalsService.Goals.length &&
+			!goalsService.CompletedGoals.length && !goalsService.RecurringGoals.length">
+				<div class="subpage-message">
+					<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
+					<h4 class="subpage-message">{{subPageMessage}}</h4>
+					<p [routerLink]="[subPageLinkRoute]" class="subpage-sub-message no-outline">{{subPageLinkText}}</p>
+				</div>
+			</div>
+			<div class="ongoing-goals-container col-12 col-md-3">
+				<h5>Ongoing Goals</h5>
+				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
+					<div class="goal-card-container card-container col-md-12">
+						<div (click)="setActiveGoal(goal)" data-toggle="modal" data-target="#displayGoalModal" class="card" style="margin: 10px">
+							<div class="card-header goal-name">
+								{{goal.name}}
+								<div class="goal-header-icon">
+									<i class="fas fa-trash-alt"></i>
+								</div>
+							</div>
+							<div class="card-body">
+								<!-- <div class="col-lg-10 col-10">
+									<div class="goal-description card-text">{{goal.description}}</div>
+									<h5 class="goal-frequency card-text">{{goal.frequency}}</h5>
+								</div> -->
+							</div>
 						</div>
 					</div>
-				</div>
+				</ng-template>
+			</div>
+			<div class="ongoing-goals-container col-12 col-md-3">
+				<h5>Completed Goals</h5>
+				<ng-template ngFor let-goal [ngForOf]="goalsService.CompletedGoals">
+					<div class="goal-card-container card-container col-md-12">
+						<div (click)="setActiveGoal(goal)" data-toggle="modal" data-target="#displayGoalModal" class="card" style="margin: 10px">
+							<div class="card-header goal-name">
+								{{goal.name}}
+								<div class="goal-header-icon">
+									<i class="fas fa-trash-alt"></i>
+								</div>
+							</div>
+							<div class="card-body">
+								<!-- <div class="col-lg-10 col-10">
+									<div class="goal-description card-text">{{goal.description}}</div>
+									<h5 class="goal-frequency card-text">{{goal.frequency}}</h5>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</ng-template>
+			</div>
+			<div class="ongoing-goals-container col-12 col-md-3">
+				<h5>Recurring Goals</h5>
+				<ng-template ngFor let-goal [ngForOf]="goalsService.RecurringGoals">
+					<div class="goal-card-container card-container col-md-12">
+						<div (click)="setActiveGoal(goal)" data-toggle="modal" data-target="#displayGoalModal" class="card" style="margin: 10px">
+							<div class="card-header goal-name">
+								{{goal.name}}
+								<div class="goal-header-icon">
+									<i class="fas fa-trash-alt"></i>
+								</div>
+							</div>
+							<div class="card-body">
+								<!-- <div class="col-lg-10 col-10">
+									<div class="goal-description card-text">{{goal.description}}</div>
+									<h5 class="goal-frequency card-text">{{goal.frequency}}</h5>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</ng-template>
 			</div>
 		</div>
 	</div>

@@ -4,7 +4,7 @@
 @import '../../../../styles/view';
 
 .dashboard-container {
-	width: 100vw;
+	//width: 100vh;
 	min-height: 100vh;
 	background: #ECEFF1;
 
@@ -58,6 +58,7 @@
 }
 
 .dashboard-quick-links-container {
+	position: fixed;
 	vertical-align: top;
 	width: 100px;
 	height: 100%;
@@ -67,13 +68,16 @@
 
 .dashboard-sub-pages-container {
 	vertical-align: top;
+	top: 100px;
 	padding: 10px 0px;
-	position: relative;
+	position: absolute;
 	width: calc(100vw);
 }
 
 @media (min-width: 992px) {
 	.dashboard-sub-pages-container {
+		position: absolute;
+		left: 90px;
 		padding: 10px 15px;
 		width: calc(100vw - 100px);
 	}
