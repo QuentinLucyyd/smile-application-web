@@ -2,25 +2,29 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <div class="modal-title" id="exampleModalLongTitle">{{notesService.ActiveNote.title}}</div>
+            <div class="modal-title" id="exampleModalLongTitle"><textarea #newNoteTitle class="form-control displayNoteTextAreaD" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.title}}</textarea></div>
             <button type="button"  (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body" >
-              <div class="modal-subtitle" id="exampleModalLongTitle">{{notesService.ActiveNote.type}}</div>
+			  <div class="modal-subtitle" id="exampleModalLongTitle"> <textarea  class="form-control displayNoteTextAreaD note-type" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.type}}</textarea></div>
+			  <div><select #newNoteType class="form-control" id="note_type" name="note"  class="validate" [attr.disabled]="disabled">
+					<option selected disabled hidden>Choose type here</option>
+					<option id="1">Personal</option>
+					<option id="2">Session</option>
+					<option id="3">Goal</option>
+				  </select></div>
             <div>
-              <textarea  #newNote  class="form-control displayNoteTextAreaD"  [attr.disabled]="disabled" >{{notesService.ActiveNote.note}}</textarea>
-            </div>
+              <textarea #newNote class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
+			</div>
+			<div class="d-flex justify-content-end">
+					<i (click)="editNote()" class="far fa-edit icons_notes"></i>
+					<i (click)="deleteNote()" class="far fa-trash-alt icons_notes"></i>
+			</div>
             <div class="header-button-container">
-            <button (click)="editNote()" class="button dark-button sign-in-button" >Edit Note</button>
-            </div>
-            <div class="header-button-container">
-              <button data-dismiss="modal" (click)="saveNote(newNote.value)" class="button dark-button sign-in-button" >Save Note</button>
+              <button data-dismiss="modal" (click)="saveNote(newNote.value, newNoteType.value, newNoteTitle.value)" class="button dark-button sign-in-button" [disabled]="disabledSaveBtn">Save Changes</button>
               </div>
-              <div class="header-button-container">
-                <button data-dismiss="modal" (click)="deleteNote()" class="button dark-button sign-in-button" >Delete Note</button>
-                </div>
           </div>
           <div class="modal-footer"></div>
         </div>
