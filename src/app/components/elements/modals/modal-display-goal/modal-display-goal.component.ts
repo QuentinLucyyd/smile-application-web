@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalsService } from '../../../../services/goals.service';
-import { Frequency } from 'src/app/models/frequency';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-modal-display-goal',
@@ -11,6 +9,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class ModalDisplayGoalComponent implements OnInit {
 
   disabled: Boolean;
+  frequencies: String[];
+  _close: Boolean;
 
 
   constructor(
@@ -19,15 +19,39 @@ export class ModalDisplayGoalComponent implements OnInit {
 
   ngOnInit() {
     this.disabled = true;
+    this._close = false;
+    this.frequencies = [
+			"Once-off",
+			"Daily",
+			"Weekly",
+			"Monthly"
+		  ];
 
   }
 
   enable(){
-    this.disabled = false;
+    if (this.disabled == true)
+    {  this.disabled = false;
+      this._close = false;
+    }
+      else
+      {
+      this.disabled = true;
+      this._close = true;
+      }
+  }
+
+  close(){
+    if (this._close == true)
+      this._close = false;
+      else
+      this._close = true;
   }
 
   save(){
     console.log("Saving now...");
+    this.enable();
+    //this.close();
   }
 
 }

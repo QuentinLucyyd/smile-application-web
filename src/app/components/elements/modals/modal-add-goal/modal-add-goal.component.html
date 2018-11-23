@@ -22,13 +22,13 @@
 									
 									<div class="form-group"> <!-- Date input -->
 										<label for="dueDate">Due Date</label>
-										<input [(ngModel)]="dueDate" class="form-control" id="dueDate" name="dueDate" bsDatepicker type="text" name="dueDate"/>
+										<input [(ngModel)]="due_date" class="form-control" id="due_date" name="due_date" bsDatepicker type="text" name="due_date"/>
 									</div>
 
 									<div class="form-group">
 										<label for="frequency">Frequency</label>
-										<select [(ngModel)]="selectedFrequency" class="form-control" id="selectedFreq" name="selectedFreq">
-											<option *ngFor="let freq of frequencies" [value]="freq.id">{{freq.name}}</option>
+										<select [(ngModel)]="frequency" class="form-control" id="selectedFreq" name="selectedFreq">
+											<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
 										</select>
 									</div>
 								

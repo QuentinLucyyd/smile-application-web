@@ -3,8 +3,8 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <div class="modal-title" id="exampleModalLongTitle">{{goalsService.activeGoal.name}}</div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <div class="modal-title" id="exampleModalLongTitle">Edit Goal</div>
+          <button (click)="enable()" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -20,17 +20,19 @@
             </div>
             <div class="form-group">
               <label for="frequency">Frequency</label>
-              <select [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.selectedFrequency" class="form-control" id="frequency" name="frequency">
-                <option *ngFor="let freq of frequencies" [value]="freq.id">{{freq.name}}</option>
+              <select [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.frequency" class="form-control" id="frequency" name="frequency">
+                <option value="Select Frequency:">Select Frequency:</option>
+                <option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
               </select>
             </div>
             <div class="form-group"> <!-- Date input -->
               <label for="dueDate">Due Date</label>
-              <input [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.dueDate" class="form-control" id="dueDate" name="dueDate" type="date" name="dueDate"/>
+              <input [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.due_date" class="form-control" id="dueDate" name="dueDate" bsDatepicker type="text" name="dueDate"/>
             </div>
         </form>
           <button (click)="enable()" class="button dark-button col-5">Edit</button>
-          <button *ngIf="!disabled" [disabled]="disabled" (click)="save()" class="button green-button col-5">Save</button>
+          <button type="button" data-dismiss="modal" *ngIf="!disabled" [disabled]="disabled" (click)="save()" class="button green-button col-5" >Save</button>
+          <button (click)="enable()" type="button" data-dismiss="modal" *ngIf="_close" [disabled]="disabled" class="button green-button col-5" >Close</button>
         </div>
         <div class="modal-footer"></div>
       </div>
