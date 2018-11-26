@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalsService } from '../../../../services/goals.service';
+import { Goal } from 'src/app/models/goal';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-modal-display-goal',
@@ -12,9 +14,20 @@ export class ModalDisplayGoalComponent implements OnInit {
   frequencies: String[];
   _close: Boolean;
 
+  id: Number;
+	name: String = '';
+	description: String = '';
+	frequency: String = 'Select Frequency:';
+	due_date: Date;
+	state: String = 'ongoing';
+	subgoals: Boolean = true;
+	priority: String = 'medium';
+	user_id: Number;
+
 
   constructor(
-    public goalsService: GoalsService
+    private goalsService: GoalsService,
+    private usersService: UsersService
   ) { }
 
   ngOnInit() {
@@ -49,8 +62,22 @@ export class ModalDisplayGoalComponent implements OnInit {
   }
 
   save(){
+
+    const goal = {
+      id: this.goalsService.activeGoal.id,
+      name: this.name,
+      description: this.description,
+      frequency: this.frequency,
+      due_date: this.due_date,
+      state: this.state,
+      subgoals: this.subgoals,
+      priority: this.priority,
+      user_id: this.usersService.ActiveUser.id
+    }
+    const _goal: Goal = new Goal(goal);
     console.log("Saving now...");
     this.enable();
+    this.goalsService.updateGoal(_goal);
     //this.close();
   }
 

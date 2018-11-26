@@ -31,6 +31,7 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				for (let goal of result.data) {
 				this.Goals.push(new Goal(goal));
 			}
+			console.log(this.Goals);
 			})
 		})
 	}

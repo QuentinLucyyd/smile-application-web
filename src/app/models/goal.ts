@@ -1,6 +1,7 @@
 import { DateTimeFormats } from "highcharts";
 
 export class Goal {
+	id: Number;
 	name: String = '';
 	description: String = '';
 	frequency: String = ''
@@ -15,6 +16,7 @@ export class Goal {
 	}
 
 	updateGoal(goal) {
+		if ( goal.id ) { this.id = goal.id; }
 		if ( goal.name ) { this.name = goal.name; }
 		if ( goal.description ) { this.description = goal.description; }
 		if ( goal.frequency ) { this.frequency = goal.frequency; }

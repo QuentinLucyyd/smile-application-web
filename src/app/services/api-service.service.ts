@@ -84,6 +84,13 @@ export class ApiServiceService {
 		return this._http.post(this.host + '/goals', goal, options)
 		.pipe(map(response => response.json()));
 	}
+
+	public updateGoal(goal: Goal){
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.patch(this.host + '/goals', goal, options)
+		.pipe(map(response => response.json()));
+	}
 	// Chekin Related Requests
 
 	public getCheckins() {

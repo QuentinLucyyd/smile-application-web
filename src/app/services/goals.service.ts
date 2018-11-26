@@ -26,4 +26,8 @@ export class GoalsService {
 	public createGoal(goal: Goal){
 		return this._APIService.createGoal(goal);
 	}
+
+	public updateGoal(goal: Goal){
+		return this._APIService.createGoal(goal);
+	}
 }
