@@ -18,16 +18,16 @@
               <label for="description">Description</label>
               <input [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.description" type="text" class="form-control" id="description" placeholder="Description" name="description">
             </div>
+            <div class="form-group"> <!-- Date input -->
+              <label for="due_date">Due Date</label>
+              <input [disabled]="disabled" [(bsValue)]="goalsService.activeGoal.due_date" value="{{goalsService.activeGoal.due_date | date:'dd/MM/yyyy' }}"[(ngModel)]="goalsService.activeGoal.due_date" class="form-control" id="due_date" name="due_date" bsDatepicker type="text" name="due_date"/>
+            </div>
             <div class="form-group">
               <label for="frequency">Frequency</label>
               <select [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.frequency" class="form-control" id="frequency" name="frequency">
                 <option value="Select Frequency:">Select Frequency:</option>
                 <option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
               </select>
-            </div>
-            <div class="form-group"> <!-- Date input -->
-              <label for="dueDate">Due Date</label>
-              <input [disabled]="disabled" [(ngModel)]="goalsService.activeGoal.due_date" class="form-control" id="dueDate" name="dueDate" bsDatepicker type="text" name="dueDate"/>
             </div>
         </form>
           <button (click)="enable()" class="button dark-button col-5">Edit</button>

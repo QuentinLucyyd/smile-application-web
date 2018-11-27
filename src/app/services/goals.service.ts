@@ -28,6 +28,6 @@ export class GoalsService {
 	}
 
 	public updateGoal(goal: Goal){
-		return this._APIService.createGoal(goal);
+		return this._APIService.updateGoal(goal);
 	}
 }

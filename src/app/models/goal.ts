@@ -5,7 +5,7 @@ export class Goal {
 	name: String = '';
 	description: String = '';
 	frequency: String = ''
-	due_date: DateTimeFormats;
+	due_date: String;
 	state: String = 'ongoing';
 	subgoals: Boolean = true;
 	priority: String = 'medium';

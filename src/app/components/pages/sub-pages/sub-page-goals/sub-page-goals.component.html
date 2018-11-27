@@ -43,8 +43,7 @@
 						<div class="col-lg-10 col-10">
 							<div class="goal-description card-text">{{goal.description}}</div>
 							<h5 class="goal-frequency card-text">{{goal.frequency}}</h5>
-							<h5>{{goal.due_date}}</h5>
-							<h5>something</h5>
+							<h5>{{goal.due_date | date: 'dd/MM/yyyy'}}</h5>
 						</div>
 					</div>
 				</div>

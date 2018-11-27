@@ -2,33 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { GoalsService } from '../../../../services/goals.service';
 import { Goal } from 'src/app/models/goal';
 import { UsersService } from 'src/app/services/users.service';
+import { SubPage } from 'src/app/classes/abstract/page.class';
 
 @Component({
   selector: 'app-modal-display-goal',
   templateUrl: './modal-display-goal.component.html',
   styleUrls: ['./modal-display-goal.component.scss']
 })
-export class ModalDisplayGoalComponent implements OnInit {
+export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 
   disabled: Boolean;
   frequencies: String[];
   _close: Boolean;
 
-  id: Number;
-	name: String = '';
-	description: String = '';
-	frequency: String = 'Select Frequency:';
-	due_date: Date;
-	state: String = 'ongoing';
-	subgoals: Boolean = true;
-	priority: String = 'medium';
-	user_id: Number;
-
-
   constructor(
     private goalsService: GoalsService,
     private usersService: UsersService
-  ) { }
+  ) { super(); }
 
   ngOnInit() {
     this.disabled = true;
@@ -62,22 +52,25 @@ export class ModalDisplayGoalComponent implements OnInit {
   }
 
   save(){
-
     const goal = {
       id: this.goalsService.activeGoal.id,
-      name: this.name,
-      description: this.description,
-      frequency: this.frequency,
-      due_date: this.due_date,
-      state: this.state,
-      subgoals: this.subgoals,
-      priority: this.priority,
+      name: this.goalsService.activeGoal.name,
+      description: this.goalsService.activeGoal.description,
+      frequency: this.goalsService.activeGoal.frequency,
+      due_date: this.goalsService.activeGoal.due_date,
+      state: this.goalsService.activeGoal.state,
+      subgoals: this.goalsService.activeGoal.subgoals,
+      priority: this.goalsService.activeGoal.priority,
       user_id: this.usersService.ActiveUser.id
     }
     const _goal: Goal = new Goal(goal);
     console.log("Saving now...");
-    this.enable();
-    this.goalsService.updateGoal(_goal);
+    //this.enable();
+    this.goalsService.updateGoal(_goal).subscribe(data => {
+      console.log(data);
+    }, err => {
+      console.log(err);
+    });
     //this.close();
   }
 

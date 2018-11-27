@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalsService } from '../../../../services/goals.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
-import { DatePipe } from '@angular/common';
 import { Goal } from '../../../../models/goal';
 import { UsersService } from '../../../../services/users.service';
 
@@ -14,11 +13,11 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 
 	frequencies: String[];
 
-	id: Number;
+	//id: Number;
 	name: String = '';
 	description: String = '';
 	frequency: String = 'Select Frequency:';
-	due_date: Date;
+	due_date: String;
 	state: String = 'ongoing';
 	subgoals: Boolean = true;
 	priority: String = 'medium';
@@ -26,7 +25,6 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 
 		constructor(
 			private _goalsService: GoalsService,
-			public datepipe: DatePipe,
 			private usersService: UsersService
 			)
 			{ super(); }
@@ -38,7 +36,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 
 		createGoal(){
 			const goal = {
-				id: this.id,
+				//id: this.id,
 				name: this.name,
 				description: this.description,
 				frequency: this.frequency,

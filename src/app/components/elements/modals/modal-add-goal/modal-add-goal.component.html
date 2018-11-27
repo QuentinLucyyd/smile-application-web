@@ -22,7 +22,7 @@
 									
 									<div class="form-group"> <!-- Date input -->
 										<label for="dueDate">Due Date</label>
-										<input [(ngModel)]="due_date" class="form-control" id="due_date" name="due_date" bsDatepicker type="text" name="due_date"/>
+										<input [(bsValue)]="due_date" value="{{ due_date | date:'dd/MM/yyyy'}}" [(ngModel)]="due_date" class="form-control" id="due_date" name="due_date" bsDatepicker type="text" name="due_date"/>
 									</div>
 
 									<div class="form-group">
