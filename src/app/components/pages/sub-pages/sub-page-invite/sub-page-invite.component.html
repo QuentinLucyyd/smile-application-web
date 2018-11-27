@@ -13,15 +13,17 @@
 			</div>
 		</div>
 		<div class="container-fluid invite-container">
-			<h5>Invte User</h5>
+			<h5>Inivte User</h5>
 			<p>Invite a new user by email and specify user role.</p>
 			<div class="form-container">
 				<form>
 					<div class="row">
 						<div class="col-12 col-md-4">
 							<div class="form-group float-label-control col s12">
-								<input (keyup)="validateEmail($event)" [(ngModel)]="email" name="email" id="email" type="email" class="validate" required>
+								<input (keyup)="validateEmail($event)" [(ngModel)]="email" name="email" id="email" type="email" class="validate"
+								 required>
 								<label for="email">Email</label>
+								<p *ngIf="emailFailure">{{emailMessage}}</p>
 							</div>
 						</div>
 						<div class="col-12 col-md-4">
@@ -33,6 +35,12 @@
 								</select>
 								<label for="role">Email</label>
 							</div>
+						</div>
+						<div class="col-5 col-md-5" (click)="submitCheckin()" *ngIf="!loading">
+							<button type="button" class="button dark-button sign-in-button">Invite</button>
+						</div>
+						<div class="secondary-loading-container" *ngIf="loading">
+							<div class="secondary-loading"></div>
 						</div>
 					</div>
 				</form>

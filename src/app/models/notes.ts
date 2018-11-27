@@ -2,8 +2,9 @@ export class Note {
 	id: number = 0;
 	title: String = '';
 	note: String = '';
-	type: String = '';
+	type: String = 'Personal';
 	voice: Boolean = false;
+	edit: Boolean = false;
 	date: Date;
 	user_id: number;
 	is_active: number;

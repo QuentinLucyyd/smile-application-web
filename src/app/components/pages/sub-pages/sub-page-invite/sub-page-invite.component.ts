@@ -10,10 +10,10 @@ import { User } from '../../../../models/user';
 	styleUrls: ['./sub-page-invite.component.scss']
 })
 export class SubPageInviteComponent extends SubPage implements OnInit {
-	Users: Array<User> = [];
 	email: String = 'jhondoe@example.com'
+	emailFailure: Boolean = false;
+	emailMessage: String = '';
 
-	regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;;
 	constructor(
 		private titleService: Title,
 		private usersService: UsersService,
@@ -21,17 +21,19 @@ export class SubPageInviteComponent extends SubPage implements OnInit {
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Invite');
-		this.loading = true;
+	}
 
-		this.usersService.getUsers().subscribe(result => {
-			this.loading = false;
-			for (const user of result.data)
-				this.Users.push(new User(user));
-			console.log(this.Users);
-		})
+	validateEmailRegex(email) {
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(String(email).toLowerCase());
 	}
 
 	validateEmail(event: any) {
-		
+		if (!this.validateEmailRegex(this.email)) {
+			this.emailFailure = true;
+			this.emailMessage = 'Please enter a valid email';
+		} else {
+			this.emailFailure = false;
+		}
 	}
 }

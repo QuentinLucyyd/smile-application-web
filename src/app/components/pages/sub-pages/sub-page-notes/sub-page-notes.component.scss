@@ -3,6 +3,21 @@
 @import '../../../../../styles/variables';
 @import '../../../../../styles/view';
 
+#note_name {
+	color: $grey;
+	border: none;
+	border-bottom: solid 1px $grey;
+}
+
+textarea {
+	resize: none
+}
+
+.note-header-icon {
+	float: right;
+	opacity: .5;
+}
+
 .card-text {
 	font-size: 12px;
 	padding-top: 1rem;
@@ -50,4 +65,26 @@
 .card-button-mobile {
 	float: right;
 	padding-right: 10px;
+}
+
+.green-tick {
+	color: $secondary-color !important;
+}
+
+.edit-icon {
+	transition-duration: .5s;
+
+	&:hover {
+		color: $secondary-color;
+		transition-duration: .5s;
+	}
+}
+
+.error-icon {
+	color: $error-color;
+	padding-left: 10px;
+}
+
+.view-icon {
+	padding-left: 10px;
 }

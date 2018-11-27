@@ -15,25 +15,31 @@
 			<form class="col s12" id="reg-form">
 				<div class="row">
 					<div class="form-group float-label-control col s12">
-						<input [(ngModel)]="title" name="email" id="note_name" type="text" class="validate" required>
+						<input [(ngModel)]="Note.title" name="email" id="note_name" type="text" class="validate" required>
 						<label for="email">Note Name</label>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group float-label-control col s12">
-            <select [(ngModel)]="type" class="form-control " id="note_type" name="note"  class="validate" required>
-                <option selected disabled hidden>Choose here</option>
-                <option id="1">Personal</option>
-                <option id="2">Session</option>
-                <option id="3">Goal</option>
-              </select>
-						<label for="type">Note Type</label>
+				<div class="row note-type-select">
+					<div class="form-group priority-select col-12 col-md-12">
+						<label for="frequency">Note Type</label>
+						<select [(ngModel)]="Note.type" class="form-control" id="note_type" name="note">
+							<option value="Personal">Personal</option>
+							<option value="Session">Session</option>
+						</select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group float-label-control col s12">
-						<textarea [(ngModel)]="note" name="note" class="form-control noteContentArea" rows="5" id="note"></textarea>
+						<textarea [(ngModel)]="Note.note" name="note" class="form-control noteContentArea" rows="5" id="note" (ngModelChange)="onChange($event)"></textarea>
 						<label for="note">Note</label>
+						<div class="row">
+							<div class="col-6 col-md-7">
+								<p class="note-error" *ngIf="noteError">{{noteError}}</p>
+							</div>
+							<div class="col-6 col-md-5">
+								<p class="word-count">Word Count: {{wordCount}}</p>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="row d-flex justify-content-center">
@@ -41,7 +47,7 @@
 				</div>
 				<div class="row d-flex justify-content-center">
 					<div class="col-12">
-						<div class="header-button-container" *ngIf="!loading && !success">
+						<div class="header-button-container" *ngIf="!loading && !success && noteReady">
 							<button type="submit" (click)="addNote()" class="button dark-button sign-in-button">Add Note</button>
 						</div>
 						<div class="header-button-container" *ngIf="success">

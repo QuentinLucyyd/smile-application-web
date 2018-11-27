@@ -28,6 +28,8 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
 			this.goalsService.Goals = [];
+			this.goalsService.RecurringGoals = [];
+			this.goalsService.CompletedGoals = [];
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(result => {
 				this.loading = false;
 				if (!this.goalsService.Goals.length) {

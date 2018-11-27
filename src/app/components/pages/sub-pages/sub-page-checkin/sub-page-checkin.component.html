@@ -1,5 +1,5 @@
-<div class="sub-page-loading-container text-align-center d-flex align-items-center justify-content-center">
-	<div class="secondary-loading-container" *ngIf="checkinloading">
+<div class="sub-page-loading-container text-align-center d-flex align-items-center justify-content-center" *ngIf="checkinloading">
+	<div class="secondary-loading-container">
 		<div class="secondary-loading"></div>
 	</div>
 </div>
@@ -58,14 +58,23 @@
 				</div>
 			</div>
 			<div class="col-12 col-md-12 journal-container">
+				<div class="row">
+					<div class="col-12 col-md-2">
+						<div class="tooltip-wrapper">
+							<label class="sliderheader">Getting Clear</label>
+							<i class="getting-clear-icon fas fa-info-circle"></i>
+							<div class="tooltip">
+								<ul class="list-group list-group-flush" style="margin-bottom: 10px;">
+									<li class="list-group-item">Questions to answer</li>
+									<li class="list-group-item">• I am grateful for...</li>
+									<li class="list-group-item">• What would make today great?</li>
+									<li class="list-group-item">• I am..</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="journal-form">
-					<label class="sliderheader">Getting Clear</label>
-					<i class="getting-clear-icon fas fa-info-circle"></i>
-					<!-- <ul class="list-group list-group-flush" style="margin-bottom: 10px;">
-							<li class="list-group-item">• I am grateful for...</li>
-							<li class="list-group-item">• What would make today great?</li>
-							<li class="list-group-item">• Daily affirmations. I am..</li>
-						</ul> -->
 					<textarea [(ngModel)]="entry" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type journal entry here or record..."></textarea>
 					<div class="row d-flex justify-content-center" [ngClass]="{'recording': recording}" (click)="toggleRecording()">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>

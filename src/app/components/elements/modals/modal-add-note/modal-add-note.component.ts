@@ -11,13 +11,11 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['./modal-add-note.component.scss']
 })
 export class ModalAddNoteComponent extends SubPage implements OnInit {
+	noteReady: Boolean = false;
+	wordCount: Number = 0;
+	noteError: String = '';
 
-	user_id: Number;
-	title: String = '';
-	note: String = '';
-	date: Date;
-	type: String = '';
-	voice: Boolean = false;
+	Note: Note = new Note({user_id: this.usersServices.ActiveUser.id})
 
 	constructor(
 		private usersServices: UsersService,
@@ -28,21 +26,33 @@ export class ModalAddNoteComponent extends SubPage implements OnInit {
 	ngOnInit() {
 	}
 
+	onChange(event: any) {
+		this.wordCount = this.Note.note.length;
+		if ( this.wordCount < 45 ) {
+			this.noteError = 'Note has to be more that 45 charecters.';
+			this.noteReady = false;
+		} else {
+			this.noteReady = true;
+			this.noteError = '';
+		}
+	}
+
 	addNote(){
 		this.loading = true;
-		const note =  {
-			title: this.title,
-			note: this.note,
-			type: this.type,
-			voice: this.voice,
-			user_id: this.usersServices.ActiveUser.id
-		}
 
-		const _note: Note =  new Note(note)
-		this._notesServices.createUserNote(_note).subscribe(data => {
+		if (!this.Note.title)
+			this.Note.title = this.Note.note.split(" ", 4).join(" ") + '...';
+
+		this._notesServices.createUserNote(this.Note).subscribe(data => {
 			this.loading = false;
-			this._notesServices.Notes.push(_note);
+			this.success = true;
+
+			this._notesServices.Notes.push(this.Note);
 			this.activeModal.close('Note Add Success');
+		}, err => {
+			this.loading = false;
+			this.failure = true;
+			this.resultMessage = 'Something went wrong. Try again';
 		})
 	}
 }

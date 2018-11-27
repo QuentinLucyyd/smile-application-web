@@ -20,6 +20,7 @@ import { PageVerifyComponent } from './components/pages/page-verify/page-verify.
 import { ModalSignInComponent } from './components/elements/modals/modal-sign-in/modal-sign-in.component'
 import { ModalAddNoteComponent } from './components/elements/modals/modal-add-note/modal-add-note.component';
 import { ModalAddGoalComponent } from './components/elements/modals/modal-add-goal/modal-add-goal.component';
+import { ModalDisplayNoteComponent } from './components/elements/modals/modal-display-note/modal-display-note.component';
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
@@ -87,12 +88,14 @@ const customNotifierOptions: NotifierOptions = {
 		PageVerifyComponent,
 		ModalSignInComponent,
 		ModalAddNoteComponent,
-		ModalAddGoalComponent
+		ModalAddGoalComponent,
+		ModalDisplayNoteComponent
 	],
 	entryComponents: [
 		ModalAddNoteComponent,
 		ModalAddGoalComponent,
-		ModalSignInComponent
+		ModalSignInComponent,
+		ModalDisplayNoteComponent
 	],
 	imports: [
 		BrowserModule,

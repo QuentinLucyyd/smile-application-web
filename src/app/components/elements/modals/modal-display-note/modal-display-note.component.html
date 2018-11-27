@@ -1,32 +1,33 @@
-<div class="modal fade" id="displayNoteModal" tabindex="-1" role="dialog" aria-labelledby="displayNoteModal" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-title" id="exampleModalLongTitle"><textarea #newNoteTitle class="form-control displayNoteTextAreaD" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.title}}</textarea></div>
-            <button type="button"  (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body" >
-			  <div class="modal-subtitle" id="exampleModalLongTitle"> <textarea  class="form-control displayNoteTextAreaD note-type" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.type}}</textarea></div>
-			  <div><select #newNoteType class="form-control" id="note_type" name="note"  class="validate" [attr.disabled]="disabled">
-					<option selected disabled hidden>Choose type here</option>
-					<option id="1">Personal</option>
-					<option id="2">Session</option>
-					<option id="3">Goal</option>
-				  </select></div>
-            <div>
-              <textarea #newNote class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
-			</div>
-			<div class="d-flex justify-content-end">
-					<i (click)="editNote()" class="far fa-edit icons_notes"></i>
-					<i (click)="deleteNote()" class="far fa-trash-alt icons_notes"></i>
-			</div>
-            <div class="header-button-container">
-              <button data-dismiss="modal" (click)="saveNote(newNote.value, newNoteType.value, newNoteTitle.value)" class="button dark-button sign-in-button" [disabled]="disabledSaveBtn">Save Changes</button>
-              </div>
-          </div>
-          <div class="modal-footer"></div>
-        </div>
-      </div>
+<div class="modal-header">
+	<div class="col-6 col-md-6">
+		<div class="modal-title" id="exampleModalLongTitle">
+			<textarea #newNoteTitle class="form-control displayNoteTextAreaD" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.title}}</textarea></div>
+	</div>
+	<div class="note-header-icon">
+		<i (click)="editNote()" class="fas edit-icon fa-pencil-alt"></i>
+		<i (click)="activeModal.dismiss('Cross click')" class="fas error-icon fa-times"></i>
+	</div>
 </div>
+<div class="modal-body">
+	<div class="modal-subtitle" id="exampleModalLongTitle"> <textarea class="form-control displayNoteTextAreaD note-type"
+		 [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.type}}</textarea></div>
+	<div>
+		<select class="form-control" id="note_type" name="note" class="validate" [attr.disabled]="disabled">
+			<option selected disabled hidden>Choose type here</option>
+			<option id="1">Personal</option>
+			<option id="2">Session</option>
+			<option id="3">Goal</option>
+		</select>
+	</div>
+	<div>
+		<textarea #newNote class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
+	</div>
+	<div class="d-flex justify-content-end">
+		<i (click)="deleteNote()" class="far fa-trash-alt icons_notes"></i>
+	</div>
+	<div class="header-button-container">
+		<button data-dismiss="modal" (click)="saveNote(newNote.value, newNoteType.value, newNoteTitle.value)" class="button dark-button sign-in-button"
+		 [disabled]="disabledSaveBtn">Save Changes</button>
+	</div>
+</div>
+<div class="modal-footer"></div>
