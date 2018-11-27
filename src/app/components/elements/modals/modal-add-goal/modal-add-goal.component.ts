@@ -19,7 +19,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 	frequency: String = 'Select Frequency:';
 	due_date: String;
 	state: String = 'ongoing';
-	subgoals: Boolean = true;
+	has_checklist: Boolean;
 	priority: String = 'medium';
 	user_id: Number;
 
@@ -42,7 +42,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				frequency: this.frequency,
 				due_date: this.due_date,
 				state: this.state,
-				subgoals: this.subgoals,
+				has_checklist: this.has_checklist,
 				priority: this.priority,
 				user_id: this.usersService.ActiveUser.id
 			}

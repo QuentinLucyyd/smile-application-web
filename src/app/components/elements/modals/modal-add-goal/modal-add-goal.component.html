@@ -31,6 +31,15 @@
 											<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
 										</select>
 									</div>
+									<div>
+										<label for="has_checklist"></label>
+									</div>
+									<div class="form-group">
+										<label for="frequency">Checklist</label>
+										<select [(ngModel)]="frequency" class="form-control" id="selectedFreq" name="selectedFreq">
+											<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
+										</select>
+									</div>
 								
 							</form>
 							<div class="header-button-container">

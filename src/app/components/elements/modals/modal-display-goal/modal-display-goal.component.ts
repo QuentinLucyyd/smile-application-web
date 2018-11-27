@@ -59,7 +59,7 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
       frequency: this.goalsService.activeGoal.frequency,
       due_date: this.goalsService.activeGoal.due_date,
       state: this.goalsService.activeGoal.state,
-      subgoals: this.goalsService.activeGoal.subgoals,
+      has_checklist: this.goalsService.activeGoal.has_checklist,
       priority: this.goalsService.activeGoal.priority,
       user_id: this.usersService.ActiveUser.id
     }
