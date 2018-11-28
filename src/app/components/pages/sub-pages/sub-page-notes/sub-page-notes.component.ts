@@ -41,8 +41,10 @@ export class SubPageNotesComponent extends SubPage implements OnInit {
 	}
 
 	updateNote(note: Note) {
+		note.noteLoading = true;
 		this.notesService.updateUserNote(note).subscribe(data => {
 			note.edit = false;
+			note.noteLoading = false;
 		})
 	}
 

@@ -119,7 +119,6 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		fill: #37474F;
 	}
 }
 
@@ -129,7 +128,7 @@
 	top: 0;
 	z-index: -1;
 	left: -400px;
-	background: #202B30;
+	background: $secondary-color;
 	width: 400px;
 	height: calc(100vh - 100px);
 	box-shadow: inset 6px 0 6px -6px rgba(0, 0, 0, 0.3);
@@ -160,10 +159,6 @@
 		outline: none;
 	}
 
-	&.active {
-		border-bottom: 5px solid #019cd1;
-	}
-
 	svg {
 		width: 100%;
 		height: 30px;
@@ -178,7 +173,6 @@
 	}
 
 	&:hover {
-		border-bottom: 1px solid #016c90;
 		background: $secondary-color;
 		color: #fff;
 
@@ -225,7 +219,6 @@
 
 		&:hover {
 			color: #fff;
-			background: #093e53;
 
 			svg {
 				fill: #fff;
@@ -233,9 +226,6 @@
 		}
 	}
 
-	&:hover {
-		background: #25353A;
-	}
 
 	.quick-links-child-icon {
 		width: 40px;

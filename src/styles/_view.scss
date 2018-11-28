@@ -9,6 +9,12 @@
 	box-shadow: 7px 6px 18px 0px rgba(0, 0, 0, 0.1);
 }
 
+.shadow-sm {
+	-webkit-box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.1);
+	box-shadow: 3px 6px 18px 0px rgba(0, 0, 0, 0.1);
+}
+
 .modal-sign-in-container {
 	background-color: white;
 	//padding: 20px 45px;
@@ -126,7 +132,8 @@ input[type="color"]:focus,
 .float-label-control input,
 .float-label-control textarea,
 .float-label-control label {
-	font-size: 1.3em;
+	font-size: 1em;
+	color: $grey;
 	box-shadow: none;
 	-webkit-box-shadow: none;
 }

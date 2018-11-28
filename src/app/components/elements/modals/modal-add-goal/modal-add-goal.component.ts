@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalsService } from '../../../../services/goals.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
-import { DatePipe } from '@angular/common';
 import { Goal } from '../../../../models/goal';
 import { UsersService } from '../../../../services/users.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -14,16 +13,16 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalAddGoalComponent extends SubPage implements OnInit {
 	dateInput: Boolean = false;
 	Goal: Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
-
+	frequencies: String[];
 	constructor(
 		private _goalsService: GoalsService,
-		public datepipe: DatePipe,
 		private usersService: UsersService,
 		public activeModal: NgbActiveModal
 	)
 	{ super(); }
 	
 	ngOnInit() {
+		this.frequencies = ["Once-Off","Daily","Weekly","Monthly"]
 	}
 
 	createGoal(){

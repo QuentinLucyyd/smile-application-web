@@ -5,6 +5,7 @@ export class Note {
 	type: String = 'Personal';
 	voice: Boolean = false;
 	edit: Boolean = false;
+	noteLoading: Boolean = false;
 	date: Date;
 	user_id: number;
 	is_active: number;

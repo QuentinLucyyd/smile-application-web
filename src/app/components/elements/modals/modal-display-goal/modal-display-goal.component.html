@@ -1,18 +1,53 @@
-<div class="modal fade" id="displayGoalModal" tabindex="-1" role="dialog" aria-labelledby="displayGoalModal" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div class="modal-title" id="exampleModalLongTitle"></div>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="pre-scrollable"><p>
-					</p></div>
-					<button class="button dark-button">Edit Goal</button>
-				</div>
-				<div class="modal-footer"></div>
-			</div>
+<!-- Modal -->
+<div class="modal-header">
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h5>Goal Details</h5>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
 		</div>
+	</div>
+	<div class="modal-display-goal-container">
+		<form class="col-12 col-md-12">
+			<div class="row">
+				<div class="form-group float-label-control col s12">
+					<input [(ngModel)]="goalsService.ActiveGoal.name" type="text" class="form-control" id="name" name="name" required>
+					<label for="name">Goal Name</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group float-label-control col s12">
+					<input [disabled]="disabled" [(ngModel)]="goalsService.ActiveGoal.description" type="text" class="form-control" id="description"
+					 name="description">
+					<label for="name">Description</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-6 col-md-6">
+					<!-- Date input -->
+					<label for="due_date">Due Date</label>
+					<input [disabled]="disabled" [(bsValue)]="goalsService.ActiveGoal.due_date" value="{{goalsService.ActiveGoal.due_date | date:'dd/MM/yyyy' }}"
+					 [(ngModel)]="goalsService.ActiveGoal.due_date" class="form-control" id="due_date" name="due_date" bsDatepicker
+					 type="text" name="due_date" />
+				</div>
+				<div class="form-group col-6 col-md-6">
+					<label for="frequency">Frequency</label>
+					<select [disabled]="disabled" [(ngModel)]="goalsService.ActiveGoal.frequency" class="form-control" id="frequency"
+					 name="frequency">
+						<option value="Select Frequency:">Select Frequency:</option>
+						<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
+					</select>
+				</div>
+			</div>
+		</form>
+		<div class="header-button-container">
+			<button (click)="enable()" class="button dark-button col-5">Edit</button>
+			<button type="button" data-dismiss="modal" *ngIf="!disabled" [disabled]="disabled" (click)="save()" class="button green-button col-5">Save</button>
+			<button (click)="enable()" type="button" data-dismiss="modal" *ngIf="_close" [disabled]="disabled" class="button green-button col-5">Close</button>
+		</div>
+	</div>
 </div>

@@ -20,7 +20,7 @@
 		</select>
 	</div>
 	<div>
-		<textarea #newNote class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
+		<textarea #newNote id="display_note_text" class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
 	</div>
 	<div class="d-flex justify-content-end">
 		<i (click)="deleteNote()" class="far fa-trash-alt icons_notes"></i>

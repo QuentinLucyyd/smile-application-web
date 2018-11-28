@@ -23,9 +23,17 @@
 						<div class="card-header goal-name">
 							<div class="note-header-icon">
 								<i (click)="note.edit = !note.edit" *ngIf="!note.edit" class="fas edit-icon fa-pencil-alt"></i>
-								<i (click)="displayNote(note)" *ngIf="!note.edit" class="fas view-icon fa-eye"></i>
-								<i (click)="updateNote(note)" *ngIf="note.edit" class="fas green-tick fa-check"></i>
-								<i (click)="note.edit = !note.edit" *ngIf="note.edit" class="fas error-icon fa-times"></i>
+								<i onclick="displayNote()" (click)="displayNote(note)" *ngIf="!note.edit" class="fas view-icon fa-eye"></i>
+								<i (click)="updateNote(note)" *ngIf="note.edit && !note.noteLoading" class="fas green-tick fa-check"></i>
+								<div class="card-loading" *ngIf="note.noteLoading">
+									<div class="lds-ring">
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+									</div>
+								</div>
+								<i (click)="note.edit = !note.edit" *ngIf="note.edit && !note.noteLoading" class="fas error-icon fa-times"></i>
 							</div>
 							<div class="note-title" *ngIf="!note.edit">{{note.title}}</div>
 							<input [(ngModel)]="note.title" name="email" id="note_name" type="text" class="validate" *ngIf="note.edit">
