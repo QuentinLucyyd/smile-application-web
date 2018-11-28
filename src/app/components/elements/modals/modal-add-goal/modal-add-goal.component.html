@@ -48,7 +48,7 @@
 			</div>
 			<div class="form-group" *ngIf="dateInput">
 				<label for="dueDate">Due Date</label>
-				<input [(ngModel)]="dueDate" class="form-control" id="dueDate" name="dueDate" bsDatepicker type="text" name="dueDate" />
+				<input [(ngModel)]="Goal.due_date" [(bsValue)]="Goal.due_date" value="{{Goal.due_date | date:'dd/MM/yyyy'}}"class="form-control" id="due_date" name="due_date" bsDatepicker type="text" name="due_date" />
 			</div>
 
 		</form>

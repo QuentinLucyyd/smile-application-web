@@ -33,6 +33,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 			this.failure = true;
 			this.resultMessage = 'Please ensure that all fields are filled in and valid';
 		} else {
+			console.log(this.Goal.due_date);
 			this._goalsService.createGoal(this.Goal).subscribe(data => {
 				this.loading = false;
 				this.success = true;

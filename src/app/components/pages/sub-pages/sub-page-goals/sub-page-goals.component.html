@@ -32,6 +32,7 @@
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name}}
+								{{goal.due_date}}
 								<div class="goal-header-icon">
 									<i class="complete-icon fas fa-check"></i>
 									<i class="trash-icon fas fa-trash-alt"></i>
@@ -70,6 +71,7 @@
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name}}
+								{{goal.due_date}}
 								<div class="goal-header-icon">
 									<i class="complete-icon fas fa-check"></i>
 									<i class="trash-icon fas fa-trash-alt"></i>

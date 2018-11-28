@@ -30,8 +30,8 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			"Daily",
 			"Weekly",
 			"Monthly"
-			];
-
+		];
+		console.log(this.goalsService.ActiveGoal.due_date);
 	}
 
 	enable(){
