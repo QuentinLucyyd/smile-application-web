@@ -17,7 +17,7 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	_close: Boolean;
 
 	constructor(
-		private goalsService: GoalsService,
+		public goalsService: GoalsService,
 		private usersService: UsersService,
 		public activeModal: NgbActiveModal
 	) { super(); }
