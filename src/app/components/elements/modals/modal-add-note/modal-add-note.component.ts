@@ -12,8 +12,8 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalAddNoteComponent extends SubPage implements OnInit {
 	noteReady: Boolean = false;
-	wordCount: Number = 0;
 	noteError: String = '';
+	charCount: Number = 0;
 
 	Note: Note = new Note({user_id: this.usersServices.ActiveUser.id})
 
@@ -27,9 +27,9 @@ export class ModalAddNoteComponent extends SubPage implements OnInit {
 	}
 
 	onChange(event: any) {
-		this.wordCount = this.Note.note.length;
-		if ( this.wordCount < 45 ) {
-			this.noteError = 'Note has to be more that 45 charecters.';
+		this.charCount = this.Note.note.length;
+		if ( this.charCount < 45 ) {
+			this.noteError = 'Note has to be more that 45 characters.';
 			this.noteReady = false;
 		} else {
 			this.noteReady = true;

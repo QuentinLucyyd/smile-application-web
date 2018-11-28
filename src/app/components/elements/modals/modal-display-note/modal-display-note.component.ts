@@ -33,8 +33,6 @@ export class ModalDisplayNoteComponent implements OnInit {
 	}
 
 	ngOnInit() {
-	
-
 	}
 
 	editNote(){
@@ -85,5 +83,6 @@ export class ModalDisplayNoteComponent implements OnInit {
 		this.disabledSaveBtn = true;
 	}
 
+	
 	
 }

@@ -18,8 +18,8 @@
 	transition-duration: .5s;
 
 	&:hover {
-		color: $secondary-color;
-		transition-duration: .5s;
+		color: $secondary-color !important; 
+		transition-duration: .5s !important;
 	}
 }
 
@@ -87,9 +87,10 @@ textarea[enabled].note-type {
 }
 
 .modal-title {
-	width: 100%;
+	width: 100% !important;
 }
 
 .note-display {
-	//height: 60vh;
+	resize: none;
+    overflow: hidden;
 }

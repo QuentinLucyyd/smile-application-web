@@ -46,7 +46,6 @@ textarea {
 .goal-card-container {
 	color: $grey;
 	font-family: $primary-font;
-	cursor: pointer;
 
 	.goal-header-icon {
 		float: right;
@@ -68,12 +67,23 @@ textarea {
 }
 
 .green-tick {
+	cursor: pointer;
 	color: $secondary-color !important;
 }
 
 .edit-icon {
 	transition-duration: .5s;
+	cursor: pointer;
+	&:hover {
+		color: $secondary-color;
+		transition-duration: .5s;
+	}
+}
 
+.view-icon {
+	transition-duration: .5s;
+	padding-left: 10px;
+	cursor: pointer;
 	&:hover {
 		color: $secondary-color;
 		transition-duration: .5s;
@@ -81,10 +91,8 @@ textarea {
 }
 
 .error-icon {
+	cursor: pointer;
 	color: $error-color;
 	padding-left: 10px;
 }
 
-.view-icon {
-	padding-left: 10px;
-}
