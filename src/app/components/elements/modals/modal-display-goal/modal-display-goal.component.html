@@ -30,7 +30,7 @@
 				<div class="form-group col-6 col-md-6">
 					<!-- Date input -->
 					<label for="due_date">Due Date</label>
-					<input [disabled]="disabled" [(bsValue)]="goalsService.ActiveGoal.due_date" value="{{goalsService.ActiveGoal.due_date | date:'dd/MM/yyyy'}}"
+					<input [disabled]="disabled" 
 					 [(ngModel)]="goalsService.ActiveGoal.due_date" class="form-control" id="due_date" name="due_date" bsDatepicker
 					 type="text"/>
 				</div>

@@ -21,7 +21,7 @@ export class Goal {
 		if ( goal.frequency ) { this.frequency = goal.frequency; }
 		if ( goal.due_date ) { this.due_date = goal.due_date; }
 		if ( goal.state ) { this.state = goal.state; }
-		if ( goal.has_checklist ) { this.has_checklist = goal.subgoals; }
+		if ( goal.has_checklist ) { this.has_checklist = goal.has_checklist; }
 		if ( goal.priority ) { this.priority = goal.priority; }
 		if ( goal.user_id ) { this.user_id = goal.user_id; }
 	}
