@@ -19,23 +19,31 @@
 							<div class="tooltip">
 								<ul class="list-group list-group-flush" style="margin-bottom: 10px;">
 									<li class="list-group-item">Questions to answer</li>
-									<li class="list-group-item">• I am grateful for...</li>
-									<li class="list-group-item">• What would make today great?</li>
 									<li class="list-group-item">• I am..</li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="journal-form">
+				<!-- <div class="journal-form">
 					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..."></textarea>
-					<div class="row d-flex justify-content-center">
+					<div (click)="toggleRecording()" class="row d-flex justify-content-center" [ngClass]="{'recording': recording}" *ngIf="!loading">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>
 					</div>
-				</div>
+					<div class="record-text d-flex justify-content-center" *ngIf="recording">Recording....</div>
+					<div class="audio-playback-header d-flex justify-content-center" *ngIf="url && !recording">Recording Playback</div>
+					<div class="audio-playback-container d-flex justify-content-center" *ngIf="url && !recording">
+						<audio controls="">
+							<source [src]="sanitize(url)" type="audio/wav">
+						</audio>
+					</div>
+				</div> -->
 				<div class="d-flex justify-content-center rowtop">
-					<div class="col-5 col-md-5 d-flex justify-content-center">
+					<div (click)="submitCheckout()" class="col-5 col-md-5 d-flex justify-content-center" *ngIf="!loading">
 						<button type="button" class="button dark-button sign-in-button">Submit</button>
+					</div>
+					<div class="secondary-loading-container" *ngIf="loading">
+						<div class="secondary-loading"></div>
 					</div>
 				</div>
 				<p class="skip-text d-flex justify-content-center">Skip</p>

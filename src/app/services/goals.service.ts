@@ -32,6 +32,7 @@ export class GoalsService {
 					if (goal.frequency === 'Once-off')
 						this.Goals.push(new Goal(goal));
 					else {
+						console.log(goal);
 						this.RecurringGoals.push(new Goal(goal));
 					}
 				}

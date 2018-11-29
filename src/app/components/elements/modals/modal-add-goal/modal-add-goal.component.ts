@@ -30,7 +30,6 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 
 	createGoal(){
 		this.loading = true;
-		console.log(this.Goal);
 		if (!this.Goal.name || !this.Goal.description) {
 			this.loading = false;
 			this.failure = true;
