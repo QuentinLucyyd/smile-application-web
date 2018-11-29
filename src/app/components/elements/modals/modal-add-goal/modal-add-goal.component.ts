@@ -15,6 +15,8 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 	dateInput: Boolean = true;
 	Goal: Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
 	frequencies: String[];
+	checklist: Array<String> = [];
+	hide: Boolean = true;
 
 	constructor(
 		private _goalsService: GoalsService,
@@ -62,5 +64,14 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 
 	clearFields(){
 		this.Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
+	}
+
+	addItem(){
+		this.checklist.push("");
+	}
+
+	disable()
+	{
+		this.hide = false;
 	}
 }
