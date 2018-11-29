@@ -1,10 +1,11 @@
+import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
 
 export class Goal {
 	id: Number;
 	name: String = '';
 	description: String = '';
 	frequency: String = 'Once-off'
-	due_date: String;
+	due_date: Date;
 	state: String = 'ongoing';
 	has_checklist: Boolean = false;
 	priority: String = 'High';
@@ -19,7 +20,7 @@ export class Goal {
 		if ( goal.name ) { this.name = goal.name; }
 		if ( goal.description ) { this.description = goal.description; }
 		if ( goal.frequency ) { this.frequency = goal.frequency; }
-		if ( goal.due_date ) { this.due_date = goal.due_date; }
+		if ( goal.due_date ) { this.due_date = new Date(goal.due_date); }
 		if ( goal.state ) { this.state = goal.state; }
 		if ( goal.has_checklist ) { this.has_checklist = goal.subgoals; }
 		if ( goal.priority ) { this.priority = goal.priority; }

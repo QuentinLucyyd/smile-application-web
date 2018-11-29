@@ -62,8 +62,11 @@ p.small {
 	color: #fff;
 }
 
+.grey-text {
+	color: $grey;
+}
+
 .medium-text {
-	color: #019cd1;
 	font-size: 2em;
 	text-decoration: none;
 	text-underline: none;

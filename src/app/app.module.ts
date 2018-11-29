@@ -11,6 +11,7 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 /* Pages Import */
 import { PageHomeComponent } from './components/pages/page-home/page-home.component'
@@ -107,6 +108,7 @@ const customNotifierOptions: NotifierOptions = {
 		BsDatepickerModule.forRoot(),
 		HttpClientModule,
 		FormsModule,
+		TextareaAutosizeModule,
 		RouterModule.forRoot(ROUTES),
 		NotifierModule.withConfig(customNotifierOptions),
 		NgProgressModule.forRoot({

@@ -54,22 +54,10 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	}
 
 	save(){
-		const goal = {
-			id: this.goalsService.ActiveGoal.id,
-			name: this.goalsService.ActiveGoal.name,
-			description: this.goalsService.ActiveGoal.description,
-			frequency: this.goalsService.ActiveGoal.frequency,
-			due_date: this.goalsService.ActiveGoal.due_date,
-			state: this.goalsService.ActiveGoal.state,
-			has_checklist: this.goalsService.ActiveGoal.has_checklist,
-			priority: this.goalsService.ActiveGoal.priority,
-			user_id: this.usersService.ActiveUser.id
-		}
-		const _goal: Goal = new Goal(goal);
-		console.log("Saving now...");
-		//this.enable();
-		this.goalsService.updateGoal(_goal).subscribe(data => {
-			console.log(data);
+		this.loading = true;
+		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
+			this.loading = false;
+			this.activeModal.close('Edit Success');
 		}, err => {
 			console.log(err);
 		});

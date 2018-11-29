@@ -1,8 +1,52 @@
-
 @import '../../../../../styles/pages';
 @import '../../../../../styles/variables';
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
+
+.modal-display-goal-container {
+	padding-left: 15px;
+
+	textarea {
+		height: 200px;
+		resize: none;
+	}
+}
+
+.button-sm {
+	font-size: 0.9em !important;
+	padding: 6px 23px;
+	font-weight: 100;
+}
+
+.goal-actions-card-container {
+	.card {
+		cursor: pointer;
+		transition-duration: 1s;
+
+		&:hover {
+			.trash-icon {
+				color: $error-color;
+				transition-duration: 1s;
+			}
+
+			.edit-icon {
+				color: $secondary-color;
+				transition-duration: 1s;
+			}
+		}
+	}
+}
+
+.goal-actions-header {
+	h5 {
+		font-size: 1em;
+		font-weight: 100;
+	}
+}
+
+.goal-action-name {
+	padding-left: 15px;
+}
 
 .header-button-container {
 	padding-top: 30px;
@@ -13,6 +57,7 @@
 
 .sign-in-button {
 	transition-duration: 0.4s;
+
 	&:hover {
 		background: $primary-color;
 		color: $white;

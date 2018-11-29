@@ -36,7 +36,7 @@ export class SubPageNotesComponent extends SubPage implements OnInit {
 	}
 
 	displayNote(note) {
-		this.modalService.open(ModalDisplayNoteComponent, {  windowClass: 'modal-custom-container', centered: true });
+		this.modalService.open(ModalDisplayNoteComponent, {  windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 		this.notesService.ActiveNote = note;
 	}
 

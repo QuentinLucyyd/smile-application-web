@@ -7,47 +7,65 @@
 <div class="modal-body">
 	<div class="col-12 d-flex justify-content-center">
 		<div class="welcome-container">
-			<h5>Goal Details</h5>
+			<h4>{{goalsService.ActiveGoal.name}}</h4>
 			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
 		</div>
 	</div>
 	<div class="modal-display-goal-container">
-		<form class="col-12 col-md-12">
-			<div class="row">
-				<div class="form-group float-label-control col s12">
-					<input [(ngModel)]="goalsService.ActiveGoal.name" type="text" class="form-control" id="name" name="name" required>
-					<label for="name">Goal Name</label>
+		<div class="row">
+			<form class="col-6 col-md-7">
+				<div class="row">
+					<div class="form-group float-label-control col s12">
+						<p class="grey-text">Description</p>
+						<textarea [disabled]="disabled" type="text" class="form-control" id="description" name="description">{{goalsService.ActiveGoal.description}}</textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-6 col-md-6">
+						<!-- Date input -->
+						<label for="due_date">Due Date</label>
+						<input [disabled]="disabled" [(bsValue)]="goalsService.ActiveGoal.due_date" value="{{goalsService.ActiveGoal.due_date | date:'dd/MM/yyyy' }}"
+						 [(ngModel)]="goalsService.ActiveGoal.due_date" class="form-control" id="due_date" name="due_date" bsDatepicker
+						 type="text" name="due_date" />
+					</div>
+					<div class="form-group col-6 col-md-6">
+						<label for="frequency">Frequency</label>
+						<select [disabled]="disabled" [(ngModel)]="goalsService.ActiveGoal.frequency" class="form-control" id="frequency"
+						 name="frequency">
+							<option value="Select Frequency:">Select Frequency:</option>
+							<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
+						</select>
+					</div>
+				</div>
+			</form>
+			<div class="col-4 col-md-5">
+				<div class="goal-actions">
+					<div class="goal-actions-header d-flex justify-content-center">
+						<h5>Goal Actions</h5>
+					</div>
+					<div class="goal-actions-card-container">
+						<div class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i class="trash-icon fas fa-trash-alt"></i>
+									<span class="goal-action-name">Delete Goal</span>
+								</div>
+							</div>
+						</div>
+						<div (click)="enable()" class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i class="edit-icon fas fa-pencil-alt"></i>
+									<span class="goal-action-name">Edit Goal</span>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex justify-content-center">
+							<button type="button" data-dismiss="modal" *ngIf="!disabled" [disabled]="disabled" (click)="save()" class="button button-sm green-button">Save</button>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="form-group float-label-control col s12">
-					<input [disabled]="disabled" [(ngModel)]="goalsService.ActiveGoal.description" type="text" class="form-control" id="description"
-					 name="description">
-					<label for="name">Description</label>
-				</div>
-			</div>
-			<div class="row">
-				<div class="form-group col-6 col-md-6">
-					<!-- Date input -->
-					<label for="due_date">Due Date</label>
-					<input [disabled]="disabled" [(bsValue)]="goalsService.ActiveGoal.due_date" value="{{goalsService.ActiveGoal.due_date | date:'dd/MM/yyyy' }}"
-					 [(ngModel)]="goalsService.ActiveGoal.due_date" class="form-control" id="due_date" name="due_date" bsDatepicker
-					 type="text" name="due_date" />
-				</div>
-				<div class="form-group col-6 col-md-6">
-					<label for="frequency">Frequency</label>
-					<select [disabled]="disabled" [(ngModel)]="goalsService.ActiveGoal.frequency" class="form-control" id="frequency"
-					 name="frequency">
-						<option value="Select Frequency:">Select Frequency:</option>
-						<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
-					</select>
-				</div>
-			</div>
-		</form>
-		<div class="header-button-container">
-			<button (click)="enable()" class="button dark-button col-5">Edit</button>
-			<button type="button" data-dismiss="modal" *ngIf="!disabled" [disabled]="disabled" (click)="save()" class="button green-button col-5">Save</button>
-			<button (click)="enable()" type="button" data-dismiss="modal" *ngIf="_close" [disabled]="disabled" class="button green-button col-5">Close</button>
 		</div>
 	</div>
 </div>

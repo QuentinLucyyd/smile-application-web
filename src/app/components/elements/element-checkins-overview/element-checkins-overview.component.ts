@@ -13,6 +13,7 @@ import { Chart } from 'angular-highcharts';
 })
 export class ElementCheckinsOverviewComponent extends SubPage implements OnInit {
 	Checkins: Checkin[] = [];
+	noCheckins: Boolean = false;
 
 	chart: Chart;
 
@@ -33,7 +34,10 @@ export class ElementCheckinsOverviewComponent extends SubPage implements OnInit 
 						const _val = new Checkin(checkin);
 						this.Checkins.push(_val);
 					}
-					this.populateChart();
+					if (this.Checkins.length > 1)
+						this.populateChart();
+					else
+						this.noCheckins = true;
 				}, err => {
 					this.loading = false;
 					this.failure = true;

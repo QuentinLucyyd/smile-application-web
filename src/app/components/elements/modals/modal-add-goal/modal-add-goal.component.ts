@@ -4,6 +4,7 @@ import { SubPage } from '../../../../classes/abstract/page.class';
 import { Goal } from '../../../../models/goal';
 import { UsersService } from '../../../../services/users.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
 	selector: 'app-modal-add-goal',
@@ -11,13 +12,15 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['./modal-add-goal.component.scss']
 })
 export class ModalAddGoalComponent extends SubPage implements OnInit {
-	dateInput: Boolean = false;
+	dateInput: Boolean = true;
 	Goal: Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
 	frequencies: String[];
+
 	constructor(
 		private _goalsService: GoalsService,
 		private usersService: UsersService,
-		public activeModal: NgbActiveModal
+		public activeModal: NgbActiveModal,
+		private notificationService: NotificationsService
 	)
 	{ super(); }
 	
@@ -37,6 +40,8 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				this.loading = false;
 				this.success = true;
 				this._goalsService.Goals.push(this.Goal);
+				this.activeModal.close('Goal Added Successfully');
+				this.notificationService.newNotify('info', 'Goal "' + this.Goal.name + '" Added Successfully');
 			}, err => {
 				this.loading = false;
 				this.failure = true;
@@ -50,6 +55,10 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 			this.dateInput = true;
 		else
 			this.dateInput = false;
+	}
+
+	onDateSelect(event: any) {
+		console.log(this.Goal.due_date);
 	}
 
 	clearFields(){

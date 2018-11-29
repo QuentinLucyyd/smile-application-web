@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { NotesService } from '../../../../services/notes.service';
 import { UsersService } from '../../../../services/users.service';
 import { Note } from '../../../../models/notes';
-import { LoadedRouterConfig } from '../../../../../../node_modules/@angular/router/src/config';
-import { elementStart } from '@angular/core/src/render3/instructions';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -12,7 +10,6 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 	styleUrls: ['./modal-display-note.component.scss']
 })
 export class ModalDisplayNoteComponent implements OnInit {
-
 	disabled: Boolean = true;
 	disabledSaveBtn: Boolean = true;
 
