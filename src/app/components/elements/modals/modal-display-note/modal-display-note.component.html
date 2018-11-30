@@ -1,7 +1,7 @@
 <div class="modal-header">
-	<div class="col-6 col-md-6">
+	<div class="col-10 col-md-10">
 		<div class="modal-title" id="exampleModalLongTitle">
-			<textarea #newNoteTitle class="form-control displayNoteTextAreaD" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.title}}</textarea></div>
+			<textarea #newNoteTitle class="form-control displayNoteTextAreaD displayTitle" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.title}}</textarea></div>
 	</div>
 	<div class="note-header-icon">
 		<i (click)="editNote()" class="fas edit-icon fa-pencil-alt"></i>
@@ -13,8 +13,7 @@
 		 [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.type}}</textarea></div>
 	<div>
 		<select class="form-control" id="note_type" name="note" class="validate" [attr.disabled]="disabled">
-			<option selected disabled hidden>Choose type here</option>
-			<option id="1">Personal</option>
+			<option selected id="1">Personal</option>
 			<option id="2">Session</option>
 			<option id="3">Goal</option>
 		</select>
@@ -31,3 +30,11 @@
 	</div>
 </div>
 <div class="modal-footer"></div>
+
+<script>
+
+function auto_grow(element) {
+    element.style.height = "5px";
+    element.style.height = (element.scrollHeight)+"px";
+}
+</script>
