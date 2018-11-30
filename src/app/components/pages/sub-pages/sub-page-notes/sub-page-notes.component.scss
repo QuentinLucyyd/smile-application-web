@@ -72,6 +72,7 @@ textarea {
 
 .edit-icon {
 	transition-duration: .5s;
+	cursor: pointer;
 
 	&:hover {
 		color: $secondary-color;
@@ -82,10 +83,16 @@ textarea {
 .error-icon {
 	color: $error-color;
 	padding-left: 10px;
+	cursor: pointer;
 }
-
 .view-icon {
-	padding-left: 10px;
+	transition-duration: .5s;
+	cursor: pointer;
+	padding-left: 10px; 
+	&:hover {
+		color: $secondary-color;
+		transition-duration: .5s;
+	}
 }
 
 .card-loading {

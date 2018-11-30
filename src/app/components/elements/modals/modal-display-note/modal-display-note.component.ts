@@ -42,19 +42,20 @@ export class ModalDisplayNoteComponent implements OnInit {
 		this.disabledSaveBtn = !this.disabledSaveBtn;
 	}
 	
-	saveNote(newNote, newNoteType, newNoteTile){
-		this.disabled = true;
-		this.disabledSaveBtn = true;
-		const note =  {
-			title: newNoteTile,
-			note: newNote,
-			type: newNoteType,
-			voice: this.notesService.ActiveNote.voice,
-			user_id: this.userServices.ActiveUser.id,
-			id: this.notesService.ActiveNote.id,
-			is_active: this.notesService.ActiveNote.is_active
-		}
+	saveNote(note){
+		// this.disabled = true;
+		// this.disabledSaveBtn = true;
+		// const note =  {
+		// 	title: newNoteTile,
+		// 	note: newNote,
+		// 	type: newNoteType,
+		// 	voice: this.notesService.ActiveNote.voice,
+		// 	user_id: this.userServices.ActiveUser.id,
+		// 	id: this.notesService.ActiveNote.id,
+		// 	is_active: this.notesService.ActiveNote.is_active
+		// }
 		const _note: Note =  new Note(note);
+		console.log(_note);
 		this.notesService.updateUserNote(_note).subscribe(data => {
 			console.log(data);
 	})
