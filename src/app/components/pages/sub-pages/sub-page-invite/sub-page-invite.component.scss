@@ -3,6 +3,25 @@
 @import '../../../../../styles/variables';
 @import '../../../../../styles/view';
 
+.btn-disable {
+	background-color: $grey !important
+}
+
+.role-contanier {
+	padding-top: 10px;
+
+	.label {
+		font-size: .9em;
+		position: absolute;
+		top: -25px;
+		left: 0px;
+	}
+}
+
+.secondary-loading-container {
+	margin: 0 !important;
+}
+
 select {
 	background-color: transparent;
 

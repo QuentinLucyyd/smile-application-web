@@ -8,6 +8,7 @@ import { User } from '../models/user';
 import { Checkin } from '../models/checkin';
 import { Goal } from '../models/goal';
 import { Note } from '../models/notes';
+import { Checkout } from '../models/checkout';
 
 @Injectable({
 	providedIn: 'root'
@@ -37,6 +38,22 @@ export class ApiServiceService {
 			.pipe(map(response => response.json()));
 	}
 
+	public getUsersSearch(identifier: string) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users?search=true&identifier=' + identifier, options)
+			.pipe(map(response => response.json()));
+	}
+
+	public inviteUser(user: User) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/users/invite', user, options)
+			.pipe(map(response => response.json()));
+	}
+
 	//Verify Realated Request
 	public verifyInviteToken(token) {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
@@ -46,7 +63,7 @@ export class ApiServiceService {
 	}
 
 	public UserAuth() {
-		this.fetchToken()
+		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/users/auth', options)
@@ -129,6 +146,40 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/users/' + user_id + '/checkins?search=true&date=' + date, options)
+		.pipe(map(response => response.json()));
+	}
+
+	// Chekout Related Requests
+
+	public getCheckouts() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checkouts', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public createCheckout(checkin: Checkout) {
+		this.fetchToken()
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/checkouts', checkin, options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserCheckouts(user_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/' + user_id + '/checkouts', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserDateCheckouts(user_id, date) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/' + user_id + '/checkouts?search=true&date=' + date, options)
 		.pipe(map(response => response.json()));
 	}
 

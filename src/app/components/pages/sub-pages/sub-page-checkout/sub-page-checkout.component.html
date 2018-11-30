@@ -25,19 +25,19 @@
 						</div>
 					</div>
 				</div>
-				<!-- <div class="journal-form">
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..."></textarea>
-					<div (click)="toggleRecording()" class="row d-flex justify-content-center" [ngClass]="{'recording': recording}" *ngIf="!loading">
+				<div class="journal-form">
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..." [(ngModel)]="Note.note">{{Note.note}}</textarea>
+					<div (click)="recordService.toggleRecording()" class="row d-flex justify-content-center" [ngClass]="{'recording': recordService.recording}" *ngIf="!loading">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>
 					</div>
-					<div class="record-text d-flex justify-content-center" *ngIf="recording">Recording....</div>
-					<div class="audio-playback-header d-flex justify-content-center" *ngIf="url && !recording">Recording Playback</div>
-					<div class="audio-playback-container d-flex justify-content-center" *ngIf="url && !recording">
+					<div class="record-text d-flex justify-content-center" *ngIf="recordService.recording">Recording....</div>
+					<div class="audio-playback-header d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">Recording Playback</div>
+					<div class="audio-playback-container d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">
 						<audio controls="">
-							<source [src]="sanitize(url)" type="audio/wav">
+							<source [src]="recordService.sanitize()" type="audio/wav">
 						</audio>
 					</div>
-				</div> -->
+				</div>
 				<div class="d-flex justify-content-center rowtop">
 					<div (click)="submitCheckout()" class="col-5 col-md-5 d-flex justify-content-center" *ngIf="!loading">
 						<button type="button" class="button dark-button sign-in-button">Submit</button>

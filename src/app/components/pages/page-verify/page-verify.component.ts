@@ -46,6 +46,7 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 		if (this.verify_token) {
 			this._verifyService.verifyInviteToken(this.verify_token).subscribe(result => {
 				this.loading = false;
+				console.log(result);
 				if (result.status === 'failure') {
 					this.failure = true;
 					this._router.navigate(['/']);
@@ -97,20 +98,14 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 				password: this.password
 			};
 			const _User:User = new User(body);
+			console.log(_User);
 			this._usersService.createAccount(this.verify_token, _User)
 			.subscribe(result => {
 				this.loading = false;
-				console.log(result.status);
 				if (result.status === 'success') {
 					this.success = true;
 					this.resultMessage = 'Account has been verified succesfully created ';
-					setTimeout(() => {
-						this._router.navigate(['/'], {
-							queryParams: {
-								ref: this._router.url
-							}
-						});
-					}, 2000);
+						this._router.navigate(['/'], {queryParams: {ref: this._router.url}});
 				}
 			}, err => {
 				this.loading = false

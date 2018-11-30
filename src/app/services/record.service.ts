@@ -13,8 +13,8 @@ export class RecordService {
 
 	constructor(private domSanitizer: DomSanitizer) { }
 
-	sanitize(url:string){
-		return this.domSanitizer.bypassSecurityTrustUrl(url);
+	sanitize(){
+		return this.domSanitizer.bypassSecurityTrustUrl(this.url);
 	}
 
 	initiateRecording() {
@@ -52,7 +52,7 @@ export class RecordService {
 	processRecording(blob) {
 		this.formData.append('file', blob, 'temp.wav');
 		this.url = URL.createObjectURL(blob);
-		this.sanitize(this.url);
+		this.sanitize();
 	}
 
 	toggleRecording() {

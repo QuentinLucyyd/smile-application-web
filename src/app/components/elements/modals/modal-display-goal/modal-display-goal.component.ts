@@ -34,7 +34,7 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	}
 
 
-	save(){
+	updateGoal(){
 		this.loading = true;
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
 			this.loading = false;

@@ -1,9 +1,4 @@
-<div class="sub-page-loading-container text-align-center d-flex align-items-center justify-content-center" *ngIf="loading">
-	<div class="secondary-loading-container">
-		<div class="secondary-loading"></div>
-	</div>
-</div>
-<div class="sub-page-dashboard-container" *ngIf="!loading">
+<div class="sub-page-dashboard-container">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12 col-md-12">
@@ -18,29 +13,34 @@
 			<div class="form-container">
 				<form>
 					<div class="row">
-						<div class="col-12 col-md-4">
-							<div class="form-group float-label-control col s12">
-								<input (keyup)="validateEmail($event)" [(ngModel)]="email" name="email" id="email" type="email" class="validate"
+						<div class="col-12 col-md-12">
+							<div class="form-group float-label-control col-6 col-md-4">
+								<input autocomplete="off" (keyup)="validateEmail($event)" [(ngModel)]="email" name="email" id="email" type="email" class="validate"
 								 required>
 								<label for="email">Email</label>
-								<p *ngIf="emailFailure">{{emailMessage}}</p>
+								<div style="padding-top: 10px;" class="email-loading">
+									<p *ngIf="emailFailure">{{emailMessage}}</p>
+									<div *ngIf="checkingUser" class="lds-ring">
+										<div></div>
+										<div></div>
+										<div></div>
+										<div></div>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="col-12 col-md-4">
-							<div class="form-group float-label-control col s12">
-								<select class="form-control" name="role">
-									<option>Role</option>
-									<option>Client</option>
-									<option>Admin</option>
+							<div class="role-container form-group form-select col-6 col-md-4">
+								<label class="label" for="role">Role</label>
+								<select [(ngModel)]="role" class="form-control" id="role" name="role">
+									<option value="client" selected="">client</option>
+									<option value="admin">administrator</option>
 								</select>
-								<label for="role">Email</label>
 							</div>
 						</div>
-						<div class="col-5 col-md-5" (click)="submitCheckin()" *ngIf="!loading">
-							<button type="button" class="button dark-button sign-in-button">Invite</button>
-						</div>
-						<div class="secondary-loading-container" *ngIf="loading">
-							<div class="secondary-loading"></div>
+						<div style="padding-top: 10px" class="col-5 col-md-5">
+							<button (click)="inviteUser()" *ngIf="!loading" type="button" [ngClass]="{'btn-disable': emailFailure}" class="button dark-button sign-in-button">Invite</button>
+							<div class="secondary-loading-container d-flex justify-content-start" *ngIf="loading">
+								<div class="secondary-loading"></div>
+							</div>
 						</div>
 					</div>
 				</form>
