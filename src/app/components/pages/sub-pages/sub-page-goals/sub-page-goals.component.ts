@@ -8,6 +8,7 @@ import { AuthenticationService } from '../../../../services/authentication.servi
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddGoalComponent } from '../../../elements/modals/modal-add-goal/modal-add-goal.component';
 import { ModalDisplayGoalComponent } from '../../../elements/modals/modal-display-goal/modal-display-goal.component';
+import { Options } from 'ng5-slider';
 
 @Component({
 	selector: 'app-sub-page-goals',
@@ -15,6 +16,14 @@ import { ModalDisplayGoalComponent } from '../../../elements/modals/modal-displa
 	styleUrls: ['./sub-page-goals.component.scss']
 })
 export class SubPageGoalsComponent extends SubPage implements OnInit {
+
+	private progress_value: number = 82;
+	options: Options = {
+		floor: 0,
+		ceil: 100,
+		showSelectionBar: true,
+		disabled: true
+	  };
 
 	constructor(
 		private titleService: Title,

@@ -80,3 +80,54 @@
 .ongoing-goals-container {
 	padding-top: 20px;
 }
+
+::ng-deep {
+	.custom-slider .ng5-slider .ng5-slider-bar {
+		background: rgba(144,164,174, 0.1);
+		height: 1rem;
+	}
+
+
+	.custom-slider .ng5-slider .ng5-slider-pointer {
+		width: 8px;
+		height: 1.8rem;
+		top: auto;
+		/* to remove the default positioning */
+		bottom: 100;
+		background-color: rgb(94, 94, 94);
+		display: none
+	}
+
+	.custom-slider .ng5-slider .ng5-slider-pointer:after {
+		display: none;
+	}
+
+	.custom-slider .ng5-slider .ng5-slider-bubble {
+		bottom: 14px;
+		display: none !important;
+	}
+
+	.custom-slider .ng5-slider .ng5-slider-limit {
+		//font-weight: bold;
+		color: $grey;
+		display: none !important;
+	}
+
+	.custom-slider .ng5-slider .ng5-slider-tick {
+		display: none;
+
+	}
+
+	.custom-slider {
+		background-color: $white;
+		border-radius: 3px;
+		cursor:  pointer !important;
+	}
+	.ng5-slider[disabled] .ng5-slider-selection {
+		background: #1997FD !important;
+	}
+	.ng5-slider[disabled] {
+		cursor: inherit !important;
+	}
+
+}
