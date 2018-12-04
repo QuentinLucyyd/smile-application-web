@@ -8,6 +8,7 @@ import { User } from '../models/user';
 import { Checkin } from '../models/checkin';
 import { Goal } from '../models/goal';
 import { Note } from '../models/notes';
+import { Checklist } from '../models/checklist';
 
 @Injectable({
 	providedIn: 'root'
@@ -98,6 +99,32 @@ export class ApiServiceService {
 		return this._http.patch(this.host + '/goals', goal, options)
 		.pipe(map(response => response.json()));
 	}
+
+	//Checklist Related Requests
+	public getChecklists(){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checklists', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getGoalChecklists(goal_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checklists/' + goal_id, options)
+		.pipe(map(response => response.json()));
+	}
+
+	public createChecklist(checklist: Array<Checklist>){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/checklists', checklist, options)
+		.pipe(map(response => response.json()));
+	}
+
 	// Chekin Related Requests
 
 	public getCheckins() {

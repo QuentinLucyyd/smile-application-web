@@ -30,10 +30,10 @@
 			<div class="row">
 				<div class="form-group float-label-control col s12">
 					<button *ngIf="hide" (click)="addItem() || disable()" class="form-control" add-button>Add Checklist</button>
-					<div>
-						<input *ngFor="let item of checklist" type="text" name="item" placeholder="Add item here...">
-						<i *ngIf="!hide" (click)="addItem()" class="fas fa-plus add-button"></i>
+					<div *ngFor="let item of checklist">
+						<input [(ngModel)]="item.description" type="text" name="description" placeholder="item.description">
 					</div>
+					<i *ngIf="!hide" (click)="addItem()" class="fas fa-plus add-button"></i>
 				</div>
 			</div>
 			<div class="row">

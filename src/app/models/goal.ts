@@ -1,4 +1,5 @@
 import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
+import { Checklist } from "./checklist";
 
 export class Goal {
 	id: Number;
@@ -10,6 +11,7 @@ export class Goal {
 	has_checklist: Boolean = false;
 	priority: String = 'High';
 	user_id: Number = 0;
+	checklist: Array<Checklist> = [];
 	
 	constructor(goal) {
 		this.updateGoal(goal);
@@ -25,5 +27,7 @@ export class Goal {
 		if ( goal.has_checklist ) { this.has_checklist = goal.has_checklist; }
 		if ( goal.priority ) { this.priority = goal.priority; }
 		if ( goal.user_id ) { this.user_id = goal.user_id; }
+		if ( goal.checklist ) { this.checklist = goal.checklist; }
+
 	}
 }

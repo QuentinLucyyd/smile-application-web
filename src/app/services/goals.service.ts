@@ -3,6 +3,7 @@ import { ApiServiceService } from './api-service.service';
 import { Goal } from '../models/goal';
 import { resolve } from 'path';
 import { reject } from 'q';
+import { Checklist } from '../models/checklist';
 
 @Injectable({
 	providedIn: 'root'
@@ -50,4 +51,6 @@ export class GoalsService {
 	public updateGoal(goal: Goal){
 		return this._APIService.updateGoal(goal);
 	}
+
+
 }
