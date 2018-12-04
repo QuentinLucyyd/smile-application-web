@@ -24,6 +24,8 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		showSelectionBar: true,
 		disabled: true
 	  };
+	  private checklist: boolean[] = [false, false, false, false, false, false, false, true];
+	  private i: number = 0;
 
 	constructor(
 		private titleService: Title,
@@ -51,7 +53,13 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.failure = true;
 				this.resultMessage = "An error has occured";
 			})
-		})
+		});
+		for (let x of this.checklist ){
+			if (x == true){
+				this.i++;
+			}
+		}
+		this.progress_value = ( this.i / this.checklist.length) * 100;
 	}
 
 	open() {
