@@ -10,8 +10,17 @@ export class Goal {
 	has_checklist: Boolean = false;
 	priority: String = 'High';
 	user_id: Number = 0;
+	progress_value: number = 0;
+	private checklist: boolean[] = [false, false, false, false, false, false, false, true];
+	private i: number = 0;
 	
 	constructor(goal) {
+		for (let x of this.checklist ){
+			if (x == true){
+				this.i++;
+			}
+		}
+		this.progress_value = ( this.i / this.checklist.length) * 100;
 		this.updateGoal(goal);
 	}
 

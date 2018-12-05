@@ -1,7 +1,7 @@
 <div class="modal-header">
 	<div class="col-10 col-md-10">
 		<div class="modal-title" id="exampleModalLongTitle">
-			<textarea #newNoteTitle class="form-control displayNoteTextAreaD displayTitle" [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.title}}</textarea></div>
+			<textarea [(ngModel)]="notesService.ActiveNote.title" class="form-control displayNoteTextAreaD" [attr.disabled]="disabled" rows="1"></textarea></div>
 	</div>
 	<div class="note-header-icon">
 		<i (click)="editNote()" class="fas edit-icon fa-pencil-alt"></i>
@@ -9,24 +9,25 @@
 	</div>
 </div>
 <div class="modal-body">
-	<div class="modal-subtitle" id="exampleModalLongTitle"> <textarea class="form-control displayNoteTextAreaD note-type"
-		 [attr.disabled]="disabled" rows="1">{{notesService.ActiveNote.type}}</textarea></div>
+	<div  class="modal-subtitle" id="exampleModalLongTitle"> <textarea [(ngModel)]="notesService.ActiveNote.type" class="form-control displayNoteTextAreaD note-type"
+		 [attr.disabled]="disabled" rows="1"></textarea></div>
 	<div>
-		<select class="form-control" id="note_type" name="note" class="validate" [attr.disabled]="disabled">
-			<option selected id="1">Personal</option>
+		<select [(ngModel)]="notesService.ActiveNote.type" class="form-control" id="note_type" name="note" class="validate" [attr.disabled]="disabled">
+			<option selected disabled hidden>Choose type here</option>
+			<option id="1">Personal</option>
 			<option id="2">Session</option>
 			<option id="3">Goal</option>
 		</select>
 	</div>
 	<div>
-		<textarea autosize #newNote id="display_note_text" class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled">{{notesService.ActiveNote.note}}</textarea>
+		<textarea autosize [(ngModel)]="notesService.ActiveNote.note" id="display_note_text" class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled"></textarea>
 	</div>
 	<div class="d-flex justify-content-end">
 		<i (click)="deleteNote()" class="far fa-trash-alt icons_notes"></i>
 	</div>
 	<div class="header-button-container">
-		<!-- <button data-dismiss="modal" (click)="saveNote(newNote.value, newNoteType.value, newNoteTitle.value)" class="button dark-button sign-in-button"
-		 [disabled]="disabledSaveBtn">Save Changes</button> -->
+		<button data-dismiss="modal" (click)="saveNote(notesService.ActiveNote)" class="button save-button"
+		 [disabled]="disabledSaveBtn">Save Changes</button>
 	</div>
 </div>
 <div class="modal-footer"></div>

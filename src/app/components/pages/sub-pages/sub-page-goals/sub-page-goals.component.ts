@@ -8,6 +8,7 @@ import { AuthenticationService } from '../../../../services/authentication.servi
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddGoalComponent } from '../../../elements/modals/modal-add-goal/modal-add-goal.component';
 import { ModalDisplayGoalComponent } from '../../../elements/modals/modal-display-goal/modal-display-goal.component';
+import { Options } from 'ng5-slider';
 
 @Component({
 	selector: 'app-sub-page-goals',
@@ -16,6 +17,14 @@ import { ModalDisplayGoalComponent } from '../../../elements/modals/modal-displa
 })
 export class SubPageGoalsComponent extends SubPage implements OnInit {
 
+	// private progress_value: number = 82;
+	options: Options = {
+		floor: 0,
+		ceil: 100,
+		showSelectionBar: true,
+		disabled: true
+	  };
+	  
 	constructor(
 		private titleService: Title,
 		public goalsService: GoalsService,
@@ -42,7 +51,7 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.failure = true;
 				this.resultMessage = "An error has occured";
 			})
-		})
+		});
 	}
 
 	open() {
@@ -57,5 +66,9 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		console.log("This is active goal")
 		console.log(this.goalsService.ActiveGoal.due_date);
 		this.modalService.open(ModalDisplayGoalComponent,{ windowClass: 'modal-custom-container', centered: true, size: 'lg' });
+	}
+
+	generateValue(){
+		console.log("function called");
 	}
 }

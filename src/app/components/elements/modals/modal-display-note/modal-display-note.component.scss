@@ -67,6 +67,15 @@ textarea[disabled] {
 	width: 100%;
 }
 
+textarea:enabled,
+textarea[enabled] {
+	background-color: white;
+	resize: none;
+	width: 100%;
+	cursor: text;
+	margin-top: 10px;
+}
+
 .displayNoteTextAreaD {
 	background-color: rgba(247, 247, 247, 0.589);
 	margin-top: 5px;
@@ -75,6 +84,12 @@ textarea[disabled] {
 select:disabled,
 select[disabled] {
 	display: none;
+}
+
+select:enabled,
+select[enabled] {
+	background-color: white;
+	cursor: pointer;
 }
 
 textarea:enabled.note-type,
