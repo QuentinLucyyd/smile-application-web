@@ -7,26 +7,31 @@ import { reject } from 'q';
   providedIn: 'root'
 })
 export class ChecklistsService {
-  Checklist: Array<Checklist> = [];
+  UserChecklists: Array<Checklist> = [];
 
   constructor(
     private _APIService: ApiServiceService
   ) { }
 
-  public getChecklists()
+  public getAllChecklists()
 	{
-    return this._APIService.getChecklists();
+    return this._APIService.getAllChecklists();
   }
-  
-  public getGoalChecklists(goal_id)
+
+  public getUserChecklists(user_id)
 	{
-		return this._APIService.getGoalChecklists(goal_id).subscribe(result => {
-      for (let item of result.data) {
-          this.Checklist.push(new Checklist(item));
-        }
-    }, err => {
-      reject(err);
-    });
+    return new Promise((resolve, reject) => {	
+			this.UserChecklists = [];
+			this._APIService.getUserChecklists(user_id).subscribe(result => {
+				for (let item of result.data) {
+          console.log(item);
+						this.UserChecklists.push(new Checklist(item));
+					}
+				resolve(this.UserChecklists);
+			}, err => {
+				reject(err);
+			})
+		})
   }
   
   public createChecklist(checklist: Array<Checklist>)

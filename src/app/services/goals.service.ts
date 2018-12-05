@@ -13,6 +13,7 @@ export class GoalsService {
 	CompletedGoals: Array<Goal> = [];
 	RecurringGoals: Array<Goal> = [];
 	ActiveGoal: Goal = new Goal({});
+	ActiveChecklist: Array<Checklist> = [];
 
 	constructor(
 		private _APIService: ApiServiceService
@@ -20,6 +21,22 @@ export class GoalsService {
 
 	public getGoals() {
 		return this._APIService.getGoals();
+	}
+
+	public getGoalChecklists(goal_id){
+		return new Promise((resolve, reject) => {	
+			this.ActiveChecklist = [];
+			this._APIService.getGoalChecklists(goal_id).subscribe(result => {
+				console.log(result);
+				for (let item of result.data) {
+					console.log(item);
+						this.ActiveChecklist.push(new Checklist(item));
+					}
+				resolve(this.Goals);
+			}, err => {
+				reject(err);
+			})
+		})
 	}
 
 	public getUserGoals(user_id) {
@@ -33,7 +50,6 @@ export class GoalsService {
 					if (goal.frequency === 'Once-off')
 						this.Goals.push(new Goal(goal));
 					else {
-						console.log(goal);
 						this.RecurringGoals.push(new Goal(goal));
 					}
 				}

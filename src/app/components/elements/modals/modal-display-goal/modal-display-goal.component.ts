@@ -23,7 +23,6 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		public goalsService: GoalsService,
 		public activeModal: NgbActiveModal,
 		private notificationService: NotificationsService,
-		public checklistService: ChecklistsService,
 		private authService: AuthenticationService
 
 	) { super(); }
@@ -36,20 +35,8 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			"Weekly",
 			"Monthly"
 		];
-		this.authService.AuthenticateUser().then(data => {
-			this.checklistService.Checklist = [];
-			this.checklistService.getGoalChecklists(this.goalsService.ActiveGoal.id).then(result => {
-				this.loading = false;
-				if (!this.goalsService.Goals.length) {
-					this.subPageMessage = 'You currently have no goals';
-				}
-			})
-			.catch(err => {
-				this.loading = false;
-				this.failure = true;
-				this.resultMessage = "An error has occured";
-			})
-		})
+		this.goalsService.getGoalChecklists(this.goalsService.ActiveGoal.id);
+		console.log(this.goalsService.ActiveChecklist);
 	}
 
 

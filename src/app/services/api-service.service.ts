@@ -78,6 +78,14 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
+	public getGoalChecklists(goal_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/goals/' + goal_id + '/checklists', options)
+		.pipe(map(response => response.json()));
+	}
+
 	public getUserGoals(user_id) {
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
@@ -101,7 +109,7 @@ export class ApiServiceService {
 	}
 
 	//Checklist Related Requests
-	public getChecklists(){
+	public getAllChecklists(){
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
@@ -109,11 +117,11 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
-	public getGoalChecklists(goal_id) {
+	public getUserChecklists(user_id){
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
-		return this._http.get(this.host + '/checklists/' + goal_id, options)
+		return this._http.get(this.host + '/users/' + user_id + '/checklists', options)
 		.pipe(map(response => response.json()));
 	}
 

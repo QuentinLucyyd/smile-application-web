@@ -48,7 +48,6 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				{
 					i.goal_id = data.data[0].id;;
 				}
-				console.log(this.checklist);
 				this._checklistService.createChecklist(this.checklist)
 				.subscribe(data => {
 					console.log(data);
