@@ -12,6 +12,7 @@ import { CheckoutService } from 'src/app/services/checkout.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { Router } from '@angular/router';
 import { NotesService } from 'src/app/services/notes.service';
+import { CheckinsService } from 'src/app/services/checkins.service';
 
 @Component({
   selector: 'app-sub-page-checkout',
@@ -21,6 +22,7 @@ import { NotesService } from 'src/app/services/notes.service';
 export class SubPageCheckoutComponent extends SubPage implements OnInit {
 	Note: Note = new Note({});
 	Chekout: Checkout = new Checkout({});
+	checkinloading: Boolean = false;
 
 	constructor(
 		private _titleService: Title,
@@ -29,6 +31,7 @@ export class SubPageCheckoutComponent extends SubPage implements OnInit {
 		private authenticationService: AuthenticationService,
 		private voicesService: VoiceService,
 		private checkoutService: CheckoutService,
+		public checkinService: CheckinsService,
 		private notificationSerivce: NotificationsService,
 		private notesService: NotesService,
 		private router: Router
@@ -36,6 +39,11 @@ export class SubPageCheckoutComponent extends SubPage implements OnInit {
 
 	ngOnInit() {
 		this._titleService.setTitle('Smile | Check out');
+		if (!this.checkinService.checkinDone) {
+			this.subPageMessage = 'You have not completed your Check in yet.';
+			this.subPageLinkText = "Click here to do your Check in";
+			this.subPageLinkRoute = '/dashboard/checkin';
+		} else {
 		this.authenticationService.AuthenticateUser().then(data => {
 			this.Note = new Note({
 				title: 'Chekout: ' + this.usersService.ActiveUser.first_name + ' ' + this.usersService.ActiveUser.last_name,
@@ -52,6 +60,7 @@ export class SubPageCheckoutComponent extends SubPage implements OnInit {
 
 		this.recordService.url = '';
 		this.recordService.formData = null;
+	}
 	}
 
 	submitCheckout() {

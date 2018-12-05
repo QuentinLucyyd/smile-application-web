@@ -16,6 +16,7 @@ import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 /* Pages Import */
 import { PageHomeComponent } from './components/pages/page-home/page-home.component'
 import { PageVerifyComponent } from './components/pages/page-verify/page-verify.component';
+import { PageRecoverComponent } from './components/pages/page-recover/page-recover.component';
 
 /*Elements Import */
 import { ModalSignInComponent } from './components/elements/modals/modal-sign-in/modal-sign-in.component'
@@ -35,6 +36,7 @@ import { AuthGuard } from './guards/auth.guard';
 const ROUTES = [
 	{ path: '', component: PageHomeComponent},
 	{ path: 'verify', component: PageVerifyComponent},
+	{ path: 'recover', component: PageRecoverComponent },
 	{ path: 'dashboard', loadChildren: './modules/home/home.module#HomeModule', canActivate:[AuthGuard]},
 
 ];
@@ -88,6 +90,7 @@ const customNotifierOptions: NotifierOptions = {
 		AppComponent,
 		PageHomeComponent,
 		PageVerifyComponent,
+		PageRecoverComponent,
 		ModalSignInComponent,
 		ModalAddNoteComponent,
 		ModalAddGoalComponent,

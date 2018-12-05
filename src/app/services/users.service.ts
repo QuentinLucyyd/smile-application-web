@@ -28,4 +28,11 @@ export class UsersService {
 		return this._APIService.createUserAccount(token, user);
 	}
 
+	recoverAccount(user: User) {
+		return this._APIService.recoverAccount(user);
+	}
+
+	recoverUser(token: String, user: User) {
+		return this._APIService.recoverUser(token, user);
+	}
 }

@@ -22,9 +22,12 @@ export class ToolsService {
 				const date = DateObject.getFullYear() + '-' + (DateObject.getMonth() + 1) + '-' + DateObject.getUTCDate();
 
 				this.checkInsService.getUserDateCheckins(this.usersSerivce.ActiveUser.id, date).subscribe(data => {
+					if (data.data.length)
+						this.checkInsService.checkinDone = true;
 					for(const tool of result.data) {
 						this.tools.push(tool);
 					}
+					this.filterTools();
 					resolve(this.tools);
 				}, err => {
 					reject(err);
@@ -37,9 +40,9 @@ export class ToolsService {
 
 	filterTools() {
 		for (const tool of this.tools) {
-			if (tool.name === 'Check out' && !this.checkInsService.checkinDone)
+			if (tool.route === 'checkin' && this.checkInsService.checkinDone) {
 				this.tools.splice(this.tools.indexOf(tool), 1);
-			if (tool.name === 'Check in' && this.checkInsService.checkinDone)
+			} else if (tool.name === 'Check out' && !this.checkInsService.checkinDone)
 				this.tools.splice(this.tools.indexOf(tool), 1);
 		}
 	}

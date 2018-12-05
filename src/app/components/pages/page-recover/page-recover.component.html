@@ -1,0 +1,45 @@
+<section id="verify-page" class="">
+	<div class="container">
+		<div class="logo-container d-flex justify-content-center">
+			<img class="wide-logo" [src]="Logo">
+		</div>
+		<div class="form-container d-flex justify-content-center">
+			<div class="row">
+				<div class="col-12">
+					<div class="welcome-container">
+						<h5>Acount Recovery</h5>
+						<p>Fill in the form below to update your password</p>
+						<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+						<p class="success-text" *ngIf="success">{{resultMessage}} </p>
+					</div>
+				</div>
+				<div class="secondary-loading-container" *ngIf="loading">
+					<div class="secondary-loading"></div>
+				</div>
+				<div class="col s12" id="reg-form" *ngIf="!loading && !failure && !success">
+					<div class="row">
+						<div class="form-group float-label-control col s12">
+							<input (keyup)="onKeyPasswordVerification($event)" [(ngModel)]="password" name="password" id="password"
+								type="password" class="validate" minlength="6" required>
+							<label for="password">New Password</label>
+							<p *ngIf="password_verif" class="error-text input-hint">{{password_verif}}</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group float-label-control col s12">
+							<input (keyup)="onKeyPassword($event)" [(ngModel)]="verify_password" name="verify_password" id="verify_password"
+								type="password" class="validate" minlength="6" required>
+							<label for="password">Verify New Password</label>
+							<p *ngIf="!match" class="error-text input-hint">Passwords do not match</p>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="header-button-container">
+							<button type="submit" (click)="recoverUser()" class="button dark-button sign-in-button">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

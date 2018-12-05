@@ -11,10 +11,15 @@
 
 	.card-body {
 		padding-top: 0px !important;
-	} 
+	}
+
+	.profile-info {
+		padding-left: 10px;
+	}
 }
 
 .profile-header {
+	padding-left: 10px;
 	height: 220px;
 
 	.button {
@@ -34,16 +39,21 @@
 	border-radius: 3px;
 	width: 150px;
 	height: 150px;
-	background: $white;
-	position: absolute;
-	bottom: -20px;
+	// background: $white;
+	// position: absolute;
+	// bottom: -20px;
 
-	background: #ECEFF1 url('../../../../assets/images/default-profile-image.jpg') center bottom no-repeat;
+	// background: #ECEFF1 url('../../../../assets/images/default-profile-image.jpg') center bottom no-repeat;
+
+	img {
+		width: 135px;
+		height: 135px;
+	}
 }
 
 .profile-header-info-container {
-	padding-left: 167px;
-	padding-top: 60px;
+	padding-left: 30px;
+	padding-bottom: 20px;
 
 	h5 {
 		font-size: 2em;
@@ -59,20 +69,25 @@
 	}
 }
 
-@media screen and (max-width: 658px) {
-	.profile-header-picture {
-		width: 80px;
-		height: 80px;
-		position: relative;
-		bottom: 1px;
+@media screen and (max-width: 465px) {
+	.first {
+		width: 300px !important;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.first {
+		width: 200px !important;
+	}
+}
+
+@media screen and (max-width: 557px) {
+	.profile-header {
+		height: 300px;
 	}
 
 	.profile-header-info-container {
-		padding-left: 0px;
 		padding-top: 15px;
-
-		h5 {
-			font-size: 1.5em;
-		}
+		padding-left: 0px;
 	}
 }

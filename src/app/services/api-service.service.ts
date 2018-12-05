@@ -54,7 +54,21 @@ export class ApiServiceService {
 			.pipe(map(response => response.json()));
 	}
 
+	public recoverAccount(user: User) {
+		const headers = new Headers({ 'Content-Type': 'application/json' });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/users/recover', user, options)
+			.pipe(map(response => response.json()));
+	}
+
+	public recoverUser(token: String, user: User) {
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.patch(this.host + '/users/recover', user, options)
+			.pipe(map(response => response.json()));
+	}
 	//Verify Realated Request
+
 	public verifyInviteToken(token) {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
 		const options = new RequestOptions({ headers: headers });

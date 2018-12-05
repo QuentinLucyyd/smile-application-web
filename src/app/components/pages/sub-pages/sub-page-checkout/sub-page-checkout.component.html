@@ -1,4 +1,11 @@
-<div class="sub-page-dashboard-container">
+<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!checkinService.checkinDone">
+	<div class="subpage-meeasge">
+		<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
+		<h4 class="subpage-message">{{subPageMessage}}</h4>
+		<p [routerLink]="[subPageLinkRoute]" class="subpage-sub-message no-outline">{{subPageLinkText}}</p>
+	</div>
+</div>
+<div class="sub-page-dashboard-container" *ngIf="checkinService.checkinDone">
 	<div class="container-fluid">
 		<div class="sub-page-header">
 			<div class="row">
@@ -26,12 +33,15 @@
 					</div>
 				</div>
 				<div class="journal-form">
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..." [(ngModel)]="Note.note">{{Note.note}}</textarea>
-					<div (click)="recordService.toggleRecording()" class="row d-flex justify-content-center" [ngClass]="{'recording': recordService.recording}" *ngIf="!loading">
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..."
+					 [(ngModel)]="Note.note">{{Note.note}}</textarea>
+					<div (click)="recordService.toggleRecording()" class="row d-flex justify-content-center" [ngClass]="{'recording': recordService.recording}"
+					 *ngIf="!loading">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>
 					</div>
 					<div class="record-text d-flex justify-content-center" *ngIf="recordService.recording">Recording....</div>
-					<div class="audio-playback-header d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">Recording Playback</div>
+					<div class="audio-playback-header d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">Recording
+						Playback</div>
 					<div class="audio-playback-container d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">
 						<audio controls="">
 							<source [src]="recordService.sanitize()" type="audio/wav">

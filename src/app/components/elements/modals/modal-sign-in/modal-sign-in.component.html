@@ -4,7 +4,7 @@
 		<span class="modal-close" aria-hidden="true">&times;</span>
 	</button>
 </div>
-<div class="modal-body">
+<div class="modal-body" *ngIf="!forgotPassword">
 	<div class="col-12 d-flex justify-content-center">
 		<div class="welcome-container">
 			<h5>Sign in</h5>
@@ -40,7 +40,42 @@
 						<div class="secondary-loading"></div>
 					</div>
 				</div>
-				<p class="forgot-password-text">Forgot Password ?</p>
+				<p (click)="forgotPassword = !forgotPassword" class="forgot-password-text">Forgot Password ?</p>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="modal-body" *ngIf="forgotPassword">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h5>Forgort Password ?</h5>
+			<p>Please provide your email to recover your account</p>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+			<p class="success-text" *ngIf="success">{{resultMessage}}</p>
+		</div>
+	</div>
+	<div class="modal-sign-in-container">
+		<form class="col s12" id="reg-form">
+			<div class="row">
+				<div class="form-group float-label-control col s12">
+					<input [(ngModel)]="RecoverUser.email" name="email" id="email" type="email" class="validate"
+					 required>
+					<label for="email">Email</label>
+				</div>
+			</div>
+			<div class="row d-flex justify-content-center">
+				<div class="col-12">
+					<div class="header-button-container" *ngIf="!loading && !success">
+						<button type="submit" (click)="recoverPassword()" class="button dark-button sign-in-button">Send Email</button>
+					</div>
+					<div class="header-button-container" *ngIf="success">
+						<button type="submit" class="button green-button sign-in-button"><i class="fas fa-check"></i></button>
+					</div>
+					<div class="secondary-loading-container" *ngIf="loading">
+						<div class="secondary-loading"></div>
+					</div>
+				</div>
+				<p (click)="forgotPassword = !forgotPassword" class="forgot-password-text">Forgot Password ?</p>
 			</div>
 		</form>
 	</div>
