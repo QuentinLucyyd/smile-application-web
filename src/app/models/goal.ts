@@ -1,4 +1,5 @@
 import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
+import { Checklist } from "./checklist";
 
 export class Goal {
 	id: Number;
@@ -11,17 +12,12 @@ export class Goal {
 	priority: String = 'High';
 	user_id: Number = 0;
 	progress_value: number = 0;
-	private checklist: boolean[] = [false, false, false, false, false, false, false, true];
-	private i: number = 0;
+	i: number = 0;
+	checklist: Array<Checklist> = [];
 	
 	constructor(goal) {
-		for (let x of this.checklist ){
-			if (x == true){
-				this.i++;
-			}
-		}
-		this.progress_value = ( this.i / this.checklist.length) * 100;
 		this.updateGoal(goal);
+		this.checklistProgress();
 	}
 
 	updateGoal(goal) {
@@ -34,5 +30,15 @@ export class Goal {
 		if ( goal.has_checklist ) { this.has_checklist = goal.has_checklist; }
 		if ( goal.priority ) { this.priority = goal.priority; }
 		if ( goal.user_id ) { this.user_id = goal.user_id; }
+		if ( goal.checklist ) { this.checklist = goal.checklist; }
+
+	}
+
+	checklistProgress() {
+		for (let item of this.checklist ){
+			if (item.is_completed == true)
+				this.i++;
+		}
+		this.progress_value = ( this.i / this.checklist.length) * 100;
 	}
 }

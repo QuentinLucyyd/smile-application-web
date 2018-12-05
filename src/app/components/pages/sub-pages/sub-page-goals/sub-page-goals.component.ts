@@ -9,6 +9,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddGoalComponent } from '../../../elements/modals/modal-add-goal/modal-add-goal.component';
 import { ModalDisplayGoalComponent } from '../../../elements/modals/modal-display-goal/modal-display-goal.component';
 import { Options } from 'ng5-slider';
+import { ChecklistsService } from 'src/app/services/checklists.service';
 
 @Component({
 	selector: 'app-sub-page-goals',
@@ -28,6 +29,7 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 	constructor(
 		private titleService: Title,
 		public goalsService: GoalsService,
+		public checklistService: ChecklistsService,
 		private usersService: UsersService,
 		private authService: AuthenticationService,
 		public modalService: NgbModal,
@@ -40,10 +42,14 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 			this.goalsService.Goals = [];
 			this.goalsService.RecurringGoals = [];
 			this.goalsService.CompletedGoals = [];
+			this.checklistService.UserChecklists = [];
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(result => {
 				this.loading = false;
 				if (!this.goalsService.Goals.length) {
 					this.subPageMessage = 'You currently have no goals';
+				}
+				else{
+					this.checklistService.getUserChecklists(this.usersService.ActiveUser.id);
 				}
 			})
 			.catch(err => {
@@ -59,12 +65,8 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 	}
 
 	setActiveGoal(goal: Goal){
-		console.log("This is sent goal")
-		console.log(goal.due_date);
-
 		this.goalsService.ActiveGoal = goal;
-		console.log("This is active goal")
-		console.log(this.goalsService.ActiveGoal.due_date);
+		console.log(this.goalsService.ActiveGoal.id);
 		this.modalService.open(ModalDisplayGoalComponent,{ windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 	}
 

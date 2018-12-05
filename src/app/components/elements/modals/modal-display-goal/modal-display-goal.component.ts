@@ -5,6 +5,8 @@ import { UsersService } from 'src/app/services/users.service';
 import { SubPage } from 'src/app/classes/abstract/page.class';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { ChecklistsService } from 'src/app/services/checklists.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
 	selector: 'app-modal-display-goal',
@@ -20,7 +22,9 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	constructor(
 		public goalsService: GoalsService,
 		public activeModal: NgbActiveModal,
-		private notificationService: NotificationsService
+		private notificationService: NotificationsService,
+		private authService: AuthenticationService
+
 	) { super(); }
 
 	ngOnInit() {
@@ -31,6 +35,8 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			"Weekly",
 			"Monthly"
 		];
+		this.goalsService.getGoalChecklists(this.goalsService.ActiveGoal.id);
+		console.log(this.goalsService.ActiveChecklist);
 	}
 
 

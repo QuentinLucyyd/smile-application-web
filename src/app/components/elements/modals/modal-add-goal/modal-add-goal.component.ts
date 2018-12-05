@@ -5,6 +5,8 @@ import { Goal } from '../../../../models/goal';
 import { UsersService } from '../../../../services/users.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsService } from 'src/app/services/notifications.service';
+import { ChecklistsService } from 'src/app/services/checklists.service';
+import { Checklist } from 'src/app/models/checklist';
 
 @Component({
 	selector: 'app-modal-add-goal',
@@ -15,12 +17,15 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 	dateInput: Boolean = true;
 	Goal: Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
 	frequencies: String[];
+	checklist: Array<Checklist> = [];
+	hide: Boolean = true;
 
 	constructor(
 		private _goalsService: GoalsService,
 		private usersService: UsersService,
 		public activeModal: NgbActiveModal,
-		private notificationService: NotificationsService
+		private notificationService: NotificationsService,
+		private _checklistService: ChecklistsService
 	)
 	{ super(); }
 	
@@ -39,6 +44,14 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				this.loading = false;
 				this.success = true;
 				this._goalsService.Goals.push(this.Goal);
+				for (var i of this.checklist)
+				{
+					i.goal_id = data.data[0].id;;
+				}
+				this._checklistService.createChecklist(this.checklist)
+				.subscribe(data => {
+					console.log(data);
+				});
 				this.activeModal.close('Goal Added Successfully');
 				this.notificationService.newNotify('info', 'Goal "' + this.Goal.name + '" Added Successfully');
 			}, err => {
@@ -46,6 +59,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				this.failure = true;
 				this.resultMessage = 'An error has occurred, Please try again';
 			})
+				//this._checklistService.createChecklist(this.checklist).subscribe(data =>{});
 		}
 	}
 
@@ -62,5 +76,13 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 
 	clearFields(){
 		this.Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
+	}
+
+	addItem(){
+		this.checklist.push(new Checklist({description: ''}));
+	}
+
+	disable(){
+		this.hide = false;
 	}
 }

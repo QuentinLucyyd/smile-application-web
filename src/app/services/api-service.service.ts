@@ -9,6 +9,7 @@ import { Checkin } from '../models/checkin';
 import { Goal } from '../models/goal';
 import { Note } from '../models/notes';
 import { Checkout } from '../models/checkout';
+import { Checklist } from '../models/checklist';
 
 @Injectable({
 	providedIn: 'root'
@@ -108,6 +109,14 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
+	public getGoalChecklists(goal_id) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/goals/' + goal_id + '/checklists', options)
+		.pipe(map(response => response.json()));
+	}
+
 	public getUserGoals(user_id) {
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
@@ -129,6 +138,32 @@ export class ApiServiceService {
 		return this._http.patch(this.host + '/goals', goal, options)
 		.pipe(map(response => response.json()));
 	}
+
+	//Checklist Related Requests
+	public getAllChecklists(){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checklists', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUserChecklists(user_id){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/users/' + user_id + '/checklists', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public createChecklist(checklist: Array<Checklist>){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/checklists', checklist, options)
+		.pipe(map(response => response.json()));
+	}
+
 	// Chekin Related Requests
 
 	public getCheckins() {
