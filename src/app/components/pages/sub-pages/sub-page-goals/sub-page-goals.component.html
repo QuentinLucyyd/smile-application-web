@@ -27,7 +27,7 @@
 			</div>
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Ongoing Goals</h5>
-				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
+				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals" generateValue()>
 					<div class="goal-card-container card-container col-md-12">
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
@@ -37,7 +37,7 @@
 									<i class="trash-icon fas fa-trash-alt"></i> -->
 								</div>
 								<div class="custom-slider ">
-									<ng5-slider [(value)]="progress_value" [options]="options"></ng5-slider>
+									<ng5-slider [(value)]="goal.progress_value" [options]="options"></ng5-slider>
 								</div>
 							</div>
 						</div>

@@ -17,16 +17,14 @@ import { Options } from 'ng5-slider';
 })
 export class SubPageGoalsComponent extends SubPage implements OnInit {
 
-	private progress_value: number = 82;
+	// private progress_value: number = 82;
 	options: Options = {
 		floor: 0,
 		ceil: 100,
 		showSelectionBar: true,
 		disabled: true
 	  };
-	  private checklist: boolean[] = [false, false, false, false, false, false, false, true];
-	  private i: number = 0;
-
+	  
 	constructor(
 		private titleService: Title,
 		public goalsService: GoalsService,
@@ -54,12 +52,6 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.resultMessage = "An error has occured";
 			})
 		});
-		for (let x of this.checklist ){
-			if (x == true){
-				this.i++;
-			}
-		}
-		this.progress_value = ( this.i / this.checklist.length) * 100;
 	}
 
 	open() {
@@ -74,5 +66,9 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		console.log("This is active goal")
 		console.log(this.goalsService.ActiveGoal.due_date);
 		this.modalService.open(ModalDisplayGoalComponent,{ windowClass: 'modal-custom-container', centered: true, size: 'lg' });
+	}
+
+	generateValue(){
+		console.log("function called");
 	}
 }
