@@ -4,6 +4,9 @@ import { SubPage } from '../../../../classes/abstract/page.class';
 import { Goal } from '../../../../models/goal';
 import { UsersService } from '../../../../services/users.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { enGbLocale } from 'ngx-bootstrap/locale';
+import { defineLocale } from 'ngx-bootstrap/chronos';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ChecklistsService } from 'src/app/services/checklists.service';
 import { Checklist } from 'src/app/models/checklist';
@@ -27,9 +30,13 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 		private usersService: UsersService,
 		public activeModal: NgbActiveModal,
 		private notificationService: NotificationsService,
-		private _checklistService: ChecklistsService
-	)
-	{ super(); }
+		private _checklistService: ChecklistsService,
+		public _localeService: BsLocaleService
+	){ 
+		super();
+		defineLocale('engb', enGbLocale);
+		this._localeService.use('engb');
+	}
 	
 	ngOnInit() {
 		this.frequencies = ["Once-Off","Daily","Weekly","Monthly"]

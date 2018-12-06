@@ -74,6 +74,7 @@ export class ModalSignInComponent extends SubPage implements OnInit {
 					}, 1000);
 				}
 			}, err => {
+				console.log(err);
 				var Error = JSON.parse(err._body);
 				this.loading = false;
 				this.failure = true;
