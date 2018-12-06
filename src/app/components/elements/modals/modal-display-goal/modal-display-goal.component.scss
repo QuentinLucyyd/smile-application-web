@@ -3,6 +3,13 @@
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
+.checklist-container {
+	color: $grey;
+
+	.checklist-header {
+		font-weight: bold;
+	}
+}
 .modal-display-goal-container {
 	padding-left: 15px;
 

@@ -86,7 +86,7 @@
 			<div class="form-group" *ngIf="dateInput">
 				<label for="dueDate">Due Date</label>
 				<input [(ngModel)]="Goal.due_date" class="form-control" id="dueDate" name="due_date" bsDatepicker type="text" name="due_date"
-				 (dateSelect)="onDateSelect($event)" />
+				[bsConfig]='{dateInputFormat: "DD/MM/YYYY", locale: "en"}' (dateSelect)="onDateSelect($event)" />
 			</div>
 
 		</form>
