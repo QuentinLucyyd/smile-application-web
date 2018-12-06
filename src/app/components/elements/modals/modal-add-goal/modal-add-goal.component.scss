@@ -71,7 +71,33 @@ textarea {
 	font-weight: normal;
 }
 
-.add-button{
+.add-button {
 	cursor: pointer;
 	padding: 10px;
+}
+
+.checklist-header {
+	color: $grey;
+	padding-bottom: 20px;
+}
+
+.checklist-container {
+	padding-bottom: 30px;
+}
+
+.checklist-add-icon {
+	//font-size: 1em;
+	color: $grey;
+	//float: left;
+}
+
+.checklist-add {
+	position: absolute;
+	right: 8px;
+	bottom: 19px;
+	font-size: 1.2em;
+}
+
+.checklist-item {
+	color: $grey;
 }

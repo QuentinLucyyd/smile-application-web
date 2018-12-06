@@ -17,8 +17,10 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 	dateInput: Boolean = true;
 	Goal: Goal = new Goal({ user_id: this.usersService.ActiveUser.id });
 	frequencies: String[];
+	checklistItem: Checklist = new Checklist({});
 	checklist: Array<Checklist> = [];
-	hide: Boolean = true;
+	checklistView: Boolean = false;
+	checklist_placeholder = 'Checklist Item';
 
 	constructor(
 		private _goalsService: GoalsService,
@@ -79,10 +81,11 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 	}
 
 	addItem(){
-		this.checklist.push(new Checklist({description: ''}));
+		this.checklist.push(this.checklistItem);
+		this.checklistItem = new Checklist({});
 	}
 
 	disable(){
-		this.hide = false;
+		this.checklistView = true;
 	}
 }

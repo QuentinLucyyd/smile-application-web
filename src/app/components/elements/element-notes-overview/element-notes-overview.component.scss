@@ -1,0 +1,21 @@
+/* Imports */
+
+@import '../../../../styles/pages';
+@import '../../../../styles/variables';
+@import '../../../../styles/modal';
+@import '../../../../styles/view';
+
+.note-container {
+	cursor: pointer;
+}
+
+.note-date {
+	color: $grey;
+	font-size: .9em
+}
+
+.note-description {
+	color: $grey;
+	font-weight: bold;
+	font-size: 1em;
+}
