@@ -5,9 +5,17 @@
 
 .checklist-container {
 	color: $grey;
+	padding-bottom: 10px;
 
 	.checklist-header {
+		font-size: 1.1em;
 		font-weight: bold;
+		padding-bottom: 5px;
+	}
+
+	.checklist-item {
+		padding-bottom: 5px;
+		font-weight: 100;
 	}
 }
 .modal-display-goal-container {
