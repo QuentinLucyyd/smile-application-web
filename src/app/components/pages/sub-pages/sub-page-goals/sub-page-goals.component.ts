@@ -47,10 +47,8 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.loading = false;
 				if (!this.goalsService.Goals.length) {
 					this.subPageMessage = 'You currently have no goals';
-				}
-				else{
-					this.checklistService.getUserChecklists(this.usersService.ActiveUser.id);
-				}
+				} else
+					this.populateProgress();
 			})
 			.catch(err => {
 				this.loading = false;
@@ -60,13 +58,30 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		});
 	}
 
+	populateProgress(){
+		for(const goal of this.goalsService.Goals) {
+			this.goalsService.getGoalChecklists(goal.id).then(data => {
+				goal.populateProgress(data);
+			})
+		}
+		for(const goal of this.goalsService.RecurringGoals) {
+			this.goalsService.getGoalChecklists(goal.id).then(data => {
+				goal.populateProgress(data);
+			})
+		}
+		for(const goal of this.goalsService.CompletedGoals) {
+			this.goalsService.getGoalChecklists(goal.id).then(data => {
+				goal.populateProgress(data);
+			})
+		}
+	}
+
 	open() {
 		this.modalService.open(ModalAddGoalComponent,{ windowClass: 'modal-custom-container', centered: true });
 	}
 
 	setActiveGoal(goal: Goal){
 		this.goalsService.ActiveGoal = goal;
-		console.log(this.goalsService.ActiveGoal.id);
 		this.modalService.open(ModalDisplayGoalComponent,{ windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 	}
 

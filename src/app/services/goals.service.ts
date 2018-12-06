@@ -27,12 +27,7 @@ export class GoalsService {
 		return new Promise((resolve, reject) => {	
 			this.ActiveChecklist = [];
 			this._APIService.getGoalChecklists(goal_id).subscribe(result => {
-				console.log(result);
-				for (let item of result.data) {
-					console.log(item);
-						this.ActiveChecklist.push(new Checklist(item));
-					}
-				resolve(this.Goals);
+				resolve(result.data);
 			}, err => {
 				reject(err);
 			})
@@ -47,11 +42,11 @@ export class GoalsService {
 
 			this._APIService.getUserGoals(user_id).subscribe(result => {
 				for (let goal of result.data) {
-					if (goal.frequency === 'Once-off')
-						this.Goals.push(new Goal(goal));
-					else {
-						this.RecurringGoals.push(new Goal(goal));
-					}
+					const _Goal = new Goal(goal);
+					if (_Goal.frequency === 'Once-off')
+						this.Goals.push(_Goal);
+					else
+						this.RecurringGoals.push(_Goal);
 				}
 				resolve(this.Goals);
 			}, err => {

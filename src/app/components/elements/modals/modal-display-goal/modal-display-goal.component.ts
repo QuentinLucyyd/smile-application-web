@@ -35,8 +35,6 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			"Weekly",
 			"Monthly"
 		];
-		this.goalsService.getGoalChecklists(this.goalsService.ActiveGoal.id);
-		console.log(this.goalsService.ActiveChecklist);
 	}
 
 

@@ -16,7 +16,7 @@ import { Checklist } from '../models/checklist';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'https://smile-application-api.herokuapp.com';
+	host = 'http://localhost:3001';
 	
 	constructor(
 		private _http: Http,

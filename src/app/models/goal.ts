@@ -34,6 +34,15 @@ export class Goal {
 
 	}
 
+	populateProgress(checklist) {
+		this.checklist = checklist;
+		for (let item of checklist ){
+			if (item.is_completed == true)
+				this.i++;
+		}
+		this.progress_value = ( this.i / checklist.length) * 100;
+	}
+
 	checklistProgress() {
 		for (let item of this.checklist ){
 			if (item.is_completed == true)

@@ -118,6 +118,9 @@
 
 	}
 
+	.ng5-slider-bar-wrapper {
+		transition: width 1s;
+	}
 	.custom-slider {
 		background-color: $white;
 		border-radius: 3px;
