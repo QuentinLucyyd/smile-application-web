@@ -16,12 +16,12 @@ import { Checklist } from '../models/checklist';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'http://localhost:3001';
+	host = 'https://smile-application-api.herokuapp.com';
 	
 	constructor(
 		private _http: Http,
 		private _Newhttp: HttpClient
-	) { }
+	) {	}
 	
 	fetchToken() {
 		this.token = localStorage.getItem('token');
