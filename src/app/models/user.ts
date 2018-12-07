@@ -7,6 +7,8 @@ export class User {
 	role: String = '';
 	email: String = '';
 	password: String = '';
+	profile_image: String = '';
+	city: String = '';
 
 	constructor(user) {
 		this.updateUser(user);
@@ -21,5 +23,8 @@ export class User {
 		if ( user.role ) { this.role = user.role; }
 		if ( user.email ) { this.email = user.email; }
 		if ( user.password ) { this.password = user.password; }
+		if ( user.password ) { this.password = user.password; }
+		if ( user.profile_image ) { this.profile_image = user.profile_image; }
+		if ( user.city ) { this.city = user.city; }
 	}
 }

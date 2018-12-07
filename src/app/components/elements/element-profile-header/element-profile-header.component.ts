@@ -16,4 +16,7 @@ export class ElementProfileHeaderComponent implements OnInit {
 	ngOnInit() {
 	}
 
+	loadImage() {
+		console.log("Image Loading");
+	}
 }

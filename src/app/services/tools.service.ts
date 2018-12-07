@@ -27,7 +27,7 @@ export class ToolsService {
 					for(const tool of result.data) {
 						this.tools.push(tool);
 					}
-					this.filterTools();
+					//this.filterTools();
 					resolve(this.tools);
 				}, err => {
 					reject(err);
