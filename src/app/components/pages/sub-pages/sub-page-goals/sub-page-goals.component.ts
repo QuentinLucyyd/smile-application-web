@@ -82,6 +82,7 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 
 	setActiveGoal(goal: Goal){
 		this.goalsService.ActiveGoal = goal;
+		console.log(goal.checklist);
 		this.modalService.open(ModalDisplayGoalComponent,{ windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 	}
 
