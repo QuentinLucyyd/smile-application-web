@@ -35,7 +35,8 @@ export class ChecklistsService {
 		return this._APIService.createChecklist(checklist);
 	}
 
-	public updateChecklist(checklist: Checklist) {
+	public updateChecklist(checklist: Array<Checklist>)
+	{
 		return this._APIService.updateChecklist(checklist);
 	}
 }

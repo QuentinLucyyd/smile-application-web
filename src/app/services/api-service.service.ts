@@ -181,14 +181,13 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
-	public updateChecklist(checklist: Checklist) {
+	public updateChecklist(checklist: Array<Checklist>){
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.patch(this.host + '/checklists', checklist, options)
 		.pipe(map(response => response.json()));
 	}
-
 	// Chekin Related Requests
 
 	public getCheckins() {
