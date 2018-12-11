@@ -17,19 +17,17 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 
 	disabled: Boolean;
 	frequencies: String[];
+	disabledDeleteBtn: Boolean = false;
+	disabledDeleteIcn: Boolean = true;
 	_close: Boolean;
 
 	constructor(
 		public goalsService: GoalsService,
 		public activeModal: NgbActiveModal,
-		private notificationService: NotificationsService,
-		private authService: AuthenticationService,
-		private checklistService: ChecklistsService
-
+		private notificationService: NotificationsService
 	) { super(); }
 
 	ngOnInit() {
-		console.log(this.goalsService.ActiveGoal);
 		this.disabled = true;
 		this.frequencies = [
 			"Once-off",
@@ -39,18 +37,10 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		];
 	}
 
-	checklistChange(item: Checklist) {
-		item.is_completed = !item.is_completed;
-		this.checklistService.updateChecklist(item).subscribe(data => {
-			this.goalsService.ActiveGoal.checklistProgress();
-		});
-	}
 
 	updateGoal(){
-		console.log(this.goalsService.ActiveGoal.checklist);
 		this.loading = true;
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
-			this.checklistService.updateChecklist(this.goalsService.ActiveGoal.checklist).subscribe(dataa =>{}, error =>{});
 			this.loading = false;
 			this.activeModal.close('Edit Success');
 			this.notificationService.newNotify('info', 'Goal Edited Successfully')
@@ -59,6 +49,35 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			this.failure = true;
 			this.resultMessage = 'An unexpected error has occured, Please try again';
 		});
+	}
+	
+	deleteGoal()
+ 	{
+   		this.disabledDeleteBtn = !this.disabledDeleteBtn;
+   		// this.disabledEditIcn = !this.disabledEditIcn;
+ 	}
+
+	_deleteGoal(){
+		this.disabled = true;
+		const goal =  {
+			id: this.goalsService.ActiveGoal.id,
+			name: this.goalsService.ActiveGoal.name,
+			description: this.goalsService.ActiveGoal.description,
+			frequency: this.goalsService.ActiveGoal.frequency,
+			due_date: this.goalsService.ActiveGoal.due_date,
+			state: this.goalsService.ActiveGoal.state,
+			has_checklist: this.goalsService.ActiveGoal.has_checklist,
+			priority: this.goalsService.ActiveGoal.priority,
+			is_active: 0
+			
+		}
+		const _goal: Goal =  new Goal(goal);
+		console.log(_goal);
+		this.activeModal.close('Goal deleted Success');
+		this.loading = true;
+		this.goalsService.updateGoal(_goal).subscribe(data => {
+			console.log(data);
+	})
 	}
 
 }

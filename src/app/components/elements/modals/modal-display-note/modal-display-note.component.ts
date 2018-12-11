@@ -3,15 +3,18 @@ import { NotesService } from '../../../../services/notes.service';
 import { UsersService } from '../../../../services/users.service';
 import { Note } from '../../../../models/notes';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { SubPage } from 'src/app/classes/abstract/page.class';
 
 @Component({
 	selector: 'app-modal-display-note',
 	templateUrl: './modal-display-note.component.html',
 	styleUrls: ['./modal-display-note.component.scss']
 })
-export class ModalDisplayNoteComponent implements OnInit {
+export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 	disabled: Boolean = true;
 	disabledSaveBtn: Boolean = true;
+	disabledDeleteBtn: Boolean = false;
+	disabledDeleteIcn: Boolean = true;
 
 	user_id: Number;
 	title: String = '';
@@ -26,8 +29,7 @@ export class ModalDisplayNoteComponent implements OnInit {
 		public notesService: NotesService,
 		private userServices: UsersService,
 		public activeModal: NgbActiveModal
-	) {
-	}
+	) { super();}
 
 	ngOnInit() {
 	}
@@ -40,26 +42,33 @@ export class ModalDisplayNoteComponent implements OnInit {
 		this.disabledSaveBtn = !this.disabledSaveBtn;
 	}
 	
-	saveNote(note){
-		// this.disabled = true;
-		// this.disabledSaveBtn = true;
-		// const note =  {
-		// 	title: newNoteTile,
-		// 	note: newNote,
-		// 	type: newNoteType,
-		// 	voice: this.notesService.ActiveNote.voice,
-		// 	user_id: this.userServices.ActiveUser.id,
-		// 	id: this.notesService.ActiveNote.id,
-		// 	is_active: this.notesService.ActiveNote.is_active
-		// }
+	saveNote(newNote, newNoteType, newNoteTile){
+		this.disabled = true;
+		this.disabledSaveBtn = true;
+		const note =  {
+			title: newNoteTile,
+			note: newNote,
+			type: newNoteType,
+			voice: this.notesService.ActiveNote.voice,
+			user_id: this.userServices.ActiveUser.id,
+			id: this.notesService.ActiveNote.id,
+			is_active: this.notesService.ActiveNote.is_active
+		}
 		const _note: Note =  new Note(note);
-		console.log(_note);
 		this.notesService.updateUserNote(_note).subscribe(data => {
 			console.log(data);
 	})
 	}
 
-	deleteNote(){
+
+
+	deleteNote()
+ 	{
+   		this.disabledDeleteBtn = !this.disabledDeleteBtn;
+   		// this.disabledEditIcn = !this.disabledEditIcn;
+ 	}
+
+	_deleteNote(){
 		this.disabled = true;
 		const note =  {
 			title: this.notesService.ActiveNote.title,
@@ -71,14 +80,18 @@ export class ModalDisplayNoteComponent implements OnInit {
 			is_active: 0
 		}
 		const _note: Note =  new Note(note);
+		this.activeModal.close('Note deleted Success');
+		this.loading = true;
 		this.notesService.updateUserNote(_note).subscribe(data => {
 			console.log(data);
 	})
+	//location.reload();
 	}
 
 	closeModal(){
 		this.disabled = true;
 		this.disabledSaveBtn = true;
+		this.disabledDeleteBtn = true;
 	}
 
 	

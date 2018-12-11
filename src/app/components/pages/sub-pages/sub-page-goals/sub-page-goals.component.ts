@@ -80,6 +80,9 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 	}
 
 	setActiveGoal(goal: Goal){
+		console.log("This is sent goal")
+		console.log(goal.due_date);
+
 		this.goalsService.ActiveGoal = goal;
 		console.log(goal.checklist);
 		this.modalService.open(ModalDisplayGoalComponent,{ windowClass: 'modal-custom-container', centered: true, size: 'lg' });
