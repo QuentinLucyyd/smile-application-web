@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubPage } from 'src/app/classes/abstract/page.class';
 import { UsersService } from 'src/app/services/users.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
 	selector: 'app-modal-edit-profile',
@@ -13,10 +14,12 @@ export class ModalEditProfileComponent extends SubPage implements OnInit {
 	fileSelected: Boolean = false;
 	fileFailure: Boolean = false;
 	fileFailureMessage: String = '';
+	loadingdisplay: Boolean = false;
 
 	constructor(
 		public activeModal: NgbActiveModal,
-		public usersService: UsersService
+		public usersService: UsersService,
+		private authenticationService: AuthenticationService
 	) { super(); }
 
 	ngOnInit() {
@@ -39,14 +42,16 @@ export class ModalEditProfileComponent extends SubPage implements OnInit {
 	}
 
 	updateDisplay() {
+		this.loadingdisplay = true;
 		if (this.fileSelected) {
+			this.fileSelected = !this.fileSelected;
 			const FileData: FormData = new FormData();
 			const FileName = this.usersService.ActiveUser.username + '-' +
 			this.usersService.ActiveUser.id + '-profile-image' + '.' + this.selectedFile.name.split('.')[1];
 			FileData.append('profileimage', this.selectedFile, FileName);
 			this.usersService.ActiveUser.profileImage = FileData;
-			this.usersService.updateUserDisplay(FileData).subscribe(data => {
-				console.log(data);
+			this.usersService.updateUserDisplay(FileData).subscribe(results => {
+				this.loadingdisplay = false;
 			})
 		}
 	}

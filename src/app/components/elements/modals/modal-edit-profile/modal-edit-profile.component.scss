@@ -3,6 +3,11 @@
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
+.display-button {
+	padding: 6px 23px;
+	margin: 0px;
+}
+
 .modal-edit-profile-container {
 	color: $grey;
 
@@ -101,5 +106,45 @@
 	.file input:focus+label {
 		background: #34495E;
 		color: $primary-color;
+	}
+}
+
+.profile-loading-container {
+	position: relative;
+	width: 180px;
+	height: 180px;
+
+	svg {
+		fill: none;
+		stroke: #52BA11;
+		stroke-linecap: round;
+		stroke-width: 3;
+		stroke-dasharray: 1;
+		stroke-dashoffset: 0;
+		animation: stroke-draw 6s ease-out infinite alternate;
+		// animation: stroke-draw 6s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate; 
+	}
+
+	img {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 140px;
+		height: 140px;
+		border-radius: 50%;
+	}
+}
+
+@keyframes stroke-draw {
+	from {
+		stroke: #39B0BA;
+		stroke-dasharray: 1;
+	}
+
+	to {
+		stroke: #52BA11;
+		transform: rotate(180deg);
+		stroke-dasharray: 8;
 	}
 }

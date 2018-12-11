@@ -15,7 +15,15 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-12 d-flex justify-content-center">
 				<div class="row d-flex justify-content-center">
-					<div class="profile-header-picture" style="background-size: cover;">
+					<div *ngIf="loadingdisplay" class="profile-loading-container">
+						<img *ngIf="!usersService.ActiveUser.profile_image" src="../../../../assets/images/default-profile-image.jpg">
+						<img *ngIf="usersService.ActiveUser.profile_image" (load)="loadImage()" [src]="usersService.ActiveUser.profile_image">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="enable-background:new -580 439 577.9 194;"
+						 xml:space="preserve">
+							<circle cx="50" cy="50" r="40" />
+						</svg>
+					</div>
+					<div *ngIf="!loadingdisplay" class="profile-header-picture" style="background-size: cover;">
 						<img *ngIf="!usersService.ActiveUser.profile_image" src="../../../../assets/images/default-profile-image.jpg">
 						<img *ngIf="usersService.ActiveUser.profile_image" (load)="loadImage()" [src]="usersService.ActiveUser.profile_image">
 					</div>
@@ -26,11 +34,11 @@
 								<label for="file">Upload your image</label>
 							</p>
 							<p *ngIf="fileSelected && !fileFailure">{{selectedFile.name}}</p>
+							<p *ngIf="loadingdisplay">Loading....</p>
 							<p *ngIf="fileFailure">{{fileFailureMessage}}</p>
 						</form>
-						<!-- <input type="file" (change)="onFileChanged($event)"> -->
 					</div>
-					<button type="button" *ngIf="fileSelected && !loading" (click)="updateDisplay()" class="button button-sm green-button">Save</button>
+					<button type="button" *ngIf="fileSelected && !loading && !loadingdisplay" (click)="updateDisplay()" class="display-button button button-sm green-button">Save</button>
 
 				</div>
 			</div>
