@@ -11,7 +11,6 @@ export class NotificationsService {
 	) { }
 
 	public newNotify(type, message) {
-		console.log('HERE');
 		this._notiferService.notify(type, message);
 	}
 	

@@ -1,8 +1,33 @@
-
 @import '../../../../../styles/pages';
 @import '../../../../../styles/variables';
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
+
+.note-header-icon {
+	float: right;
+	opacity: .5;
+
+	i {
+		cursor: pointer;
+		color: $grey;
+		font-size: .8em;
+	}
+}
+
+.edit-icon {
+	transition-duration: .5s;
+
+	&:hover {
+		color: $secondary-color !important; 
+		transition-duration: .5s !important;
+	}
+}
+
+.error-icon {
+	color: $error-color;
+	padding-left: 10px;
+	padding-right: 10px;
+}
 
 .header-button-container {
 	padding-top: 30px;
@@ -10,8 +35,10 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .sign-in-button {
 	transition-duration: 0.4s;
+
 	&:hover {
 		background: $primary-color;
 		color: $white;
@@ -19,48 +46,51 @@
 	}
 }
 
-.icons_notes{
+.icons_notes {
+	color: $grey;
+	font-size: .8em;
 	padding-top: 10px;
 	padding-left: 10px;
 	cursor: pointer;
 }
 
 button:disabled,
-button[disabled]{
-	display: none ;
+button[disabled] {
+	display: none;
 }
 
 textarea:disabled,
-textarea[disabled]{
+textarea[disabled] {
 	background-color: white;
 	border: none;
 	resize: none;
 	width: 100%;
 }
 
-.displayNoteTextAreaD{
+.displayNoteTextAreaD {
 	background-color: rgba(247, 247, 247, 0.589);
 	margin-top: 5px;
 }
 
 select:disabled,
-select[disabled]{
-	display: none ;
-}
-
-textarea:enabled.note-type,
-textarea[enabled].note-type{
+select[disabled] {
 	display: none;
 }
 
-.modal-body{
+textarea:enabled.note-type,
+textarea[enabled].note-type {
+	display: none;
+}
+
+.modal-body {
 	padding-top: 0;
 }
 
-.modal-title{
-	width: 100%;
+.modal-title {
+	width: 100% !important;
 }
 
-.note-display{
-	height: 60vh;
+.note-display {
+	resize: none;
+    overflow: hidden;
 }

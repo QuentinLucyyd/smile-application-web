@@ -20,11 +20,14 @@
 	}
 
 	.sliderheader {
-		font-size: 2em;
+		text-transform: capitalize;
+		font-size: 1em;
+		padding-right: 10px;
 	}
 }
 
 .skip-text {
+	padding-top: 10px;
 	text-decoration: underline;
 	cursor: pointer;
 }

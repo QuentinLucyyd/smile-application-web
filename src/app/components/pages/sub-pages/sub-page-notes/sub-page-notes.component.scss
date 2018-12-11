@@ -3,6 +3,21 @@
 @import '../../../../../styles/variables';
 @import '../../../../../styles/view';
 
+#note_name {
+	color: $grey;
+	border: none;
+	border-bottom: solid 1px $grey;
+}
+
+textarea {
+	resize: none
+}
+
+.note-header-icon {
+	float: right;
+	opacity: .5;
+}
+
 .card-text {
 	font-size: 12px;
 	padding-top: 1rem;
@@ -31,7 +46,6 @@
 .goal-card-container {
 	color: $grey;
 	font-family: $primary-font;
-	cursor: pointer;
 
 	.goal-header-icon {
 		float: right;
@@ -49,5 +63,43 @@
 
 .card-button-mobile {
 	float: right;
+	padding-right: 10px;
+}
+
+.green-tick {
+	cursor: pointer;
+	color: $secondary-color !important;
+}
+
+.edit-icon {
+	transition-duration: .5s;
+	cursor: pointer;
+	&:hover {
+		color: $secondary-color;
+		transition-duration: .5s;
+	}
+}
+
+.view-icon {
+	transition-duration: .5s;
+	padding-left: 10px;
+	cursor: pointer;
+	&:hover {
+		color: $secondary-color;
+		transition-duration: .5s;
+	}
+}
+
+.error-icon {
+	cursor: pointer;
+	color: $error-color;
+	padding-left: 10px;
+}
+
+.view-icon {
+	padding-left: 10px;
+}
+
+.card-loading {
 	padding-right: 10px;
 }

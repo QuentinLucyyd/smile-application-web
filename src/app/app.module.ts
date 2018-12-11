@@ -11,6 +11,7 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
 import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TextareaAutosizeModule } from 'ngx-textarea-autosize';
 
 /* Pages Import */
 import { PageHomeComponent } from './components/pages/page-home/page-home.component'
@@ -20,6 +21,8 @@ import { PageVerifyComponent } from './components/pages/page-verify/page-verify.
 import { ModalSignInComponent } from './components/elements/modals/modal-sign-in/modal-sign-in.component'
 import { ModalAddNoteComponent } from './components/elements/modals/modal-add-note/modal-add-note.component';
 import { ModalAddGoalComponent } from './components/elements/modals/modal-add-goal/modal-add-goal.component';
+import { ModalDisplayNoteComponent } from './components/elements/modals/modal-display-note/modal-display-note.component';
+import { ModalDisplayGoalComponent } from './components/elements/modals/modal-display-goal/modal-display-goal.component';
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
@@ -87,12 +90,16 @@ const customNotifierOptions: NotifierOptions = {
 		PageVerifyComponent,
 		ModalSignInComponent,
 		ModalAddNoteComponent,
-		ModalAddGoalComponent
+		ModalAddGoalComponent,
+		ModalDisplayNoteComponent,
+		ModalDisplayGoalComponent
 	],
 	entryComponents: [
 		ModalAddNoteComponent,
 		ModalAddGoalComponent,
-		ModalSignInComponent
+		ModalSignInComponent,
+		ModalDisplayNoteComponent,
+		ModalDisplayGoalComponent
 	],
 	imports: [
 		BrowserModule,
@@ -101,6 +108,7 @@ const customNotifierOptions: NotifierOptions = {
 		BsDatepickerModule.forRoot(),
 		HttpClientModule,
 		FormsModule,
+		TextareaAutosizeModule,
 		RouterModule.forRoot(ROUTES),
 		NotifierModule.withConfig(customNotifierOptions),
 		NgProgressModule.forRoot({

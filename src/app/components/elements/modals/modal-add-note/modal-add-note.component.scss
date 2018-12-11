@@ -1,4 +1,3 @@
-
 @import '../../../../../styles/pages';
 @import '../../../../../styles/variables';
 @import '../../../../../styles/modal';
@@ -10,8 +9,10 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .sign-in-button {
 	transition-duration: 0.4s;
+
 	&:hover {
 		background: $primary-color;
 		color: $white;
@@ -19,7 +20,37 @@
 	}
 }
 
-.noteContentArea{
-    margin-top: 1.2rem !important;
+.noteContentArea {
+	margin-top: 1.2rem !important;
 }
 
+.note-type-select {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.priority-select {
+	color: $grey;
+
+	label {
+		position: absolute;
+		top: -28px;
+		left: 0px;
+		font-size: 0.85em;
+	}
+
+}
+
+textarea {
+	font-size: .8em;
+}
+
+.note-error {
+	color: $grey;
+	font-size: 0.75em;
+}
+
+.word-count {
+	color: $grey;
+	font-size: 0.75em;
+	float: right;
+}

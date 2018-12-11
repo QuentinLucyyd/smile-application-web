@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAddNoteComponent } from '../../elements/modals/modal-add-note/modal-add-note.component';
 
 @Component({
 	selector: 'app-element-notes-overview',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElementNotesOverviewComponent implements OnInit {
 
-	constructor() { }
+	constructor(
+		public modalService: NgbModal
+	) { }
 
 	ngOnInit() {
 	}
 
+	open() {
+		this.modalService.open(ModalAddNoteComponent, {  windowClass: 'modal-custom-container', centered: true });
+	}
 }

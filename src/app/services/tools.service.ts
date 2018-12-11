@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from './api-service.service';
+import { CheckinsService } from './checkins.service';
+import { UsersService } from './users.service';
 
 @Injectable({
 	providedIn: 'root'
@@ -8,19 +10,37 @@ export class ToolsService {
 	tools: any[] = [];
 
 	constructor(
-		private APIService: ApiServiceService
+		private APIService: ApiServiceService,
+		private checkInsService: CheckinsService,
+		private usersSerivce: UsersService
 	) { }
 
 	public getTools() {
 		return new Promise((resolve, reject) => {
 			this.APIService.getTools().subscribe(result => {
-				for(const tool of result.data) {
-					this.tools.push(tool);
-				}
-				resolve(this.tools);
+				const DateObject = new Date;
+				const date = DateObject.getFullYear() + '-' + (DateObject.getMonth() + 1) + '-' + DateObject.getUTCDate();
+
+				this.checkInsService.getUserDateCheckins(this.usersSerivce.ActiveUser.id, date).subscribe(data => {
+					for(const tool of result.data) {
+						this.tools.push(tool);
+					}
+					resolve(this.tools);
+				}, err => {
+					reject(err);
+				});
 			}, err => {
-				reject ();
+				reject (err);
 			});
 		})
+	}
+
+	filterTools() {
+		for (const tool of this.tools) {
+			if (tool.name === 'Check out' && !this.checkInsService.checkinDone)
+				this.tools.splice(this.tools.indexOf(tool), 1);
+			if (tool.name === 'Check in' && this.checkInsService.checkinDone)
+				this.tools.splice(this.tools.indexOf(tool), 1);
+		}
 	}
 }

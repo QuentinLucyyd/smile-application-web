@@ -23,11 +23,16 @@ export class GoalsService {
 
 	public getUserGoals(user_id) {
 		return new Promise((resolve, reject) => {
+			this.CompletedGoals = [];
+			this.RecurringGoals = [];
+			this.Goals = [];
+
 			this._APIService.getUserGoals(user_id).subscribe(result => {
 				for (let goal of result.data) {
 					if (goal.frequency === 'Once-off')
 						this.Goals.push(new Goal(goal));
 					else {
+						console.log(goal);
 						this.RecurringGoals.push(new Goal(goal));
 					}
 				}
@@ -40,5 +45,9 @@ export class GoalsService {
 
 	public createGoal(goal: Goal){
 		return this._APIService.createGoal(goal);
+	}
+
+	public updateGoal(goal: Goal){
+		return this._APIService.updateGoal(goal);
 	}
 }

@@ -1,6 +1,7 @@
 /* Imports */
 @import '../../../../../styles/pages';
 @import '../../../../../styles/variables';
+@import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
 .card-container {
@@ -24,6 +25,10 @@
 	}
 }
 
+.card {
+	border-radius: 10px;
+}
+
 .goal-card-container {
 	color: $grey;
 	font-family: $primary-font;
@@ -34,17 +39,30 @@
 		color: $grey;
 		transition-duration: .4s;
 
-		&:hover {
-			color: $error-color;
-			opacity: .5;
-			transition-duration: .4s;
+		.complete-icon {
+			padding-right: 10px;
+
+			&:hover {
+				color: $secondary-color;
+				opacity: .5;
+				transition-duration: .4s;
+			}
+		}
+
+		.trash-icon {
+			&:hover {
+				color: $error-color;
+				opacity: .5;
+				transition-duration: .4s;
+			}
 		}
 	}
 
 	.goal-name {
-		font-weight: 900;
+		font-weight: 700;
+		font-size: 1em;
 	}
-	
+
 	.goal-description {
 		font-size: 1em;
 	}

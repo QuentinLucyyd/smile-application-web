@@ -4,24 +4,46 @@
 			<div class="row">
 				<div class="col-12 col-md-6">
 					<div class="sub-page-title">
-						<i class="sub-page-title-icon fa-clipboard-chec"></i>Dashboard / Check out
+						<i class="sub-page-title-icon fas fa-clipboard-check"></i>Dashboard / Check out
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-12 journal-container">
+				<div class="row">
+					<div class="col-12 col-md-2">
+						<div class="tooltip-wrapper">
+							<label class="sliderheader">Getting Clear</label>
+							<i class="getting-clear-icon fas fa-info-circle"></i>
+							<div class="tooltip">
+								<ul class="list-group list-group-flush" style="margin-bottom: 10px;">
+									<li class="list-group-item">Questions to answer</li>
+									<li class="list-group-item">• I am..</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="journal-form">
-					<label class="sliderheader">Getting Clear</label>
-					<p></p>
-					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..."></textarea>
-					<div class="row d-flex justify-content-center">
+					<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type answers here or record..." [(ngModel)]="Note.note">{{Note.note}}</textarea>
+					<div (click)="recordService.toggleRecording()" class="row d-flex justify-content-center" [ngClass]="{'recording': recordService.recording}" *ngIf="!loading">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>
+					</div>
+					<div class="record-text d-flex justify-content-center" *ngIf="recordService.recording">Recording....</div>
+					<div class="audio-playback-header d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">Recording Playback</div>
+					<div class="audio-playback-container d-flex justify-content-center" *ngIf="recordService.url && !recordService.recording">
+						<audio controls="">
+							<source [src]="recordService.sanitize()" type="audio/wav">
+						</audio>
 					</div>
 				</div>
 				<div class="d-flex justify-content-center rowtop">
-					<div class="col-5 col-md-5 d-flex justify-content-center">
+					<div (click)="submitCheckout()" class="col-5 col-md-5 d-flex justify-content-center" *ngIf="!loading">
 						<button type="button" class="button dark-button sign-in-button">Submit</button>
+					</div>
+					<div class="secondary-loading-container" *ngIf="loading">
+						<div class="secondary-loading"></div>
 					</div>
 				</div>
 				<p class="skip-text d-flex justify-content-center">Skip</p>

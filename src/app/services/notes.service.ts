@@ -16,20 +16,26 @@ export class NotesService {
 		public getNotes() {
 			return this._APIService.getNotes();
 		}
-	
+
 		public getUserNotes(user_id) {
-			return this._APIService.getUserNotes(user_id).subscribe(result => {
-				for (let note of result.data) {
-					this.Notes.push(new Note(note));
-				}
-			});
+			return new Promise((resolve, reject) => {
+				this.Notes = [];
+				return this._APIService.getUserNotes(user_id).subscribe(result => {
+					for (let note of result.data) {
+						this.Notes.push(new Note(note));
+						resolve(result);
+					}
+				}, err => {
+					reject(err);
+				});
+			})
 		}
 
 	public createUserNote(note: Note){
-	  return this._APIService.createUserNote(note);
+		return this._APIService.createUserNote(note);
 	}
 
 	public updateUserNote(note: Note){
-	  return this._APIService.updateUserNote(note);
+		return this._APIService.updateUserNote(note);
 	}
 }

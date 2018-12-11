@@ -1,18 +1,82 @@
-<div class="modal fade" id="displayGoalModal" tabindex="-1" role="dialog" aria-labelledby="displayGoalModal" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<div class="modal-title" id="exampleModalLongTitle"></div>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+<!-- Modal -->
+<div class="modal-header">
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h4>{{goalsService.ActiveGoal.name}}</h4>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+		</div>
+	</div>
+	<div class="modal-display-goal-container">
+		<div class="row">
+			<form class="col-12 col-md-7">
+				<div class="row">
+					<div class="form-group float-label-control col s12">
+						<p class="grey-text">Description</p>
+						<textarea [disabled]="disabled" type="text" class="form-control" id="description" name="description">{{goalsService.ActiveGoal.description}}</textarea>
+					</div>
 				</div>
-				<div class="modal-body">
-					<div class="pre-scrollable"><p>
-					</p></div>
-					<button class="button dark-button">Edit Goal</button>
+				<div class="row">
+					<div class="form-group col-6 col-md-6">
+						<!-- Date input -->
+						<label for="due_date">Due Date</label>
+						<input [disabled]="disabled" [(bsValue)]="goalsService.ActiveGoal.due_date" value="{{goalsService.ActiveGoal.due_date | date:'dd/MM/yyyy' }}"
+						 [(ngModel)]="goalsService.ActiveGoal.due_date" class="form-control" id="due_date" name="due_date" bsDatepicker
+						 type="text" name="due_date" />
+					</div>
+					<div class="form-group col-6 col-md-6">
+						<label for="frequency">Frequency</label>
+						<select [disabled]="disabled" [(ngModel)]="goalsService.ActiveGoal.frequency" class="form-control" id="frequency"
+						 name="frequency">
+							<option value="Select Frequency:">Select Frequency:</option>
+							<option *ngFor="let freq of frequencies" [value]="freq">{{freq}}</option>
+						</select>
+					</div>
 				</div>
-				<div class="modal-footer"></div>
+			</form>
+			<div class="col-12 col-md-5">
+				<div class="goal-actions">
+					<div class="goal-actions-header d-flex justify-content-center">
+						<h5>Goal Actions</h5>
+					</div>
+					<div class="goal-actions-card-container">
+						<div class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i (click)="!deleteGoal()"  *ngIf="!disabledDeleteBtn" class="trash-icon fas fa-trash-alt"></i>
+									<span class="goal-action-name">Delete Goal</span>
+								</div>
+							</div>
+						</div>
+						<div class="header-button-container" style="text-align:center" *ngIf="disabledDeleteBtn">
+							<ul >
+									<h5>Are you sure you want to delete this?</h5>
+									<button data-dismiss="modal" (click)="_deleteGoal()" class="button dark-button sign-in-button" >Yes</button>
+									<button data-dismiss="modal" class="button dark-button sign-in-button" >No</button>
+							</ul>
+						</div>
+						<div (click)="disabled = !disabled" class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i class="edit-icon fas fa-pencil-alt"></i>
+									<span class="goal-action-name">Edit Goal</span>
+								</div>
+							</div>
+						</div>
+						<div style="padding-top: 10px;" class="d-flex justify-content-center">
+							<button type="button" data-dismiss="modal" *ngIf="!disabled && !loading" [disabled]="disabled" (click)="updateGoal()"
+							 class="button button-sm green-button">Save</button>
+							<div class="secondary-loading-container" *ngIf="loading">
+								<div class="secondary-loading"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+	</div>
 </div>

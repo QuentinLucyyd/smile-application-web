@@ -38,10 +38,6 @@
 	cursor: pointer;
 }
 
-.recording {
-	color: $error-color;
-}
-
 .audio-playback-header {
 	padding: 10px;
 	text-align: center;
@@ -128,3 +124,8 @@
 	font-weight: bold;
 	margin-top: .8rem;
 }
+
+.list-group-item {
+	border: none;
+}
+

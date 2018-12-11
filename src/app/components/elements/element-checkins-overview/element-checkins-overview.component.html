@@ -7,9 +7,15 @@
 			</div>
 		</div>
 		<div class="container-fluid">
+			<div style="padding-bottom: 25px !important;" class="notfound-container" *ngIf="noCheckins">
+				<div class="notfound-icon d-flex justify-content-center">
+					<i class="fas fa-chart-line"></i>
+				</div>
+				<div class="notfound-text d-flex justify-content-center">There are currently no Checkins</div>
+			</div>
 			<div class="row">
 				<div class="col-12 col-md-12">
-					<div class="chart-container" *ngIf="Checkins.length && !loading">
+					<div class="chart-container" *ngIf="Checkins.length && !loading && !noCheckins">
 						<div [chart]="chart"></div>
 					</div>
 				</div>

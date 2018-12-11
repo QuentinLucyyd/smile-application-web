@@ -153,10 +153,10 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 				this._checkinService.createCheckin(_Checkin).subscribe(data => {
 					this.loading = false;
 					this.notificationService.newNotify('info', 'Checkin Completed');
-					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: checkin}});
+					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: 'checkin'}});
 				}, err => {
 					this.loading = false;
-					this.failure = false;
+					this.failure = true;
 				})
 			}, err => {
 				this.loading = false;
@@ -172,12 +172,12 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 			}
 			const _Note = new Note(note)
 			this.notesService.createUserNote(_Note).subscribe(data => {
-				_Note.id = data.data[0].id;
+				_Note.id = data.data.id;
 				_Checkin.note = _Note;
 				this._checkinService.createCheckin(_Checkin).subscribe(data => {
 					this.loading = false;
 					this.notificationService.newNotify('info', 'Checkin Completed');
-					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: checkin}});
+					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: 'checkin'}});
 				}, err => {
 					this.loading = false;
 					this.failure = false;

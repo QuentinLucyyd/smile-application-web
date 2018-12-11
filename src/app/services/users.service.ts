@@ -16,6 +16,14 @@ export class UsersService {
 		return this._APIService.getUsers();
 	}
 
+	getUsersSearch(identifier: string) {
+		return this._APIService.getUsersSearch(identifier);
+	}
+
+	inviteUser(user: User) {
+		return this._APIService.inviteUser(user);
+	}
+
 	createAccount(token, user: User) {
 		return this._APIService.createUserAccount(token, user);
 	}

@@ -23,8 +23,6 @@ import { ElementCheckinsOverviewComponent } from '../../components/elements/elem
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
 import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
-import { ModalDisplayNoteComponent } from '../../components/elements/modals/modal-display-note/modal-display-note.component';
-import { ModalDisplayGoalComponent } from '../../components/elements/modals/modal-display-goal/modal-display-goal.component';
 
 /* Import Guards */
 import { AdminGuard } from '../../guards/admin.guard';
@@ -65,8 +63,6 @@ const appRoutes = [
 		ElementCompletedGoalsComponent,
 		SubPageNotesComponent,
 		SubPageInviteComponent,
-		ModalDisplayNoteComponent,
-		ModalDisplayGoalComponent
 	], providers: [
 		ElementCheckinsOverviewComponent,
 		AdminGuard

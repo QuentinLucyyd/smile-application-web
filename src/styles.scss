@@ -5,6 +5,9 @@
 @import 'styles/variables';
 @import 'styles/config';
 
+html {
+}
+
 body {
 	background: #ecf0f1;
 }
@@ -19,6 +22,7 @@ body {
 
 p {
 	font-size: 0.5em;
+	font-family: $primary-font;
 }
 
 h1,
