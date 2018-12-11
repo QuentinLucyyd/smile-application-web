@@ -23,7 +23,6 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		public goalsService: GoalsService,
 		public activeModal: NgbActiveModal,
 		private notificationService: NotificationsService,
-		private authService: AuthenticationService,
 		private checklistService: ChecklistsService
 
 	) { super(); }
@@ -40,17 +39,19 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	}
 
 	checklistChange(item: Checklist) {
-		item.is_completed = !item.is_completed;
+		console.log(item);
+		//item.is_completed = !item.is_completed;
 		this.checklistService.updateChecklist(item).subscribe(data => {
 			this.goalsService.ActiveGoal.checklistProgress();
 		});
+		
 	}
 
 	updateGoal(){
 		console.log(this.goalsService.ActiveGoal.checklist);
 		this.loading = true;
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
-			this.checklistService.updateChecklist(this.goalsService.ActiveGoal.checklist).subscribe(dataa =>{}, error =>{});
+		
 			this.loading = false;
 			this.activeModal.close('Edit Success');
 			this.notificationService.newNotify('info', 'Goal Edited Successfully')
