@@ -18,7 +18,6 @@ import { ChecklistsService } from 'src/app/services/checklists.service';
 })
 export class SubPageGoalsComponent extends SubPage implements OnInit {
 
-	// private progress_value: number = 82;
 	options: Options = {
 		floor: 0,
 		ceil: 100,

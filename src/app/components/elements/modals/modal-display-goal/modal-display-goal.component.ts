@@ -43,7 +43,7 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		console.log(this.goalsService.ActiveGoal.checklist);
 		this.loading = true;
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
-			this.checklistService.updateChecklist(this.goalsService.ActiveGoal.checklist);
+			this.checklistService.updateChecklist(this.goalsService.ActiveGoal.checklist).subscribe(dataa =>{}, error =>{});
 			this.loading = false;
 			this.activeModal.close('Edit Success');
 			this.notificationService.newNotify('info', 'Goal Edited Successfully')
