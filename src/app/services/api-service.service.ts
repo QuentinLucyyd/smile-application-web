@@ -16,7 +16,7 @@ import { Checklist } from '../models/checklist';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'https://smile-application-api.herokuapp.com';
+	host = 'http://localhost:3001';
 	
 	constructor(
 		private _http: Http,
@@ -37,6 +37,14 @@ export class ApiServiceService {
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/users', options)
 			.pipe(map(response => response.json()));
+	}
+
+	public updateUserDisplay(displayData: FormData) {
+		this.fetchToken();
+		const headers = new Headers({'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.patch(this.host + '/users?display=true', displayData, options)
+		.pipe(map(response => response.json()));
 	}
 
 	public getUsersSearch(identifier: string) {
@@ -66,6 +74,14 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.patch(this.host + '/users/recover', user, options)
+			.pipe(map(response => response.json()));
+	}
+
+	public subscribeUser(subscription: any) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/users/subscribe', subscription, options)
 			.pipe(map(response => response.json()));
 	}
 	//Verify Realated Request
@@ -140,6 +156,7 @@ export class ApiServiceService {
 	}
 
 	//Checklist Related Requests
+
 	public getAllChecklists(){
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
@@ -161,6 +178,14 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.post(this.host + '/checklists', checklist, options)
+		.pipe(map(response => response.json()));
+	}
+
+	public updateChecklist(checklist: Checklist) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.patch(this.host + '/checklists', checklist, options)
 		.pipe(map(response => response.json()));
 	}
 

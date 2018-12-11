@@ -25,6 +25,7 @@ import { ModalAddNoteComponent } from './components/elements/modals/modal-add-no
 import { ModalAddGoalComponent } from './components/elements/modals/modal-add-goal/modal-add-goal.component';
 import { ModalDisplayNoteComponent } from './components/elements/modals/modal-display-note/modal-display-note.component';
 import { ModalDisplayGoalComponent } from './components/elements/modals/modal-display-goal/modal-display-goal.component';
+import { ModalEditProfileComponent } from "./components/elements/modals/modal-edit-profile/modal-edit-profile.component";
 
 import { ApiServiceService } from './services/api-service.service';
 import { VerifyService } from './services/verify.service';
@@ -96,14 +97,16 @@ const customNotifierOptions: NotifierOptions = {
 		ModalAddNoteComponent,
 		ModalAddGoalComponent,
 		ModalDisplayNoteComponent,
-		ModalDisplayGoalComponent
+		ModalDisplayGoalComponent,
+		ModalEditProfileComponent
 	],
 	entryComponents: [
 		ModalAddNoteComponent,
 		ModalAddGoalComponent,
 		ModalSignInComponent,
 		ModalDisplayNoteComponent,
-		ModalDisplayGoalComponent
+		ModalDisplayGoalComponent,
+		ModalEditProfileComponent
 	],
 	imports: [
 		BrowserModule,

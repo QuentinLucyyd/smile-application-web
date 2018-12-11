@@ -3,6 +3,7 @@ import { UsersService } from './users.service';
 import { User } from '../models/user';
 import { ApiServiceService } from './api-service.service';
 import { NavService } from './nav.service';
+import { Router } from '@angular/router';
 
 @Injectable({
 	providedIn: 'root'
@@ -16,12 +17,13 @@ export class AuthenticationService {
 	constructor(
 		private usersService: UsersService,
 		private APIService: ApiServiceService,
-		private navService: NavService
+		private navService: NavService,
+		private router: Router
 	) { }
 
 	public invalidateUser() {
 		localStorage.clear();
-		this.navService.redirectUser('', 0, {'invalidate': 'true'});
+		this.router.navigate(['/'], {queryParams: {'invalidate': 'true'}});
 	}
 
 	public AuthenticateUser() {

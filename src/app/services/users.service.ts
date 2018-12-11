@@ -35,4 +35,12 @@ export class UsersService {
 	recoverUser(token: String, user: User) {
 		return this._APIService.recoverUser(token, user);
 	}
+
+	subscribeUser(subscription: any) {
+		return this._APIService.subscribeUser(subscription);
+	}
+
+	updateUserDisplay(displayData: FormData) {
+		return this._APIService.updateUserDisplay(displayData);
+	}
 }

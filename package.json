@@ -4,6 +4,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "node server.js",
+		"server": "ng build --prod && http-server -p 8080 -c-1 dist/smile-application-web",
 		"build": "ng build",
 		"test": "ng test",
 		"lint": "ng lint",
@@ -35,6 +36,7 @@
 		"express": "^4.16.4",
 		"highcharts": "^6.2.0",
 		"ng-socket-io": "^0.2.4",
+		"ng2-file-upload": "^1.3.0",
 		"ng5-slider": "^1.1.4",
 		"ngx-bootstrap": "3.0.0",
 		"ngx-textarea-autosize": "^2.0.0",

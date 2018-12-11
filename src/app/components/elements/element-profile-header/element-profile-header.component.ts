@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
+import { ModalEditProfileComponent } from '../modals/modal-edit-profile/modal-edit-profile.component';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
 	selector: 'app-element-profile-header',
@@ -10,7 +12,8 @@ export class ElementProfileHeaderComponent implements OnInit {
 	default: String = 'assets/images/default-profile-image.jpg';
 
 	constructor(
-		public usersService: UsersService
+		public usersService: UsersService,
+		public modalService: NgbModal,
 	) { }
 
 	ngOnInit() {
@@ -18,5 +21,9 @@ export class ElementProfileHeaderComponent implements OnInit {
 
 	loadImage() {
 		console.log("Image Loading");
+	}
+
+	editProfile() {
+		this.modalService.open(ModalEditProfileComponent, { windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 	}
 }

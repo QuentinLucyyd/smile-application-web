@@ -13,5 +13,4 @@ export class NotificationsService {
 	public newNotify(type, message) {
 		this._notiferService.notify(type, message);
 	}
-	
 }

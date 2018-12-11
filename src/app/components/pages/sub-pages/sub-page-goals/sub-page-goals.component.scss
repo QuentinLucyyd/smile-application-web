@@ -126,9 +126,17 @@
 		border-radius: 3px;
 		cursor:  pointer !important;
 	}
+
 	.ng5-slider[disabled] .ng5-slider-selection {
 		background: #1997FD !important;
 	}
+
+	.completed-goal {
+		.ng5-slider[disabled] .ng5-slider-selection {
+			background: $secondary-color !important;
+		}
+	}
+
 	.ng5-slider[disabled] {
 		cursor: inherit !important;
 	}

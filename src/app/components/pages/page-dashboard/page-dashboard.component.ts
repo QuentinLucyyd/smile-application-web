@@ -6,6 +6,8 @@ import { CheckinsService } from '../../../services/checkins.service';
 import { SubPage } from '../../../classes/abstract/page.class';
 import { UsersService } from '../../../services/users.service';
 import { NotificationsService } from '../../../services/notifications.service';
+import { environment } from '../../../../environments/environment.prod'
+import { SwPush } from '@angular/service-worker';
 
 @Component({
 	selector: 'app-page-dashboard',
@@ -13,13 +15,13 @@ import { NotificationsService } from '../../../services/notifications.service';
 	styleUrls: ['./page-dashboard.component.scss']
 })
 export class PageDashboardComponent extends SubPage implements OnInit {
-
 	constructor(
 		public navService: NavService,
 		private checkinService: CheckinsService,
 		private authenticationService: AuthenticationService,
 		private usersService: UsersService,
-		private notificationService: NotificationsService
+		private notificationService: NotificationsService,
+		private swPush: SwPush
 	) { super(); }
 
 	ngOnInit() {
@@ -33,6 +35,13 @@ export class PageDashboardComponent extends SubPage implements OnInit {
 					this.checkinService.checkinDone = false;
 					this.notificationService.newNotify('warning', 'You have not done your Check in today');
 				}
+				this.swPush.requestSubscription({ serverPublicKey: environment.VAPID_PUBLIC_KEY })
+		.then(sub => {
+			this.usersService.subscribeUser(JSON.stringify(sub)).subscribe(data => {}, err => {})
+		})
+		.catch(err => {
+			console.log(err);
+		});
 			})
 		})
 		.catch(err => {

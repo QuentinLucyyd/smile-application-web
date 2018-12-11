@@ -6,7 +6,7 @@ import { SubPage } from 'src/app/classes/abstract/page.class';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ChecklistsService } from 'src/app/services/checklists.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Checklist } from 'src/app/models/checklist';
 
 @Component({
 	selector: 'app-modal-display-goal',
@@ -23,11 +23,12 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		public goalsService: GoalsService,
 		public activeModal: NgbActiveModal,
 		private notificationService: NotificationsService,
-		private authService: AuthenticationService
+		private checklistService: ChecklistsService
 
 	) { super(); }
 
 	ngOnInit() {
+		console.log(this.goalsService.ActiveGoal);
 		this.disabled = true;
 		this.frequencies = [
 			"Once-off",
@@ -37,6 +38,12 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		];
 	}
 
+	checklistChange(item: Checklist) {
+		item.is_completed = !item.is_completed;
+		this.checklistService.updateChecklist(item).subscribe(data => {
+			this.goalsService.ActiveGoal.checklistProgress();
+		});
+	}
 
 	updateGoal(){
 		this.loading = true;

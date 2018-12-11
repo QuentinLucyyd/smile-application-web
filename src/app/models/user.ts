@@ -4,10 +4,13 @@ export class User {
 	username: String = '';
 	first_name: String = '';
 	last_name: String = '';
+	joining_date: Date;
 	role: String = '';
 	email: String = '';
 	password: String = '';
 	profile_image: String = '';
+	profileImage: FormData;
+	birthdate: Date;
 	city: String = '';
 
 	constructor(user) {
@@ -25,6 +28,8 @@ export class User {
 		if ( user.password ) { this.password = user.password; }
 		if ( user.password ) { this.password = user.password; }
 		if ( user.profile_image ) { this.profile_image = user.profile_image; }
+		if ( user.birthdate ) { this.birthdate = new Date(user.birthdate); }
+		if ( user.joining_date ) { this.joining_date = new Date(user.joining_date); }
 		if ( user.city ) { this.city = user.city; }
 	}
 }

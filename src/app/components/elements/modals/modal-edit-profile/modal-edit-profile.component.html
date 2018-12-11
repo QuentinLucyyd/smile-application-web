@@ -1,0 +1,87 @@
+<!-- Modal -->
+<div class="modal-header">
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h4>{{usersService.ActiveUser.first_name}}'s Profile</h4>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+		</div>
+	</div>
+	<div class="modal-edit-profile-container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 d-flex justify-content-center">
+				<div class="row d-flex justify-content-center">
+					<div class="profile-header-picture" style="background-size: cover;">
+						<img *ngIf="!usersService.ActiveUser.profile_image" src="../../../../assets/images/default-profile-image.jpg">
+						<img *ngIf="usersService.ActiveUser.profile_image" (load)="loadImage()" [src]="usersService.ActiveUser.profile_image">
+					</div>
+					<div class="col-12 d-flex uplaod-form-container justify-content-center">
+						<form action="#">
+							<p class="file">
+								<input type="file" name="file" id="file" (change)="onFileChanged($event)" accept="image/x-png,image/jpeg" />
+								<label for="file">Upload your image</label>
+							</p>
+							<p *ngIf="fileSelected && !fileFailure">{{selectedFile.name}}</p>
+							<p *ngIf="fileFailure">{{fileFailureMessage}}</p>
+						</form>
+						<!-- <input type="file" (change)="onFileChanged($event)"> -->
+					</div>
+					<button type="button" *ngIf="fileSelected && !loading" (click)="updateDisplay()" class="button button-sm green-button">Save</button>
+
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-12 profile-header-info-container d-flex justify-content-center">
+				<div class="row">
+					<div class="col-12 col-md-12">
+						<h5>{{usersService.ActiveUser.first_name}} {{usersService.ActiveUser.last_name}}</h5>
+					</div>
+					<div class="col-12 col-md-12" *ngIf="usersService.ActiveUser.role && usersService.ActiveUser.city">
+						<p class="user-city">{{usersService.ActiveUser.role | titlecase}} | {{usersService.ActiveUser.city}}</p>
+					</div>
+				</div>
+				<div *ngIf="!usersService.ActiveUser.first_name && !usersService.ActiveUser.last_name" class="name-placeholder">
+					<div class="first"></div>
+				</div>
+			</div>
+			<div class="basic-info-container col-12 col-md-6">
+				<div class="basic-info-header">User Information</div>
+				<div class="row">
+					<div class="basic-info-headers col-2 col-md-5">
+						<p> City :</p>
+						<p> Date of Birth :</p>
+						<p> Joining Date :</p>
+						<p> Email :</p>
+					</div>
+					<div class="col-4 col-md-5">
+						<p><span class="bold">{{usersService.ActiveUser.city}}</span></p>
+						<p><span class="bold">{{getBirthDate(usersService.ActiveUser.birthdate)}}</span></p>
+						<p><span class="bold">{{getBirthDate(usersService.ActiveUser.joining_date)}}</span></p>
+						<p><span class="bold">{{usersService.ActiveUser.email}}</span></p>
+					</div>
+				</div>
+			</div>
+			<div class="profile-info-actions col-12 col-md-6">
+				<div class="profile-actions-header d-flex justify-content-center">
+					<h5>Profile Actions</h5>
+				</div>
+				<div class="profile-actions-card-container">
+					<div class="card shadow-sm" style="margin: 10px">
+						<div class="card-header">
+							<div class="goal-header-icon">
+								<i class="edit-icon fas fa-pen"></i>
+								<span class="profile-action-name">Edit Profile</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal-footer d-flex justify-content-center">
+	<!-- <button type="button" *ngIf="fileSelected && !loading" (click)="editProfile()" class="button button-sm green-button">Save</button> -->
+</div>

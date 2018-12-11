@@ -1,0 +1,105 @@
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/modal';
+@import '../../../../../styles/view';
+
+.modal-edit-profile-container {
+	color: $grey;
+
+	.basic-info-header {
+		font-size: 1em;
+	}
+
+}
+
+.profile-actions-card-container {
+	.card {
+		cursor: pointer;
+		transition-duration: 1s;
+
+		&:hover {
+			.edit-icon {
+				color: $secondary-color;
+				transition-duration: 1s;
+			}
+		}
+	}
+}
+
+.profile-header-info-container {
+	text-align: center;
+	padding: 10px;
+}
+
+.profile-actions-header {
+	h5 {
+		font-size: 1em;
+		font-weight: 100;
+	}
+}
+
+.profile-header {
+	padding-left: 10px;
+	height: 220px;
+
+	.button {
+		font-weight: 200;
+	}
+}
+
+.profile-action-name {
+	padding-left: 15px;
+}
+
+.profile-header-picture {
+	cursor: pointer;
+
+	border: double 5px transparent;
+	border-radius: 80px;
+	background-image: linear-gradient(white, white), radial-gradient(circle at top left, #39B0BA, #52BA11);
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+
+	width: 150px;
+	height: 150px;
+
+	img {
+		width: 140px;
+		height: 140px;
+		border-radius: 100px;
+		image-rendering: auto;
+	}
+}
+
+.uplaod-form-container {
+	padding-top: 10px;
+	text-align: center;
+
+	.file {
+		position: relative;
+	}
+
+	.file label {
+		background: $primary-color;
+		padding: 5px 20px;
+		color: #fff;
+		font-weight: bold;
+		font-size: .9em;
+		transition: all .4s;
+	}
+
+	.file input {
+		position: absolute;
+		display: inline-block;
+		left: 0;
+		top: 0;
+		opacity: 0.01;
+		cursor: pointer;
+	}
+
+	.file input:hover+label,
+	.file input:focus+label {
+		background: #34495E;
+		color: $primary-color;
+	}
+}

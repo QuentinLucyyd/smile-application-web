@@ -14,6 +14,7 @@ export class Goal {
 	progress_value: number = 0;
 	i: number = 0;
 	checklist: Array<Checklist> = [];
+	checklist_complete: Boolean = false;
 	
 	constructor(goal) {
 		this.updateGoal(goal);
@@ -41,13 +42,18 @@ export class Goal {
 				this.i++;
 		}
 		this.progress_value = ( this.i / checklist.length) * 100;
+		if (this.progress_value == 100)
+			this.checklist_complete = true
 	}
 
 	checklistProgress() {
+		this.i = 0;
 		for (let item of this.checklist ){
 			if (item.is_completed == true)
 				this.i++;
 		}
 		this.progress_value = ( this.i / this.checklist.length) * 100;
+		if (this.progress_value == 100)
+			this.checklist_complete = true
 	}
 }
