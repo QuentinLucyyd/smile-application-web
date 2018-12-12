@@ -47,6 +47,14 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
+	public updateUser(user: User) {
+		this.fetchToken();
+		const headers = new Headers({'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.patch(this.host + '/users', user, options)
+		.pipe(map(response => response.json()));
+	}
+
 	public getUsersSearch(identifier: string) {
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });

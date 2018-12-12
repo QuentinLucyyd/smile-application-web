@@ -3,6 +3,43 @@
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
+.form-row {
+	padding-top: 7px;
+
+	.form-group {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+}
+
+.dob-label {
+	font-size: 0.85em;
+	position: absolute;
+	top: -20px;
+	left: 0px;
+}
+
+.city-label {
+	font-size: 0.85em;
+	position: absolute;
+	top: -20px;
+	left: 0px;
+}
+
+.form-container {
+	padding: 11px 15px;
+
+	.form-control:focus {}
+}
+
+.welcome-container {
+	padding-bottom: 10px !important;
+}
+
+.btn {
+	padding: 1px 17px;
+}
+
 .display-button {
 	padding: 6px 23px;
 	margin: 0px;

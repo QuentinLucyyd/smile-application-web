@@ -12,6 +12,7 @@ export class User {
 	profileImage: FormData;
 	birthdate: Date;
 	city: String = '';
+	company: String;
 
 	constructor(user) {
 		this.updateUser(user);
@@ -31,5 +32,6 @@ export class User {
 		if ( user.birthdate ) { this.birthdate = new Date(user.birthdate); }
 		if ( user.joining_date ) { this.joining_date = new Date(user.joining_date); }
 		if ( user.city ) { this.city = user.city; }
+		if ( user.company ) { this.company = user.company; }
 	}
 }

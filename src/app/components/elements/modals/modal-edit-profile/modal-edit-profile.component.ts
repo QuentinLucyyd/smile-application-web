@@ -3,6 +3,7 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SubPage } from 'src/app/classes/abstract/page.class';
 import { UsersService } from 'src/app/services/users.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { CITIES, City } from '../../../../models/country';
 
 @Component({
 	selector: 'app-modal-edit-profile',
@@ -15,6 +16,8 @@ export class ModalEditProfileComponent extends SubPage implements OnInit {
 	fileFailure: Boolean = false;
 	fileFailureMessage: String = '';
 	loadingdisplay: Boolean = false;
+	edit: Boolean = false;
+	cities: Array<City> = CITIES;
 
 	constructor(
 		public activeModal: NgbActiveModal,
@@ -52,7 +55,27 @@ export class ModalEditProfileComponent extends SubPage implements OnInit {
 			this.usersService.ActiveUser.profileImage = FileData;
 			this.usersService.updateUserDisplay(FileData).subscribe(results => {
 				this.loadingdisplay = false;
+				this.usersService.ActiveUser.profile_image = '';
+				console.log(results);
+				setTimeout(()=>{
+					this.usersService.ActiveUser.profile_image = results.data.profile_image;
+				}, 3000);
 			})
 		}
+	}
+
+	updateProfile() {
+		this.loading = true;
+		this.usersService.updateUser(this.usersService.ActiveUser).subscribe(data => {
+			this.loading = false;
+			if (data.status != 'success')
+				this.failure = true;
+			else
+				this.success = true;
+			this.resultMessage = data.message;
+		}, err => {
+			this.failure = true;
+			this.resultMessage = 'Something Went Wront, please try again';
+		})
 	}
 }

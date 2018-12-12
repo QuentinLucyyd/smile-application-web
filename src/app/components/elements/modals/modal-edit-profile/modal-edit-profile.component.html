@@ -47,8 +47,9 @@
 					<div class="col-12 col-md-12">
 						<h5>{{usersService.ActiveUser.first_name}} {{usersService.ActiveUser.last_name}}</h5>
 					</div>
-					<div class="col-12 col-md-12" *ngIf="usersService.ActiveUser.role && usersService.ActiveUser.city">
-						<p class="user-city">{{usersService.ActiveUser.role | titlecase}} | {{usersService.ActiveUser.city}}</p>
+					<div class="col-12 col-md-12">
+						<p class="user-city"><span *ngIf="usersService.ActiveUser.role">{{usersService.ActiveUser.role | titlecase}}</span><span
+							 *ngIf="usersService.ActiveUser.city"> | {{usersService.ActiveUser.city}}</span></p>
 					</div>
 				</div>
 				<div *ngIf="!usersService.ActiveUser.first_name && !usersService.ActiveUser.last_name" class="name-placeholder">
@@ -57,16 +58,55 @@
 			</div>
 			<div class="basic-info-container col-12 col-md-6">
 				<div class="basic-info-header">User Information</div>
-				<div class="row">
-					<div class="basic-info-headers col-2 col-md-5">
+				<div class="row" style="padding-top: 10px;">
+					<div *ngIf="!edit" class="basic-info-headers col-2 col-md-5">
+						<p> Company :</p>
 						<p> City :</p>
 						<p> Date of Birth :</p>
 						<p> Joining Date :</p>
 						<p> Email :</p>
 					</div>
-					<div class="col-4 col-md-5">
-						<p><span class="bold">{{usersService.ActiveUser.city}}</span></p>
-						<p><span class="bold">{{getBirthDate(usersService.ActiveUser.birthdate)}}</span></p>
+					<div *ngIf="edit" class="profile-edit col-12 col-md-12">
+						<form class="form-container">
+							<div class="row form-row">
+								<div class="form-group float-label-control col-12">
+									<input [(ngModel)]="usersService.ActiveUser.company" type="text" class="form-control" id="company" name="company"
+									 required>
+									<label for="name">Company</label>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="form-group form-select col-12">
+									<label class="city-label" for="country">City</label>
+									<select [(ngModel)]="usersService.ActiveUser.city" class="form-control" id="frequency" name="priority">
+										<option selected value="">Select City:</option>
+										<option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="form-group col-12">
+									<label class="dob-label" for="birthDate">Date Of Birth</label>
+									<input [(ngModel)]="usersService.ActiveUser.birthdate" class="form-control" id="birthDate" name="birthDate"
+									 bsDatepicker  placement="top" type="text" name="birthDate" [bsConfig]='{locale: "en"}' (dateSelect)="onDateSelect($event)" />
+								</div>
+							</div>
+							<div class="row form-row">
+								<div class="form-group float-label-control col-12">
+									<input [(ngModel)]="usersService.ActiveUser.email" type="email" class="form-control" id="email" name="email"
+									 required>
+									<label for="email">Email</label>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div *ngIf="!edit" class="col-4 col-md-5">
+						<p *ngIf="usersService.ActiveUser.company"><span class="bold">{{usersService.ActiveUser.company}}</span></p>
+						<p *ngIf="!usersService.ActiveUser.company"><span class="bold">Not Given</span></p>
+						<p *ngIf="usersService.ActiveUser.city"><span class="bold">{{usersService.ActiveUser.city}}</span></p>
+						<p *ngIf="!usersService.ActiveUser.city"><span class="bold">Not Given</span></p>
+						<p *ngIf="usersService.ActiveUser.birthdate"><span class="bold">{{getBirthDate(usersService.ActiveUser.birthdate)}}</span></p>
+						<p *ngIf="!usersService.ActiveUser.birthdate"><span class="bold">Not Given</span></p>
 						<p><span class="bold">{{getBirthDate(usersService.ActiveUser.joining_date)}}</span></p>
 						<p><span class="bold">{{usersService.ActiveUser.email}}</span></p>
 					</div>
@@ -79,7 +119,7 @@
 				<div class="profile-actions-card-container">
 					<div class="card shadow-sm" style="margin: 10px">
 						<div class="card-header">
-							<div class="goal-header-icon">
+							<div (click)="edit = !edit" class="goal-header-icon">
 								<i class="edit-icon fas fa-pen"></i>
 								<span class="profile-action-name">Edit Profile</span>
 							</div>
@@ -91,5 +131,5 @@
 	</div>
 </div>
 <div class="modal-footer d-flex justify-content-center">
-	<!-- <button type="button" *ngIf="fileSelected && !loading" (click)="editProfile()" class="button button-sm green-button">Save</button> -->
+	<button type="button" *ngIf="!loading && edit" (click)="updateProfile()" class="button button-sm green-button">Save</button>
 </div>

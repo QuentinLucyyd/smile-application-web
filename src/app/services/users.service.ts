@@ -40,6 +40,9 @@ export class UsersService {
 		return this._APIService.subscribeUser(subscription);
 	}
 
+	updateUser(user: User) {
+		return this._APIService.updateUser(user);
+	}
 	updateUserDisplay(displayData: FormData) {
 		return this._APIService.updateUserDisplay(displayData);
 	}
