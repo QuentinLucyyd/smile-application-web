@@ -8,7 +8,7 @@ export class Note {
 	noteLoading: Boolean = false;
 	date: Date;
 	user_id: number;
-	is_active: number;
+	is_active: Boolean;
 
 	constructor(note) {
 		this.updateNote(note);

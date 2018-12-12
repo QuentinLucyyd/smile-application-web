@@ -55,9 +55,12 @@ export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 			is_active: this.notesService.ActiveNote.is_active
 		}
 		const _note: Note =  new Note(note);
+		this.activeModal.close('Note deleted Success');
+		this.loading = true;
 		this.notesService.updateUserNote(_note).subscribe(data => {
 			console.log(data);
 	})
+	//location.reload();
 	}
 
 
@@ -70,22 +73,11 @@ export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 
 	_deleteNote(){
 		this.disabled = true;
-		const note =  {
-			title: this.notesService.ActiveNote.title,
-			note: this.notesService.ActiveNote.note,
-			type: this.notesService.ActiveNote.type,
-			voice: this.notesService.ActiveNote.voice,
-			user_id: this.userServices.ActiveUser.id,
-			id: this.notesService.ActiveNote.id,
-			is_active: 0
-		}
-		const _note: Note =  new Note(note);
-		this.activeModal.close('Note deleted Success');
-		this.loading = true;
-		this.notesService.updateUserNote(_note).subscribe(data => {
-			console.log(data);
-	})
-	//location.reload();
+		this.notesService.ActiveNote.is_active = false;
+		this.notesService.updateUserNote(this.notesService.ActiveNote).subscribe(data => {
+			this.success = true;
+			this.activeModal.close('Note deleted Success');
+		})
 	}
 
 	closeModal(){

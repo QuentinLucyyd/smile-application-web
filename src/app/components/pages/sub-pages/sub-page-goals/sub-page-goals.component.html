@@ -27,7 +27,7 @@
 			</div>
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Once-Off Goals</h5>
-				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals" generateValue()>
+				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
 					<div class="goal-card-container card-container col-md-12">
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">

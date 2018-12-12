@@ -189,7 +189,7 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
-	public updateChecklist(checklist: Array<Checklist>){
+	public updateChecklist(checklist: Checklist){
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });

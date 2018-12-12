@@ -47,7 +47,7 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 		if (!this.Goal.name || !this.Goal.description) {
 			this.loading = false;
 			this.failure = true;
-			this.resultMessage = 'Please ensure that all fields are filled in and valid';
+			this.resultMessage = 'Please ensure that all fields are completed and valid';
 		} else {
 			this._goalsService.createGoal(this.Goal).subscribe(data => {
 				this.loading = false;
@@ -55,9 +55,8 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				this._goalsService.Goals.push(this.Goal);
 				for (var i of this.checklist)
 				{
-					i.goal_id = data.data[0].id;;
+					i.goal_id = data.data[0].id;
 				}
-				console.log(this.checklist);
 				this._checklistService.createChecklist(this.checklist)
 				.subscribe(data => {
 					console.log(data);

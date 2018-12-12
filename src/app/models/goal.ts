@@ -12,6 +12,8 @@ export class Goal {
 	priority: String = 'High';
 	user_id: Number = 0;
 	progress_value: number = 0;
+	is_active: Boolean;
+
 	i: number = 0;
 	checklist: Array<Checklist> = [];
 	checklist_complete: Boolean = false;
@@ -32,7 +34,7 @@ export class Goal {
 		if ( goal.priority ) { this.priority = goal.priority; }
 		if ( goal.user_id ) { this.user_id = goal.user_id; }
 		if ( goal.checklist ) { this.checklist = goal.checklist; }
-
+		if ( goal.is_active ) { this.is_active = goal.is_active; }
 	}
 
 	populateProgress(checklist) {

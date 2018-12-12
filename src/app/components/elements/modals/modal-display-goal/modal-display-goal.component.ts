@@ -24,7 +24,9 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	constructor(
 		public goalsService: GoalsService,
 		public activeModal: NgbActiveModal,
-		private notificationService: NotificationsService
+		private notificationService: NotificationsService,
+		private checklistService: ChecklistsService
+
 	) { super(); }
 
 	ngOnInit() {
@@ -37,6 +39,12 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		];
 	}
 
+	checklistChange(item: Checklist) {
+		this.checklistService.updateChecklist(item).subscribe(data => {
+			this.goalsService.ActiveGoal.checklistProgress();
+		});
+		
+	}
 
 	updateGoal(){
 		this.loading = true;
@@ -59,25 +67,11 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 
 	_deleteGoal(){
 		this.disabled = true;
-		const goal =  {
-			id: this.goalsService.ActiveGoal.id,
-			name: this.goalsService.ActiveGoal.name,
-			description: this.goalsService.ActiveGoal.description,
-			frequency: this.goalsService.ActiveGoal.frequency,
-			due_date: this.goalsService.ActiveGoal.due_date,
-			state: this.goalsService.ActiveGoal.state,
-			has_checklist: this.goalsService.ActiveGoal.has_checklist,
-			priority: this.goalsService.ActiveGoal.priority,
-			is_active: 0
-			
-		}
-		const _goal: Goal =  new Goal(goal);
-		console.log(_goal);
-		this.activeModal.close('Goal deleted Success');
-		this.loading = true;
-		this.goalsService.updateGoal(_goal).subscribe(data => {
-			console.log(data);
-	})
+		this.goalsService.ActiveGoal.is_active = false;
+		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
+			this.success = true;
+			this.activeModal.close('Goal deleted Success');
+		})
 	}
 
 }

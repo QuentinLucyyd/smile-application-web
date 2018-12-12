@@ -25,7 +25,9 @@ export class GoalsService {
 
 	public getGoalChecklists(goal_id){
 		return new Promise((resolve, reject) => {	
-			this.ActiveChecklist = [];
+			//this.ActiveChecklist = [];
+			console.log("In Goals Service getgoalchecklists():");
+			console.log(goal_id);
 			this._APIService.getGoalChecklists(goal_id).subscribe(result => {
 				resolve(result.data);
 			}, err => {
