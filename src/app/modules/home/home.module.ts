@@ -18,7 +18,6 @@ import { SubPageInviteComponent } from '../../components/pages/sub-pages/sub-pag
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
 import { ElementSidebarComponent } from '../../components/elements/element-sidebar/element-sidebar.component';
 import { ElementProfileHeaderComponent } from '../../components/elements/element-profile-header/element-profile-header.component';
-import { ElementMobileMenuComponent } from '../../components/elements/element-mobile-menu/element-mobile-menu.component';
 import { ElementCheckinsOverviewComponent } from '../../components/elements/element-checkins-overview/element-checkins-overview.component';
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
 import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
@@ -56,7 +55,6 @@ const appRoutes = [
 		SubPageCheckinComponent,
 		SubPageCheckoutComponent,
 		SubPageGoalsComponent,
-		ElementMobileMenuComponent,
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent,
 		ElementUpcomingGoalsComponent,

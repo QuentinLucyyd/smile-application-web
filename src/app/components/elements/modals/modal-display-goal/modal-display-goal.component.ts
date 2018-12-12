@@ -20,6 +20,7 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	disabledDeleteBtn: Boolean = false;
 	disabledDeleteIcn: Boolean = true;
 	_close: Boolean;
+	deleteloading: Boolean = false;
 
 	constructor(
 		public goalsService: GoalsService,
@@ -58,18 +59,14 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			this.resultMessage = 'An unexpected error has occured, Please try again';
 		});
 	}
-	
-	deleteGoal()
- 	{
-   		this.disabledDeleteBtn = !this.disabledDeleteBtn;
-   		// this.disabledEditIcn = !this.disabledEditIcn;
- 	}
 
-	_deleteGoal(){
+	deleteGoal(){
 		this.disabled = true;
+		this.deleteloading = true;
 		this.goalsService.ActiveGoal.is_active = false;
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
 			this.success = true;
+			this.deleteloading = false;
 			this.activeModal.close('Goal deleted Success');
 		})
 	}

@@ -3,7 +3,7 @@
 		<img [src]='logo'>
 	</div>
 	<div class="dashboard-nav-actions d-flex align-items-center">
-		<button (click)="navService.MobileMenu = true" class="hamburger hamburger--elastic" type="button">
+		<button (click)="navService.MobileMenu = !navService.MobileMenu" class="hamburger hamburger--elastic" type="button">
 			<span class="hamburger-box">
 				<span class="hamburger-inner"></span>
 			</span>
