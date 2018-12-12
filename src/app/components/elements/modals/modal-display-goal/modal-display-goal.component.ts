@@ -17,6 +17,8 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 
 	disabled: Boolean;
 	frequencies: String[];
+	disabledDeleteBtn: Boolean = false;
+	disabledDeleteIcn: Boolean = true;
 	_close: Boolean;
 
 	constructor(
@@ -39,8 +41,6 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	}
 
 	checklistChange(item: Checklist) {
-		console.log(item);
-		//item.is_completed = !item.is_completed;
 		this.checklistService.updateChecklist(item).subscribe(data => {
 			this.goalsService.ActiveGoal.checklistProgress();
 		});
@@ -60,6 +60,21 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 			this.failure = true;
 			this.resultMessage = 'An unexpected error has occured, Please try again';
 		});
+	}
+
+	deleteGoal()
+ 	{
+   		this.disabledDeleteBtn = !this.disabledDeleteBtn;
+   		// this.disabledEditIcn = !this.disabledEditIcn;
+ 	}
+
+	_deleteGoal(){
+		this.disabled = true;
+		this.goalsService.ActiveGoal.is_active = false;
+		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
+			this.success = true;
+			this.activeModal.close('Goal deleted Success');
+		})
 	}
 
 }

@@ -23,7 +23,14 @@
 		<textarea autosize [(ngModel)]="notesService.ActiveNote.note" id="display_note_text" class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled"></textarea>
 	</div>
 	<div class="d-flex justify-content-end">
-		<i (click)="deleteNote()" class="far fa-trash-alt icons_notes"></i>
+		<i (click)="!deleteNote()"  *ngIf="!disabledDeleteBtn" class="far fa-trash-alt icons_notes"></i>
+	</div>
+	<div class="header-button-container" style="text-align:center" *ngIf="disabledDeleteBtn">
+		<ul >
+				<h5>Are you sure you want to delete this?</h5>
+				<button data-dismiss="modal" (click)="_deleteNote()" class="button dark-button sign-in-button" >Yes</button>
+				<button data-dismiss="modal" class="button dark-button sign-in-button" >No</button>
+		</ul>
 	</div>
 	<div class="header-button-container">
 		<button data-dismiss="modal" (click)="saveNote(notesService.ActiveNote)" class="button save-button"
