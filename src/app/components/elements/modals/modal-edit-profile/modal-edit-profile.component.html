@@ -9,6 +9,7 @@
 		<div class="welcome-container">
 			<h4>{{usersService.ActiveUser.first_name}}'s Profile</h4>
 			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+			<p class="success-text" *ngIf="success">{{resultMessage}}</p>
 		</div>
 	</div>
 	<div class="modal-edit-profile-container">
@@ -59,7 +60,7 @@
 			<div class="basic-info-container col-12 col-md-6">
 				<div class="basic-info-header">User Information</div>
 				<div class="row" style="padding-top: 10px;">
-					<div *ngIf="!edit" class="basic-info-headers col-2 col-md-5">
+					<div *ngIf="!edit" class="basic-info-headers col-5 col-md-5">
 						<p> Company :</p>
 						<p> City :</p>
 						<p> Date of Birth :</p>
@@ -88,7 +89,7 @@
 								<div class="form-group col-12">
 									<label class="dob-label" for="birthDate">Date Of Birth</label>
 									<input [(ngModel)]="usersService.ActiveUser.birthdate" class="form-control" id="birthDate" name="birthDate"
-									 bsDatepicker  placement="top" type="text" name="birthDate" [bsConfig]='{locale: "en"}' (dateSelect)="onDateSelect($event)" />
+									 bsDatepicker placement="top" type="text" name="birthDate" [bsConfig]='{locale: "en"}' (dateSelect)="onDateSelect($event)" />
 								</div>
 							</div>
 							<div class="row form-row">
@@ -132,4 +133,7 @@
 </div>
 <div class="modal-footer d-flex justify-content-center">
 	<button type="button" *ngIf="!loading && edit" (click)="updateProfile()" class="button button-sm green-button">Save</button>
+	<div class="secondary-loading-container" *ngIf="loading">
+		<div class="secondary-loading"></div>
+	</div>
 </div>

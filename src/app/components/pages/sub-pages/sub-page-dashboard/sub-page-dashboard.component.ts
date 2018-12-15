@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { NotificationsService } from '../../../../services/notifications.service';
-import { AuthenticationService } from '../../../../services/authentication.service';
 import { UsersService } from '../../../../services/users.service';
 
 @Component({
@@ -14,8 +11,7 @@ export class SubPageDashboardComponent implements OnInit {
 
 	constructor(
 		private titleService: Title,
-		private activatedRoute: ActivatedRoute,
-		private notificationService: NotificationsService,
+		public usersService: UsersService
 	) { }
 
 	ngOnInit() {

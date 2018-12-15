@@ -8,7 +8,7 @@
 			</div>
 		</div>
 		<app-element-profile-header></app-element-profile-header>
-		<div class="content-container">
+		<div class="content-container" *ngIf="usersService.ActiveUser.role == 'client'">
 			<div class="row">
 				<div class="col-12 col-md-3">
 					<div class="card-container">

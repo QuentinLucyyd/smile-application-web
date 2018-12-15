@@ -40,6 +40,7 @@ export class SubPageInviteComponent extends SubPage implements OnInit {
 			this.checkingUser = true;
 			this.emailFailure = false;
 			this.usersService.getUsersSearch(this.email).subscribe(data => {
+				console.log(data);
 				if (data.data.length) {
 					this.emailFailure = true;
 					this.checkingUser = false;

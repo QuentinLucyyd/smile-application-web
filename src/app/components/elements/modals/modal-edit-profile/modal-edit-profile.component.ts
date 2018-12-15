@@ -56,7 +56,6 @@ export class ModalEditProfileComponent extends SubPage implements OnInit {
 			this.usersService.updateUserDisplay(FileData).subscribe(results => {
 				this.loadingdisplay = false;
 				this.usersService.ActiveUser.profile_image = '';
-				console.log(results);
 				setTimeout(()=>{
 					this.usersService.ActiveUser.profile_image = results.data.profile_image;
 				}, 3000);
@@ -68,11 +67,15 @@ export class ModalEditProfileComponent extends SubPage implements OnInit {
 		this.loading = true;
 		this.usersService.updateUser(this.usersService.ActiveUser).subscribe(data => {
 			this.loading = false;
-			if (data.status != 'success')
+			this.edit = false;
+			if (data.status != 'success') {
 				this.failure = true;
-			else
+				this.resultMessage = data.message;
+			}
+			else {
 				this.success = true;
-			this.resultMessage = data.message;
+				this.resultMessage = "Profile Updated Succesfully";
+			}
 		}, err => {
 			this.failure = true;
 			this.resultMessage = 'Something Went Wront, please try again';

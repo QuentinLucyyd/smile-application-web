@@ -28,6 +28,7 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+
 .priority-select {
 	color: $grey;
 
@@ -38,6 +39,33 @@
 		font-size: 0.85em;
 	}
 
+}
+
+.recording-container {
+	text-align: center;
+	color: $grey;
+
+	.recording-toggle-text {
+		font-size: 1.2em;
+	}
+
+	.audio-playback-container {
+		padding: 20px;
+	}
+
+	.record-button {
+		cursor: pointer;
+
+		i {
+			font-size: 2em;
+			transition-duration: .4s;
+
+			&:hover {
+				color: $error-color;
+				transition-duration: .4s;
+			}
+		}
+	}
 }
 
 textarea {

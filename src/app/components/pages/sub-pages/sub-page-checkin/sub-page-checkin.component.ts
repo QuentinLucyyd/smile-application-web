@@ -171,7 +171,7 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 				user_id: this.usersService.ActiveUser.id
 			}
 			const _Note = new Note(note)
-			this.notesService.createUserNote(_Note).subscribe(data => {
+			this.notesService.createUserNote(_Note, '?note=true', false).subscribe(data => {
 				_Note.id = data.data.id;
 				_Checkin.note = _Note;
 				this._checkinService.createCheckin(_Checkin).subscribe(data => {

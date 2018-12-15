@@ -22,7 +22,12 @@ export class NotesService {
 				this.Notes = [];
 				return this._APIService.getUserNotes(user_id).subscribe(result => {
 					for (let note of result.data) {
-						this.Notes.push(new Note(note));
+						const _note: Note = new Note(note);
+						if (_note.voice) {
+							const title = _note.title.split(' ')
+							_note.title = title[0] + ' ' + title[1] + ' ' + title[2] + ' ' + title[3] + ' ' + title[4];
+						}
+						this.Notes.push(_note);
 						resolve(result);
 					}
 				}, err => {
@@ -31,8 +36,8 @@ export class NotesService {
 			})
 		}
 
-	public createUserNote(note: Note){
-		return this._APIService.createUserNote(note);
+	public createUserNote(note: any, queryparams: string, voice: Boolean){
+		return this._APIService.createUserNote(note, queryparams, voice);
 	}
 
 	public updateUserNote(note: Note){

@@ -32,6 +32,13 @@ export class SubPageNotesComponent extends SubPage implements OnInit {
 		this.authService.AuthenticateUser().then(data => {
 			this.loading = false;
 			this.notesService.getUserNotes(this.usersService.ActiveUser.id);
+			if (!this.notesService.Notes.length) {
+				this.subPageMessage = 'You currently have no Notes';
+				this.subPageLinkText = 'Click here to add a new note';
+			}
+		}).catch(err => {
+			this.loading = false;
+			this.subPageMessage = err.message;
 		})
 	}
 

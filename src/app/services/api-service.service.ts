@@ -16,7 +16,7 @@ import { Checklist } from '../models/checklist';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'https://smile-application-api.herokuapp.com';
+	host = 'http://localhost:3001';
 	
 	constructor(
 		private _http: Http,
@@ -301,11 +301,15 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
-	public createUserNote(note : Note){
+	public createUserNote(note : any, queryparams: string, voice: Boolean){
 		this.fetchToken();
-		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		let headers;
+		if ( voice )
+			headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+		else
+			headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
-		return this._http.post(this.host + '/notes', note, options)
+		return this._http.post(this.host + '/notes' + queryparams, note, options)
 		.pipe(map(response => response.json()));
 	}
 

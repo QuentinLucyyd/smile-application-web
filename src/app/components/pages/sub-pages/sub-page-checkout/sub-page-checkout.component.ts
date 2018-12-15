@@ -83,7 +83,7 @@ export class SubPageCheckoutComponent extends SubPage implements OnInit {
 				this.failure = true;
 			})
 		} else {
-			this.notesService.createUserNote(this.Note).subscribe(data => {
+			this.notesService.createUserNote(this.Note, '?note=true', false).subscribe(data => {
 				this.Note.id = data.data[0].id;
 				this.Chekout.note = this.Note;
 				this.checkoutService.createCheckout(this.Chekout).subscribe(data => {

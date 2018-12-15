@@ -13,6 +13,7 @@ import { SubPageCheckoutComponent } from '../../components/pages/sub-pages/sub-p
 import { SubPageGoalsComponent } from '../../components/pages/sub-pages/sub-page-goals/sub-page-goals.component';
 import { SubPageNotesComponent } from '../../components/pages/sub-pages/sub-page-notes/sub-page-notes.component';
 import { SubPageInviteComponent } from '../../components/pages/sub-pages/sub-page-invite/sub-page-invite.component';
+import { SubPageUsersComponent } from '../../components/pages/sub-pages/sub-page-users/sub-page-users.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -34,7 +35,8 @@ const appRoutes = [
 		{ path:'checkout', component: SubPageCheckoutComponent },
 		{ path: 'goals', component: SubPageGoalsComponent },
 		{ path: 'notes', component: SubPageNotesComponent },
-		{ path: 'invite', component: SubPageInviteComponent, canActivate:[AdminGuard]}
+		{ path: 'invite', component: SubPageInviteComponent, canActivate:[AdminGuard] },
+		{ path: 'users', component: SubPageUsersComponent, canActivate:[AdminGuard] }
 	]}
 ];
 
@@ -61,6 +63,7 @@ const appRoutes = [
 		ElementCompletedGoalsComponent,
 		SubPageNotesComponent,
 		SubPageInviteComponent,
+		SubPageUsersComponent
 	], providers: [
 		ElementCheckinsOverviewComponent,
 		AdminGuard
