@@ -8,8 +8,8 @@
 			</div>
 		</div>
 		<app-element-profile-header></app-element-profile-header>
-		<div class="content-container" *ngIf="usersService.ActiveUser.role == 'client'">
-			<div class="row">
+		<div class="content-container">
+			<div class="row" *ngIf="usersService.ActiveUser.role == 'client'">
 				<div class="col-12 col-md-3">
 					<div class="card-container">
 						<div class="shadow card">
@@ -33,6 +33,13 @@
 				</div>
 				<div class="col-12 col-md-12">
 					<app-element-notes-overview></app-element-notes-overview>
+				</div>
+			</div>
+			<div class="row" *ngIf="usersService.ActiveUser.role == 'admin'">
+				<div class="col-12 col-md-7">
+					<app-element-admin-recent-checkins></app-element-admin-recent-checkins>
+				</div>
+				<div class="col-12 col-md-5">
 				</div>
 			</div>
 		</div>

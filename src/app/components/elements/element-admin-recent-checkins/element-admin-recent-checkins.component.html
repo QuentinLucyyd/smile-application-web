@@ -1,0 +1,48 @@
+<div class="card-container">
+	<div class="shadow card">
+		<div class="card-header"><i class="card-icon fas fa-sliders-h"></i>Recent Check-ins</div>
+		<div class="card-body">
+			<div class="users-container">
+				<div class="row">
+					<div class="col-12 col-md-12 table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col"></th>
+									<th scope="col">User</th>
+									<th scope="col" title="Physical Energy"><i class="slider-icon fas fa-bolt"></i></th>
+									<th scope="col" title="Heart Connection"><i class="slider-icon fas fa-heartbeat"></i></th>
+									<th scope="col" title="Mental Focus"><i class="slider-icon fas fa-lightbulb"></i></th>
+									<th scope="col" title="Feeling Connected to the greater Whole"><i class="slider-icon fas fa-globe-africa"></i></th>
+									<th scope="col" title="Happy to be me"><i class="slider-icon fas fa-smile-wink"></i></th>
+									<th scope="col">Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<ng-template ngFor let-user [ngForOf]="UsersCheckins" let-i="index">
+									<tr *ngIf="i<4">
+										<td>
+											<div>
+												<div class="profile-header-picture" style="background-size: cover;">
+													<img *ngIf="!user.profile_image" src="../../../../assets/images/default-profile-image.jpg">
+													<img *ngIf="user.profile_image" [src]="user.profile_image">
+												</div>
+											</div>
+										</td>
+										<td>{{user.first_name}} {{user.last_name}}</td>
+										<td>{{user.physical_energy}} %</td>
+										<td>{{user.heart_connection}} %</td>
+										<td>{{user.mental_focus}} %</td>
+										<td>{{user.greater_whole}} %</td>
+										<td>{{user.happiness}} %</td>
+										<td>{{formatDate(user.date)}}</td>
+									</tr>
+								</ng-template>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
