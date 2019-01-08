@@ -14,6 +14,7 @@ import { SubPageGoalsComponent } from '../../components/pages/sub-pages/sub-page
 import { SubPageNotesComponent } from '../../components/pages/sub-pages/sub-page-notes/sub-page-notes.component';
 import { SubPageInviteComponent } from '../../components/pages/sub-pages/sub-page-invite/sub-page-invite.component';
 import { SubPageUsersComponent } from '../../components/pages/sub-pages/sub-page-users/sub-page-users.component';
+import { SubPageUserComponent } from '../../components/pages/sub-pages/sub-page-user/sub-page-user.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -23,6 +24,7 @@ import { ElementCheckinsOverviewComponent } from '../../components/elements/elem
 import { ElementNotesOverviewComponent } from '../../components/elements/element-notes-overview/element-notes-overview.component';
 import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
+import { ElementAdminRecentCheckinsComponent } from '../../components/elements/element-admin-recent-checkins/element-admin-recent-checkins.component';
 
 /* Import Guards */
 import { AdminGuard } from '../../guards/admin.guard';
@@ -36,7 +38,8 @@ const appRoutes = [
 		{ path: 'goals', component: SubPageGoalsComponent },
 		{ path: 'notes', component: SubPageNotesComponent },
 		{ path: 'invite', component: SubPageInviteComponent, canActivate:[AdminGuard] },
-		{ path: 'users', component: SubPageUsersComponent, canActivate:[AdminGuard] }
+		{ path: 'users', component: SubPageUsersComponent, canActivate:[AdminGuard] },
+		{ path: 'user/:id', component: SubPageUserComponent, canActivate:[AdminGuard] }
 	]}
 ];
 
@@ -57,10 +60,12 @@ const appRoutes = [
 		SubPageCheckinComponent,
 		SubPageCheckoutComponent,
 		SubPageGoalsComponent,
+		SubPageUserComponent,
 		ElementNotesOverviewComponent,
 		ElementCheckinsOverviewComponent,
 		ElementUpcomingGoalsComponent,
 		ElementCompletedGoalsComponent,
+		ElementAdminRecentCheckinsComponent,
 		SubPageNotesComponent,
 		SubPageInviteComponent,
 		SubPageUsersComponent

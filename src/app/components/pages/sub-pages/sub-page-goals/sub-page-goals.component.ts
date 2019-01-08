@@ -38,16 +38,11 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		this.titleService.setTitle('Smile | Goals');
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
-			this.goalsService.Goals = [];
-			this.goalsService.RecurringGoals = [];
-			this.goalsService.CompletedGoals = [];
-			this.checklistService.UserChecklists = [];
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(result => {
 				this.loading = false;
 				if (!this.goalsService.Goals.length) {
 					this.subPageMessage = 'You currently have no goals';
-				} else
-					this.populateProgress();
+				}
 			})
 			.catch(err => {
 				this.loading = false;
@@ -55,24 +50,6 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.resultMessage = "An error has occured";
 			})
 		});
-	}
-
-	populateProgress(){
-		for(const goal of this.goalsService.Goals) {
-			this.goalsService.getGoalChecklists(goal.id).then(data => {
-				goal.populateProgress(data);
-			})
-		}
-		for(const goal of this.goalsService.RecurringGoals) {
-			this.goalsService.getGoalChecklists(goal.id).then(data => {
-				goal.populateProgress(data);
-			})
-		}
-		for(const goal of this.goalsService.CompletedGoals) {
-			this.goalsService.getGoalChecklists(goal.id).then(data => {
-				goal.populateProgress(data);
-			})
-		}
 	}
 
 	open() {

@@ -25,9 +25,6 @@ export class GoalsService {
 
 	public getGoalChecklists(goal_id){
 		return new Promise((resolve, reject) => {	
-			//this.ActiveChecklist = [];
-			console.log("In Goals Service getgoalchecklists():");
-			console.log(goal_id);
 			this._APIService.getGoalChecklists(goal_id).subscribe(result => {
 				resolve(result.data);
 			}, err => {
@@ -45,10 +42,12 @@ export class GoalsService {
 			this._APIService.getUserGoals(user_id).subscribe(result => {
 				for (let goal of result.data) {
 					const _Goal = new Goal(goal);
-					if (_Goal.frequency === 'Once-off')
+					this._APIService.getGoalChecklists(goal.id).subscribe(data => {
+						_Goal.populateProgress(data.data);
 						this.Goals.push(_Goal);
-					else
-						this.RecurringGoals.push(_Goal);
+					}, err => {
+						reject(err);
+					})
 				}
 				resolve(this.Goals);
 			}, err => {

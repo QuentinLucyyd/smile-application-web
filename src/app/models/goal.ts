@@ -11,7 +11,7 @@ export class Goal {
 	has_checklist: Boolean = false;
 	priority: String = 'High';
 	user_id: Number = 0;
-	progress_value: number = 0;
+	progress_value: Number = 0;
 	is_active: Boolean;
 
 	i: number = 0;
@@ -57,5 +57,7 @@ export class Goal {
 		this.progress_value = ( this.i / this.checklist.length) * 100;
 		if (this.progress_value == 100)
 			this.checklist_complete = true
+		else
+			this.checklist_complete = false;
 	}
 }

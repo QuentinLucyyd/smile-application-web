@@ -43,6 +43,9 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	checklistChange(item: Checklist) {
 		this.checklistService.updateChecklist(item).subscribe(data => {
 			this.goalsService.ActiveGoal.checklistProgress();
+			if (this.goalsService.ActiveGoal.checklist_complete) {
+				this.notificationService.newNotify('info', 'Congratulations on completing the goal ' + this.goalsService.ActiveGoal.name);
+			}
 		});
 		
 	}

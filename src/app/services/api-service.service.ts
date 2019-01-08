@@ -181,6 +181,7 @@ export class ApiServiceService {
 		.pipe(map(response => response.json()));
 	}
 
+
 	public createChecklist(checklist: Array<Checklist>){
 		this.fetchToken();
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
@@ -219,6 +220,14 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/users/' + user_id + '/checkins', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public getUsersCheckins(){
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/checkins/users', options)
 		.pipe(map(response => response.json()));
 	}
 

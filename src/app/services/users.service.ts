@@ -8,6 +8,8 @@ import { ApiServiceService } from './api-service.service';
 export class UsersService {
 	id: Number;
 	ActiveUser: User = new User({});
+	Users: Array<User> = [];
+
 	constructor(
 		private _APIService: ApiServiceService
 	) { }
@@ -43,7 +45,12 @@ export class UsersService {
 	updateUser(user: User) {
 		return this._APIService.updateUser(user);
 	}
+
 	updateUserDisplay(displayData: FormData) {
 		return this._APIService.updateUserDisplay(displayData);
+	}
+
+	getRecentuserCheckins() {
+		return this._APIService.getUsersCheckins();
 	}
 }
