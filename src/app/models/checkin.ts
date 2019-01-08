@@ -13,6 +13,7 @@ export class Checkin {
 	user_id: 0;
 	voice: Voice = null;
 	note: Note = null;
+	mood: '';
 
 	constructor(checkin) {
 		this.updateGoal(checkin)
@@ -28,5 +29,6 @@ export class Checkin {
 		if (checkin.happiness) {this.happiness = checkin.happiness}
 		if (checkin.completed) {this.completed = checkin.completed}
 		if (checkin.user_id) {this.user_id = checkin.user_id}
+		if (checkin.mood) {this.mood = checkin.mood}
 	}
 }

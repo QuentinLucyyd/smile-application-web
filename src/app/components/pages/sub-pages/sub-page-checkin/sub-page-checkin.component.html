@@ -57,6 +57,22 @@
 					<ng5-slider [(value)]="happy" [options]="options"></ng5-slider>
 				</div>
 			</div>
+			<div class="col-12 col-md-6 slider-outter-container">
+				<div class="custom-slider  ">
+					<i class="slider-icon fas fa-user-clock"></i>
+					<label class="sliderheader">Dominating mood the last 24hrs</label>
+					<select [(ngModel)]="mood" class="form-control">
+						<option>Happy</option>
+						<option>Excited</option>
+						<option>Relaxed</option>
+						<option>Calm</option>
+						<option>Bored</option>
+						<option>Sad</option>
+						<option>Nervous</option>
+						<option>Annoyed</option>
+					  </select>				
+				</div>
+			</div>
 			<div class="col-12 col-md-12 journal-container">
 				<div class="row">
 					<div class="col-12 col-md-2">
