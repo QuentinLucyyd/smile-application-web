@@ -58,24 +58,17 @@
 				</div>
 			</div>
 			<div class="col-12 col-md-12 journal-container">
-				<div class="row">
-					<div class="col-12 col-md-2">
-						<div class="tooltip-wrapper">
-							<label class="sliderheader">Getting Clear</label>
+				<div class="inner-journal-container">
+					<div class="col-12 col-md-12">
 							<i class="getting-clear-icon fas fa-info-circle"></i>
-							<div class="tooltip">
-								<ul class="list-group list-group-flush" style="margin-bottom: 10px;">
-									<li class="list-group-item">Questions to answer</li>
-									<li class="list-group-item">• I am grateful for...</li>
-									<li class="list-group-item">• What would make today great?</li>
-									<li class="list-group-item">• I am..</li>
-								</ul>
+							<label class="sliderheader">Getting Clear</label>
+							<div >
+								<label class="sliderheader">Set your intentions for today, what would you like to achieve? What are you grateful for? What would make today great?</label>
 							</div>
-						</div>
 					</div>
-				</div>
-				<div class="journal-form">
-					<textarea [(ngModel)]="entry" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Type journal entry here or record..."></textarea>
+				<div class="journal-form getting-clear">
+					<textarea [(ngModel)]="entry" class="form-control " id="exampleFormControlTextarea1" rows="3" placeholder="I am..."></textarea>
+					<div class="row d-flex justify-content-center"><label class="sliderheader">Record any additional thoughts</label></div>
 					<div class="row d-flex justify-content-center" [ngClass]="{'recording': recording}" (click)="toggleRecording()">
 						<div class="record-button"><i class="fas fa-microphone"></i></div>
 					</div>
@@ -87,6 +80,7 @@
 						</audio>
 					</div>
 				</div>
+			</div>
 				<div class="d-flex justify-content-center rowtop" style="padding-bottom: 20px;">
 					<div class="col-5 col-md-5 d-flex justify-content-center" (click)="submitCheckin()" *ngIf="!loading">
 						<button type="button" class="button dark-button sign-in-button">Submit</button>
@@ -96,8 +90,6 @@
 					</div>
 				</div>
 				<div class="clearfix"></div>
-				<p class="skip-text d-flex justify-content-center">Skip</p>
-			</div>
 		</div>
 	</div>
 </div>
