@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 export class SubPageUsersComponent extends SubPage implements OnInit {
 
 	constructor(
-		private titleService: Title,
-		private usersService: UsersService,
-		private _router: Router,
+		public titleService: Title,
+		public usersService: UsersService,
+		public _router: Router,
 	) { super(); }
 
 	ngOnInit() {
