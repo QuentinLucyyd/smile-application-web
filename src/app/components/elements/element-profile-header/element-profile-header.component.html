@@ -13,19 +13,19 @@
 						<div class="col-sm-12 col-md-12">
 							<div class="row">
 								<div class="profile-header-picture" style="background-size: cover;">
-									<img *ngIf="!usersService.ActiveUser.profile_image" src="../../../../assets/images/default-profile-image.jpg">
-									<img *ngIf="usersService.ActiveUser.profile_image" (load)="loadImage()" [src]="usersService.ActiveUser.profile_image">
+									<img *ngIf="!user.profile_image" src="../../../../assets/images/default-profile-image.jpg">
+									<img *ngIf="user.profile_image" (load)="loadImage()" [src]="user.profile_image">
 								</div>
 								<div class="profile-header-info-container d-flex align-items-end">
 									<div class="row">
 										<div class="col-12 col-md-12">
-											<h5>{{usersService.ActiveUser.first_name}} {{usersService.ActiveUser.last_name}}</h5>
+											<h5>{{user.first_name}} {{user.last_name}}</h5>
 										</div>
 										<div class="col-12 col-md-12" *ngIf="usersService.ActiveUser.role && usersService.ActiveUser.city">
-											<p class="user-city">{{usersService.ActiveUser.role | titlecase}} | {{usersService.ActiveUser.city}}</p>
+											<p class="user-city">{{user.role | titlecase}} | {{user.city}}</p>
 										</div>
 									</div>
-									<div *ngIf="!usersService.ActiveUser.first_name && !usersService.ActiveUser.last_name" class="name-placeholder">
+									<div *ngIf="!user.first_name && !user.last_name" class="name-placeholder">
 										<div class="first"></div>
 									</div>
 								</div>
