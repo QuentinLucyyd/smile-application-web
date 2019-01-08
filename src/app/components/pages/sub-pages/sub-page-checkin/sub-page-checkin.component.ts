@@ -36,6 +36,7 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 	f_connected: number = 50;
 	happy: number = 50;
 	entry: '';
+	mood: '';
 
 	options: Options = {
 		floor: 0,
@@ -143,7 +144,8 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 			mental_focus: this.m_focus,
 			greater_whole: this.f_connected,
 			happiness: this.happy,
-			user_id: this.usersService.ActiveUser.id
+			user_id: this.usersService.ActiveUser.id,
+			mood: this.mood
 		}
 		const _Checkin: Checkin = new Checkin(checkin);
 		if (this.url) {

@@ -22,15 +22,28 @@
 .journal-container {
 	color: $grey;
 	font-family: $primary-font;
-	padding-top: 20px;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
 
 	textarea {
-		background-color: $white;
+		background-color: rgba(144,164,174, 0.1);;
+		;
 	}
 
 	p {
 		font-size: .8em;
 	}
+}
+
+.inner-journal-container {
+	background-color: $white;
+}
+
+.getting-clear{
+	padding-bottom: 10px;
+	padding-left: 15px !important;
+	padding-right: 15px !important;
 }
 
 .skip-text {
@@ -58,7 +71,7 @@
 }
 
 .getting-clear-icon {
-	padding-left: 10px;
+	padding-right: 10px;
 }
 
 ::ng-deep {
@@ -129,3 +142,7 @@
 	border: none;
 }
 
+.mood-textbox{
+	background-color: rgb(244, 246, 247);
+	margin-top: 10px;
+}
