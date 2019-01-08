@@ -69,8 +69,8 @@
 				<div class="journal-form getting-clear">
 					<textarea [(ngModel)]="entry" class="form-control " id="exampleFormControlTextarea1" rows="3" placeholder="I am..."></textarea>
 					<div class="row d-flex justify-content-center"><label class="sliderheader">Record any additional thoughts</label></div>
-					<div class="row d-flex justify-content-center" [ngClass]="{'recording': recording}" (click)="toggleRecording()">
-						<div class="record-button"><i class="fas fa-microphone"></i></div>
+					<div class="row d-flex justify-content-center" [ngClass]="{'recording': recording}">
+						<div (click)="toggleRecording()" class="record-button"><i class="fas fa-microphone"></i></div>
 					</div>
 					<div class="record-text d-flex justify-content-center" *ngIf="recording">Recording....</div>
 					<div class="audio-playback-header d-flex justify-content-center" *ngIf="url && !recording">Recording Playback</div>

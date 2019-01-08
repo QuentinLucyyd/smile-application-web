@@ -28,7 +28,7 @@
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Once-Off Goals</h5>
 				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
-					<div class="goal-card-container card-container col-md-12">
+					<div class="goal-card-container card-container col-md-12" *ngIf="goal.frequency == 'Once-off' && !goal.checklist_complete && goal.is_active">
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name}}
@@ -44,8 +44,8 @@
 			</div>
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Recurring Goals</h5>
-				<ng-template ngFor let-goal [ngForOf]="goalsService.RecurringGoals">
-					<div class="goal-card-container card-container col-md-12">
+				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
+					<div class="goal-card-container card-container col-md-12" *ngIf="goal.frequency != 'Once-off' && !goal.checklist_complete && goal.is_active">
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name}}
@@ -61,8 +61,8 @@
 			</div>
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Completed Goals</h5>
-				<ng-template ngFor let-goal [ngForOf]="goalsService.CompletedGoals">
-					<div class="goal-card-container card-container col-md-12">
+				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
+					<div class="goal-card-container card-container col-md-12" *ngIf="goal.checklist_complete && goal.is_active">
 						<div (click)="setActiveGoal(goal)" data-toggle="modal" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name}}
