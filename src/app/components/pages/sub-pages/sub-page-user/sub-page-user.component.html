@@ -1,47 +1,140 @@
-<!-- <div class="sub-page-dashboard-container">
+<div class="sub-page-dashboard-container">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12 col-md-6">
 				<div class="sub-page-title">
-					<i class="sub-page-title-icon fas fa-home"></i>Dashboard / Overview
+					<i class="sub-page-title-icon fas fa-home"></i>Dashboard / User
 				</div>
 			</div>
 		</div>
-		<app-element-profile-header [user]="usersService.ActiveUser"></app-element-profile-header>
-		<div class="content-container">
-			<div class="row" *ngIf="usersService.ActiveUser.role == 'client'">
-				<div class="col-12 col-md-3">
-					<div class="card-container">
-						<div class="shadow card">
-							<div class="card-header"><i class="card-icon fas fa-star"></i>Integrity Score</div>
-							<div class="card-body">
-								<div class="integrity-score d-flex justify-content-center">
-									0
+		<div class="row">
+			<div class="col-12 col-md-12 profile">
+				<div class="card-container">
+					<div class="card shadow profile-header">
+						<div class="card-header"><i class="card-icon fas fa-user"></i>
+							<div class="card-button">
+								<div class="button">View Details <i class="card-button-icon fas fa-user"></i></div>
+							</div>
+							<div class="card-button-mobile"><i class="card-button-icon fas fa-user"></i></div>
+						</div>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-sm-12 col-md-12">
+									<div class="row">
+										<div class="profile-header-picture" style="background-size: cover;">
+											<img *ngIf="!User.profile_image" src="../../../../assets/images/default-profile-image.jpg">
+											<img *ngIf="User.profile_image" (load)="loadImage()" [src]="User.profile_image">
+										</div>
+										<div class="profile-header-info-container d-flex align-items-end">
+											<div class="row">
+												<div class="col-12 col-md-12">
+													<h5>{{User.first_name | titlecase}} {{User.last_name | titlecase}}</h5>
+												</div>
+												<div class="col-12 col-md-12">
+													<p class="user-city">{{User.role | titlecase}} <span *ngIf="User.city">| {{User.city}}</span></p>
+												</div>
+											</div>
+											<div *ngIf="!User.first_name && !User.last_name" class="name-placeholder">
+												<div class="first"></div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-12 col-md-9">
-					<app-element-upcoming-goals></app-element-upcoming-goals>
-				</div>
-				<div class="col-12 col-md-12">
-					<app-element-completed-goals></app-element-completed-goals>
-				</div>
-				<div class="col-12 col-md-12">
-					<app-element-checkins-overview></app-element-checkins-overview>
-				</div>
-				<div class="col-12 col-md-12">
-					<app-element-notes-overview></app-element-notes-overview>
-				</div>
 			</div>
-			<div class="row" *ngIf="usersService.ActiveUser.role == 'admin'">
-				<div class="col-12 col-md-7">
-					<app-element-admin-recent-checkins></app-element-admin-recent-checkins>
+		</div>
+		<div class="content-container">
+			<div class="row">
+				<div class="col-12 col-md-12">
+					<div class="card-container">
+						<div class="shadow card">
+							<div class="card-header"><i class="card-icon far fa-clock"></i>Recent Goals</div>
+							<div class="card-body">
+								<div class="secondary-loading-container" *ngIf="loading">
+									<div class="secondary-loading"></div>
+								</div>
+								<div class="error-result-container" *ngIf="failure">
+									<div class="error-result-icon d-flex justify-content-center align-items-center">
+										<i class="far fa-frown"></i>
+									</div>
+									<div class="error-result-text">{{resultMessage}}</div>
+								</div>
+								<div class="notfound-container" *ngIf="!goalsService.Goals.length && !loading">
+									<div class="notfound-icon d-flex justify-content-center">
+										<i class="far fa-clock"></i>
+									</div>
+									<div class="notfound-text d-flex justify-content-center">{{User.first_name}} has no recent goals</div>
+								</div>
+								<div class="recent-goal-container table-responsive" *ngIf="!loading && goalsService.Goals.length">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">Name</th>
+												<th scope="col">Description</th>
+												<th scope="col">Frequency</th>
+											</tr>
+										</thead>
+										<tbody *ngFor="let goal of goalsService.Goals">
+											<tr class="single-goal camelcase-text" *ngIf="!goal.checklist_complete">
+												<td>{{goal.name}}</td>
+												<td>{{goal.description}}</td>
+												<td>{{goal.frequency}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="col-12 col-md-5">
+				<div class="col-12 col-md-12">
+					<div class="card-container">
+						<div class="card shadow">
+							<div class="card-header"><i class="card-icon fas fa-check"></i>Completed Goals</div>
+							<div class="card-body">
+								<div class="secondary-loading-container" *ngIf="loading">
+									<div class="secondary-loading"></div>
+								</div>
+								<div class="notfound-container" *ngIf="!CompletedGoals.length && !loading">
+									<div class="notfound-icon d-flex justify-content-center">
+										<i class="fas fa-check"></i>
+									</div>
+									<div class="notfound-text d-flex justify-content-center">{{User.first_name}} has no completed goals</div>
+								</div>
+								<div class="recent-goal-container table-responsive" *ngIf="!loading && CompletedGoals.length">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col"></th>
+												<th scope="col">Name</th>
+												<th scope="col">Description</th>
+												<th scope="col">Frequency</th>
+											</tr>
+										</thead>
+										<tbody *ngFor="let goal of CompletedGoals">
+											<tr class="single-goal camelcase-text">
+												<td><i class="green fas fa-tick"></i></td>
+												<td>{{goal.name}}</td>
+												<td>{{goal.description}}</td>
+												<td>{{goal.frequency}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-12" *ngIf="!loading">
+					<app-element-checkins-overview [checkins]="Checkins"></app-element-checkins-overview>
+				</div>
+				<div class="col-12 col-md-12" *ngIf="!loading">
+					<app-element-notes-overview [user]="User" [admin]="true"></app-element-notes-overview>
 				</div>
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>

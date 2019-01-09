@@ -17,7 +17,7 @@
 				to add a note</div>
 		</div>
 		<div class="card-body">
-			<div class="row">
+			<div class="row" *ngIf="!admin">
 				<ng-template ngFor let-note [ngForOf]="notesService.Notes" class="note-card-container card-container col-md-12">
 					<div *ngIf="note.type == 'Personal' && !note.voice" class="col-6 col-md-4">
 						<div class="card note-container shadow" style="margin: 10px">
@@ -37,6 +37,29 @@
 				<div *ngIf="notesService.Notes.length" class="col-12 d-flex justify-content-center">
 					<div class="card-button">
 						<div class="button" [routerLink]="[ 'notes']">More Notes</div>
+					</div>
+				</div>
+			</div>
+			<div class="row" *ngIf="admin">
+				<ng-template ngFor let-note [ngForOf]="notesService.Notes" class="note-card-container card-container col-md-12">
+					<div *ngIf="note.type != 'Personal' && !note.voice" class="col-6 col-md-4">
+						<div class="card note-container shadow" style="margin: 10px">
+							<div class="card-header goal-name">
+								<div class="note-title" *ngIf="!note.edit">{{note.title}}</div>
+							</div>
+							<div class="card-body">
+								<div class="col-lg-12 col-12">
+									<div *ngIf="!note.voice && !note.edit" class="note-description card-text">{{ note.note |
+										slice:0:120}}{{note.note.length > 120 ? '...' : ''}}</div>
+									<div class="note-date card-text">{{note.date | date:"dd/MM/yyyy"}}</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</ng-template>
+				<div *ngIf="notesService.Notes.length" class="col-12 d-flex justify-content-center">
+					<div class="card-button">
+						<div class="button">View {{user.first_name}}'s Notes</div>
 					</div>
 				</div>
 			</div>

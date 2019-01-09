@@ -10,8 +10,6 @@ import { Checklist } from '../models/checklist';
 })
 export class GoalsService {
 	Goals: Array<Goal> = [];
-	CompletedGoals: Array<Goal> = [];
-	RecurringGoals: Array<Goal> = [];
 	ActiveGoal: Goal = new Goal({});
 	ActiveChecklist: Array<Checklist> = [];
 
@@ -35,8 +33,6 @@ export class GoalsService {
 
 	public getUserGoals(user_id) {
 		return new Promise((resolve, reject) => {
-			this.CompletedGoals = [];
-			this.RecurringGoals = [];
 			this.Goals = [];
 
 			this._APIService.getUserGoals(user_id).subscribe(result => {
