@@ -8,6 +8,14 @@
 			</div>
 			<div class="card-button-mobile"><i class="card-button-icon far fa-edit"></i></div>
 		</div>
+		<div class="col-12 notfound-container" *ngIf="!notesService.Notes.length">
+			<div class="notfound-icon d-flex justify-content-center">
+				<i class="far fa-sticky-note"></i>
+			</div>
+			<div class="notfound-text d-flex justify-content-center">There are currently no notes</div>
+			<div class="notfound-link no-outline d-flex justify-content-center" (click)="open()">Click here
+				to add a note</div>
+		</div>
 		<div class="card-body">
 			<div class="row">
 				<ng-template ngFor let-note [ngForOf]="notesService.Notes" class="note-card-container card-container col-md-12">
@@ -26,7 +34,7 @@
 						</div>
 					</div>
 				</ng-template>
-				<div class="col-12 d-flex justify-content-center">
+				<div *ngIf="notesService.Notes.length" class="col-12 d-flex justify-content-center">
 					<div class="card-button">
 						<div class="button" [routerLink]="[ 'notes']">More Notes</div>
 					</div>

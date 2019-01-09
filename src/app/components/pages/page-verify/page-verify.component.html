@@ -29,8 +29,9 @@
 					</div>
 					<div class="row">
 						<div class="form-group float-label-control col s12">
-							<input [(ngModel)]="username" name="username" id="username" type="text" class="validate" required>
+							<input (keyup)="onKeyusername($event)" [(ngModel)]="username" name="username" id="username" type="text" class="validate" required>
 							<label for="username">Username</label>
+							<p *ngIf="incorectUsername" class="input-hint">Username cannot have special characters</p>
 						</div>
 					</div>
 					<div class="row">

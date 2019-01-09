@@ -40,12 +40,12 @@ export class PageDashboardComponent extends SubPage implements OnInit {
 			this.usersService.subscribeUser(JSON.stringify(sub)).subscribe(data => {}, err => {})
 		})
 		.catch(err => {
-			console.log(err);
+			this.failure = true;
 		});
 			})
 		})
 		.catch(err => {
-			console.log(err);
+			this.failure = true;
 		})
 	}
 

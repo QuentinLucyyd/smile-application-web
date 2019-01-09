@@ -118,6 +118,12 @@ p.small {
 	color: $secondary-color;
 }
 
+.notfound-link {
+	font-size: .9em;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .content-container {
 	//padding: 20px;
 }
