@@ -2,7 +2,6 @@ import { Injectable, isDevMode } from '@angular/core';
 import { RequestOptions, Headers, Http } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user';
 import { Checkin } from '../models/checkin';
@@ -16,7 +15,7 @@ import { Checklist } from '../models/checklist';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = 'https://smile-application-api.herokuapp.com';
+	host = environment.API_HOST
 	
 	constructor(
 		private _http: Http,

@@ -22,10 +22,11 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 
 	firstName:String = '';
 	lastName:String = '';
-	username:String = '';
+	username = '';
 	email: String = '';
 	password: String = '';
 	verify_password: String = '';
+	incorectUsername: Boolean = false;
 
 	constructor(
 		private _verifyService: VerifyService,
@@ -46,7 +47,6 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 		if (this.verify_token) {
 			this._verifyService.verifyInviteToken(this.verify_token).subscribe(result => {
 				this.loading = false;
-				console.log(result);
 				if (result.status === 'failure') {
 					this.failure = true;
 					this._router.navigate(['/']);
@@ -64,6 +64,13 @@ export class PageVerifyComponent extends SubPage implements OnInit {
 		return /\d/.test(t);
 	}
 
+	onKeyusername(event) {
+		var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+		if (format.test(this.username))
+			this.incorectUsername = true;
+		else
+			this.incorectUsername = false;
+	}
 	onKeyPassword(event: any) {
 		if (this.verify_password != this.password) {
 			this.match = false;

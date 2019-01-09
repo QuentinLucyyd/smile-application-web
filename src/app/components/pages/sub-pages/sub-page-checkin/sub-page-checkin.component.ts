@@ -137,57 +137,66 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 
 	submitCheckin() {
 		this.loading = true;
-		const checkin = {
-			date: new Date,
-			physical_energy: this.p_energy,
-			heart_connection: this.h_connection,
-			mental_focus: this.m_focus,
-			greater_whole: this.f_connected,
-			happiness: this.happy,
-			user_id: this.usersService.ActiveUser.id,
-			mood: this.mood
-		}
-		const _Checkin: Checkin = new Checkin(checkin);
-		if (this.url) {
-			this.voicesService.createVoice(this.formData).subscribe(data => {
-				const voice = {id: data.data[0].id};
-				_Checkin.voice = new Voice(voice);
-				this._checkinService.createCheckin(_Checkin).subscribe(data => {
-					this.loading = false;
-					this.notificationService.newNotify('info', 'Checkin Completed');
-					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: 'checkin'}});
+		if (this.mood && this.entry) {
+			const checkin = {
+				date: new Date,
+				physical_energy: this.p_energy,
+				heart_connection: this.h_connection,
+				mental_focus: this.m_focus,
+				greater_whole: this.f_connected,
+				happiness: this.happy,
+				user_id: this.usersService.ActiveUser.id,
+				mood: this.mood
+			}
+			const _Checkin: Checkin = new Checkin(checkin);
+			if (this.url) {
+				this.voicesService.createVoice(this.formData).subscribe(data => {
+					const voice = {id: data.data[0].id};
+					_Checkin.voice = new Voice(voice);
+					this._checkinService.createCheckin(_Checkin).subscribe(data => {
+						this.loading = false;
+						this.notificationService.newNotify('info', 'Checkin Completed');
+						this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: 'checkin'}});
+					}, err => {
+						this.loading = false;
+						this.failure = true;
+					})
 				}, err => {
 					this.loading = false;
 					this.failure = true;
 				})
-			}, err => {
-				this.loading = false;
-				this.failure = true;
-			})
-		} else {
-			const note = {
-				title: 'Chekin ' + this.usersService.ActiveUser.first_name + this.usersService.ActiveUser.last_name,
-				note: this.entry,
-				type: 'checkin',
-				date: _Checkin.date,
-				user_id: this.usersService.ActiveUser.id
-			}
-			const _Note = new Note(note)
-			this.notesService.createUserNote(_Note, '?note=true', false).subscribe(data => {
-				_Note.id = data.data.id;
-				_Checkin.note = _Note;
-				this._checkinService.createCheckin(_Checkin).subscribe(data => {
-					this.loading = false;
-					this.notificationService.newNotify('info', 'Checkin Completed');
-					this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: 'checkin'}});
+			} else {
+				const note = {
+					title: 'Chekin ' + this.usersService.ActiveUser.first_name + this.usersService.ActiveUser.last_name,
+					note: this.entry,
+					type: 'checkin',
+					date: _Checkin.date,
+					user_id: this.usersService.ActiveUser.id
+				}
+				const _Note = new Note(note)
+				this.notesService.createUserNote(_Note, '?note=true', false).subscribe(data => {
+					_Note.id = data.data.id;
+					_Checkin.note = _Note;
+					this._checkinService.createCheckin(_Checkin).subscribe(data => {
+						this.loading = false;
+						this.notificationService.newNotify('info', 'Checkin Completed');
+						this._router.navigate(['/'], {queryParams:{ref: this._router.url, type: 'checkin'}});
+					}, err => {
+						this.loading = false;
+						this.failure = false;
+					})
 				}, err => {
 					this.loading = false;
-					this.failure = false;
+					this.failure = true;
 				})
-			}, err => {
-				this.loading = false;
-				this.failure = true;
-			})
+			}
+		} else {
+			this.loading = false;
+			this.failure = true;
+			if (!this.mood)
+				this.resultMessage = 'Dominating Mood is Missing';
+			else
+				this.resultMessage = 'Entry is Missing';
 		}
 	}
 
