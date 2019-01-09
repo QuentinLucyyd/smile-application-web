@@ -1,0 +1,119 @@
+/* Imports */
+
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/modal';
+@import '../../../../../styles/view';
+@import '../../../../../styles/config';
+
+.profile {
+	padding-bottom: 20px;
+
+	.card-body {
+		padding-top: 0px !important;
+	}
+
+	.profile-info {
+		padding-left: 10px;
+	}
+}
+
+.user-city {
+	color: $grey;
+	font-weight: bold;
+}
+
+.profile-header {
+	padding-left: 10px;
+	height: 220px;
+
+	.button {
+		font-weight: 200;
+	}
+}
+
+.profile-header-picture {
+	cursor: pointer;
+
+	border: double 5px transparent;
+	border-radius: 80px;
+	background-image: linear-gradient(white, white), radial-gradient(circle at top left, #39B0BA, #52BA11);
+	background-origin: border-box;
+	background-clip: content-box, border-box;
+
+	width: 150px;
+	height: 150px;
+
+	img {
+		width: 140px;
+		height: 140px;
+		border-radius: 100px;
+		image-rendering: auto;
+	}
+}
+
+.profile-header-info-container {
+	padding-left: 30px;
+	padding-bottom: 20px;
+
+	h5 {
+		font-size: 2em;
+	}
+
+	.name-placeholder {
+		.first {
+			width: 400px;
+			height: 30px;
+			background: $grey;
+			border-radius: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 465px) {
+	.first {
+		width: 300px !important;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.first {
+		width: 200px !important;
+	}
+}
+
+@media screen and (max-width: 557px) {
+	.profile-header {
+		height: 300px;
+	}
+
+	.profile-header-info-container {
+		padding-top: 15px;
+		padding-left: 0px;
+	}
+}
+
+/** Upcoming Goals **/
+.table {
+	color: $grey;
+
+	thead {
+		font-size: .8em;
+	}
+
+	.single-goal {
+		transition-duration: 0.4s;
+
+		&:hover {
+			cursor: pointer;
+			background-color: rgba(144,164,174,0.2);
+			transition-duration: 0.4s;
+		}
+	}
+}
+
+/** Checkin Tool **/
+
+.chart-container {
+	padding: 10px;
+}
