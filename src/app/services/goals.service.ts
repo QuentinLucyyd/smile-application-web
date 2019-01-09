@@ -44,6 +44,28 @@ export class GoalsService {
 					const _Goal = new Goal(goal);
 					this._APIService.getGoalChecklists(goal.id).subscribe(data => {
 						_Goal.populateProgress(data.data);
+						// for(let checklist of data.data)
+						// {
+						// 	var date = new Date();
+						// 	var databaseDate = new Date(checklist.last_edit);
+						// 	if ((databaseDate.getDate() != date.getDate() || databaseDate.getMonth() != date.getMonth()) && _Goal.frequency == 'Daily')
+						// 	{
+						// 			checklist.is_completed = false;
+						// 			this._APIService.updateChecklist(checklist).subscribe(data => {});
+						// 			console.log(checklist.description);
+						// 	}else if (((databaseDate.getDate() <= (date.getDate() - 7)) || ) && _Goal.frequency == 'Weekly')
+						// 	{
+						// 			checklist.is_completed = false;
+						// 			this._APIService.updateChecklist(checklist).subscribe(data => {});
+						// 			console.log(checklist.description);
+						// 	}else if ((databaseDate.getDate() == date.getDate() && databaseDate.getMonth() > date.getMonth() -1 ) && _Goal.frequency == 'Monthly')
+						// 	{
+						// 			checklist.is_completed = false;
+						// 			this._APIService.updateChecklist(checklist).subscribe(data => {});
+						// 			console.log(checklist.description);
+						// 	}
+						// }
+						// _Goal.populateProgress(data.data);
 						this.Goals.push(_Goal);
 					}, err => {
 						reject(err);
