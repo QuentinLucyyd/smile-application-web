@@ -42,36 +42,37 @@ export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 		this.disabledSaveBtn = !this.disabledSaveBtn;
 	}
 	
-	saveNote(newNote, newNoteType, newNoteTile){
-		this.disabled = true;
-		this.disabledSaveBtn = true;
-		const note =  {
-			title: newNoteTile,
-			note: newNote,
-			type: newNoteType,
-			voice: this.notesService.ActiveNote.voice,
-			user_id: this.userServices.ActiveUser.id,
-			id: this.notesService.ActiveNote.id,
-			is_active: this.notesService.ActiveNote.is_active
-		}
-		const _note: Note =  new Note(note);
-		this.activeModal.close('Note deleted Success');
-		this.loading = true;
-		this.notesService.updateUserNote(_note).subscribe(data => {
-			console.log(data);
-	})
-	//location.reload();
-	}
+	// saveNote(newNote, newNoteType, newNoteTile){
+	// 	this.disabled = true;
+	// 	this.disabledSaveBtn = true;
+	// 	const note =  {
+	// 		title: newNoteTile,
+	// 		note: newNote,
+	// 		type: newNoteType,
+	// 		voice: this.notesService.ActiveNote.voice,
+	// 		user_id: this.userServices.ActiveUser.id,
+	// 		id: this.notesService.ActiveNote.id,
+	// 		is_active: this.notesService.ActiveNote.is_active
+	// 	}
+	// 	const _note: Note =  new Note(note);
+	// 	this.activeModal.close('Note deleted Success');
+	// 	this.loading = true;
+	// 	this.notesService.updateUserNote(_note).subscribe(data => {
+	// 		console.log(data);
+	// })
+	// //location.reload();
+	// }
 
 
 
 	deleteNote()
  	{
    		this.disabledDeleteBtn = !this.disabledDeleteBtn;
-   		// this.disabledEditIcn = !this.disabledEditIcn;
+   		this.disabledSaveBtn = false;
  	}
 
 	_deleteNote(){
+		console.log(this.notesService.ActiveNote)
 		this.disabled = true;
 		this.notesService.ActiveNote.is_active = false;
 		this.notesService.updateUserNote(this.notesService.ActiveNote).subscribe(data => {
@@ -84,6 +85,14 @@ export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 		this.disabled = true;
 		this.disabledSaveBtn = true;
 		this.disabledDeleteBtn = true;
+	}
+
+	updateNote(note: Note) {
+		note.noteLoading = true;
+		this.notesService.updateUserNote(note).subscribe(data => {
+			note.edit = false;
+			note.noteLoading = false;
+		})
 	}
 
 	
