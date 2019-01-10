@@ -2,7 +2,10 @@
 	<div class="shadow card">
 		<div class="card-header"><i class="card-icon fas fa-sliders-h"></i>Recent Check-ins</div>
 		<div class="card-body">
-			<div class="users-container">
+			<div class="secondary-loading-container" *ngIf="loading">
+				<div class="secondary-loading"></div>
+			</div>
+			<div class="users-container" *ngIf="!loading">
 				<div class="row">
 					<div class="col-12 col-md-12 table-responsive">
 						<table class="table">

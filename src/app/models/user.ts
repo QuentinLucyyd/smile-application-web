@@ -1,4 +1,7 @@
+import { BehaviorSubject } from "rxjs";
+
 export class User {
+	visible$: BehaviorSubject<Boolean> = new BehaviorSubject(true);
 	id: Number = 0;
 	identifier: String = '';
 	username: String = '';

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  VAPID_PUBLIC_KEY: 'BCNZYK-abScgnavULXFACciE_cQPhKvokg-WDAhCVytOw4sEyDP9elcT2YH7qQz_ja-BNebUQQVKlYXcC3lTubE',
   API_HOST: 'http://localhost:3001'
 };
 

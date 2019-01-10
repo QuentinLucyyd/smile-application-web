@@ -14,14 +14,19 @@
 		</div>
 		<div class="content-container">
 			<div class="row">
+				<div class="col-md-12 search-form-container">
+					<input class="col-10 col-md-11" (keyup)="filterUsers($event)" [(ngModel)]="filterString" id="namanyay-search-box" size="40" type="text" placeholder="Search" />
+					<input class="col-2 col-md-1" id="namanyay-search-btn" value="Go" type="submit" />
+				</div>
 				<ng-template ngFor let-user [ngForOf]="usersService.Users">
-					<div class="col-sm-12 col-lg-3 col-md-6 profile" *ngIf="user.first_name && user.last_name && user.role == 'client'" (click)="routeToUser(user)">
+					<div class="col-sm-12 col-lg-3 col-md-6 profile" *ngIf="(user.visible$ | async) && user.first_name && user.last_name && user.role == 'client'"
+					 (click)="routeToUser(user)">
 						<div class="card-container">
 							<div class="card flex-fill shadow profile-header">
-								<div class="card-header"><i class="card-icon fas fa-user"></i>
-									<!-- <div (click)="editProfile()" class="card-button">
-										<div class="button">Edit Profile <i class="card-button-icon fas fa-cog"></i></div>
-									</div> -->
+								<div class="card-header">
+									<i class="card-icon fas fa-user"></i>
+									<p class="user-company"><span *ngIf="user.company">{{user.company | titlecase}}</span></p>
+									<p class="user-company"><span *ngIf="!user.company">N / A</span></p>
 								</div>
 								<div class="card-body d-flex align-items-center">
 									<div class="row">
@@ -37,10 +42,15 @@
 													<div class="profile-header-info-container">
 														<div class="row">
 															<div class="col-12 col-md-12">
-																<h4>{{user.first_name}} {{user.last_name}}</h4>
+																<h4>{{user.first_name | titlecase}} {{user.last_name | titlecase}}</h4>
 															</div>
 															<div class="col-12 col-md-12">
-																<p class="user-city">{{user.role | titlecase}} <span *ngIf="user.city">| {{user.city}}</span></p>
+																<p class="user-city">{{user.role | titlecase}} <span *ngIf="user.city">| {{user.city | titlecase}}</span></p>
+															</div>
+															<div class="col-12 col-md-12 d-flex justify-content-center">
+																<div class="card-button">
+																	<div class="button">View Profile</div>
+																</div>
 															</div>
 														</div>
 													</div>

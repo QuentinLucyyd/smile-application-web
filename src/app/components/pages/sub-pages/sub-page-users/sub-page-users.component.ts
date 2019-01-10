@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./sub-page-users.component.scss']
 })
 export class SubPageUsersComponent extends SubPage implements OnInit {
-
+	filterString: String = ''
 	constructor(
 		public titleService: Title,
 		public usersService: UsersService,
@@ -26,12 +26,31 @@ export class SubPageUsersComponent extends SubPage implements OnInit {
 				this.loading = false;
 				if (data.status == "success") {
 					this.success = true;
-					this.usersService.Users = data.data;
+					for (const user of data.data)
+						this.usersService.Users.push(new User(user));
+					console.log(this.usersService.Users);
 				}
 			})
+		} else {
+			for (const user of this.usersService.Users){
+				user.visible$.next(true);
+			}
 		}
 	}
 
+	filterUsers(event: any) {
+		for (const user of this.usersService.Users) {
+			if (!user.first_name.toLowerCase().includes(this.filterString.toLowerCase()) &&
+			  !user.last_name.toLowerCase().includes(this.filterString.toLowerCase()) &&
+			  !user.username.toLowerCase().includes(this.filterString.toLowerCase()) &&
+			  !user.email.toLowerCase().includes(this.filterString.toLowerCase())) 
+			  {
+				  user.visible$.next(false);
+			} else {
+				user.visible$.next(true);
+			}
+		}
+	}
 	routeToUser(user: User) {
 		this._router.navigate(['/dashboard/user/'+user.username]);
 	}

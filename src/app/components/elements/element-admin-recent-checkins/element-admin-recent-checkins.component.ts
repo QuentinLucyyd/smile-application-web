@@ -17,9 +17,10 @@ export class ElementAdminRecentCheckinsComponent extends SubPage implements OnIn
 	) { super(); }
 
 	ngOnInit() {
+		this.loading = true;
 		this.usersService.getRecentuserCheckins().subscribe(data => {
-			this.loading = true;
 			if (data.status == "success") {
+				this.loading = false;
 				this.success = true
 				this.UsersCheckins = data.data;
 			}
