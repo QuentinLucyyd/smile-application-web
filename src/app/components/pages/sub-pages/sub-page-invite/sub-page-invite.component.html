@@ -8,10 +8,10 @@
 			</div>
 		</div>
 		<div class="row d-flex justify-content-start">
-		<div class="col-md-6 col-6 invite-container">
-			<h5>Inivte User</h5>
-			<p>Invite a new user by email and specify user role.</p>
-			<div class="form-container">
+		<div class="col-md-12 col-12 invite-container">
+			<div class="form-container card shadow invite-card-container">
+					<h5>Invite User</h5>
+					<p class="invite-sub-text">Invite a new user by email and specify user role.</p>
 				<form>
 					<div class="row">
 						<div class="col-12 col-md-12">
@@ -32,8 +32,8 @@
 							<div class="role-container form-group form-select col-6 col-md-4">
 								<label class="label" for="role">Role</label>
 								<select [(ngModel)]="role" class="form-control" id="role" name="role">
-									<option value="client" selected="">client</option>
-									<option value="admin">administrator</option>
+									<option value="client" selected="">Client</option>
+									<option value="admin">Administrator</option>
 								</select>
 							</div>
 						</div>

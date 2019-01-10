@@ -16,6 +16,7 @@ export class SubPageDashboardComponent implements OnInit {
 
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Dashboard');
+		console.log(this.usersService.ActiveUser);
 	}
 
 }

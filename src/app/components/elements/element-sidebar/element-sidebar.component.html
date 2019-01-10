@@ -2,7 +2,7 @@
 	<div class="quick-links-button-container" *ngIf="!loading">
 		<div class="quick-links">
 			<ng-template ngFor let-tool [ngForOf]="toolsService.tools">
-				<div class="quick-links-button d-flex align-items-center justify-content-center" [routerLink]="[tool.route]">
+				<div class="quick-links-button d-flex align-items-center justify-content-center" (click)="openTool(tool)">
 					<div class="add-quick-link-inner">
 						<div class="quick-links-icon d-flex justify-content-center">
 							<svg>
@@ -13,6 +13,16 @@
 					</div>
 				</div>
 			</ng-template>
+			<div class="quick-links-button d-flex align-items-center justify-content-center sign-out-button" (click)="authenticationService.invalidateUser()">
+				<div class="add-quick-link-inner">
+					<div class="quick-links-icon d-flex justify-content-center">
+						<svg>
+							<use xlink:href="#signout-icon"></use>
+						</svg>
+					</div>
+					<div class="quick-links-text">Sign out</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="quick-links-loading-container" *ngIf="loading">

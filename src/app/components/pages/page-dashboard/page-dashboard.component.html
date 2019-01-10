@@ -1,7 +1,7 @@
 <div class="dashboard-container">
-	<app-element-nav-dashboard></app-element-nav-dashboard>
+	<app-element-nav-dashboard (click)="clickedInside($event)"></app-element-nav-dashboard>
 	<div class="dashboard">
-		<div class="dashboard-quick-links-container d-lg-table-cell" [ngClass]="{'wide-mobile': navService.MobileMenu}">
+		<div class="dashboard-quick-links-container d-lg-table-cell" (click)="clickedInside($event)" [ngClass]="{'wide-mobile': navService.MobileMenu}">
 			<app-element-sidebar></app-element-sidebar>
 		</div>
 		<div class="dashboard-sub-pages-container">

@@ -28,26 +28,10 @@
 				</div>
 			</div>
 			<div class="row">
-				<!-- <form class="form">
-
-					<h2>Checkboxes</h2>
-					<div class="inputGroup">
-						<input id="option1" name="option1" type="checkbox" />
-						<label for="option1">Option One</label>
-					</div>
-
-					<div class="inputGroup">
-						<input id="option2" name="option2" type="checkbox" />
-						<label for="option2">Option Two</label>
-					</div>
-				</form> -->
 				<div class="form-group float-label-control col s12">
 					<button *ngIf="!checklistView" (click)="checklistView = !checklistView" class="form-control" add-button>Add
 						Checklist</button>
 					<div *ngIf="checklistView" class="checklist-header">Goal Checklist</div>
-					<!-- <div *ngFor="let item of checklist">
-						<input [(ngModel)]="item.description" type="text" name="item" [placeholder]='checklist_placeholder'>
-					</div> -->
 					<div class="checklist-container">
 						<ng-template ngFor let-item let-i="index" [ngForOf]="checklist">
 							<div class="checklist-item">#{{i + 1}} {{item.description}}</div>
