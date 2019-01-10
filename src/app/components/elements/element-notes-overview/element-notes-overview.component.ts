@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddNoteComponent } from '../../elements/modals/modal-add-note/modal-add-note.component';
 import { Title } from '@angular/platform-browser';
@@ -7,6 +7,7 @@ import { NotesService } from '../../../services/notes.service';
 import { UsersService } from '../../../services/users.service';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { ModalDisplayNoteComponent } from '../../elements/modals/modal-display-note/modal-display-note.component';
+import { User } from 'src/app/models/user';
 
 @Component({
 	selector: 'app-element-notes-overview',
@@ -14,7 +15,10 @@ import { ModalDisplayNoteComponent } from '../../elements/modals/modal-display-n
 	styleUrls: ['./element-notes-overview.component.scss']
 })
 export class ElementNotesOverviewComponent implements OnInit {
+	@Input() user: User;
+	@Input() admin: Boolean;
 
+	UserID: Number = 0;
 	constructor(
 		private titleService: Title,
 		public notesService: NotesService,
@@ -24,8 +28,12 @@ export class ElementNotesOverviewComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
+		if (!this.user)
+			this.UserID = this.user.id;
+		else
+			this.UserID = this.usersService.ActiveUser.id;
 		this.authService.AuthenticateUser().then(data => {
-			this.notesService.getUserNotes(this.usersService.ActiveUser.id);
+			this.notesService.getUserNotes(this.UserID);
 		})
 	}
 
