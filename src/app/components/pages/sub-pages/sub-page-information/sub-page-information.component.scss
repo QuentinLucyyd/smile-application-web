@@ -1,0 +1,106 @@
+/* Imports */
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/modal';
+@import '../../../../../styles/view';
+
+.card {
+	p {
+		color: $grey;
+	}
+
+	.item-title {
+		font-size: 1.2em;
+	}
+
+	.read-more {
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.card-header {
+		padding: 0px !important;
+	}
+
+	.card-icon {
+		i {
+			cursor: pointer;
+			font-size: 1.5em;
+			background-color: $primary-color;
+			border-radius: 100px;
+			padding: 10px;
+			transition-duration: .5s;
+
+			&:hover {
+				background-color: $white;
+				color: $primary-color;
+				transition-duration: .5s
+			}
+		}
+
+		width: 40px;
+		height: 40px;
+		color: $white;
+		position: absolute;
+		top: -15px;
+		left: -15px;
+	}
+}
+
+.card-footer {
+	background-color: $white;
+}
+
+.card-body {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 300px;
+}
+
+.info-container {
+	text-align: center;
+
+	h4 {
+		font-size: 1.1em;
+		color: $grey;
+	}
+}
+
+.image-container {
+	img {
+		width: 100%;
+		height: 50%;
+	}
+}
+
+/** Search Box */
+
+.search-form-container {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#namanyay-search-btn {
+	background: $primary-color;
+	color: white;
+	font: $primary-font;
+	padding: 10px 20px;
+	border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+	-webkit-border-radius: 0 5px 5px 0;
+	-o-border-radius: 0 5px 5px 0;
+	border: 0 none;
+	font-weight: bold;
+}
+
+#namanyay-search-box {
+	background: #fff;
+	padding: 10px;
+	border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	-webkit-border-radius: 5px 0 0 5px;
+	-o-border-radius: 5px 0 0 5px;
+	border: 0 none;
+	// width: 100vh;
+}

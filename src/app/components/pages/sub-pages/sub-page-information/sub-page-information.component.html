@@ -1,0 +1,64 @@
+<div class="sub-page-loading-container text-align-center d-flex align-items-center" *ngIf="loading">
+	<div class="secondary-loading-container">
+		<div class="secondary-loading"></div>
+	</div>
+</div>
+<div class="sub-page-dashboard-container" *ngIf="!loading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-md-12">
+				<div class="sub-page-title">
+					<i class="sub-page-title-icon fas fa-check"></i>Dashboard / Information
+					<div class="sub-page-button card-button" *ngIf="usersService.ActiveUser.role == 'admin'">
+						<div class="button" (click)="open()">Add Item <i class="card-button-icon far fa-edit"></i></div>
+					</div>
+					<div *ngIf="usersService.ActiveUser.role == 'admin'" class="card-button-mobile" (click)="open()"><i class="card-button-icon fas fa-plus"></i></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!loading && failure">
+				<div class="subpage-message">
+					<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
+					<h4 class="subpage-message">{{subPageMessage}}</h4>
+					<p [routerLink]="[subPageLinkRoute]" class="subpage-sub-message no-outline">{{subPageLinkText}}</p>
+				</div>
+			</div>
+			<div class="col-md-12 search-form-container">
+				<input class="col-10 col-md-11" (keyup)="filterItems($event)" [(ngModel)]="filterString" id="namanyay-search-box"
+				 size="40" type="text" placeholder="Search" />
+				<input class="col-2 col-md-1" (click)="filterItems($event)" id="namanyay-search-btn" value="Go" type="submit" />
+			</div>
+			<ng-template ngFor let-item [ngForOf]="learningService.Learnings">
+				<div class="col-12 col-md-6 col-lg-4" *ngIf="(item.visible$ | async) ">
+					<div class="card-container">
+						<div class="card shadow">
+							<div class="card-header">
+								<div class="card-icon">
+									<i *ngIf="item.type == 'article'" class="fas fa-newspaper"></i>
+								</div>
+							</div>
+							<div class="card-body" *ngIf="item.type == 'article'" [ngStyle]="{ 'background-image': 'url(' + item.image + ')'}">
+								<p class="item-type"></p>
+								<p class="item-company"></p>
+							</div>
+							<div class="card-body" *ngIf="item.type == 'video'">
+								<object width="420" height="315" data="https://www.youtube.com/v/tgbNymZ7vqY">
+								</object>
+							</div>
+							<div class="card-footer">
+								<div class="col-12 info-container">
+									<h4 class="item-title">{{item.title}}</h4>
+								</div>
+								<div class="col-12" *ngIf="item.type == 'article'">
+									<p class="item-excerpt">{{ item.excerpt | slice:0:250}}{{item.excerpt.length > 250 ? '...' : ''}} <a
+										 [attr.href]="item.url" target="_blank"><span class="read-more">Read more</span></a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</div>
+	</div>
+</div>

@@ -74,4 +74,13 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		})
 	}
 
+	completeGoal() {
+		this.loading = true;
+		this.goalsService.ActiveGoal.state = 'completed';
+		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
+			this.success = true;
+			this.deleteloading = false;
+			this.activeModal.close('Goal deleted Success');
+		})
+	}
 }

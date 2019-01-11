@@ -3,30 +3,83 @@
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
-.note-header-icon {
-	float: right;
-	opacity: .5;
+.modal-display-note-container {
+	padding-left: 15px;
 
+	textarea {
+		// border: .5px solid #D3D3D3;
+		padding: 10px;
+		height: 200px;
+		resize: none;
+	}
+	.textarea-disabled {
+		background-color: rgba(211,211,211, 0.2);
+	}
+}
+
+.card-loading {
+	padding-right: 20px;
+}
+
+.note-delete-container {
+	text-align: center;
+
+	.note-delete-header {
+		color: $grey;
+		font-size: .9em;
+	}
+}
+
+.note-actions-icons {
 	i {
 		cursor: pointer;
-		color: $grey;
-		font-size: .8em;
+	}
+
+	.tick-icon {
+		padding-left: 5px;
+		color: $secondary-color;
+	}
+
+	.cross-icon {
+		padding-left: 15px;
+		color: $error-color;
 	}
 }
 
-.edit-icon {
-	transition-duration: .5s;
+.button-sm {
+	font-size: 0.9em !important;
+	padding: 6px 23px;
+	font-weight: 100;
+}
 
-	&:hover {
-		color: $secondary-color !important; 
-		transition-duration: .5s !important;
+.note-actions-card-container {
+	.card {
+		cursor: pointer;
+		transition-duration: 1s;
+
+		&:hover {
+			.trash-icon {
+				color: $error-color;
+				transition-duration: 1s;
+			}
+
+			.edit-icon {
+				color: $secondary-color;
+				transition-duration: 1s;
+			}
+		}
 	}
 }
 
-.error-icon {
-	color: $error-color;
-	padding-left: 10px;
-	padding-right: 10px;
+.note-actions-header {
+	h5 {
+		font-size: 1em;
+		font-weight: 100;
+	}
+}
+
+.note-action-name {
+	padding-left: 15px;
 }
 
 .header-button-container {
@@ -46,66 +99,6 @@
 	}
 }
 
-.icons_notes {
-	color: $grey;
-	font-size: .8em;
-	padding-top: 10px;
-	padding-left: 10px;
-	cursor: pointer;
-}
-
-button:disabled,
-button[disabled] {
-	display: none;
-}
-
-textarea:disabled,
-textarea[disabled] {
-	background-color: white;
-	border: none;
-	resize: none;
-	width: 100%;
-}
-
-textarea:enabled,
-textarea[enabled] {
-	background-color: white;
-	resize: none;
-	width: 100%;
-	cursor: text;
-	margin-top: 10px;
-}
-
-.displayNoteTextAreaD {
-	background-color: rgba(247, 247, 247, 0.589);
-	margin-top: 5px;
-}
-
-select:disabled,
-select[disabled] {
-	display: none;
-}
-
-select:enabled,
-select[enabled] {
-	background-color: white;
-	cursor: pointer;
-}
-
-textarea:enabled.note-type,
-textarea[enabled].note-type {
-	display: none;
-}
-
-.modal-body {
-	padding-top: 0;
-}
-
-.modal-title {
-	width: 100% !important;
-}
-
-.note-display {
-	resize: none;
-    overflow: hidden;
+.bs-datepicker {
+	background: black !important;
 }

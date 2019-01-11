@@ -328,4 +328,12 @@ export class ApiServiceService {
 		return this._http.patch(this.host + '/notes', note, options)
 		.pipe(map(response => response.json()));
 	}
+
+	public getLearnings() {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.get(this.host + '/learning', options)
+		.pipe(map(response => response.json()));
+	}
 }

@@ -27,10 +27,10 @@
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Once-Off Goals</h5>
 				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
-					<div class="goal-card-container card-container col-md-12" *ngIf="goal.frequency == 'Once-off' && !goal.checklist_complete && goal.is_active">
+					<div class="goal-card-container card-container col-md-12" *ngIf="goal.state == 'ongoing' && goal.frequency == 'Once-off' && !goal.checklist_complete && goal.is_active">
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
-								{{goal.name}}
+								{{goal.name | titlecase}}
 								<div class="goal-header-icon">
 								</div>
 								<div class="custom-slider" [ngClass]="{'completed-goal': goal.checklist_complete}">
@@ -44,11 +44,20 @@
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Recurring Goals</h5>
 				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
-					<div class="goal-card-container card-container col-md-12" *ngIf="goal.frequency != 'Once-off' && !goal.checklist_complete && goal.is_active">
+					<div class="goal-card-container card-container col-md-12" *ngIf="goal.state == 'ongoing' && goal.frequency != 'Once-off' && !goal.checklist_complete && goal.is_active">
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
-								{{goal.name}}
-								<div class="goal-header-icon">
+								{{goal.name | titlecase}}
+								<div class="goal-header-icon" *ngIf="goal.checklist">
+									<div class="card-loading" *ngIf="goal.checklist_loading">
+										<div class="lds-ring">
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</div>
+									</div>
+									<div *ngIf="!goal.checklist_loading" class="checklist-view">{{goal.i}} / {{goal.checklist.length}}</div>
 								</div>
 								<div class="custom-slider" [ngClass]="{'completed-goal': goal.checklist_complete}">
 									<ng5-slider [(value)]="goal.progress_value" [options]="options"></ng5-slider>
@@ -61,13 +70,12 @@
 			<div class="ongoing-goals-container col-12 col-md-4">
 				<h5>Completed Goals</h5>
 				<ng-template ngFor let-goal [ngForOf]="goalsService.Goals">
-					<div class="goal-card-container card-container col-md-12" *ngIf="goal.checklist_complete && goal.is_active">
+					<div class="goal-card-container card-container col-md-12" *ngIf="goal.checklist_complete && goal.is_active || goal.state == 'completed'">
 						<div (click)="setActiveGoal(goal)" data-toggle="modal" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
-								{{goal.name}}
+								{{goal.name | titlecase}}
 								<div class="goal-header-icon">
-									<i class="complete-icon fas fa-check"></i>
-									<i class="trash-icon fas fa-trash-alt"></i>
+
 								</div>
 								<div class="custom-slider" [ngClass]="{'completed-goal': goal.checklist_complete}">
 									<ng5-slider [(value)]="goal.progress_value" [options]="options"></ng5-slider>

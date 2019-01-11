@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-md-12 search-form-container">
 					<input class="col-10 col-md-11" (keyup)="filterUsers($event)" [(ngModel)]="filterString" id="namanyay-search-box" size="40" type="text" placeholder="Search" />
-					<input class="col-2 col-md-1" id="namanyay-search-btn" value="Go" type="submit" />
+					<input class="col-2 col-md-1" (click)="filterUsers($event)" id="namanyay-search-btn" value="Go" type="submit" />
 				</div>
 				<ng-template ngFor let-user [ngForOf]="usersService.Users">
 					<div class="col-sm-12 col-lg-3 col-md-6 profile" *ngIf="(user.visible$ | async) && user.first_name && user.last_name && user.role == 'client'"

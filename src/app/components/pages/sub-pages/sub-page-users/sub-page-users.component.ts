@@ -28,7 +28,6 @@ export class SubPageUsersComponent extends SubPage implements OnInit {
 					this.success = true;
 					for (const user of data.data)
 						this.usersService.Users.push(new User(user));
-					console.log(this.usersService.Users);
 				}
 			})
 		} else {

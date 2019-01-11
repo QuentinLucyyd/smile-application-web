@@ -15,6 +15,7 @@ import { SubPageNotesComponent } from '../../components/pages/sub-pages/sub-page
 import { SubPageInviteComponent } from '../../components/pages/sub-pages/sub-page-invite/sub-page-invite.component';
 import { SubPageUsersComponent } from '../../components/pages/sub-pages/sub-page-users/sub-page-users.component';
 import { SubPageUserComponent } from '../../components/pages/sub-pages/sub-page-user/sub-page-user.component';
+import { SubPageInformationComponent } from '../../components/pages/sub-pages/sub-page-information/sub-page-information.component';
 
 /* Elememnts Import */
 import { ElementNavDashboardComponent } from '../../components/elements/element-nav-dashboard/element-nav-dashboard.component';
@@ -39,7 +40,8 @@ const appRoutes = [
 		{ path: 'notes', component: SubPageNotesComponent },
 		{ path: 'invite', component: SubPageInviteComponent, canActivate:[AdminGuard] },
 		{ path: 'users', component: SubPageUsersComponent, canActivate:[AdminGuard] },
-		{ path: 'user/:id', component: SubPageUserComponent, canActivate:[AdminGuard] }
+		{ path: 'user/:id', component: SubPageUserComponent, canActivate:[AdminGuard] },
+		{ path: 'information', component: SubPageInformationComponent }
 	]}
 ];
 
@@ -68,7 +70,8 @@ const appRoutes = [
 		ElementAdminRecentCheckinsComponent,
 		SubPageNotesComponent,
 		SubPageInviteComponent,
-		SubPageUsersComponent
+		SubPageUsersComponent,
+		SubPageInformationComponent
 	], providers: [
 		ElementCheckinsOverviewComponent,
 		AdminGuard

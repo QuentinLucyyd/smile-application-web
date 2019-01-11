@@ -32,26 +32,28 @@ export class PageDashboardComponent extends SubPage implements OnInit {
 	ngOnInit() {	
 		this.authenticationService.AuthenticateUser()
 		.then(data => {
-			const DateObject = new Date;
-			const date = DateObject.getFullYear() + '-' + (DateObject.getMonth() + 1) + '-' + DateObject.getUTCDate();
-			this.checkinService.getUserDateCheckins(this.usersService.ActiveUser.id, date)
-			.subscribe(results => {
-				if (!results.data.length) {
-					this.checkinService.checkinDone = false;
-					this.notificationService.newNotify('warning', 'You have not done your Check in today');
-				}
-				this.swPush.requestSubscription({ serverPublicKey: environment.VAPID_PUBLIC_KEY })
+			if (this.usersService.ActiveUser.role == 'client') {
+				const DateObject = new Date;
+				const date = DateObject.getFullYear() + '-' + (DateObject.getMonth() + 1) + '-' + DateObject.getUTCDate();
+				this.checkinService.getUserDateCheckins(this.usersService.ActiveUser.id, date)
+				.subscribe(results => {
+					if (!results.data.length) {
+						this.checkinService.checkinDone = false;
+						this.notificationService.newNotify('warning', 'You have not done your Check in today');
+					}
+				})
+			}
+		})
+		.catch(err => {
+			this.failure = true;
+		})
+		this.swPush.requestSubscription({ serverPublicKey: environment.VAPID_PUBLIC_KEY })
 		.then(sub => {
 			this.usersService.subscribeUser(JSON.stringify(sub)).subscribe(data => {}, err => {})
 		})
 		.catch(err => {
 			this.failure = true;
 		});
-			})
-		})
-		.catch(err => {
-			this.failure = true;
-		})
 	}
 	
 	clickedInside($event: Event){

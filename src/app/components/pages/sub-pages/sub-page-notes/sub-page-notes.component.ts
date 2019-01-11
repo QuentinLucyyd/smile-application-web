@@ -5,7 +5,7 @@ import { NotesService } from '../../../../services/notes.service';
 import { SubPage } from '../../../../classes/abstract/page.class';
 import { UsersService } from '../../../../services/users.service';
 import { AuthenticationService } from '../../../../services/authentication.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalAddNoteComponent } from '../../../elements/modals/modal-add-note/modal-add-note.component';
 import { ModalDisplayNoteComponent } from '../../../elements/modals/modal-display-note/modal-display-note.component';
 
@@ -30,12 +30,20 @@ export class SubPageNotesComponent extends SubPage implements OnInit {
 		this.titleService.setTitle('Smile | Notes');
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
-			this.loading = false;
-			this.notesService.getUserNotes(this.usersService.ActiveUser.id);
-			if (!this.notesService.Notes.length) {
-				this.subPageMessage = 'You currently have no Notes';
-				this.subPageLinkText = 'Click here to add a new note';
-			}
+			this.notesService.getUserNotes(this.usersService.ActiveUser.id)
+			.then(data => {
+				this.loading = false;
+				if (!this.notesService.Notes.length) {
+					this.subPageMessage = 'You currently have no Notes';
+					this.subPageLinkText = 'Click here to add a new note';
+				}
+			})
+			.catch(err => {
+				this.loading = false;
+				this.failure = true;
+				this.subPageMessage = 'An error has occured';
+				this.subPageLinkText = 'Please reload and try again';
+			});
 		}).catch(err => {
 			this.loading = false;
 			this.subPageMessage = err.message;

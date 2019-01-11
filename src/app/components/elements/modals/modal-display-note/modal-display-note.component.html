@@ -1,46 +1,82 @@
+<!-- Modal -->
 <div class="modal-header">
-	<div class="col-10 col-md-10">
-		<div class="modal-title" id="exampleModalLongTitle">
-			<textarea [(ngModel)]="notesService.ActiveNote.title"class="form-control displayNoteTextAreaD displayTitle" [attr.disabled]="disabled" rows="1"></textarea></div>
-	</div>
-	<div class="note-header-icon">
-		<i (click)="editNote()" class="fas edit-icon fa-pencil-alt"></i>
-		<i (click)="activeModal.dismiss('Cross click')" class="fas error-icon fa-times"></i>
-	</div>
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
 </div>
 <div class="modal-body">
-	<div class="modal-subtitle" id="exampleModalLongTitle"> <textarea class="form-control displayNoteTextAreaD note-type"
-		 [attr.disabled]="disabled" rows="1" [(ngModel)]="notesService.ActiveNote.type"></textarea></div>
-	<div>
-		<select class="form-control" id="note_type" name="note" class="validate" [attr.disabled]="disabled">
-			<option selected id="1">Personal</option>
-			<option id="2">Session</option>
-			<option id="3">Goal</option>
-		</select>
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h4>{{notesService.ActiveNote.title | titlecase}}</h4>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+			<p class="success-text" *ngIf="success">{{resultMessage}}</p>
+		</div>
 	</div>
-	<div>
-		<textarea autosize [(ngModel)]="notesService.ActiveNote.note" id="display_note_text" class="form-control displayNoteTextAreaD note-display" [attr.disabled]="disabled"></textarea>
-	</div>
-	<div class="d-flex justify-content-end">
-		<i (click)="!deleteNote()" *ngIf="!disabledDeleteBtn && disabled" class="far fa-trash-alt icons_notes"></i>
-	</div>
-	<div class="header-button-container" style="text-align:center" *ngIf="disabledDeleteBtn">
-		<ul >
-				<h5>Are you sure you want to delete this?</h5>
-				<button (click)="_deleteNote()" class="button dark-button sign-in-button" >Yes</button>
-				<button (click)="!deleteNote()" class="button dark-button sign-in-button" >No</button>
-		</ul>
-	</div>
-	<div *ngIf="!disabled && !disabledDeleteBtn" class="header-button-container">
-			<button class="button button-sm green-button" (click)="updateNote(notesService.ActiveNote)">Save</button>
+	<div class="modal-display-note-container">
+		<div class="row">
+			<form class="col-12 col-md-7">
+				<div class="row">
+					<div class="form-group float-label-control col s12">
+						<p class="grey-text">Note:</p>
+						<textarea [ngClass]="{'textarea-disabled': disabled}" [disabled]="disabled" type="text" class="form-control" id="description"
+						 name="description" [(ngModel)]="notesService.ActiveNote.note">{{notesService.ActiveNote.note}}</textarea>
+					</div>
+				</div>
+			</form>
+			<div class="col-12 col-md-5">
+				<div class="note-actions">
+					<div class="note-actions-header d-flex justify-content-center">
+						<h5>Note Actions</h5>
+					</div>
+					<div class="note-actions-card-container">
+						<div (click)="disabledDeleteBtn = !disabledDeleteBtn" class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="note-header-icon">
+									<div class="card-loading d-flex justify-content-end align-items-center" >
+										<div class="lds-ring">
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</div>
+									</div>
+									<i class="trash-icon fas fa-trash-alt"></i>
+									<span class="note-action-name">Delete Note</span>
+								</div>
+							</div>
+						</div>
+						<div class="note-delete-container" *ngIf="disabledDeleteBtn">
+							<div class="note-delete-header">Are you sure you want to delete this?</div>
+							<div class="note-actions-icons d-flex justify-content-center">
+								<i (click)="deleteNote()" class="tick-icon  fas fa-check"></i>
+								<i (click)="disabledDeleteBtn = !disabledDeleteBtn" class="cross-icon fas fa-times"></i>
+							</div>
+						</div>
+						<div (click)="disabled = !disabled" class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i class="edit-icon fas fa-pencil-alt"></i>
+									<span class="note-action-name">Edit Note</span>
+								</div>
+							</div>
+						</div>
+						<div style="padding-top: 10px;" class="d-flex justify-content-center">
+							<button type="button" data-dismiss="modal" *ngIf="!disabled && !loading" [disabled]="disabled" (click)="updateNote()"
+							 class="button button-sm green-button">Save</button>
+							<div class="secondary-loading-container" *ngIf="loading">
+								<div class="secondary-loading"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-6 col-md-6">
+				<label for="frequency">Note Type</label>
+				<select [disabled]="disabled" [(ngModel)]="notesService.ActiveNote.type" class="form-control" id="frequency" name="frequency">
+					<option value="Personal">Personal</option>
+					<option value="Session">Session</option>
+				</select>
+			</div>
+		</div>
 	</div>
 </div>
-<div class="modal-footer"></div>
-
-<script>
-
-function auto_grow(element) {
-    element.style.height = "5px";
-    element.style.height = (element.scrollHeight)+"px";
-}
-</script>

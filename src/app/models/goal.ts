@@ -17,6 +17,7 @@ export class Goal {
 	i: number = 0;
 	checklist: Array<Checklist> = [];
 	checklist_complete: Boolean = false;
+	checklist_loading: Boolean = true;
 	
 	constructor(goal) {
 		this.updateGoal(goal);

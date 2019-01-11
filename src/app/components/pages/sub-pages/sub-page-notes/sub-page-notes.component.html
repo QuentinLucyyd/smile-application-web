@@ -16,7 +16,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!loading && !notesService.Notes.length">
+		<div class="subpage-message-container d-flex align-items-center justify-content-center" *ngIf="!loading && failure || (!loading && !notesService.Notes.length)">
 			<div class="subpage-message">
 				<div class="subpage-message-icon d-flex justify-content-center"><i class="fas fa-smile"></i></div>
 				<h4 class="subpage-message">{{subPageMessage}}</h4>
@@ -25,7 +25,7 @@
 		</div>
 		<div class="row">
 			<ng-template ngFor let-note [ngForOf]="notesService.Notes" class="goal-card-container card-container col-md-4">
-				<div class="goal-card-c ontainer  card-container col-md-4">
+				<div class="goal-card-container  card-container col-md-4">
 					<div class="card" style="margin: 10px">
 						<div class="shadow card">
 						<div class="card-header goal-name">
@@ -43,14 +43,13 @@
 								</div>
 								<i (click)="note.edit = !note.edit" *ngIf="note.edit && !note.noteLoading" class="fas error-icon fa-times"></i>
 							</div>
-							<div class="note-title" *ngIf="!note.edit">{{note.title}}</div>
+							<div class="note-title" *ngIf="!note.edit">{{note.title | titlecase}}</div>
 							<input [(ngModel)]="note.title" name="email" id="note_name" type="text" class="validate" *ngIf="note.edit">
 							<h5 class="goal-frequency card-text card-note-type">{{note.type}}</h5>
 						</div>
 						<div class="card-body">
 							<div class="col-lg-12 col-12">
-								<div *ngIf="!note.voice && !note.edit" class="goal-description card-text">{{ note.note |
-									slice:0:120}}{{note.note.length > 120 ? '...' : ''}}</div>
+								<div *ngIf="!note.voice && !note.edit" class="note-description card-text">{{ note.note | slice:0:120}}{{note.note.length > 120 ? '...' : ''}}</div>
 								<textarea [(ngModel)]="note.note" name="note" class="form-control" rows="5" id="note" *ngIf="!note.voice && note.edit"></textarea>
 								<div *ngIf="note.voice == true" class="goal-description card-text">
 									<!-- <i class="fas fa-microphone"></i> -->

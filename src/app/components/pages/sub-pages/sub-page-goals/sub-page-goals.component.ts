@@ -42,6 +42,13 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 				this.loading = false;
 				if (!this.goalsService.Goals.length) {
 					this.subPageMessage = 'You currently have no goals';
+				} else {
+					for (const goal of this.goalsService.Goals) {
+						this.goalsService.getGoalChecklists(goal.id).then(data => {
+							goal.populateProgress(data);
+							goal.checklist_loading = false;
+						})
+					}
 				}
 			})
 			.catch(err => {
