@@ -64,8 +64,8 @@ export class ModalSignInComponent extends SubPage implements OnInit {
 		} else {
 			this.authenticationSerive.userSignin().subscribe(result => {
 				if (result.status === 'success') {
-					localStorage.setItem('token', result.data.user.signup_token);
-					this.usersServices.ActiveUser = new User(result.data.user);
+					localStorage.setItem('token', result.data.signup_token);
+					this.usersServices.ActiveUser = new User(result.data);
 					this.loading = false;
 					this.success = true;
 					setTimeout(() => {
@@ -74,7 +74,6 @@ export class ModalSignInComponent extends SubPage implements OnInit {
 					}, 1000);
 				}
 			}, err => {
-				console.log(err);
 				var Error = JSON.parse(err._body);
 				this.loading = false;
 				this.failure = true;
