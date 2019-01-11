@@ -6,10 +6,22 @@
 @import '../../../../styles/view';
 @import '../../../../styles/config';
 
+.sign-out-button {
+	position: absolute !important;
+	bottom: 0;
+	display: none !important;
+}
+
+@media (max-width: 991px) {
+	.sign-out-button {
+		display: block !important;
+	}
+}
+
 .quick-links-container {
 	background-color: $white;
 	width: 100%;
-	height: calc(100vh - 70px);
+	height: 100vh;
 	position: relative;
 	z-index: 3;
 

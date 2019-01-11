@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { NavService } from '../../../services/nav.service';
@@ -14,6 +14,7 @@ import { SwPush } from '@angular/service-worker';
 	templateUrl: './page-dashboard.component.html',
 	styleUrls: ['./page-dashboard.component.scss']
 })
+
 export class PageDashboardComponent extends SubPage implements OnInit {
 	constructor(
 		public navService: NavService,
@@ -24,7 +25,11 @@ export class PageDashboardComponent extends SubPage implements OnInit {
 		private swPush: SwPush
 	) { super(); }
 
-	ngOnInit() {
+	@HostListener('document:click', ['$event']) clickedOutside($event){
+		this.navService.MobileMenu = false;
+	}
+
+	ngOnInit() {	
 		this.authenticationService.AuthenticateUser()
 		.then(data => {
 			const DateObject = new Date;
@@ -48,5 +53,9 @@ export class PageDashboardComponent extends SubPage implements OnInit {
 			this.failure = true;
 		})
 	}
-
+	
+	clickedInside($event: Event){
+		$event.preventDefault();
+		$event.stopPropagation();
+	}
 }

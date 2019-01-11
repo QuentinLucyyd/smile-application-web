@@ -28,7 +28,7 @@ export class ElementNotesOverviewComponent implements OnInit {
 	) {}
 
 	ngOnInit() {
-		if (!this.user)
+		if (this.user)
 			this.UserID = this.user.id;
 		else
 			this.UserID = this.usersService.ActiveUser.id;

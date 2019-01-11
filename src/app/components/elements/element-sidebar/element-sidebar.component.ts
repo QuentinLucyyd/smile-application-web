@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SubPage } from '../../../classes/abstract/page.class';
 import { ToolsService } from '../../../services/tools.service';
+import { NavService } from 'src/app/services/nav.service';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
 	selector: 'app-element-sidebar',
@@ -10,7 +13,10 @@ import { ToolsService } from '../../../services/tools.service';
 export class ElementSidebarComponent extends SubPage implements OnInit {
 
 	constructor(
-		private toolsService: ToolsService
+		private toolsService: ToolsService,
+		public navService: NavService,
+		public _router: Router,
+		public authenticationService: AuthenticationService
 	) {
 		super();
 	}
@@ -26,6 +32,11 @@ export class ElementSidebarComponent extends SubPage implements OnInit {
 				this.failure = true;
 			});
 		}
+	}
+
+	openTool(tool) {
+		this.navService.MobileMenu = !this.navService.MobileMenu;
+		this._router.navigate(['/dashboard/' + tool.route], {queryParams: {reauth: 'true', ref: 'home'}});
 	}
 
 }

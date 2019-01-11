@@ -39,14 +39,14 @@ export class SubPageCheckoutComponent extends SubPage implements OnInit {
 
 	ngOnInit() {
 		this._titleService.setTitle('Smile | Check out');
-		if (!this.checkinService.checkinDone) {
+		if (this.checkinService.checkinDone) {
 			this.subPageMessage = 'You have not completed your Check in yet.';
 			this.subPageLinkText = "Click here to do your Check in";
 			this.subPageLinkRoute = '/dashboard/checkin';
 		} else {
 		this.authenticationService.AuthenticateUser().then(data => {
 			this.Note = new Note({
-				title: 'Chekout: ' + this.usersService.ActiveUser.first_name + ' ' + this.usersService.ActiveUser.last_name,
+				title: 'Checkout: ' + this.usersService.ActiveUser.first_name + ' ' + this.usersService.ActiveUser.last_name,
 				user_id: this.usersService.ActiveUser.id,
 				date: new Date,
 				type: 'checkout'
@@ -83,6 +83,8 @@ export class SubPageCheckoutComponent extends SubPage implements OnInit {
 				this.failure = true;
 			})
 		} else {
+			console.log(this.Note);
+
 			this.notesService.createUserNote(this.Note, '?note=true', false).subscribe(data => {
 				this.Note.id = data.data[0].id;
 				this.Chekout.note = this.Note;

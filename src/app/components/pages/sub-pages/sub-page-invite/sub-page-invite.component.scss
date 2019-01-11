@@ -59,12 +59,6 @@ option {
 	}
 }
 
-.invite-container {
-	padding-top: 20px;
-	color: $grey;
-	font-family: $primary-font;
-}
-
 .user-role {
 	text-transform: capitalize;
 }
@@ -77,4 +71,12 @@ option {
 
 .form-container {
 	padding-top: 30px;
+}
+
+.invite-card-container {
+	padding: 25px;
+}
+
+.invite-sub-text {
+	padding-bottom: 10px;
 }
