@@ -65,8 +65,9 @@ export class SubPageUserComponent extends SubPage implements OnInit {
 			}
 			this.goalsService.getUserGoals(this.User.id).then(data => {
 				for (const goal of this.goalsService.Goals) {
-					if (goal.checklist_complete)
-						this.CompletedGoals.push(goal);
+					this.goalsService.getGoalChecklists(goal.id).then(data => {
+						goal.populateProgress(data);
+					})
 				}
 				this.checkinsService.getUserCheckins(this.User.id)
 					.subscribe(result => {

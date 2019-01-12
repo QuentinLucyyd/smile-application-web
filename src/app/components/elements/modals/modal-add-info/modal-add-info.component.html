@@ -1,0 +1,56 @@
+<!-- Modal -->
+<div class="modal-header">
+	<button type="button" class="close no-outline" (click)="activeModal.dismiss('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<div class="modal-body">
+	<div class="col-12 d-flex justify-content-center">
+		<div class="welcome-container">
+			<h5>Add Information</h5>
+			<p>Fill in the form below to add a video / article</p>
+			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
+		</div>
+	</div>
+	<div class="modal-add-info-container">
+		<form class="col-12 col-md-12">
+			<div class="row">
+				<div class="form-group float-label-control col-12">
+					<input [(ngModel)]="InfoItem.title" type="text" class="form-control" id="title" name="title" required>
+					<label for="name">Info title</label>
+				</div>
+				<div class="form-group form-select col-12">
+					<label for="priority">Info Type</label>
+					<select [(ngModel)]="InfoItem.type" class="form-control" id="frequency" name="priority">
+						<option id="1" selected="Article">article</option>
+						<option id="2">video</option>
+					</select>
+				</div>
+				<div class="form-group float-label-control col-12">
+					<input [(ngModel)]="InfoItem.url" type="text" class="form-control" id="link" name="link" required>
+					<label *ngIf="InfoItem.type == 'article'" for="name">Info Link / Url</label>
+					<label *ngIf="InfoItem.type == 'video'" for="name">Youtube Video Link</label>
+				</div>
+				<div class="form-group float-label-control col-12">
+					<h5 class="form-textarea">Excerpt / Description</h5>
+					<textarea [(ngModel)]="InfoItem.excerpt" type="text" class="form-control" id="excerpt" name="excerpt"
+					 required></textarea>
+				</div>
+				<div *ngIf="InfoItem.type == 'article'" class="form-group float-label-control col-12">
+					<input [(ngModel)]="InfoItem.image" type="text" class="form-control" id="name" name="name" required>
+					<label for="name">Info Image Link</label>
+				</div>
+			</div>
+		</form>
+		<div class="header-button-container">
+			<button data-dismiss="modal" (click)="createInfo()" class="button dark-button sign-in-button" *ngIf="!loading && !success">Add
+				Info</button>
+			<div class="header-button-container" *ngIf="success">
+				<button type="submit" class="button green-button sign-in-button"><i class="fas fa-check"></i></button>
+			</div>
+			<div class="secondary-loading-container" *ngIf="loading">
+				<div class="secondary-loading"></div>
+			</div>
+		</div>
+	</div>
+</div>

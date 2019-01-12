@@ -11,7 +11,7 @@ import { Goal } from '../../../models/goal';
 	styleUrls: ['./element-upcoming-goals.component.scss']
 })
 export class ElementUpcomingGoalsComponent extends SubPage implements OnInit {
-	_RecentGoals: Goal[] = [];
+	_RecentGoals: Array<Goal> = [];
 
 	constructor(
 		private goalsService: GoalsService,

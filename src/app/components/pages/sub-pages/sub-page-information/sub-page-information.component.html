@@ -30,12 +30,18 @@
 				<input class="col-2 col-md-1" (click)="filterItems($event)" id="namanyay-search-btn" value="Go" type="submit" />
 			</div>
 			<ng-template ngFor let-item [ngForOf]="learningService.Learnings">
-				<div class="col-12 col-md-6 col-lg-4" *ngIf="(item.visible$ | async) ">
+				<div class="col-12 col-md-6 col-lg-6 col-xl-4" *ngIf="(item.visible$ | async) ">
 					<div class="card-container">
-						<div class="card shadow">
+						<div class="card flex-fill shadow">
 							<div class="card-header">
 								<div class="card-icon">
 									<i *ngIf="item.type == 'article'" class="fas fa-newspaper"></i>
+									<i *ngIf="item.type == 'video'" class="fas fa-video"></i>
+								</div>
+								<div *ngIf="usersService.ActiveUser.role == 'admin'" class="card-right-icon">
+									<i (click)="item.delete = !item.delete" class="fas fa-trash-alt"></i>
+									<i *ngIf="item.delete" (click)="removeItem(item)" class="confirm fas fa-check"></i>
+									<i *ngIf="item.delete" (click)="item.delete = false" class="fas fa-times"></i>
 								</div>
 							</div>
 							<div class="card-body" *ngIf="item.type == 'article'" [ngStyle]="{ 'background-image': 'url(' + item.image + ')'}">
@@ -43,8 +49,7 @@
 								<p class="item-company"></p>
 							</div>
 							<div class="card-body" *ngIf="item.type == 'video'">
-								<object width="420" height="315" data="https://www.youtube.com/v/tgbNymZ7vqY">
-								</object>
+								<iframe [src]="item.url" frameborder="0"  allowfullscreen></iframe>
 							</div>
 							<div class="card-footer">
 								<div class="col-12 info-container">

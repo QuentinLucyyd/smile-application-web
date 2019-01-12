@@ -33,11 +33,11 @@
 											</div>
 										</td>
 										<td>{{user.first_name}} {{user.last_name}}</td>
-										<td>{{user.physical_energy}} %</td>
-										<td>{{user.heart_connection}} %</td>
-										<td>{{user.mental_focus}} %</td>
-										<td>{{user.greater_whole}} %</td>
-										<td>{{user.happiness}} %</td>
+										<td [ngClass]="{'green': user.physical_energy > 50, 'red':  user.physical_energy < 50}">{{user.physical_energy}} %</td>
+										<td [ngClass]="{'green': user.heart_connection > 50, 'red':  user.heart_connection < 50}">{{user.heart_connection}} %</td>
+										<td [ngClass]="{'green': user.mental_focus > 50, 'red':  user.mental_focus < 50}">{{user.mental_focus}} %</td>
+										<td [ngClass]="{'green': user.greater_whole > 50, 'red':  user.greater_whole < 50}">{{user.greater_whole}} %</td>
+										<td [ngClass]="{'green': user.happiness > 50, 'red':  user.happiness < 50}">{{user.happiness}} %</td>
 										<td>{{formatDate(user.date)}}</td>
 									</tr>
 								</ng-template>

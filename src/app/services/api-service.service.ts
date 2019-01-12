@@ -9,6 +9,7 @@ import { Goal } from '../models/goal';
 import { Note } from '../models/notes';
 import { Checkout } from '../models/checkout';
 import { Checklist } from '../models/checklist';
+import { Learning } from '../models/learning';
 
 @Injectable({
 	providedIn: 'root'
@@ -334,6 +335,22 @@ export class ApiServiceService {
 		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
 		const options = new RequestOptions({ headers: headers });
 		return this._http.get(this.host + '/learning', options)
+		.pipe(map(response => response.json()));
+	}
+
+	public createLearning(Item: Learning) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.post(this.host + '/learning', Item, options)
+		.pipe(map(response => response.json()));
+	}
+
+	public updateLearning(Item: Learning) {
+		this.fetchToken();
+		const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + this.token });
+		const options = new RequestOptions({ headers: headers });
+		return this._http.delete(this.host + '/learning/' + Item.id, options)
 		.pipe(map(response => response.json()));
 	}
 }

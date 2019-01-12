@@ -5,6 +5,9 @@
 @import '../../../../styles/modal';
 @import '../../../../styles/view';
 
+.red {
+	color: $error-color;
+}
 .chart-container {
 	padding: 10px;
 }

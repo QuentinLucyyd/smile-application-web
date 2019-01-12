@@ -11,7 +11,7 @@ import { Goal } from '../../../models/goal';
 	styleUrls: ['./element-completed-goals.component.scss']
 })
 export class ElementCompletedGoalsComponent extends SubPage implements OnInit {
-	_CompletedGoals: Goal[] = [];
+	_CompletedGoals: Array<Goal> = [];
 
 	constructor(
 		private authService: AuthenticationService,
@@ -24,11 +24,15 @@ export class ElementCompletedGoalsComponent extends SubPage implements OnInit {
 		this.authService.AuthenticateUser().then(result => {
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(data => {
 				this.loading = false;
-				var i = 0;
+				console.log(this.goalsService.Goals.length);
+				console.log(this.goalsService.Goals);
 				for (const goal of this.goalsService.Goals) {
-					if (i < 4 && goal.state === 'completed') {
-						this._CompletedGoals.push(new Goal(goal));
-					}
+					this.goalsService.getGoalChecklists(goal.id).then(data => {
+						goal.populateProgress(data);
+						if ((goal.state === 'completed' || goal.checklist_complete)) {
+							this._CompletedGoals.push(new Goal(goal));
+						}
+					})
 				}
 			}).catch(err => {
 				this.loading = false;

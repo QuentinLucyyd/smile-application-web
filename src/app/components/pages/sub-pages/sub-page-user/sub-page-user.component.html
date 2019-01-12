@@ -101,13 +101,13 @@
 								<div class="secondary-loading-container" *ngIf="loading">
 									<div class="secondary-loading"></div>
 								</div>
-								<div class="notfound-container" *ngIf="!CompletedGoals.length && !loading">
+								<div class="notfound-container" *ngIf="!goalsService.Goals.length && !loading">
 									<div class="notfound-icon d-flex justify-content-center">
 										<i class="fas fa-check"></i>
 									</div>
 									<div class="notfound-text d-flex justify-content-center">{{User.first_name}} has no completed goals</div>
 								</div>
-								<div class="recent-goal-container table-responsive" *ngIf="!loading && CompletedGoals.length">
+								<div class="recent-goal-container table-responsive" *ngIf="!loading && goalsService.Goals.length">
 									<table class="table">
 										<thead>
 											<tr>
@@ -117,9 +117,9 @@
 												<th scope="col">Frequency</th>
 											</tr>
 										</thead>
-										<tbody *ngFor="let goal of CompletedGoals">
-											<tr class="single-goal camelcase-text">
-												<td><i class="green fas fa-tick"></i></td>
+										<tbody *ngFor="let goal of goalsService.Goals">
+											<tr class="single-goal camelcase-text" *ngIf="goal.state == 'completed' || goal.checklist_complete">
+												<td><i class="green fas fa-check"></i></td>
 												<td>{{goal.name}}</td>
 												<td>{{goal.description}}</td>
 												<td>{{goal.frequency}}</td>

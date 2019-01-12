@@ -1,0 +1,76 @@
+/* Imports */
+
+@import '../../../../../styles/pages';
+@import '../../../../../styles/variables';
+@import '../../../../../styles/modal';
+@import '../../../../../styles/view';
+
+.sub-label {
+	color: $grey;
+	margin: 1px;
+	font-size: .8em;
+}
+.header-button-container {
+	padding-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sign-in-button {
+	transition-duration: 0.4s;
+
+	&:hover {
+		background: $primary-color;
+		color: $white;
+		transition-duration: 0.4s;
+	}
+}
+
+textarea {
+	font-size: 0.85em !important;
+}
+
+.form-select {
+	color: $grey;
+
+	label {
+		position: absolute;
+		top: -13px;
+		left: 0px;
+		font-size: 0.85em;
+	}
+
+}
+
+.type-select {
+	color: $grey;
+
+	label {
+		position: absolute;
+		top: -13px;
+		left: 0px;
+		font-size: 0.85em;
+	}
+
+}
+
+select {
+	border: none;
+	border-bottom: 1px solid grey;
+	border-radius: 0px !important;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+.form-textarea {
+	position: absolute;
+	top: -13px;
+	left: 0px;
+	font-size: 0.85em;
+	font-weight: normal;
+}

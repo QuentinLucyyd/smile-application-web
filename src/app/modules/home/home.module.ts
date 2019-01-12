@@ -26,6 +26,7 @@ import { ElementNotesOverviewComponent } from '../../components/elements/element
 import { ElementUpcomingGoalsComponent } from '../../components/elements/element-upcoming-goals/element-upcoming-goals.component';
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
 import { ElementAdminRecentCheckinsComponent } from '../../components/elements/element-admin-recent-checkins/element-admin-recent-checkins.component';
+import { ElementAdminRecentUsersComponent } from '../../components/elements/element-admin-recent-users/element-admin-recent-users.component';
 
 /* Import Guards */
 import { AdminGuard } from '../../guards/admin.guard';
@@ -68,6 +69,7 @@ const appRoutes = [
 		ElementUpcomingGoalsComponent,
 		ElementCompletedGoalsComponent,
 		ElementAdminRecentCheckinsComponent,
+		ElementAdminRecentUsersComponent,
 		SubPageNotesComponent,
 		SubPageInviteComponent,
 		SubPageUsersComponent,

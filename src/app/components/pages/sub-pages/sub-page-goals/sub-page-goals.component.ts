@@ -39,6 +39,7 @@ export class SubPageGoalsComponent extends SubPage implements OnInit {
 		this.loading = true;
 		this.authService.AuthenticateUser().then(data => {
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(result => {
+				console.log(this.goalsService.Goals.length);
 				this.loading = false;
 				if (!this.goalsService.Goals.length) {
 					this.subPageMessage = 'You currently have no goals';

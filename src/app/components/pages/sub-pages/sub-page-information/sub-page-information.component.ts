@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SubPage } from 'src/app/classes/abstract/page.class';
-import { Title } from '@angular/platform-browser';
+import { Title, DomSanitizer } from '@angular/platform-browser';
 import { LearningService } from 'src/app/services/learning.service';
 import { UsersService } from 'src/app/services/users.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalAddInfoComponent } from '../../../elements/modals/modal-add-info/modal-add-info.component';
+import { Learning } from 'src/app/models/learning';
 
 @Component({
 	selector: 'app-sub-page-information',
@@ -15,7 +18,8 @@ export class SubPageInformationComponent extends SubPage implements OnInit {
 	constructor(
 		private titleService: Title,
 		public learningService: LearningService,
-		public usersService: UsersService
+		public usersService: UsersService,
+		public modalService: NgbModal,
 	) { 
 		super(); 
 	}
@@ -23,14 +27,30 @@ export class SubPageInformationComponent extends SubPage implements OnInit {
 	ngOnInit() {
 		this.titleService.setTitle('Smile | Learning')
 		this.loading = true;
-		this.learningService.getLearnings().then(data =>{
+		if (!this.learningService.Learnings.length) {
+			this.learningService.getLearnings().then(data =>{
+				this.loading = false;
+			})
+			.catch(err => {
+				this.loading = false;
+				this.failure = true;
+				this.subPageMessage = err.message;
+			})
+		} else
 			this.loading = false;
+	}
+
+	removeItem(Item: Learning) {
+		this.learningService.updateLearning(Item).subscribe(data => {
+			console.log(data);
+		}, err => {
+			var Error = JSON.parse(err._body);
+			console.log(Error);
 		})
-		.catch(err => {
-			this.loading = false;
-			this.failure = true;
-			this.subPageMessage = err.message;
-		})
+	}
+
+	open() {
+		this.modalService.open(ModalAddInfoComponent,{ windowClass: 'modal-custom-container', centered: true });
 	}
 
 	filterItems(event: any) {

@@ -4,11 +4,12 @@ export class Learning {
     visible$: BehaviorSubject<Boolean> = new BehaviorSubject(true);
 	id: number = 0;
 	title: String = '';
-	type: String = '';
+	type: String = 'article';
     excerpt: String = '';
     url: String = '';
 	image: String = '';
 	date: Date;
+	delete: Boolean = false;
 
 	constructor(learning) {
 		this.updateLeaning(learning);

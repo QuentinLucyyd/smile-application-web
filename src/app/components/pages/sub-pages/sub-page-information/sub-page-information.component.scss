@@ -5,6 +5,14 @@
 @import '../../../../../styles/view';
 
 .card {
+	.card-body {
+		padding: 0;
+	}
+
+	iframe{
+		width: 100%;
+		height: 100%;
+	}
 	p {
 		color: $grey;
 	}
@@ -44,6 +52,38 @@
 		position: absolute;
 		top: -15px;
 		left: -15px;
+	}
+
+	.card-right-icon {
+		.confirm {	
+			background-color: $success-color !important;
+			&:hover {
+				background-color: $white !important;
+				color: $success-color !important;
+			}
+		 }
+
+		i {
+			cursor: pointer;
+			font-size: .7em;
+			background-color: $error-color;
+			border-radius: 100px;
+			padding: 10px;
+			transition-duration: .5s;
+
+			&:hover {
+				background-color: $white;
+				color: $error-color;
+				transition-duration: .5s
+			}
+		}
+
+		width: 40px;
+		height: 40px;
+		color: $white;
+		position: absolute;
+		top: -15px;
+		right: -15px;
 	}
 }
 
