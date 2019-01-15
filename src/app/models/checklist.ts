@@ -2,7 +2,7 @@
 export class Checklist {
 	id: Number;
 	goal_id: Number;
-    description: String;
+    description: String = '';
 	is_completed: boolean = false;
 	last_edit: Date = new Date();
 	

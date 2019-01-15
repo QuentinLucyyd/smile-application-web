@@ -24,8 +24,6 @@ export class ElementCompletedGoalsComponent extends SubPage implements OnInit {
 		this.authService.AuthenticateUser().then(result => {
 			this.goalsService.getUserGoals(this.usersService.ActiveUser.id).then(data => {
 				this.loading = false;
-				console.log(this.goalsService.Goals.length);
-				console.log(this.goalsService.Goals);
 				for (const goal of this.goalsService.Goals) {
 					this.goalsService.getGoalChecklists(goal.id).then(data => {
 						goal.populateProgress(data);

@@ -31,6 +31,37 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-12 checklist-container" *ngIf="checklistadd">
+					<div class="row">
+						<div class="col-12">
+							<div class="checklist-header">Goal Checklist</div>
+							<div class="checklist-container">
+								<ng-template ngFor let-item let-i="index" [ngForOf]="checklist">
+									<div class="checklist-item col-12">
+										#{{i + 1}} {{item.description}}
+										<span (click)="removeItem(item)" class="remove-item"><i class="fas fa-times"></i></span>
+									</div>
+								</ng-template>
+							</div>
+						</div>
+						<div class="form-group float-label-control col-12 col-md-12">
+							<input type="text" [(ngModel)]="checklistItem.description" class="form-control" id="name" name="name" required>
+							<label for="name">Add Checklist Item</label>
+						</div>
+						<div class="checklist-add col-12" *ngIf="!checklistloading">
+							<i (click)="addItem()" class="checklist-add-icon fas fa-plus add-button"></i>
+							<i (click)="submitChecklist()" class="checklist-tick-icon fas fa-check"></i>
+						</div>
+						<div class="card-loading d-flex justify-content-end align-items-center" *ngIf="checklistloading">
+							<div class="lds-ring">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="form-group col-6 col-md-6">
 						<!-- Date input -->
@@ -86,11 +117,29 @@
 								</div>
 							</div>
 						</div>
-						<div *ngIf="!goalsService.ActiveGoal.checklist.length" (click)="completeGoal()" class="card shadow-sm" style="margin: 10px">
+						<div (click)="checklistadd = !checklistadd" class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i class="edit-icon fas fa-clipboard-list"></i>
+									<span class="goal-action-name">Add Checklist</span>
+								</div>
+							</div>
+						</div>
+						<div *ngIf="!goalsService.ActiveGoal.checklist.length && goalsService.ActiveGoal.state != 'completed'" (click)="completeGoal()"
+						 class="card shadow-sm" style="margin: 10px">
 							<div class="card-header">
 								<div class="goal-header-icon">
 									<i class="edit-icon fas fa-check"></i>
 									<span class="goal-action-name">Mark as Complete</span>
+								</div>
+							</div>
+						</div>
+						<div *ngIf="!goalsService.ActiveGoal.checklist.length && goalsService.ActiveGoal.state == 'completed'" (click)="incompleteGoal()"
+						 class="card shadow-sm" style="margin: 10px">
+							<div class="card-header">
+								<div class="goal-header-icon">
+									<i class="edit-icon fas fa-times"></i>
+									<span class="goal-action-name">Mark as Incomplete</span>
 								</div>
 							</div>
 						</div>

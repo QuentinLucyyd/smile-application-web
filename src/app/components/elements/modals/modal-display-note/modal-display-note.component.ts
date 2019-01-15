@@ -15,11 +15,13 @@ export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 	disabledSaveBtn: Boolean = true;
 	disabledDeleteBtn: Boolean = false;
 	disabledDeleteIcn: Boolean = true;
+	deleting: Boolean = false;
 
 
 	constructor(
 		public notesService: NotesService,
-		public activeModal: NgbActiveModal
+		public activeModal: NgbActiveModal,
+		public usersService: UsersService
 	) { super();}
 
 	ngOnInit() {
@@ -35,9 +37,11 @@ export class ModalDisplayNoteComponent extends SubPage implements OnInit {
 	
 	deleteNote(){
 		this.disabled = true;
+		this.deleting = true;
 		this.notesService.ActiveNote.is_active = false;
 		this.notesService.updateUserNote(this.notesService.ActiveNote).subscribe(data => {
 			this.success = true;
+			this.deleting = false;
 			this.activeModal.close('Note deleted Success');
 		})
 	}

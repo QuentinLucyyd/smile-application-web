@@ -167,7 +167,7 @@ export class SubPageCheckinComponent extends SubPage implements OnInit {
 				})
 			} else {
 				const note = {
-					title: 'Chekin ' + this.usersService.ActiveUser.first_name + this.usersService.ActiveUser.last_name,
+					title: 'Check in: ' + this.usersService.ActiveUser.first_name + ' ' + this.usersService.ActiveUser.last_name,
 					note: this.entry,
 					type: 'checkin',
 					date: _Checkin.date,

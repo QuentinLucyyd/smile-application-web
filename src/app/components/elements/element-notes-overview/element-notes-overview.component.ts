@@ -20,9 +20,8 @@ export class ElementNotesOverviewComponent implements OnInit {
 
 	UserID: Number = 0;
 	constructor(
-		private titleService: Title,
 		public notesService: NotesService,
-		private usersService: UsersService,
+		public usersService: UsersService,
 		private authService: AuthenticationService,
 		public modalService: NgbModal
 	) {}
@@ -41,8 +40,12 @@ export class ElementNotesOverviewComponent implements OnInit {
 		this.modalService.open(ModalAddNoteComponent, {  windowClass: 'modal-custom-container', centered: true });
 	}
 
+	adminopen() {
+
+	}
+	
 	displayNote(note) {
-		this.modalService.open(ModalDisplayNoteComponent, {  windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 		this.notesService.ActiveNote = note;
+		this.modalService.open(ModalDisplayNoteComponent, {  windowClass: 'modal-custom-container', centered: true, size: 'lg' });
 	}
 }

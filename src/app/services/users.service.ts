@@ -14,8 +14,12 @@ export class UsersService {
 		private _APIService: ApiServiceService
 	) { }
 	
-	getUsers() {
-		return this._APIService.getUsers();
+	getUsers(limit, page) {
+		return this._APIService.getUsers(limit, page);
+	}
+
+	getallUsers() {
+		return this._APIService.getallUsers();
 	}
 
 	getUsersSearch(identifier: string) {

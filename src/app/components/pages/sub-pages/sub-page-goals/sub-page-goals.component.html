@@ -31,8 +31,17 @@
 						<div (click)="setActiveGoal(goal)" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name | titlecase}}
-								<div class="goal-header-icon">
-								</div>
+								<div class="goal-header-icon" *ngIf="goal.checklist">
+										<div class="card-loading" *ngIf="goal.checklist_loading">
+											<div class="lds-ring">
+												<div></div>
+												<div></div>
+												<div></div>
+												<div></div>
+											</div>
+										</div>
+										<div *ngIf="!goal.checklist_loading" class="checklist-view">{{goal.i}} / {{goal.checklist.length}}</div>
+									</div>
 								<div class="custom-slider" [ngClass]="{'completed-goal': goal.checklist_complete}">
 									<ng5-slider [(value)]="goal.progress_value" [options]="options"></ng5-slider>
 								</div>
@@ -74,8 +83,16 @@
 						<div (click)="setActiveGoal(goal)" data-toggle="modal" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header goal-name">
 								{{goal.name | titlecase}}
-								<div class="goal-header-icon">
-
+								<div class="goal-header-icon" *ngIf="goal.checklist">
+									<div class="card-loading" *ngIf="goal.checklist_loading">
+										<div class="lds-ring">
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</div>
+									</div>
+									<div *ngIf="!goal.checklist_loading" class="checklist-view">{{goal.i}} / {{goal.checklist.length}}</div>
 								</div>
 								<div class="custom-slider" [ngClass]="{'completed-goal': goal.checklist_complete}">
 									<ng5-slider [(value)]="goal.progress_value" [options]="options"></ng5-slider>

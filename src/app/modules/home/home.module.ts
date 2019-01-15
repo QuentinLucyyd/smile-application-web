@@ -27,6 +27,8 @@ import { ElementUpcomingGoalsComponent } from '../../components/elements/element
 import { ElementCompletedGoalsComponent } from '../../components/elements/element-completed-goals/element-completed-goals.component';
 import { ElementAdminRecentCheckinsComponent } from '../../components/elements/element-admin-recent-checkins/element-admin-recent-checkins.component';
 import { ElementAdminRecentUsersComponent } from '../../components/elements/element-admin-recent-users/element-admin-recent-users.component';
+import { ElementAdminArchivedUsersComponent } from '../../components/elements/element-admin-archived-users/element-admin-archived-users.component';
+import { ElementAdminCardsComponent } from '../../components/elements/element-admin-cards/element-admin-cards.component';
 
 /* Import Guards */
 import { AdminGuard } from '../../guards/admin.guard';
@@ -39,6 +41,7 @@ const appRoutes = [
 		{ path:'checkout', component: SubPageCheckoutComponent },
 		{ path: 'goals', component: SubPageGoalsComponent },
 		{ path: 'notes', component: SubPageNotesComponent },
+		{ path: 'notes/:id', component: SubPageNotesComponent },
 		{ path: 'invite', component: SubPageInviteComponent, canActivate:[AdminGuard] },
 		{ path: 'users', component: SubPageUsersComponent, canActivate:[AdminGuard] },
 		{ path: 'user/:id', component: SubPageUserComponent, canActivate:[AdminGuard] },
@@ -70,6 +73,8 @@ const appRoutes = [
 		ElementCompletedGoalsComponent,
 		ElementAdminRecentCheckinsComponent,
 		ElementAdminRecentUsersComponent,
+		ElementAdminCardsComponent,
+		ElementAdminArchivedUsersComponent,
 		SubPageNotesComponent,
 		SubPageInviteComponent,
 		SubPageUsersComponent,

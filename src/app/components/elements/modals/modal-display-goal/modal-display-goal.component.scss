@@ -3,6 +3,21 @@
 @import '../../../../../styles/modal';
 @import '../../../../../styles/view';
 
+.checklist-tick-icon  {
+	color: $success-color;
+	float: right;
+}
+
+.remove-item {
+	float: right;
+	transition-duration: .5s;
+
+	&:hover {
+		transition-duration: .5s;
+		color: $error-color;
+	}
+}
+
 .checklist-container {
 	color: $grey;
 	padding-bottom: 10px;

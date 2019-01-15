@@ -23,7 +23,7 @@
 							</thead>
 							<tbody>
 								<ng-template ngFor let-user [ngForOf]="UsersCheckins" let-i="index">
-									<tr *ngIf="i<4">
+									<tr [routerLink]="['user', user.username]"class="user-tr" *ngIf="i<4">
 										<td>
 											<div>
 												<div class="profile-header-picture" style="background-size: cover;">
@@ -32,7 +32,7 @@
 												</div>
 											</div>
 										</td>
-										<td>{{user.first_name}} {{user.last_name}}</td>
+										<td>{{user.first_name | titlecase}} {{user.last_name | titlecase}}</td>
 										<td [ngClass]="{'green': user.physical_energy > 50, 'red':  user.physical_energy < 50}">{{user.physical_energy}} %</td>
 										<td [ngClass]="{'green': user.heart_connection > 50, 'red':  user.heart_connection < 50}">{{user.heart_connection}} %</td>
 										<td [ngClass]="{'green': user.mental_focus > 50, 'red':  user.mental_focus < 50}">{{user.mental_focus}} %</td>

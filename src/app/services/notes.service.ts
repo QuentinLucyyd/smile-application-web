@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiServiceService } from './api-service.service';
 import { Note } from '../models/notes';
+import { User } from '../models/user';
 
 @Injectable({
 	providedIn: 'root'
@@ -8,6 +9,7 @@ import { Note } from '../models/notes';
 export class NotesService {
 	ActiveNote: Note = new Note({});
 	Notes: Array<Note> = [];
+	ActiveUser: User;
 
 	constructor(
 		private _APIService: ApiServiceService

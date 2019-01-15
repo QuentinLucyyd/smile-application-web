@@ -20,7 +20,11 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	disabledDeleteBtn: Boolean = false;
 	disabledDeleteIcn: Boolean = true;
 	_close: Boolean;
+	checklistloading: Boolean = false;
+	checklistadd: Boolean = false;
 	deleteloading: Boolean = false;
+	checklistItem: Checklist = new Checklist({});
+	checklist: Array<Checklist> = [];
 
 	constructor(
 		public goalsService: GoalsService,
@@ -50,6 +54,30 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 		
 	}
 
+	addItem() {
+		this.checklistItem.goal_id = this.goalsService.ActiveGoal.id;
+		this.checklist.push(this.checklistItem);
+		this.checklistItem = new Checklist({});
+	}
+
+	removeItem(item: Checklist) {
+		var index = this.checklist.indexOf(item);
+		if (index > -1)
+			this.checklist.splice(index, 1);
+	}
+
+	submitChecklist() {
+		this.checklistloading = true;
+		this.checklistService.createChecklist(this.checklist).subscribe(data => {
+			for (const item of this.checklist) {
+				this.goalsService.ActiveGoal.checklist.push(item);
+			}
+			this.checklistadd = false;
+			this.checklistloading = false;
+			console.log(data);
+		})
+	}
+
 	updateGoal(){
 		this.loading = true;
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
@@ -77,10 +105,21 @@ export class ModalDisplayGoalComponent extends SubPage implements OnInit {
 	completeGoal() {
 		this.loading = true;
 		this.goalsService.ActiveGoal.state = 'completed';
+		this.goalsService.ActiveGoal.populateProgress(null);
 		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
 			this.success = true;
 			this.deleteloading = false;
 			this.activeModal.close('Goal deleted Success');
+		})
+	}
+
+	incompleteGoal() {
+		this.loading = true;
+		this.goalsService.ActiveGoal.state = 'ongoing';
+		this.goalsService.updateGoal(this.goalsService.ActiveGoal).subscribe(data => {
+			this.success = true;
+			this.deleteloading = false;
+			this.activeModal.close('Goal Marked as Incomplete Success');
 		})
 	}
 }

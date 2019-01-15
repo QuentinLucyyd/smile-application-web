@@ -19,13 +19,15 @@ export class ModalAddNoteComponent extends SubPage implements OnInit {
 	Note: Note = new Note({user_id: this.usersServices.ActiveUser.id})
 
 	constructor(
-		private usersServices: UsersService,
-		private _notesServices: NotesService,
+		public usersServices: UsersService,
+		public _notesServices: NotesService,
 		public activeModal: NgbActiveModal,
 		public recordService: RecordService
 	) { super();}
 
 	ngOnInit() {
+		if (this.usersServices.ActiveUser.role == 'admin')
+			this.Note = new Note({user_id: this._notesServices.ActiveUser.id, type: 'admin'})
 	}
 
 	onChange(event: any) {
@@ -45,7 +47,7 @@ export class ModalAddNoteComponent extends SubPage implements OnInit {
 			this.Note.title = this.Note.note.split(" ", 4).join(" ") + '...';
 		if (this.recordService.url) {
 			this._notesServices.createUserNote(this.recordService.formData, '?voice=true&title=Recording%20'
-			+ new Date() + '&type=' + this.Note.type, true).subscribe(data => {
+			+ new Date() + '&type=' + this.Note.type + '&user=' + this.Note.user_id, true).subscribe(data => {
 				this.loading = false;
 				this.success = true;
 				this._notesServices.Notes.push(this.Note);

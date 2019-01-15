@@ -1,0 +1,12 @@
+/* Imports */
+
+@import '../../../../styles/pages';
+@import '../../../../styles/variables';
+@import '../../../../styles/modal';
+@import '../../../../styles/view';
+
+.integrity-score {
+	color: $secondary-color;
+	font-family: $primary-font;
+	font-size: 5.5em;
+}

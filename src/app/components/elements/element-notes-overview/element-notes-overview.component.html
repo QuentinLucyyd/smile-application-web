@@ -3,8 +3,11 @@
 		<div class="card-header">
 			<i class="card-icon far fa-sticky-note"></i>
 			Personal Notes
-			<div class="card-button">
+			<div class="card-button" *ngIf="!admin">
 				<div class="button" (click)="open()">Add note <i class="card-button-icon far fa-edit"></i></div>
+			</div>
+			<div class="card-button" *ngIf="admin">
+				<div class="button" (click)="adminopen()">Send note <i class="card-button-icon far fa-edit"></i></div>
 			</div>
 			<div class="card-button-mobile"><i class="card-button-icon far fa-edit"></i></div>
 		</div>
@@ -19,7 +22,7 @@
 		<div class="card-body">
 			<div class="row" *ngIf="!admin">
 				<ng-template ngFor let-note [ngForOf]="notesService.Notes" class="note-card-container card-container col-md-12">
-					<div *ngIf="note.type == 'Personal' || note.type == 'Session' && !note.voice" class="col-6 col-md-4">
+					<div *ngIf="(note.type == 'Personal' || note.type == 'Session') && !note.voice" class="col-12 col-md-6">
 						<div class="card note-container shadow" style="margin: 10px">
 							<div class="card-header goal-name">
 								<div class="note-title">{{note.title | titlecase}}</div>
@@ -43,8 +46,8 @@
 			</div>
 			<div class="row" *ngIf="admin">
 				<ng-template ngFor let-note [ngForOf]="notesService.Notes" class="note-card-container card-container col-md-12">
-					<div *ngIf="note.type != 'Personal' && !note.voice" class="col-6 col-md-4">
-						<div class="card note-container shadow" style="margin: 10px">
+					<div *ngIf="(note.type != 'Personal' && note.type != 'checkin') && !note.voice" class="col-6 col-md-4">
+						<div (click)="displayNote(note)" class="card note-container shadow" style="margin: 10px">
 							<div class="card-header goal-name">
 									<div class="note-title">{{note.title | titlecase}}</div>
 									<div class="note-title">{{note.type | titlecase}}</div>
@@ -61,7 +64,7 @@
 				</ng-template>
 				<div *ngIf="notesService.Notes.length" class="col-12 d-flex justify-content-center">
 					<div class="card-button">
-						<div class="button">View {{user.first_name}}'s Notes</div>
+						<div [routerLink]="['/dashboard/notes', user.username]"  class="button">View {{user.first_name}}'s Notes</div>
 					</div>
 				</div>
 			</div>

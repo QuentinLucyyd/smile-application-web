@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 })
 export class SubPageUsersComponent extends SubPage implements OnInit {
 	filterString: String = ''
+	limit = 10;
+	page = 0;
 	constructor(
 		public titleService: Title,
 		public usersService: UsersService,
@@ -22,7 +24,7 @@ export class SubPageUsersComponent extends SubPage implements OnInit {
 		this.titleService.setTitle('Smile | Users');
 		if (!this.usersService.Users.length) {
 			this.loading = true;
-			this.usersService.getUsers().subscribe(data => {
+			this.usersService.getUsers(10, this.page).subscribe(data => {
 				this.loading = false;
 				if (data.status == "success") {
 					this.success = true;

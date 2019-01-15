@@ -15,7 +15,7 @@ import { Checkin } from 'src/app/models/checkin';
 	styleUrls: ['./sub-page-user.component.scss']
 })
 export class SubPageUserComponent extends SubPage implements OnInit {
-	username: String = '';
+	username: string = '';
 	User: User = new User({});
 	Checkins: Array<Checkin> = [];
 	CompletedGoals: Array<Goal> = [];
@@ -34,9 +34,9 @@ export class SubPageUserComponent extends SubPage implements OnInit {
 		this.loading = true;
 
 		if (!this.usersService.Users.length) {
-			this.usersService.getUsers().subscribe(data => {
+			this.usersService.getUsersSearch(this.username).subscribe(data => {
 				if (data.status == "success") {
-					this.usersService.Users = data.data;
+					this.usersService.Users.push(new User(data.data));
 					this.getUser().then(data => {
 						this.loading = false;
 					})
@@ -46,7 +46,7 @@ export class SubPageUserComponent extends SubPage implements OnInit {
 					});
 				}
 			})
-		} else
+		} else {
 			this.getUser().then(data => {
 				this.loading = false;
 			})
@@ -54,6 +54,7 @@ export class SubPageUserComponent extends SubPage implements OnInit {
 				this.loading = false;
 				this.failure = true;
 			});
+		}
 	}
 
 	getUser() {

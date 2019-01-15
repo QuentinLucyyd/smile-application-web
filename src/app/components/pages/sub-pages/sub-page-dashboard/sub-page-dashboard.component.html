@@ -37,9 +37,16 @@
 			</div>
 			<div class="row" *ngIf="usersService.ActiveUser.role == 'admin'">
 				<div class="col-12 col-md-12">
+					<app-element-admin-cards></app-element-admin-cards>
+				</div>
+				<div class="col-12 col-md-12">
 					<app-element-admin-recent-checkins></app-element-admin-recent-checkins>
 				</div>
 				<div class="col-12 col-md-5">
+					<app-element-admin-recent-users></app-element-admin-recent-users>
+				</div>
+				<div class="col-12 col-md-12">
+					<app-element-admin-archived-users></app-element-admin-archived-users>
 				</div>
 			</div>
 		</div>

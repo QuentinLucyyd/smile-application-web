@@ -14,7 +14,7 @@
 	</div>
 	<div class="modal-display-note-container">
 		<div class="row">
-			<form class="col-12 col-md-7">
+			<form [ngClass]="{'col-md-12': notesService.ActiveNote.user_id != usersService.ActiveUser.id}" class="col-12 col-md-7">
 				<div class="row">
 					<div class="form-group float-label-control col s12">
 						<p class="grey-text">Note:</p>
@@ -23,7 +23,7 @@
 					</div>
 				</div>
 			</form>
-			<div class="col-12 col-md-5">
+			<div class="col-12 col-md-5" *ngIf="notesService.ActiveNote.user_id == usersService.ActiveUser.id">
 				<div class="note-actions">
 					<div class="note-actions-header d-flex justify-content-center">
 						<h5>Note Actions</h5>
@@ -32,7 +32,7 @@
 						<div (click)="disabledDeleteBtn = !disabledDeleteBtn" class="card shadow-sm" style="margin: 10px">
 							<div class="card-header">
 								<div class="note-header-icon">
-									<div class="card-loading d-flex justify-content-end align-items-center" >
+									<div class="card-loading d-flex justify-content-end align-items-center" *ngIf="deleting">
 										<div class="lds-ring">
 											<div></div>
 											<div></div>

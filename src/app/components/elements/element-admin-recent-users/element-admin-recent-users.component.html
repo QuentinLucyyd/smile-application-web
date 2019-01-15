@@ -1,3 +1,44 @@
-<p>
-  element-admin-recent-users works!
-</p>
+<div class="card-container">
+		<div class="shadow card">
+			<div class="card-header"><i class="card-icon fas fa-users"></i>Recent Users</div>
+			<div class="card-body">
+				<div class="secondary-loading-container" *ngIf="loading">
+					<div class="secondary-loading"></div>
+				</div>
+				<div class="users-container" *ngIf="!loading">
+					<div class="row">
+						<div class="col-12 col-md-12 table-responsive">
+							<table class="table">
+								<thead>
+									<tr>
+										<th scope="col"></th>
+										<th scope="col">User</th>
+										<th scope="col">Company</th>
+										<th scope="col">Joining Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<ng-template ngFor let-user [ngForOf]="Users" let-i="index">
+										<tr [routerLink]="['user', user.username]"class="user-tr" *ngIf="i<4 && (user.first_name && user.last_name)">
+											<td>
+												<div>
+													<div class="profile-header-picture" style="background-size: cover;">
+														<img *ngIf="!user.profile_image" src="../../../../assets/images/default-profile-image.jpg">
+														<img *ngIf="user.profile_image" [src]="user.profile_image">
+													</div>
+												</div>
+											</td>
+											<td>{{user.first_name | titlecase}} {{user.last_name | titlecase}}</td>
+											<td *ngIf="user.company">{{user.company | titlecase}}</td>
+											<td *ngIf="!user.company">N / A</td>
+											<td>{{formatDate(user.joining_date)}}</td>
+										</tr>
+									</ng-template>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

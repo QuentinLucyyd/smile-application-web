@@ -6,7 +6,8 @@
 <div class="modal-body">
 	<div class="col-12 d-flex justify-content-center">
 		<div class="welcome-container">
-			<h5>Add note</h5>
+			<h5 *ngIf="usersServices.ActiveUser.role == 'client'">Add note</h5>
+			<h5 *ngIf="usersServices.ActiveUser.role == 'admin'">Administrator note</h5>
 			<p class="error-text" *ngIf="failure">{{resultMessage}}</p>
 		</div>
 	</div>
@@ -19,7 +20,13 @@
 						<label for="name">Note Name</label>
 					</div>
 				</div>
-				<div class="row note-type-select">
+				<div class="row" *ngIf="usersServices.ActiveUser.role == 'admin'">
+					<div class="form-group float-label-control col s12">
+						<input readonly [(ngModel)]="_notesServices.ActiveUser.first_name" name="username" id="username" type="text" class="validate" required>
+						<label for="name">Note User</label>
+					</div>
+				</div>
+				<div class="row note-type-select" *ngIf="usersServices.ActiveUser.role == 'client'">
 					<div class="form-group priority-select col-12 col-md-12">
 						<label for="type">Note Type</label>
 						<select [(ngModel)]="Note.type" class="form-control" id="type" name="type">

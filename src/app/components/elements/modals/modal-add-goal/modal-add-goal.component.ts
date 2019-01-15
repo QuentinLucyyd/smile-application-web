@@ -50,16 +50,13 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 			this.resultMessage = 'Please ensure that all fields are completed and valid';
 		} else {
 			this._goalsService.createGoal(this.Goal).subscribe(data => {
-				this.loading = false;
-				this.success = true;
 				this._goalsService.Goals.push(this.Goal);
-				for (var i of this.checklist)
-				{
+				for (var i of this.checklist) {
 					i.goal_id = data.data[0].id;
 				}
-				this._checklistService.createChecklist(this.checklist)
-				.subscribe(data => {
-					console.log(data);
+				this._checklistService.createChecklist(this.checklist).subscribe(data => {
+					this.loading = false;
+					this.success = true;
 				});
 				this.activeModal.close('Goal Added Successfully');
 				this.notificationService.newNotify('info', 'Goal "' + this.Goal.name + '" Added Successfully');
@@ -68,7 +65,6 @@ export class ModalAddGoalComponent extends SubPage implements OnInit {
 				this.failure = true;
 				this.resultMessage = 'An error has occurred, Please try again';
 			})
-				//this._checklistService.createChecklist(this.checklist).subscribe(data =>{});
 		}
 	}
 
