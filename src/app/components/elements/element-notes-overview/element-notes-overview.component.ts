@@ -40,10 +40,7 @@ export class ElementNotesOverviewComponent implements OnInit {
 		this.modalService.open(ModalAddNoteComponent, {  windowClass: 'modal-custom-container', centered: true });
 	}
 
-	adminopen() {
 
-	}
-	
 	displayNote(note) {
 		this.notesService.ActiveNote = note;
 		this.modalService.open(ModalDisplayNoteComponent, {  windowClass: 'modal-custom-container', centered: true, size: 'lg' });
