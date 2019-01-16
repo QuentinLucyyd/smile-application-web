@@ -16,7 +16,7 @@ import { Learning } from '../models/learning';
 })
 export class ApiServiceService {
 	token: String = '';
-	host = environment.API_HOST
+	host = 'https://smile-application-api.herokuapp.com'
 	
 	constructor(
 		private _http: Http,
